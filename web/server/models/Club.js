@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
-const userSchema = new mongoose.Schema({
-    username: {
+const clubSchema = new mongoose.Schema({
+    name: {
         type: String,
         required: true
     },
@@ -9,15 +9,14 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    // Student is True, Company is False
-    role: {
-        type: Boolean,
+    zip: {
+        type: Number,
         required: true
     },
-    grade: {
+    type: {
         type: Number,
         required: true
     }
 }) 
 
-module.exports = mongoose.model('User', userSchema)
+module.exports = mongoose.model('Club', clubSchema)

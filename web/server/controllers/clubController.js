@@ -1,4 +1,4 @@
-const User = require('../models/User')
+const Club = require('../models/Club')
 const Session = require('../models/Session')
 const asyncHandler = require('express-async-handler')
 const bcrypt = require('bcrypt')
@@ -15,17 +15,17 @@ function generateSessionId() {
 // @desc Create new user
 // @route POST /users
 // @access Private
-const createNewUser = asyncHandler(async (req, res) => {
+const createNewClub = asyncHandler(async (req, res) => {
     const SESSION_EXPIRY_TIME = 30 * 24 * 60 * 60 * 1000;
 
-    const {username, password, grade, zip} = req.body
+    const {username, password, type, zip} = req.body
     // Confirm Data
-    if((username === null) || (password === null) || (grade === null) || (zip === null)) {
+    if((username === null) || (password === null) || (type === null) || (zip === null)) {
         return res.status(400).json({message: 'All fields are required'})
     }
 
     // Check for Duplicate
-    const duplicate = await User.findOne({username}).lean().exec()
+    const duplicate = await Club.findOne({username}).lean().exec()
     if (duplicate) {
         return res.status(409).json({message: 'Duplicate username'})
     }
@@ -42,18 +42,18 @@ const createNewUser = asyncHandler(async (req, res) => {
     });
 
     // Create and Store User
-    const newUser = new User({username, password: hashedPwd, zip: zip, grade: grade});
+    const newUser = new User({username, password: hashedPwd, zip: zip, type: type});
     newUser.save()
         .then((result) => {
             const newSession = new Session({sessionId, username: username, expires: expiryDate});
             newSession.save();
             
-            res.status(201).json({message: "New user ${username} created"});
+            res.status(201).json({message: "New club ${username} created"});
         })
         .catch(error => res.status(500).json({message: "Internal server error"}));
 })
 
 
 module.exports = {
-    createNewUser,
+    createNewClub,
 }
