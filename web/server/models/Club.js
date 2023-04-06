@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const clubSchema = new mongoose.Schema({
-    name: {
+    username: {
         type: String,
         required: true
     },
@@ -13,9 +13,29 @@ const clubSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    type: {
-        type: Number,
+    industry: {
+        type: String,
         required: true
+    },
+    school: {
+        type: String,
+        required: true
+    },
+    leaders: [{
+        type: String,
+        required: true
+    }],
+
+
+    // Not Required --> Clubs setup later in profile --> Power Ranking
+    numStudents: {
+        type: Number,
+    },
+    numDistricts: {
+        type: Number,
+    },
+    numLeaders: {
+        type: Number
     }
 }) 
 

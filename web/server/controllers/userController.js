@@ -20,7 +20,7 @@ const createNewUser = asyncHandler(async (req, res) => {
 
     const {username, password, grade, zip} = req.body
     // Confirm Data
-    if((username === null) || (password === null) || (grade === null) || (zip === null)) {
+    if(!username || !password || !zip || !grade) {
         return res.status(400).json({message: 'All fields are required'})
     }
 
