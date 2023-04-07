@@ -18,3 +18,9 @@ logs --> Self-explanatory
 controllers --> Functions that describe what to send when message sent to server
 
 config --> Self-explanatory
+
+TO RUN:
+Either
+
+1. node server.js --> Changes won't be updated in real time
+2. npm run dev --> Changes are updated in real time`gi
