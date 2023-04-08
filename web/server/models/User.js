@@ -19,6 +19,9 @@ const userSchema = new mongoose.Schema({
     },
     applied: [{
         type: String
+    }],
+    recent: [{
+	type: String
     }]
 }) 
 

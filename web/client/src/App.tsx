@@ -1,5 +1,13 @@
+import "./App.css";
+
+import NavBar from "./components/NavBar/NavBar";
+
 function App() {
-  return <h1>Bruh</h1>;
+  return (
+    <div id="root">
+      <NavBar />
+    </div>
+  );
 }
 
 export default App;
