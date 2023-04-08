@@ -1,11 +1,13 @@
 import "./App.css";
 
-import NavBar from "./components/NavBar/NavBar";
+import First from "./components/LoginPage/First/First";
+import NavBar from "./components/LoginPage/NavBar/NavBar";
 
 function App() {
   return (
     <div id="root">
       <NavBar />
+      <First />
     </div>
   );
 }

@@ -1,0 +1,50 @@
+/* CSS For Parent*/
+#parentContainer {
+  height: 70vh;
+  width: 100vw;
+}
+
+/* CSS For Left and Right Sides of Screen */
+.left {
+  width: 50%;
+
+  float: left;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.right {
+  width: 50%;
+
+  float: right;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* CSS For Left Side of Screen */
+#formContainer {
+  margin: 0;
+  padding: 0;
+
+  height: 50%;
+  width: 80%;
+
+  background-color: white;
+}
+
+/* SVG Path */
+#path {
+  stroke-dasharray: 1663.7275390625;
+  stroke-dashoffset: 1663.7275390625;
+  animation: dash 5s infinite ease;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
