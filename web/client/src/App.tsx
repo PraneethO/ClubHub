@@ -1,7 +1,7 @@
 import "./App.css";
 
-import First from "./components/LoginPage/First/First";
-import NavBar from "./components/LoginPage/NavBar/NavBar";
+import First from "./components/ LandingPage/First/First";
+import NavBar from "./components/ LandingPage/NavBar/NavBar";
 
 function App() {
   return (

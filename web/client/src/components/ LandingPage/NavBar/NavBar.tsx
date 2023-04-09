@@ -1,4 +1,3 @@
-import React from "react";
 import "./NavBar.css";
 
 function isLoggedIn() {
@@ -8,7 +7,7 @@ function isLoggedIn() {
 function Navbar() {
   return (
     <nav>
-      <div id="logo">Studentship</div>
+      <div id="logo">ClubHub</div>
       <button id="signButtonContainer">{isLoggedIn()}</button>
     </nav>
   );

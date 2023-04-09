@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap");
+
+/* CSS For Parent*/
+#parentContainer {
+  height: 70vh;
+  width: 100vw;
+}
+
+/* CSS For Left and Right Sides of Screen */
+.left {
+  float: left;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.right {
+  width: 50%;
+  float: right;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ! CSS For Left Side of Screen */
+.loginBox {
+  width: 30%;
+  height: 45%;
+
+  background: #fff;
+  color: #000;
+  border-radius: 20px;
+
+  top: 50%;
+  left: 20%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  padding: 3% 0 0 0;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  height: 50%;
+}
+
+.inputBox {
+  width: 95%;
+  height: 50%;
+}
+
+.inputBox label {
+  font-family: "Roboto";
+}
+
+.inputBox input {
+  background: #d3d3d3;
+  border-style: none;
+
+  height: 70%;
+}
+
+/* SVG Path */
+#path {
+  stroke-dasharray: 1663.7275390625;
+  stroke-dashoffset: 1663.7275390625;
+  animation: dash 5s infinite ease;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}

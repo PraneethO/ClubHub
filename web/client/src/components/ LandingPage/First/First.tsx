@@ -16,7 +16,23 @@ function First() {
   return (
     <div id="parentContainer">
       <div className="left">
-        <div id="formContainer">I</div>
+        <div className="loginBox">
+          <form className="loginForm">
+            <div className="inputBox">
+              <label>USERNAME OR EMAIL</label>
+              <br />
+              <input type="text" name="username" />
+            </div>
+
+            <div className="inputBox">
+              <label>PASSWORD</label>
+              <br />
+              <input type="password" name="password" />
+            </div>
+
+            <input type="submit" value="Submit" />
+          </form>
+        </div>
       </div>
 
       <div className="right">
