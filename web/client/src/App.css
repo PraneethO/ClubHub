@@ -1,7 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap");
 
 * {
-  font-family: Nunito;
+  font-family: Roboto;
 
   box-sizing: border-box;
   margin: 0;
@@ -15,5 +15,5 @@
   overflow-y: auto;
   overflow-x: hidden;
 
-  background-color: #1c2333;
+  background-color: #bfbfbf;
 }

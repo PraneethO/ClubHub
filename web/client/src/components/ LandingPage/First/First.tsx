@@ -18,11 +18,14 @@ function First() {
       <div className="left">
         <div className="loginBox">
           <form className="loginForm">
+            <h1>LOGIN</h1>
             <div className="inputBox">
               <label>USERNAME OR EMAIL</label>
               <br />
               <input type="text" name="username" />
             </div>
+
+            <br />
 
             <div className="inputBox">
               <label>PASSWORD</label>
@@ -30,7 +33,15 @@ function First() {
               <input type="password" name="password" />
             </div>
 
-            <input type="submit" value="Submit" />
+            <br />
+
+            <br></br>
+
+            <h1>OR</h1>
+
+            <button type="submit" className="signButtonContainer">
+              Join the Beta
+            </button>
           </form>
         </div>
       </div>

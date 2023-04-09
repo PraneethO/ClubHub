@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap");
-
 /* CSS For Parent*/
 #parentContainer {
   height: 70vh;
@@ -27,17 +25,27 @@
 /* ! CSS For Left Side of Screen */
 .loginBox {
   width: 30%;
-  height: 45%;
+  height: 50%;
 
   background: #fff;
   color: #000;
   border-radius: 20px;
 
-  top: 50%;
+  top: 40%;
   left: 20%;
   position: absolute;
   transform: translate(-50%, -50%);
-  padding: 3% 0 0 0;
+  padding-top: 1%;
+}
+
+.loginForm h1 {
+  color: #044e8b;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+hr {
+  color: black;
 }
 
 .loginForm {
@@ -51,17 +59,44 @@
 .inputBox {
   width: 95%;
   height: 50%;
+
+  padding-bottom: 2%;
 }
 
 .inputBox label {
-  font-family: "Roboto";
+  color: black;
 }
 
-.inputBox input {
+.inputBox input[type="text"],
+input[type="password"] {
   background: #d3d3d3;
   border-style: none;
 
-  height: 70%;
+  height: 100%;
+  width: 100%;
+}
+
+.signButtonContainer {
+  margin-right: 2%;
+
+  /* Padding for White Border Around Text */
+  padding: 5px 0.7% 5px 1%;
+
+  /* White Border Around Text */
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border: none;
+  text-align: center;
+
+  /* Text */
+  white-space: nowrap;
+  font-size: 40px;
+  color: #044e8b;
+  letter-spacing: 1px;
+}
+
+.signButtonContainer:hover {
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 /* SVG Path */
