@@ -1,12 +1,14 @@
 /* CSS For Parent*/
 #parentContainer {
-  height: 70vh;
-  width: 100vw;
+  height: 70%;
+  width: 100%;
+
+  display: flex;
 }
 
 /* CSS For Left and Right Sides of Screen */
 .left {
-  float: left;
+  flex: 2;
 
   display: flex;
   justify-content: center;
@@ -14,8 +16,7 @@
 }
 
 .right {
-  width: 50%;
-  float: right;
+  flex: 3;
 
   display: flex;
   justify-content: center;
@@ -24,18 +25,22 @@
 
 /* ! CSS For Left Side of Screen */
 .loginBox {
-  width: 30%;
-  height: 50%;
+  width: 75%;
+  height: 70%;
 
   background: #fff;
   color: #000;
   border-radius: 20px;
+}
 
-  top: 40%;
-  left: 20%;
-  position: absolute;
-  transform: translate(-50%, -50%);
-  padding-top: 1%;
+.loginForm {
+  height: 98%;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .loginForm h1 {
@@ -44,23 +49,9 @@
   font-weight: 600;
 }
 
-hr {
-  color: black;
-}
-
-.loginForm {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  height: 50%;
-}
-
 .inputBox {
-  width: 95%;
+  width: 98%;
   height: 50%;
-
-  padding-bottom: 2%;
 }
 
 .inputBox label {
@@ -71,16 +62,15 @@ hr {
 input[type="password"] {
   background: #d3d3d3;
   border-style: none;
-
-  height: 100%;
   width: 100%;
+  height: 70%;
 }
 
 .signButtonContainer {
   margin-right: 2%;
 
   /* Padding for White Border Around Text */
-  padding: 5px 0.7% 5px 1%;
+  padding: 1% 0.7% 5px 1%;
 
   /* White Border Around Text */
   border-radius: 20px;
@@ -97,6 +87,13 @@ input[type="password"] {
 
 .signButtonContainer:hover {
   background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* ! Right Side CSS */
+
+.rightText {
+  width: 50%;
+  height: 50%;
 }
 
 /* SVG Path */
