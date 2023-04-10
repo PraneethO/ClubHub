@@ -1,14 +1,14 @@
 import "./App.css";
 
-import First from "./components/ LandingPage/First/First";
-import NavBar from "./components/ LandingPage/NavBar/NavBar";
+import { Route, Routes } from "react-router-dom";
+
+import LandingPage from "./components/LandingPage/LandingPage";
 
 function App() {
   return (
-    <div id="root">
-      <NavBar />
-      <First />
-    </div>
+    <Routes>
+      <Route path="/" element={<LandingPage />} />
+    </Routes>
   );
 }
 
