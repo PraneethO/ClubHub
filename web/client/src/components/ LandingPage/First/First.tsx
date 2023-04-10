@@ -45,20 +45,18 @@ function First() {
       </div>
 
       <div className="right">
-        <div className="rightText">
-          <div>CONNECTING</div>
+        <div className="upper">CONNECTING</div>
 
-          <svg
-            id="handHighSchooler"
-            viewBox="0 0 451 128"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            {path()}
-          </svg>
+        <svg
+          id="handHighSchooler"
+          viewBox="0 0 451 128"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          {path()}
+        </svg>
 
-          <div>TO THE ISSUES THAT MATTER</div>
-        </div>
+        <div className="lower">TO THE `ISSUES THAT MATTER</div>
       </div>
     </div>
   );

@@ -54,7 +54,7 @@
   height: 50%;
 }
 
-.inputBox label {
+.inputBox {
   color: black;
 }
 
@@ -90,11 +90,6 @@ input[type="password"] {
 }
 
 /* ! Right Side CSS */
-
-.rightText {
-  width: 50%;
-  height: 50%;
-}
 
 /* SVG Path */
 #path {
