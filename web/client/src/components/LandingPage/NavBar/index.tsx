@@ -1,4 +1,5 @@
 import "./NavBar.css";
+import { Link } from "react-router-dom";
 
 function isLoggedIn() {
   return "Join the Beta";
@@ -8,7 +9,9 @@ function Navbar() {
   return (
     <nav>
       <div id="logo">ClubHub</div>
-      <button id="signButtonContainer">{isLoggedIn()}</button>
+      <Link to="/signUp" id="signButtonContainer">
+        {isLoggedIn()}
+      </Link>
     </nav>
   );
 }
