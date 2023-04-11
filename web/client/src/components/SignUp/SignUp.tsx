@@ -7,10 +7,10 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 function getColor(active: string) {
-  if (active === "#BFBFBF") {
+  if (active === "#9da8b5") {
     return { backgroundColor: "#044E8B" };
   } else {
-    return { backgroundColor: "#BFBFBF" };
+    return { backgroundColor: "#9da8b5" };
   }
 }
 
@@ -39,7 +39,7 @@ function SignUp() {
           </button>
           <button
             className="orgButton"
-            onClick={() => setActive("#BFBFBF")}
+            onClick={() => setActive("#9da8b5")}
             style={getColor(active)}
           >
             For Organizations
@@ -47,7 +47,7 @@ function SignUp() {
         </div>
 
         {active === "#044E8B" && <Student />}
-        {active === "#BFBFBF" && <Organization />}
+        {active === "#9da8b5" && <Organization />}
       </div>
     </>
   );
