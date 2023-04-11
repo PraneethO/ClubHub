@@ -4,6 +4,7 @@ import Organization from "./Organization/Organization";
 import Student from "./Student/Student";
 
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function getColor(active: string) {
   if (active === "#BFBFBF") {
@@ -20,7 +21,9 @@ function SignUp() {
   return (
     <>
       <nav>
-        <div id="logo">ClubHub</div>
+        <Link id="logo" to="/">
+          ClubHub
+        </Link>
       </nav>
 
       <div className="bodyContainer">

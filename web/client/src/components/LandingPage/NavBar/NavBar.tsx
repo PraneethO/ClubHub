@@ -8,7 +8,9 @@ function isLoggedIn() {
 function Navbar() {
   return (
     <nav>
-      <div id="logo">ClubHub</div>
+      <Link id="logo" to="/">
+        ClubHub
+      </Link>
       <Link to="/signUp" id="signButtonContainer">
         {isLoggedIn()}
       </Link>
