@@ -55,7 +55,7 @@ function First() {
 
        <div className="lower">TO THE ISSUES THAT MATTER</div> */}
         CONNECTING HIGH <br /> SCHOOLERS TO THE ISSUES <br />
-        THAT MATTER.
+        THAT MATTER
       </div>
     </div>
   );
