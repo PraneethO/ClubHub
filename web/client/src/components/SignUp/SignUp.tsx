@@ -22,7 +22,9 @@ function SignUp() {
     <>
       <nav>
         <Link id="logo" to="/">
-          ClubHub
+          <div style={{ fontSize: "60px", fontFamily: "Bebas Neue" }}>
+            ClubHub
+          </div>
         </Link>
       </nav>
 

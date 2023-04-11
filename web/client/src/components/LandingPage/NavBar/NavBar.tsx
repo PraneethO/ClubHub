@@ -2,14 +2,16 @@ import "./NavBar.css";
 import { Link } from "react-router-dom";
 
 function isLoggedIn() {
-  return "Join the Beta";
+  return "Join Now";
 }
 
 function Navbar() {
   return (
     <nav>
       <Link id="logo" to="/">
-        ClubHub
+        <div style={{ fontSize: "60px", fontFamily: "Bebas Neue" }}>
+          ClubHub
+        </div>
       </Link>
       <Link to="/signUp" id="signButtonContainer">
         {isLoggedIn()}
