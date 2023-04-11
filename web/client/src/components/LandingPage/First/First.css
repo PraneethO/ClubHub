@@ -2,104 +2,140 @@
 #parentContainer {
   height: 70%;
   width: 100%;
-
+ 
+ 
   display: flex;
-}
-
-/* CSS For Left and Right Sides of Screen */
-.left {
-  flex: 2;
-
-  display: flex;
+ }
+ 
+ 
+ /* CSS For Left and Right Sides of Screen */
+ .left {
+  width: 50%;
+  height: 100%;
+ 
   justify-content: center;
   align-items: center;
-}
+  margin-top: 11%;
+  margin-left: 4%;
+ }
+ 
+ 
+ .right {
+ 
+  width: 50%;
+  height: 20%;
+  justify-content: right;
+  align-items: right;
+ 
+ 
+  font-size: 100px;
+  font-family:'Bebas Neue';
+  color:#044E8B;
+  text-align: right;
 
-.right {
-  flex: 3;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* ! CSS For Left Side of Screen */
-.loginBox {
+  margin-top: 13%;
+  margin-right: 4%;
+ }
+ 
+ 
+ /* ! CSS For Left Side of Screen */
+ .loginBox {
   width: 75%;
   height: 70%;
-
-  background: #fff;
-  color: #000;
+ 
+ 
+  background: #ffffff;
+  color: #000000;
   border-radius: 20px;
-}
-
-.loginForm {
+ }
+ 
+ 
+ .loginForm {
   height: 98%;
   width: 100%;
-
+ 
+ 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-.loginForm h1 {
-  color: #044e8b;
+ }
+ 
+ 
+ .loginForm h1 {
+  color: #044E8B;
   font-size: 1.5rem;
   font-weight: 600;
-}
+ }
+ 
+ 
+ .inputBox {
+  width: 90%;
+  height: 22.5%;
 
-.inputBox {
-  width: 98%;
-  height: 50%;
-}
+  margin-left: 0.25%;
+  margin-top: 4%;
 
-.inputBox {
+  font-family: "Bebas Neue";
+  font-size: 20px;
+ }
+ 
+ 
+ .inputBox {
   color: black;
-}
-
-.inputBox input[type="text"],
-input[type="password"] {
+ }
+ 
+ 
+ .inputBox input[type="text"],
+ input[type="password"] {
   background: #d3d3d3;
   border-style: none;
   width: 100%;
   height: 70%;
-}
-
-.signButtonContainer {
+ }
+ 
+ 
+ .signButtonContainer {
   margin-right: 2%;
 
   /* Padding for White Border Around Text */
-  padding: 1% 0.7% 5px 1%;
+  padding: 1% 2% 1% 2%;
 
   /* White Border Around Text */
-  border-radius: 20px;
-  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  background-color: #044e8b;
   border: none;
   text-align: center;
 
   /* Text */
+  font-family: "Bebas Neue";
   white-space: nowrap;
-  font-size: 40px;
-  color: #044e8b;
-  letter-spacing: 1px;
-}
+  font-size: 45px;
+  color: #ffffff;
+  letter-spacing: 0px;
 
-.signButtonContainer:hover {
-  background-color: rgba(0, 0, 0, 0.2);
-}
-
-/* ! Right Side CSS */
-
-/* SVG Path */
-#path {
+  text-decoration: none;
+ }
+ 
+ 
+ .signButtonContainer:hover {
+  background-color: #9da8b5;
+ }
+ 
+ 
+ /* ! Right Side CSS */
+ 
+ 
+ /* SVG Path */
+ #path {
   stroke-dasharray: 1663.7275390625;
   stroke-dashoffset: 1663.7275390625;
   animation: dash 5s infinite ease;
-}
-
-@keyframes dash {
+ }
+ 
+ 
+ @keyframes dash {
   to {
     stroke-dashoffset: 0;
   }
-}
+ } 
