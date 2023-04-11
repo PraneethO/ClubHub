@@ -5,21 +5,45 @@ import Student from "./Student/Student";
 
 import { useState } from "react";
 
+function getColor(active: string) {
+  if (active === "#BFBFBF") {
+    return { backgroundColor: "#044E8B" };
+  } else {
+    return { backgroundColor: "#BFBFBF" };
+  }
+}
+
 function SignUp() {
-  const [active, setActive] = useState("Student");
+  // Active refers to color of the student button
+  const [active, setActive] = useState("#044E8B");
 
   return (
     <>
       <nav>
         <div id="logo">ClubHub</div>
       </nav>
-      <button onClick={() => setActive("Student")}>For Students...</button>
-      <button onClick={() => setActive("Organization")}>
-        For Organizations...
-      </button>
 
-      {active === "Student" && <Student />}
-      {active === "Organization" && <Organization />}
+      <div className="bodyContainer">
+        <div className="buttonContainer">
+          <button
+            className="studButton"
+            onClick={() => setActive("#044E8B")}
+            style={{ backgroundColor: active }}
+          >
+            For Students
+          </button>
+          <button
+            className="orgButton"
+            onClick={() => setActive("#BFBFBF")}
+            style={getColor(active)}
+          >
+            For Organizations
+          </button>
+        </div>
+
+        {active === "#044E8B" && <Student />}
+        {active === "#BFBFBF" && <Organization />}
+      </div>
     </>
   );
 }
