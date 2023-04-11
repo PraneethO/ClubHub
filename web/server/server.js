@@ -1,3 +1,5 @@
+// Praneeth O - Idfk when this was mde check the github reports - Server Code for Club Hub
+
 // Imports and Requirements to Run
 require('dotenv').config()
 const express = require('express')
@@ -50,17 +52,21 @@ app.use(session(sess));
 
 // ! Actual Routes (Look Here)
 // User Route (Login, Signup, Etc.)
-const userController = require("./controllers/userController")
+const userController = require("./controllers/userController");
 app.route('/users')
     .post((req, res) => {
         userController.createNewUser(req, res);
     })
-    .patch((req, res) => {
-        userController.updateUser(req, res);
+    // TODO: Setup code to update or delete users
+
+
+// Club Route (Login, Signup, Same thing as user but slightly different for organizational purposes)
+const clubController = require("./controllers/clubController");
+app.route('/clubs')
+    .post((req, res) => {
+        clubController.createNewClub(req, res);
     })
-    .delete((req, res) => {
-        userController.deleteUser(req, res);
-    })
+    // TODO: Same thing as the todo above
 
 // DO NOT DELETE: This is a catchall, so add all of your routes above this and the 404 will handle the rest
 app.all('*', (req, res) => {

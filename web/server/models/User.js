@@ -9,23 +9,20 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    // Student is True, Company is False
-    role: {
-        type: Boolean,
+    zip: {
+        type: Number,
         required: true
     },
     grade: {
         type: Number,
         required: true
     },
-    zip: {
-        type: Number,
-        required: true
-    },
-    industry: {
-        type: String,
-        required: true
-    }
+    applied: [{
+        type: String
+    }],
+    recent: [{
+	type: String
+    }]
 }) 
 
 module.exports = mongoose.model('User', userSchema)

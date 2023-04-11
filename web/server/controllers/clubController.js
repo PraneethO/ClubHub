@@ -1,4 +1,4 @@
-const User = require('../models/User')
+const Club = require('../models/Club')
 const Session = require('../models/Session')
 const asyncHandler = require('express-async-handler')
 const bcrypt = require('bcrypt')
@@ -12,22 +12,22 @@ function generateSessionId() {
     return sessionId;
 }
 
-// @desc Create new user
-// @route POST /users
+// @desc Creates new club
+// @route POST /clubs
 // @access Private
-const createNewUser = asyncHandler(async (req, res) => {
+const createNewClub = asyncHandler(async (req, res) => {
     const SESSION_EXPIRY_TIME = 30 * 24 * 60 * 60 * 1000;
 
-    const {username, password, grade, zip} = req.body
+    const {username, password, zip, industry, school, leaders} = req.body
     // Confirm Data
-    if(!username || !password || !zip || !grade) {
+    if(!username || !password || !zip || !industry || !school || !leaders) {
         return res.status(400).json({message: 'All fields are required'})
     }
 
     // Check for Duplicate
-    const duplicate = await User.findOne({username}).lean().exec()
+    const duplicate = await Club.findOne({username: username, zip: zip}).lean().exec()
     if (duplicate) {
-        return res.status(409).json({message: 'Duplicate username'})
+        return res.status(409).json({message: 'Duplicate'})
     }
     
     const hashedPwd = await bcrypt.hash(password, 10) // Password Hash
@@ -42,18 +42,18 @@ const createNewUser = asyncHandler(async (req, res) => {
     });
 
     // Create and Store User
-    const newUser = new User({username, password: hashedPwd, zip: zip, grade: grade});
-    newUser.save()
+    const newClub = new Club({username: username, password: hashedPwd, zip: zip, industry: industry, school: school, leaders: leaders});
+    newClub.save()
         .then((result) => {
             const newSession = new Session({sessionId, username: username, expires: expiryDate});
             newSession.save();
             
-            res.status(201).json({message: "New user ${username} created"});
+            res.status(201).json({message: "New club created"});
         })
         .catch(error => res.status(500).json({message: "Internal server error"}));
 })
 
 
 module.exports = {
-    createNewUser,
+    createNewClub,
 }

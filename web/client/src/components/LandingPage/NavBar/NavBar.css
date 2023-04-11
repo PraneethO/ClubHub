@@ -1,0 +1,50 @@
+nav {
+  margin: 0;
+  padding: 0;
+
+  position: sticky;
+
+  top: 0;
+
+  height: 10vh;
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+#logo {
+  margin-left: 2%;
+
+  font-size: 50px;
+  color: #044e8b;
+
+  text-decoration: none;
+}
+
+#signButtonContainer {
+  margin-right: 2%;
+
+  /* Padding for White Border Around Text */
+  padding: 5px 0.7% 5px 1%;
+
+  /* White Border Around Text */
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  text-align: center;
+
+  /* Text */
+  white-space: nowrap;
+  font-size: 20px;
+  color: #044e8b;
+  letter-spacing: 1px;
+
+  text-decoration: none;
+}
+
+#signButtonContainer:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}

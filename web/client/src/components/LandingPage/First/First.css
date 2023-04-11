@@ -1,0 +1,105 @@
+/* CSS For Parent*/
+#parentContainer {
+  height: 70%;
+  width: 100%;
+
+  display: flex;
+}
+
+/* CSS For Left and Right Sides of Screen */
+.left {
+  flex: 2;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.right {
+  flex: 3;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ! CSS For Left Side of Screen */
+.loginBox {
+  width: 75%;
+  height: 70%;
+
+  background: #fff;
+  color: #000;
+  border-radius: 20px;
+}
+
+.loginForm {
+  height: 98%;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginForm h1 {
+  color: #044e8b;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.inputBox {
+  width: 98%;
+  height: 50%;
+}
+
+.inputBox {
+  color: black;
+}
+
+.inputBox input[type="text"],
+input[type="password"] {
+  background: #d3d3d3;
+  border-style: none;
+  width: 100%;
+  height: 70%;
+}
+
+.signButtonContainer {
+  margin-right: 2%;
+
+  /* Padding for White Border Around Text */
+  padding: 1% 0.7% 5px 1%;
+
+  /* White Border Around Text */
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border: none;
+  text-align: center;
+
+  /* Text */
+  white-space: nowrap;
+  font-size: 40px;
+  color: #044e8b;
+  letter-spacing: 1px;
+}
+
+.signButtonContainer:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* ! Right Side CSS */
+
+/* SVG Path */
+#path {
+  stroke-dasharray: 1663.7275390625;
+  stroke-dashoffset: 1663.7275390625;
+  animation: dash 5s infinite ease;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
