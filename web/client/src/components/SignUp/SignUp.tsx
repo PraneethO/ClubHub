@@ -1,10 +1,26 @@
 import "./SignUp.css";
 
+import Organization from "./Organization/Organization";
+import Student from "./Student/Student";
+
+import { useState } from "react";
+
 function SignUp() {
+  const [active, setActive] = useState("Student");
+
   return (
-    <div className="SignUp">
-      <h1>Sign Up</h1>
-    </div>
+    <>
+      <nav>
+        <div id="logo">ClubHub</div>
+      </nav>
+      <button onClick={() => setActive("Student")}>For Students...</button>
+      <button onClick={() => setActive("Organization")}>
+        For Organizations...
+      </button>
+
+      {active === "Student" && <Student />}
+      {active === "Organization" && <Organization />}
+    </>
   );
 }
 
