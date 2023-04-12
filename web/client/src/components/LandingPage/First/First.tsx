@@ -19,7 +19,7 @@ function First() {
         <div className="loginBox">
           <form className="loginForm">
             <div className="inputBox">
-              <label>USERNAME OR EMAIL</label>
+              <label style={{ fontSize: "30px" }}>USERNAME OR EMAIL</label>
               <br />
               <input type="text" name="username" />
             </div>
@@ -28,8 +28,6 @@ function First() {
               <br />
               <input type="password" name="password" />
             </div>
-
-            <br />
             <br />
             <br />
             <button type="submit" className="signButtonContainer">
