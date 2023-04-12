@@ -18,19 +18,19 @@ function First() {
       <div className="left">
         <div className="loginBox">
           <form className="loginForm">
-            <div className="inputBox">
+            <div className="iStillPraying">
               <label style={{ fontSize: "30px" }}>USERNAME OR EMAIL</label>
               <br />
-              <input type="text" name="username" />
+              <input type="password" name="username" />
             </div>
-            <div className="inputBox">
+            <div className="iStillPraying">
               <label style={{ fontSize: "30px" }}>PASSWORD</label>
               <br />
               <input type="password" name="password" />
             </div>
             <br />
             <br />
-            <button type="submit" className="signInButton Container">
+            <button type="submit" className="iPrayThisWorks">
               Sign In
             </button>
           </form>

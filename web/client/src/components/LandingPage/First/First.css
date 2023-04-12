@@ -95,7 +95,7 @@
  }
  
  
- .signInButtonContainer {
+ .signButtonContainer {
   margin-right: 2%;
 
   /* Padding for White Border Around Text */
@@ -139,4 +139,45 @@
   to {
     stroke-dashoffset: 0;
   }
+ }
+
+
+
+
+
+
+
+/* new code for login box */
+
+.iStillPraying {
+  width: 90%;
+  height: 22.5%;
+
+  margin-left: 0.25%;
+  margin-top: 4%;
+
+  font-family: "Helvetica World";
+  font-size: 20px;
+ }
+
+ .iPrayThisWorks {
+
+  /* Padding for White Border Around Text */
+  /* padding: 1% 2% 1% 2%; */
+  padding: 2% 40% 2% 40%;
+
+  /* White Border Around Text */
+  border-radius: 1000px;
+  background-color: #044e8b;
+  border: none;
+  text-align: center;
+
+  /* Text */
+  font-family: "Bebas Neue";
+  white-space: nowrap;
+  font-size: 45px;
+  color: #ffffff;
+  letter-spacing: 0px;
+
+  text-decoration: none;
  }
