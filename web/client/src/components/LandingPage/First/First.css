@@ -100,7 +100,7 @@
 
   /* Padding for White Border Around Text */
   /* padding: 1% 2% 1% 2%; */
-  padding: 2% 20% 2% 20%;
+  padding: 2% 40% 2% 40%;
 
   /* White Border Around Text */
   border-radius: 100px;
@@ -111,7 +111,7 @@
   /* Text */
   font-family: "Bebas Neue";
   white-space: nowrap;
-  font-size: 45px;
+  font-size: 500px;
   color: #ffffff;
   letter-spacing: 0px;
 

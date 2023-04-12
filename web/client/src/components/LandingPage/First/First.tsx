@@ -24,7 +24,7 @@ function First() {
               <input type="text" name="username" />
             </div>
             <div className="inputBox">
-              <label>PASSWORD</label>
+              <label style={{ fontSize: "30px" }}>PASSWORD</label>
               <br />
               <input type="password" name="password" />
             </div>
