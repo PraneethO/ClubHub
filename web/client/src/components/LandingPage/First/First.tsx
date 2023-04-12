@@ -21,7 +21,11 @@ function First() {
             <div className="newInputBox">
               <label style={{ fontSize: "30px" }}>USERNAME OR EMAIL</label>
               <br />
-              <input type="text" name="username" />
+              <input
+                type="text"
+                name="username"
+                style={{ fontFamily: "Montserrat", fontSize: "20px" }}
+              />
             </div>
             <div className="newInputBox">
               <label style={{ fontSize: "30px" }}>PASSWORD</label>
