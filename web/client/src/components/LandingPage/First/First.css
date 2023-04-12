@@ -95,7 +95,7 @@
  }
  
  
- .signButtonContainer {
+ .signInButtonContainer {
   margin-right: 2%;
 
   /* Padding for White Border Around Text */
@@ -103,7 +103,7 @@
   padding: 2% 40% 2% 40%;
 
   /* White Border Around Text */
-  border-radius: 100px;
+  border-radius: 1000px;
   background-color: #044e8b;
   border: none;
   text-align: center;
@@ -111,7 +111,7 @@
   /* Text */
   font-family: "Bebas Neue";
   white-space: nowrap;
-  font-size: 500px;
+  font-size: 45px;
   color: #ffffff;
   letter-spacing: 0px;
 
