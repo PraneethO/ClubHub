@@ -39,11 +39,7 @@ nav {
 
   /* Text */
   white-space: nowrap;
-<<<<<<< HEAD
   font-size: 2rem;
-=======
-  font-size: 30px;
->>>>>>> 74a03b27b872bd219af8cef8c37b4dc101a28930
   color: #ffffff;
   letter-spacing: 0px;
 
@@ -56,7 +52,7 @@ nav {
 
 #ourTeamContainer {
   align-items: right;
-  
+
   font-family: "Bebas Neue";
   white-space: nowrap;
   font-size: 40px;
