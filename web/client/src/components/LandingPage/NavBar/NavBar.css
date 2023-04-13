@@ -28,7 +28,8 @@ nav {
   margin-right: 2%;
 
   /* Padding for White Border Around Text */
-  padding: 0.25% 0.5% 0.25% 0.5%;
+  /* padding: 0.25% 0.5% 0.25% 0.5%; */
+  padding: 0.5% 0.75% 0.5% 0.75%;
 
   /* White Border Around Text */
   border-radius: 0.25rem;
@@ -38,7 +39,11 @@ nav {
 
   /* Text */
   white-space: nowrap;
+<<<<<<< HEAD
   font-size: 2rem;
+=======
+  font-size: 30px;
+>>>>>>> 74a03b27b872bd219af8cef8c37b4dc101a28930
   color: #ffffff;
   letter-spacing: 0px;
 
@@ -47,4 +52,14 @@ nav {
 
 #signButtonContainer:hover {
   background-color: #9da8b5;
+}
+
+#ourTeamContainer {
+  align-items: right;
+  
+  font-family: "Bebas Neue";
+  white-space: nowrap;
+  font-size: 40px;
+  color: #ffffff;
+  letter-spacing: 0px;
 }

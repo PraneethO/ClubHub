@@ -13,6 +13,9 @@ function Navbar() {
           ClubHub
         </div>
       </Link>
+      {/* <Link id="ourTeamContainer" to="/">
+        Our Team
+      </Link> */}
       <Link to="/signUp" id="signButtonContainer">
         {isLoggedIn()}
       </Link>
