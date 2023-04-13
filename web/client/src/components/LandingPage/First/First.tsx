@@ -24,13 +24,17 @@ function First() {
               <input
                 type="text"
                 name="username"
-                style={{ fontFamily: "Montserrat", fontSize: "20px" }}
+                style={{ fontFamily: "Product Sans", fontSize: "20px" }}
               />
             </div>
             <div className="newInputBox">
               <label style={{ fontSize: "30px" }}>PASSWORD</label>
               <br />
-              <input type="password" name="password" />
+              <input
+                type="password"
+                name="password"
+                style={{ fontFamily: "Product Sans", fontSize: "20px" }}
+              />
             </div>
             <br />
             <br />
