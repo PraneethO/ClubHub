@@ -6,35 +6,35 @@ function Student() {
       <form className="studentForm">
         <div className="userEmailBox">
           <div className="inputBox username">
-            <label>USERNAME</label>
+            <label>First Name</label>
             <br />
-            <input type="text" name="username" />
+            <input type="text" name="username" className="inputBoxText" />
           </div>
 
           <div className="inputBox email">
-            <label>EMAIL</label>
+            <label>Last Name</label>
             <br />
-            <input type="text" name="email" />
+            <input type="text" name="email" className="inputBoxText" />
           </div>
         </div>
 
         <div className="password">
           <label>PASSWORD</label>
           <br />
-          <input type="password" name="password" />
+          <input type="password" name="password" className="inputBoxText" />
         </div>
 
         <div className="idGradeBox">
           <div className="inputBox grade">
             <label>GRADE</label>
             <br />
-            <input type="text" name="grade" />
+            <input type="text" name="grade" className="inputBoxText" />
           </div>
 
           <div className="inputBox id">
             <label>STUDENT ID</label>
             <br />
-            <input type="text" name="id" />
+            <input type="text" name="id" className="inputBoxText" />
           </div>
         </div>
 

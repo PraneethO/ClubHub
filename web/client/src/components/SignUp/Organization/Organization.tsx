@@ -15,7 +15,7 @@ function Organization() {
           </div>
         </div>
         <div className="inputBox">
-          <label>PASSWORD</label>
+          <label className="passwordTextBox">PASSWORD</label>
           <br />
           <input type="password" name="password" />
         </div>
