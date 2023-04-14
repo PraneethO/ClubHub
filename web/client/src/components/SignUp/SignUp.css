@@ -37,32 +37,34 @@ nav {
 }
 
 .buttonContainer {
-  width: 50%;
+  position: relative;
+  width: 40%;
   height: 10%;
 
-  background-color: #fff;
-
-  border: 1px solid #044e8b;
-  border-radius: 30px;
+  border-radius: 20px;
+  box-sizing: content-box;
 }
 
 .studButton {
-  margin-right: 5%;
-  width: 45%;
+  position: absolute;
+  left: 0;
+  width: 50%;
   height: 100%;
 
   border-style: none;
-  border-radius: 30px;
-
+  border-radius: 20px;
   font-size: 30px;
+  color: white;
 }
+
 .orgButton {
-  margin-left: 5%;
-  width: 45%;
+  position: absolute;
+  right: 0;
+  width: 50%;
   height: 100%;
 
   border-style: none;
-  border-radius: 30px;
-
+  border-radius: 20px;
   font-size: 30px;
+  color: white;
 }

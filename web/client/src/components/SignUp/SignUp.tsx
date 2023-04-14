@@ -22,7 +22,13 @@ function SignUp() {
     <>
       <nav>
         <Link id="logo" to="/">
-          <div style={{ fontSize: "60px", fontFamily: "Bebas Neue" }}>
+          <div
+            style={{
+              fontSize: "60px",
+              fontFamily: "Bebas Neue",
+              textAlign: "center",
+            }}
+          >
             ClubHub
           </div>
         </Link>
@@ -35,14 +41,14 @@ function SignUp() {
             onClick={() => setActive("#044E8B")}
             style={{ backgroundColor: active }}
           >
-            For Students
+            Students
           </button>
           <button
             className="orgButton"
             onClick={() => setActive("#9da8b5")}
             style={getColor(active)}
           >
-            For Organizations
+            Organizations
           </button>
         </div>
 
