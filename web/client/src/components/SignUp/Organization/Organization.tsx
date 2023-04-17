@@ -45,9 +45,10 @@ function Organization() {
           <div className="inputBox field">
             <label>Field</label>
             <select name="field" className="inputBoxText">
+              <option value=""></option>
               <option value="Computer Science">Computer Science</option>
               <option value="Medicine">Medicine</option>
-              <option value="Service">Option 3</option>
+              <option value="Service">Service</option>
             </select>
           </div>
 
