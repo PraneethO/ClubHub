@@ -2,24 +2,39 @@ function Organization() {
   return (
     <div className="formContainer">
       <form className="studentForm">
-        <div className="userEmailBox">
+        <div className="inputBox">
+          <label>ORGANIZATION NAME</label>
+          <br />
+          <input type="text" name="organizationName" className="inputBoxText" />
+        </div>
+        <div className="idGradeBox">
           <div className="inputBox">
-            <label>USERNAME</label>
+            <label>OFFICIAL DESIGNATION</label>
             <br />
-            <input type="text" name="username" />
+            <input
+              type="text"
+              name="officialDesignation"
+              className="inputBoxText"
+            />
           </div>
+          <div className="inputBox">
+            <label>REGION</label>
+            <br />
+            <input type="text" name="region" className="inputBoxText" />
+          </div>
+        </div>
+        <div className="userEmailBox">
           <div className="inputBox">
             <label>EMAIL</label>
             <br />
-            <input type="text" name="email" />
+            <input type="text" name="email" className="inputBoxText" />
+          </div>
+          <div className="inputBox password">
+            <label>PASSWORD</label>
+            <br />
+            <input type="password" name="password" className="inputBoxText" />
           </div>
         </div>
-        <div className="inputBox">
-          <label className="passwordTextBox">PASSWORD</label>
-          <br />
-          <input type="password" name="password" />
-        </div>
-
         <br />
         <br />
         <br />
