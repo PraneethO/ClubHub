@@ -21,20 +21,20 @@ function Student() {
         <div className="password">
           <label>PASSWORD</label>
           <br />
-          <input type="password" name="password" className="inputBoxText" />
+          <input type="password" name="password" />
         </div>
 
         <div className="idGradeBox">
           <div className="inputBox grade">
             <label>GRADE</label>
             <br />
-            <input type="text" name="grade" className="inputBoxText" />
+            <input type="text" name="grade" />
           </div>
 
           <div className="inputBox id">
             <label>STUDENT ID</label>
             <br />
-            <input type="text" name="id" className="inputBoxText" />
+            <input type="text" name="id" />
           </div>
         </div>
 
@@ -42,6 +42,7 @@ function Student() {
         <br />
         <br />
         <button type="submit" className="signButtonContainer">
+          {/* make signButtonContainer class in css */}
           Sign Up!
         </button>
       </form>
