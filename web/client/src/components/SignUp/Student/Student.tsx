@@ -5,44 +5,63 @@ function Student() {
     <div className="formContainer">
       <form className="studentForm">
         <div className="userEmailBox">
-          <div className="inputBox username">
+          <div className="inputBox">
             <label>First Name</label>
-            <br />
-            <input type="text" name="username" className="inputBoxText" />
+            <input
+              type="text"
+              className="inputBoxText"
+              autoCapitalize="words"
+            />
           </div>
 
-          <div className="inputBox email">
+          <div className="inputBox">
             <label>Last Name</label>
-            <br />
-            <input type="text" name="email" className="inputBoxText" />
+            <input
+              type="text"
+              className="inputBoxText"
+              autoCapitalize="words"
+            />
           </div>
         </div>
 
-        <div className="password">
-          <label>PASSWORD</label>
-          <br />
-          <input type="password" name="password" />
+        <div className="userEmailBox">
+          <div className="inputBox">
+            <label>Email</label>
+            <input
+              type="email"
+              className="inputBoxText"
+              style={{ width: "210%" }}
+              autoCapitalize="off"
+            />
+          </div>
+        </div>
+
+        <div className="inputBox password">
+          <label>Password</label>
+          <input type="password" name="password" className="inputBoxText" />
         </div>
 
         <div className="idGradeBox">
           <div className="inputBox grade">
-            <label>GRADE</label>
-            <br />
-            <input type="text" name="grade" />
+            <label>Grade (#1-12)</label>
+            <input
+              type="text"
+              name="grade"
+              className="inputBoxText"
+              pattern="[1-9]|1[0-2]"
+              required
+            />
           </div>
 
-          <div className="inputBox id">
-            <label>STUDENT ID</label>
-            <br />
-            <input type="text" name="id" />
+          <div className="inputBox region">
+            <label>Region</label>
+            <input type="text" name="region" className="inputBoxText" />
           </div>
         </div>
 
         <br />
         <br />
-        <br />
         <button type="submit" className="signButtonContainer">
-          {/* make signButtonContainer class in css */}
           Sign Up!
         </button>
       </form>
