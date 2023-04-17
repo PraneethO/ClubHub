@@ -1,9 +1,126 @@
-.orgInputBox {
-    width: 100%;
-    height: 100%;
-  
+.organizationForm {
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 10px;
+    width: 540px;
+    margin: 0 auto;
+  }  
+
+.nameDesignationBox {
+    display: flex; /* added */
+    justify-content: space-between; /* added */
+}
+
+.orgEmailBox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.emailBox {
+    width: calc(50% - 5px);
+    margin-top: 10px;
+}
+
+.inputBox {
+    width: calc(50% - 10px);
+    margin-bottom: 10px;
+}
+
+.inputBox label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 3px;
     font-size: 20px;
-  
+}
+
+.inputBoxText {
+    width: 100%;
+    background-color: #BFBFBF;
+    border: none;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
     color: black;
-    background-color: white;
+    border-radius: 5px;
+    font-family: "Product Sans";
+    height: 40px; /* added */
+}
+
+.inputBox.password {
+    width: calc(50% - 10px);
+    margin-bottom: 10px;
+}  
+
+.idRegionBox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.designation,
+.region {
+    width: calc(50% - 10px);
+    margin-bottom: 10px;
+}
+
+.region {
+    width: calc(50% - 10px);
+    margin-bottom: 10px;
+}
+
+.signButtonContainer {
+    background-color: #044E8B;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 1000px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    font-size: 30px;
+}
+
+.orgButton {
+    background-color: #044E8B;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    background-color: #BFBFBF;
+}
+
+.inputBoxText {
+    width: 100%;
+    height: 60%;
+}
+
+.inputBox.password {
+    width: calc(50% - 5px);
+    margin-bottom: 10px;
+}
+
+.inputBox.password label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 3px;
+    font-size: 20px;
+}
+
+.inputBox.password .inputBoxText {
+    width: 100%;
+    background-color: #BFBFBF;
+    border: none;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: black;
+    border-radius: 5px;
+    font-family: "Product Sans";
+}
+
+input:not([type="email"]) {
+    text-transform: capitalize;
 }
