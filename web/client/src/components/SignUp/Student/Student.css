@@ -2,7 +2,7 @@
   width: 540px;
   margin: 0 auto;
   margin-top: 2%;
-  font-family: "Bebas Neue", "Product Sans";
+  font-family: "Bebas Neue", "Georgia Italic";
 }
 
 .studentForm {
@@ -44,7 +44,7 @@
   font-size: 16px;
   color: black;
   border-radius: 5px;
-  font-family: "Product Sans";
+  font-family: "Georgia Italic";
 }
 
 .password {
@@ -117,7 +117,7 @@ input[type="password"] {
   font-size: 16px;
   color: black;
   border-radius: 5px;
-  font-family: "Product Sans";
+  font-family: "Georgia Italic";
 }
 
 input:not([type="email"]) {

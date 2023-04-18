@@ -44,23 +44,23 @@
     font-size: 16px;
     color: black;
     border-radius: 5px;
-    font-family: "Product Sans";
+    font-family: "Georgia Italic";
     height: 40px;
 }
 
-.idRegionBox {
+.idStateBox {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
 }
 
 .designation,
-.region {
+.state {
     width: calc(50% - 10px);
     margin-bottom: 10px;
 }
 
-.region {
+.state {
     width: calc(50% - 10px);
     margin-bottom: 10px;
 }
@@ -113,7 +113,7 @@ input[type="password"] {
     font-size: 16px;
     color: black;
     border-radius: 5px;
-    font-family: "Product Sans";
+    font-family: "Georgia Italic";
 }
 
 input:not([type="email"]) {

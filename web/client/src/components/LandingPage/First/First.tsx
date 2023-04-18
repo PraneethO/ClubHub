@@ -24,7 +24,11 @@ function First() {
               <input
                 type="text"
                 name="username"
-                style={{ fontFamily: "Product Sans", fontSize: "20px" }}
+                style={{
+                  fontFamily: "Georgia Italic",
+                  fontSize: "20px",
+                  textTransform: "none",
+                }}
               />
             </div>
             <div className="newInputBox">
@@ -33,7 +37,7 @@ function First() {
               <input
                 type="password"
                 name="password"
-                style={{ fontFamily: "Product Sans", fontSize: "20px" }}
+                style={{ fontFamily: "Georgia Italic", fontSize: "20px" }}
               />
             </div>
             <br />
