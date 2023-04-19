@@ -113,6 +113,8 @@ function Organization() {
 
         <br />
         <br />
+
+        {/* link sign up to dashboard */}
         <button type="submit" className="signButtonContainer">
           Sign Up!
         </button>

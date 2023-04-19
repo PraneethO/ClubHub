@@ -44,7 +44,7 @@
     font-size: 16px;
     color: black;
     border-radius: 5px;
-    font-family: "Georgia Italic";
+    font-family: "Schibsted Grotesk";
     height: 40px;
 }
 
@@ -93,8 +93,10 @@ input[type="password"] {
 }
 
 .inputBox.password {
-    width: calc(50% - 5px);
-    margin-bottom: 10px;
+    width: 500px !important;
+    /* fix */
+    height: 75.5px !important;
+    margin-bottom: 10px !important;
 }
 
 .inputBox.password label {
@@ -113,7 +115,7 @@ input[type="password"] {
     font-size: 16px;
     color: black;
     border-radius: 5px;
-    font-family: "Georgia Italic";
+    font-family: "Schibsted Grotesk";
 }
 
 input:not([type="email"]) {
