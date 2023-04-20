@@ -9,6 +9,10 @@ function Dashboard() {
           ClubHub
         </div>
       </Link>
+      <div id="search-container">
+        <input type="text" placeholder="Search" />
+        <button>Search</button>
+      </div>
     </nav>
   );
 }

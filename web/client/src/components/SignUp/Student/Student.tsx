@@ -115,7 +115,7 @@ function Student() {
               type="password"
               name="password"
               className="inputBoxText"
-              style={{ width: "500px", height: "39.3px" }}
+              style={{ width: "500px", height: "39.3px", marginBottom: "30px" }}
             />
           </div>
         </div>
