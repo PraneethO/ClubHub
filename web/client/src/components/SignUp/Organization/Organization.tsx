@@ -42,10 +42,18 @@ function Organization() {
           </div>
         </div>
 
-        <div className="orgPasswordBox">
+        <div
+          className="orgPasswordBox"
+          style={{ width: "500px", height: "75.5px", marginBottom: "10px" }}
+        >
           <div className="inputBox password">
             <label>Password</label>
-            <input type="password" name="password" className="inputBoxText" />
+            <input
+              type="password"
+              name="password"
+              className="inputBoxText"
+              style={{ width: "500px", height: "39.3px" }}
+            />
           </div>
         </div>
 

@@ -18,11 +18,6 @@
     margin-bottom: 10px;
 }
 
-.emailBox {
-    width: calc(50% - 5px);
-    margin-top: 10px;
-}
-
 .inputBox {
     width: calc(50% - 10px);
     margin-bottom: 10px;
@@ -45,7 +40,6 @@
     color: black;
     border-radius: 5px;
     font-family: "Schibsted Grotesk";
-    height: 20px;
 }
 
 .idStateBox {
@@ -90,21 +84,6 @@ input[type="password"] {
 .inputBoxText {
     width: 100%;
     height: 60%;
-}
-
-/* .inputBox.password {
-    width: 500px !important;
-    margin-bottom: 10px !important;
-    height: 56px;
-} */
-/*  */
-/*  */
-/*  */
-.orgPasswordBox {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-bottom: 10px;
 }
 
 .passwordBox {
