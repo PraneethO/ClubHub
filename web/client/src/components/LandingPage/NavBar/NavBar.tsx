@@ -16,7 +16,7 @@ function Navbar() {
       {/* <Link id="ourTeamContainer" to="/">
         Our Team
       </Link> */}
-      <Link to="/signUp" id="signButtonContainer">
+      <Link to="/signUp" id="signButtonContainerNav">
         {isLoggedIn()}
       </Link>
     </nav>

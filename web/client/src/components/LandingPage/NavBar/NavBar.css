@@ -24,7 +24,7 @@ nav {
   text-decoration: none;
 }
 
-#signButtonContainer {
+#signButtonContainerNav {
   margin-right: 2%;
 
   /* Padding for White Border Around Text */
@@ -46,7 +46,7 @@ nav {
   text-decoration: none;
 }
 
-#signButtonContainer:hover {
+#signButtonContainerNav:hover {
   background-color: #9da8b5;
 }
 

@@ -1,9 +1,75 @@
 import "./Student.css";
+import { Link } from "react-router-dom";
+import { useState } from "react";
+
+function isSignedIn() {
+  return "Sign Up!";
+}
 
 function Student() {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [grade, setGrade] = useState("");
+  const [state, setState] = useState("");
+  const [isFormValid, setIsFormValid] = useState(false);
+
+  function handleFirstNameChange(event: React.ChangeEvent<HTMLInputElement>) {
+    setFirstName(event.target.value);
+  }
+
+  function handleLastNameChange(event: React.ChangeEvent<HTMLInputElement>) {
+    setLastName(event.target.value);
+  }
+
+  function handleEmailChange(event: React.ChangeEvent<HTMLInputElement>) {
+    setEmail(event.target.value);
+  }
+
+  function handlePasswordChange(event: React.ChangeEvent<HTMLInputElement>) {
+    setPassword(event.target.value);
+  }
+
+  function handleGradeChange(event: React.ChangeEvent<HTMLInputElement>) {
+    setGrade(event.target.value);
+  }
+
+  function handleStateChange(event: React.ChangeEvent<HTMLSelectElement>) {
+    setState(event.target.value);
+  }
+
+  function handleFormSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    if (
+      firstName.trim() !== "" &&
+      lastName.trim() !== "" &&
+      email.trim() !== "" &&
+      isEmailValid &&
+      password.trim() !== "" &&
+      grade.trim() !== "" &&
+      state.trim() !== ""
+    ) {
+      setIsFormValid(true);
+      // Redirect to dashboard page
+      window.location.href = "/dashboard";
+    }
+  }
+
+  const signButtonStyle = isFormValid
+    ? {
+        backgroundColor: "#ff9933",
+        cursor: "pointer",
+      }
+    : {
+        backgroundColor: "#bbb",
+        cursor: "default",
+      };
+
   return (
     <div className="formContainer">
-      <form className="studentForm">
+      <form className="studentForm" onSubmit={handleFormSubmit}>
         <div className="userEmailBox">
           <div className="inputBox">
             <label>First Name</label>
@@ -11,6 +77,7 @@ function Student() {
               type="text"
               className="inputBoxText"
               autoCapitalize="words"
+              onChange={handleFirstNameChange}
             />
           </div>
 
@@ -20,6 +87,7 @@ function Student() {
               type="text"
               className="inputBoxText"
               autoCapitalize="words"
+              onChange={handleLastNameChange}
             />
           </div>
         </div>
@@ -30,15 +98,21 @@ function Student() {
             <input
               type="email"
               className="inputBoxText"
-              style={{ width: "210%" }}
+              style={{ width: "500px" }}
               autoCapitalize="off"
+              onChange={handleEmailChange}
             />
           </div>
         </div>
 
         <div className="inputBox password">
           <label>Password</label>
-          <input type="password" name="password" className="inputBoxText" />
+          <input
+            type="password"
+            name="password"
+            className="inputBoxText"
+            onChange={handlePasswordChange}
+          />
         </div>
 
         <div className="idGradeBox">
@@ -50,12 +124,18 @@ function Student() {
               className="inputBoxText"
               pattern="[1-9]|1[0-2]"
               required
+              onChange={handleGradeChange}
             />
           </div>
 
           <div className="inputBox state">
             <label>State</label>
-            <select name="state" className="inputBoxText" autoComplete="on">
+            <select
+              name="state"
+              className="inputBoxText"
+              autoComplete="on"
+              onChange={handleStateChange}
+            >
               <option value=""></option>
               <option value="AL">Alabama</option>
               <option value="AK">Alaska</option>
@@ -114,9 +194,19 @@ function Student() {
 
         <br />
         <br />
-        <button type="submit" className="signButtonContainer">
-          Sign Up!
-        </button>
+        {/* <button type="submit" className="signButtonContainer">
+          <Link to="/dashboard" id="signButtonContainer">
+            Sign Up!
+          </Link>
+        </button> */}
+
+        <Link
+          to="/dashboard"
+          id="signButtonContainer"
+          style={{ textDecoration: "none" }}
+        >
+          {isSignedIn()}
+        </Link>
       </form>
     </div>
   );

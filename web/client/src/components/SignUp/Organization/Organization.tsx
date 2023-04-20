@@ -1,4 +1,10 @@
 import "./Organization.css";
+import { Link } from "react-router-dom";
+import { useState } from "react";
+
+function isSignedIn() {
+  return "Sign Up!";
+}
 
 function Organization() {
   return (
@@ -30,15 +36,17 @@ function Organization() {
             <input
               type="email"
               className="inputBoxText"
-              style={{ width: "210%" }}
+              style={{ width: "500px" }}
               autoCapitalize="off"
             />
           </div>
         </div>
 
-        <div className="inputBox password">
-          <label>Password</label>
-          <input type="password" name="password" className="inputBoxText" />
+        <div className="orgPasswordBox">
+          <div className="inputBox password">
+            <label>Password</label>
+            <input type="password" name="password" className="inputBoxText" />
+          </div>
         </div>
 
         <div className="idGradeBox">
@@ -115,9 +123,13 @@ function Organization() {
         <br />
 
         {/* link sign up to dashboard */}
-        <button type="submit" className="signButtonContainer">
-          Sign Up!
-        </button>
+        <Link
+          to="/dashboard"
+          id="signButtonContainer"
+          style={{ textDecoration: "none" }}
+        >
+          {isSignedIn()}
+        </Link>
       </form>
     </div>
   );
