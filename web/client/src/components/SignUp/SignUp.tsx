@@ -1,7 +1,8 @@
 import "./SignUp.css";
 
 import Organization from "./Organization/Organization";
-import Student from "./Student/Student";
+// import Student from "./Student/Student";
+import Student from "./Student/StudentTest";
 
 import { useState } from "react";
 import { Link } from "react-router-dom";

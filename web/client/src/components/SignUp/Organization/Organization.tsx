@@ -126,10 +126,7 @@ function Organization() {
             </select>
           </div>
         </div>
-
         <br />
-        <br />
-
         {/* link sign up to dashboard */}
         <Link
           to="/dashboard"
