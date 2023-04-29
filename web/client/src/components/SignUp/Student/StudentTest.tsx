@@ -42,13 +42,16 @@ function Student() {
     setGrade(event.target.value);
   };
 
+  const hasValidPassword =
+    /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/.test(password);
+
   const isSignedIn = () => {
     const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     return (
       firstName.trim() !== "" &&
       lastName.trim() !== "" &&
       isEmailValid &&
-      password.trim() !== "" &&
+      hasValidPassword &&
       grade.trim() !== "" &&
       state.trim() !== ""
     );
@@ -99,7 +102,6 @@ function Student() {
         <div
           className="studentPasswordBox"
           style={{ width: "500px", height: "75.5px", marginBottom: "10px" }}
-          autoCapitalize="off"
         >
           <div className="inputBox password" style={{ width: "500px" }}>
             <label>Password</label>
@@ -114,9 +116,9 @@ function Student() {
                 }}
                 value={password}
                 onChange={handlePasswordChange}
-                autoComplete="off"
-                autoCapitalize="off"
+                autoComplete="new-password"
               />
+
               <label className="showPasswordLabel">
                 <input
                   type="checkbox"
