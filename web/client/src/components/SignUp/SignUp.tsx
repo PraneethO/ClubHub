@@ -1,8 +1,7 @@
 import "./SignUp.css";
 
 import Organization from "./Organization/Organization";
-// import Student from "./Student/Student";
-import Student from "./Student/StudentTest";
+import Student from "./Student/Student";
 
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -35,8 +34,23 @@ function SignUp() {
         </Link>
       </nav>
 
+      {/* <div className="logo">
+        <Link
+          id="logo"
+          to="/"
+          style={{
+            fontSize: "200px",
+            fontFamily: "Bebas Neue",
+            textAlign: "left",
+            marginLeft: "20px",
+          }}
+        >
+          <div>ClubHub</div>
+        </Link>
+      </div> */}
+
       <div className="bodyContainer">
-        <div className="buttonContainer">
+        <div className="buttonContainer" style={{ justifyContent: "flex-end" }}>
           <button
             className="studButton"
             onClick={() => setActive("#044E8B")}

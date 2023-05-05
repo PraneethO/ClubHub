@@ -2,31 +2,90 @@ import "./Organization.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-function isSignedIn() {
-  return "Sign Up!";
+function signUp() {
+  return <div style={{ textAlign: "center" }}>Sign Up!</div>;
 }
 
 function Organization() {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const [orgName, setOrgName] = useState("");
+  const [orgDesignation, setOrgDesignation] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [field, setField] = useState("");
+  const [state, setState] = useState("");
+
+  const handleOrgName = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setOrgName(event.target.value);
+  };
+
+  const handleOrgDesignation = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    setOrgDesignation(event.target.value);
+  };
+
+  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(event.target.value);
+  };
+
+  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(event.target.value);
+  };
+
+  const handleFieldChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setField(event.target.value);
+  };
+
+  const handleStateChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setState(event.target.value);
+  };
+
+  const hasValidPassword =
+    /^(?=.*[0-9])(?=.*[!@#$%^&*_\-])(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9!@#$%^&*_\-]{8,}$/.test(
+      password
+    );
+
+  const isSignedIn = () => {
+    const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    return (
+      orgName.trim() !== "" &&
+      orgDesignation.trim() !== "" &&
+      isEmailValid &&
+      hasValidPassword &&
+      field.trim() !== "" &&
+      state.trim() !== ""
+    );
+  };
+
   return (
     <div className="formContainer">
       <form className="organizationForm">
-        <div className="nameDesignationBox">
+        <div className="nameDesignationBox" style={{ height: "75.5px" }}>
           <div className="inputBox">
             <label>Organization Name</label>
             <input
               type="text"
               className="inputBoxText"
               autoCapitalize="words"
+              onChange={handleOrgName}
+              style={{ height: "39.3px" }}
             />
           </div>
 
-          <div className="inputBox">
+          <div className="inputBox Designation">
             <label>Official Designation</label>
-            <input
-              type="text"
+            <select
+              name="state"
               className="inputBoxText"
-              autoCapitalize="words"
-            />
+              autoComplete="on"
+              style={{ height: "39.3px" }}
+              onChange={handleOrgDesignation}
+            >
+              <option value=""></option>
+              <option value="501(c)3">501(c)3</option>
+            </select>
           </div>
         </div>
 
@@ -38,29 +97,52 @@ function Organization() {
               className="inputBoxText"
               style={{ width: "500px" }}
               autoCapitalize="off"
+              onChange={handleEmailChange}
             />
           </div>
         </div>
 
         <div
-          className="orgPasswordBox"
+          className="studentPasswordBox"
           style={{ width: "500px", height: "75.5px", marginBottom: "10px" }}
         >
-          <div className="inputBox password">
+          <div className="inputBox password" style={{ width: "500px" }}>
             <label>Password</label>
-            <input
-              type="password"
-              name="password"
-              className="inputBoxText"
-              style={{ width: "500px", height: "39.3px" }}
-            />
+            <div className="passwordWrapper">
+              <input
+                type={showPassword ? "text" : "password"}
+                className="inputBoxText"
+                style={{
+                  width: "100%",
+                  height: "39.3px",
+                  marginBottom: "10px",
+                }}
+                value={password}
+                onChange={handlePasswordChange}
+                autoCapitalize="none"
+              />
+
+              <label className="showPasswordLabel">
+                <input
+                  type="checkbox"
+                  checked={showPassword}
+                  onChange={() => setShowPassword(!showPassword)}
+                />
+                <span className="checkmark"></span>
+              </label>
+            </div>
           </div>
         </div>
 
         <div className="idGradeBox">
           <div className="inputBox field">
             <label>Field</label>
-            <select name="field" className="inputBoxText">
+            <select
+              name="field"
+              className="inputBoxText"
+              autoComplete="on"
+              onChange={handleFieldChange}
+            >
               <option value=""></option>
               <option value="Computer Science">Computer Science</option>
               <option value="Medicine">Medicine</option>
@@ -69,8 +151,13 @@ function Organization() {
           </div>
 
           <div className="inputBox state">
-            <label>State</label>
-            <select name="state" className="inputBoxText" autoComplete="on">
+            <label>Organization State</label>
+            <select
+              name="state"
+              className="inputBoxText"
+              autoComplete="on"
+              onChange={handleStateChange}
+            >
               <option value=""></option>
               <option value="AL">Alabama</option>
               <option value="AK">Alaska</option>
@@ -127,14 +214,38 @@ function Organization() {
           </div>
         </div>
         <br />
-        {/* link sign up to dashboard */}
-        <Link
-          to="/dashboard"
-          id="signButtonContainer"
-          style={{ textDecoration: "none" }}
+        <div
+          className={`signButtonContainer ${
+            isSignedIn() ? "" : "signButtonContainerDisabled"
+          }`}
         >
-          {isSignedIn()}
-        </Link>
+          {isSignedIn() ? (
+            <Link
+              to="/dashboard"
+              id="signButtonLink"
+              style={{
+                textDecoration: "none",
+                color: "white",
+                alignContent: "center",
+                alignSelf: "center",
+              }}
+            >
+              {signUp()}
+            </Link>
+          ) : (
+            <span
+              id="signButtonSpan"
+              style={{
+                textDecoration: "none",
+                color: "white",
+                alignContent: "center",
+                alignSelf: "center",
+              }}
+            >
+              {signUp()}
+            </span>
+          )}
+        </div>
       </form>
     </div>
   );

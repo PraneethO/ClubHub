@@ -2,91 +2,85 @@ import "./Student.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-function isSignedIn() {
-  return "Sign Up!";
+function signUp() {
+  return <div style={{ textAlign: "center" }}>Sign Up!</div>;
 }
 
 function Student() {
+  const [showPassword, setShowPassword] = useState(false);
+
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [grade, setGrade] = useState("");
   const [state, setState] = useState("");
-  const [isFormValid, setIsFormValid] = useState(false);
 
-  function handleFirstNameChange(event: React.ChangeEvent<HTMLInputElement>) {
+  const handleFirstNameChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     setFirstName(event.target.value);
-  }
+  };
 
-  function handleLastNameChange(event: React.ChangeEvent<HTMLInputElement>) {
+  const handleLastNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setLastName(event.target.value);
-  }
+  };
 
-  function handleEmailChange(event: React.ChangeEvent<HTMLInputElement>) {
+  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
-  }
+  };
 
-  function handlePasswordChange(event: React.ChangeEvent<HTMLInputElement>) {
+  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value);
-  }
+  };
 
-  function handleGradeChange(event: React.ChangeEvent<HTMLInputElement>) {
-    setGrade(event.target.value);
-  }
-
-  function handleStateChange(event: React.ChangeEvent<HTMLSelectElement>) {
+  const handleStateChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setState(event.target.value);
-  }
+  };
 
-  function handleFormSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
+  const handleGradeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setGrade(event.target.value);
+  };
+
+  const hasValidPassword =
+    /^(?=.*[0-9])(?=.*[!@#$%^&*_-])[a-zA-Z0-9!@#$%^&*_-]{8,}$/.test(password);
+
+  const isSignedIn = () => {
     const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    if (
+    return (
       firstName.trim() !== "" &&
       lastName.trim() !== "" &&
-      email.trim() !== "" &&
       isEmailValid &&
-      password.trim() !== "" &&
+      hasValidPassword &&
       grade.trim() !== "" &&
       state.trim() !== ""
-    ) {
-      setIsFormValid(true);
-      // Redirect to dashboard page
-      window.location.href = "/dashboard";
-    }
-  }
-
-  const signButtonStyle = isFormValid
-    ? {
-        backgroundColor: "#ff9933",
-        cursor: "pointer",
-      }
-    : {
-        backgroundColor: "#bbb",
-        cursor: "default",
-      };
+    );
+  };
 
   return (
     <div className="formContainer">
-      <form className="studentForm" onSubmit={handleFormSubmit}>
+      <form className="studentForm">
         <div className="userEmailBox">
           <div className="inputBox">
-            <label>First Name</label>
+            <label className="labelText">First Name</label>
             <input
               type="text"
               className="inputBoxText"
               autoCapitalize="words"
+              required
+              value={firstName}
               onChange={handleFirstNameChange}
             />
           </div>
 
           <div className="inputBox">
-            <label>Last Name</label>
+            <label className="labelText">Last Name</label>
             <input
               type="text"
               className="inputBoxText"
               autoCapitalize="words"
+              required
+              value={lastName}
               onChange={handleLastNameChange}
             />
           </div>
@@ -109,14 +103,31 @@ function Student() {
           className="studentPasswordBox"
           style={{ width: "500px", height: "75.5px", marginBottom: "10px" }}
         >
-          <div className="inputBox password">
+          <div className="inputBox password" style={{ width: "500px" }}>
             <label>Password</label>
-            <input
-              type="password"
-              name="password"
-              className="inputBoxText"
-              style={{ width: "500px", height: "39.3px", marginBottom: "10px" }}
-            />
+            <div className="passwordWrapper">
+              <input
+                type={showPassword ? "text" : "password"}
+                className="inputBoxText"
+                style={{
+                  width: "100%",
+                  height: "39.3px",
+                  marginBottom: "10px",
+                }}
+                value={password}
+                onChange={handlePasswordChange}
+                autoComplete="new-password"
+              />
+
+              <label className="showPasswordLabel">
+                <input
+                  type="checkbox"
+                  checked={showPassword}
+                  onChange={() => setShowPassword(!showPassword)}
+                />
+                <span className="checkmark"></span>
+              </label>
+            </div>
           </div>
         </div>
 
@@ -197,19 +208,38 @@ function Student() {
           </div>
         </div>
         <br />
-        {/* <button type="submit" className="signButtonContainer">
-          <Link to="/dashboard" id="signButtonContainer">
-            Sign Up!
-          </Link>
-        </button> */}
-
-        <Link
-          to="/dashboard"
-          id="signButtonContainer"
-          style={{ textDecoration: "none" }}
+        <div
+          className={`signButtonContainer ${
+            isSignedIn() ? "" : "signButtonContainerDisabled"
+          }`}
         >
-          {isSignedIn()}
-        </Link>
+          {isSignedIn() ? (
+            <Link
+              to="/dashboard"
+              id="signButtonLink"
+              style={{
+                textDecoration: "none",
+                color: "white",
+                alignContent: "center",
+                alignSelf: "center",
+              }}
+            >
+              {signUp()}
+            </Link>
+          ) : (
+            <span
+              id="signButtonSpan"
+              style={{
+                textDecoration: "none",
+                color: "white",
+                alignContent: "center",
+                alignSelf: "center",
+              }}
+            >
+              {signUp()}
+            </span>
+          )}
+        </div>
       </form>
     </div>
   );

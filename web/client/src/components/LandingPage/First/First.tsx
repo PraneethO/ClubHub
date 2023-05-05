@@ -1,4 +1,5 @@
 import "./First.css";
+import { Link } from "react-router-dom";
 
 function path() {
   return (
@@ -43,7 +44,12 @@ function First() {
             <br />
             <br />
             <button type="submit" className="newSignButtonContainer">
-              Sign In
+              <Link
+                to="/dashboard"
+                style={{ textDecoration: "none", color: "white" }}
+              >
+                Sign In
+              </Link>
             </button>
           </form>
         </div>

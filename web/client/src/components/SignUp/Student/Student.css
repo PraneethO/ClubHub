@@ -129,7 +129,7 @@ input[type="password"] {
   color: black;
   border-radius: 5px;
   font-family: "Schibsted Grotesk";
-  text-transform: lowercase;
+  text-transform: none;
 }
 
 input:not([type="email"]) {
