@@ -4,14 +4,16 @@ import { Route, Routes } from "react-router-dom";
 
 import LandingPage from "./components/LandingPage/LandingPage";
 import SignUp from "./components/SignUp/SignUp";
-import Dashboard from "./components/Dashboard/Dashboard";
+import StudentDash from "./components/Dashboard/StudentDash";
+import StudentProfile from "./components/Profile/StudentProfile";
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<LandingPage />} />
       <Route path="/signUp" element={<SignUp />} />
-      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/studentDash" element={<StudentDash />} />
+      <Route path="/studentProfile" element={<StudentProfile />} />
     </Routes>
   );
 }

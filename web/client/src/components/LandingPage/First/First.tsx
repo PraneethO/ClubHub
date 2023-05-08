@@ -45,7 +45,7 @@ function First() {
             <br />
             <button type="submit" className="newSignButtonContainer">
               <Link
-                to="/dashboard"
+                to="/studentDash" // temporary, change this to a conditional that sets the appropriate dashbaord according to the login email
                 style={{ textDecoration: "none", color: "white" }}
               >
                 Sign In
