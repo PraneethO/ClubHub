@@ -2,7 +2,7 @@ import "./NavBar.css";
 import { Link } from "react-router-dom";
 
 function isLoggedIn() {
-  return "Join Now";
+  return "Join the Beta";
 }
 
 function Navbar() {

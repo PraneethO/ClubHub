@@ -19,7 +19,7 @@ function StudentDash() {
 
   return (
     <nav>
-      <Link id="logo" to="/">
+      <Link id="logo" to="/studentDash">
         <div style={{ fontSize: "60px", fontFamily: "Bebas Neue" }}>
           ClubHub
         </div>

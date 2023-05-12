@@ -26,7 +26,7 @@ function First() {
                 type="text"
                 name="username"
                 style={{
-                  fontFamily: "Georgia Italic",
+                  fontFamily: "'Montserrat', sans-serif",
                   fontSize: "20px",
                   textTransform: "none",
                 }}
@@ -38,7 +38,10 @@ function First() {
               <input
                 type="password"
                 name="password"
-                style={{ fontFamily: "Georgia Italic", fontSize: "20px" }}
+                style={{
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontSize: "20px",
+                }}
               />
             </div>
             <br />
