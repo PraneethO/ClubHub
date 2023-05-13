@@ -1,9 +1,9 @@
-import "./StudentDash.css";
+import "./OrganizationDash.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import defaultAvatar from "./default-avatar.png"; // Import the placeholder avatar image
 
-function StudentDash() {
+function OrganizationDash() {
   const [searchText, setSearchText] = useState("");
 
   const handleSearchInputChange = (
@@ -19,9 +19,9 @@ function StudentDash() {
 
   return (
     <nav>
-      <Link id="logo" to="/studentDashboard">
+      <Link id="logo" to="/organizationDash">
         <div style={{ fontSize: "60px", fontFamily: "Bebas Neue" }}>
-          ClubHub
+          ClubHub Org
         </div>
       </Link>
 
@@ -36,7 +36,7 @@ function StudentDash() {
       </div>
 
       <div className="profile-image">
-        <Link id="toProflieStudent" to="/studentProfile">
+        <Link id="toProflieStudent" to="/organizationProfile">
           <img src={defaultAvatar} alt="Profile" />
         </Link>
       </div>
@@ -44,4 +44,4 @@ function StudentDash() {
   );
 }
 
-export default StudentDash;
+export default OrganizationDash;

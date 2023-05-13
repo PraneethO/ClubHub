@@ -80,7 +80,7 @@ function StudentProfile() {
   return (
     <div>
       <nav>
-        <Link id="logo" to="/studentDash">
+        <Link id="logo" to="/studentDashboard">
           <div style={{ fontSize: "60px", fontFamily: "Bebas Neue" }}>
             ClubHub
           </div>
