@@ -2,11 +2,8 @@ import "./Student.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-function signUp() {
-  return <div style={{ textAlign: "center" }}>Sign Up!</div>;
-}
-
 function Student() {
+  // setShowPassword is a function that changes the state of showPassword
   const [showPassword, setShowPassword] = useState(false);
 
   const [firstName, setFirstName] = useState("");
@@ -15,8 +12,6 @@ function Student() {
   const [password, setPassword] = useState("");
   const [grade, setGrade] = useState("");
   const [state, setState] = useState("");
-
-  // const { firstName, lastName, email, password, grade, state } = req.body;
 
   const handleFirstNameChange = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -44,19 +39,43 @@ function Student() {
     setGrade(event.target.value);
   };
 
+  // Tests Password --> Auto Updates w/ passsword state
   const hasValidPassword =
     /^(?=.*[0-9])(?=.*[!@#$%^&*_-])[a-zA-Z0-9!@#$%^&*_-]{8,}$/.test(password);
 
-  const isSignedIn = () => {
+  const validInputs = () => {
     const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    return (
-      firstName.trim() !== "" &&
-      lastName.trim() !== "" &&
-      isEmailValid &&
-      hasValidPassword &&
-      grade.trim() !== "" &&
-      state.trim() !== ""
-    );
+
+    if (
+      !firstName.trim() ||
+      !lastName.trim() ||
+      !isEmailValid ||
+      !hasValidPassword ||
+      !grade.trim() ||
+      !state.trim()
+    ) {
+      return false;
+    }
+    return true;
+  };
+
+  const handleSubmit = (event: { preventDefault: () => void }) => {
+    event.preventDefault();
+
+    const formData = {
+      firstName,
+      lastName,
+      email,
+      password,
+      grade,
+      state,
+    };
+
+    fetch("http://localhost:8000/api/users", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
   };
 
   return (
@@ -211,11 +230,20 @@ function Student() {
         </div>
         <br />
         <div
-          className={`signButtonContainer ${
-            isSignedIn() ? "" : "signButtonContainerDisabled"
-          }`}
+          className={
+            validInputs()
+              ? "signButtonContainer"
+              : "signButtonContainerDisabled"
+          }
+          onClick={
+            validInputs()
+              ? handleSubmit
+              : () => {
+                  console.log("Inputs not valid");
+                }
+          }
         >
-          {isSignedIn() ? (
+          {validInputs() ? (
             <Link
               to="/dashboard"
               id="signButtonLink"
@@ -226,7 +254,7 @@ function Student() {
                 alignSelf: "center",
               }}
             >
-              {signUp()}
+              <div style={{ textAlign: "center" }}>Sign Up!</div>
             </Link>
           ) : (
             <span
@@ -238,7 +266,7 @@ function Student() {
                 alignSelf: "center",
               }}
             >
-              {signUp()}
+              <div style={{ textAlign: "center" }}>Sign Up!</div>
             </span>
           )}
         </div>
