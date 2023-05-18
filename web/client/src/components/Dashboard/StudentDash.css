@@ -1,5 +1,5 @@
-/* nav & search bar */
 
+/* nav & search bar */
 #search-container {
   width: 25vw;
   height: auto;
@@ -10,9 +10,9 @@
   margin-top: auto;
   margin-bottom: auto;
   right: 0; /* Align the search container to the right side of the screen */
-  margin-right: 5%;
+  margin-right: 2%;
+  align-items: flex-end;
 }
-
 
 #search-container input[type="text"] {
   width: 90%;
@@ -27,7 +27,7 @@
 
 #search-container button {
   background-color: #f2f2f2;
-  color: #044E8B;
+  color: #044e8b;
   border: none;
   font-size: 1rem;
   padding-top: 10px;
@@ -44,11 +44,12 @@
   justify-content: center;
 }
 
+/*
 .profile-image {
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
-  margin-left: -3.5rem; /* Adjust the margin-left value */
+  margin-left: -3.5rem;
   margin-right: 1%;
   justify-content: center;
   align-items: center;
@@ -64,68 +65,213 @@
   object-fit: cover;
   border-radius: 50%;
 }
+*/
 
 /* dashboard container */
 .student-dashboard-container {
   margin-left: auto;
   margin-right: auto;
-  background-color: white;
   width: 90%;
-  height: auto;
+  display: flex;
   flex-direction: row;
 }
 
+
 /* greeting */
 .greeting-container {
-  /* display: inline-block; */
-  width: 20vw;
-  height: 40vh;
-  /* font-family: "Montserrat", sans-serif; */
-  font-family: "Bebas Neue";
-  color: #044e8b;
-  background-color: black;
+  width: 22.5%;
+  height: fit-content;
+  background-color: white;
   font-size: 2rem;
-  letter-spacing: 0.05rem;
   font-weight: bold;
-
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
-
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   border-radius: 0.75rem;
-  padding: 0.5%;
+  padding: 1rem;
   text-align: center;
 }
 
-.greeting-text{
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  width: 100%;
-  height: fit-content;
-
+.greeting-text {
   font-family: "Bebas Neue";
-  color: #044e8b;
-  background-color: white;
+  color: black;
+  background-color: transparent;
   font-size: 2rem;
   letter-spacing: 0.05rem;
   font-weight: bold;
-
-  margin-bottom: 1rem;
+  padding: 10px;
+  border-bottom: 1px solid black; /* Add a bottom border */
+  text-align: flex-start;
 }
 
-.greeting-analytics {
-  display: flex;
-  width: 80%;
-  height: 50%;
-  margin: auto auto auto auto;
+.greeting-recents {
+  width: 90%;
+  height: auto;
+  color: black;
+  font-size: 1rem;
+  text-align: start;
+  font-weight: normal;
+  background-color: transparent;
+  letter-spacing: normal;
+  padding: 10px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.greeting-recents .title-text {
+  margin-bottom: 10px; /* Add margin below the title text */
+  font-weight: bold;
+}
+
+.title-text {
   font-family: "Montserrat", sans-serif;
   color: black;
   font-size: 1rem;
-  text-align: left;
-  background-color: white;
+  text-align: start;
+  font-weight: bold;
+}
 
+.greeting-subtext {
+  font-family: "Montserrat", sans-serif;
+  font-weight: normal;
+}
+
+.student-following {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  height: auto;
+
+  color: black;
+  font-size: 1rem;
+  text-align: start;
+  font-weight: normal;
+  background-color: transparent;
+  letter-spacing: normal;
+  padding: 10px;
+  border-top: 1px solid black; /* Add a top border */
+}
+
+.greeting-subtext-numbers {
+  display: inline-block;
+  font-family: "Montserrat", sans-serif;
+  font-weight: normal;
+}
+
+.following-count {
+  display: flex;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #044e8b;
+
+  align-self: flex-end;
+}
+
+
+/* center column */
+.student-feed {
+  display: flex;
+  width: 50%;
+  height: auto;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+
+  font-family: "Montserrat", sans-serif;
+  flex-direction: column;
+}
+
+.reccomended-postings {
+  width: 100%;
+  height: fit-content;
+
+  overflow-x: auto; /* Enable horizontal scrolling */
+  white-space: nowrap;
+  overflow-y: overlay; 
+
+  background-color: white;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
   border-radius: 0.75rem;
-  padding: 0.5%;
-  margin-top: 1rem;
+  padding: 1rem;
+  text-align: start;
+}
+
+.postings-gallery {
+  width: 100%;
+  height: 40vh;
+  margin: 0 auto;
+  background-color: #bfbfbf80;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  font-size: 1rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: normal;
+  display: flex;
+  justify-content: start; /* Center the blue squares horizontally */
+  overflow-x: auto;
+}
+
+.postings-wrapper {
+  display: flex;
+  align-items: center; /* Align the blue boxes vertically in the middle */
+  white-space: nowrap;
+  overflow-y: overlay;
+}
+
+
+
+.student-posting {
+  flex: 0 0 15vw;
+  height: 15vw;
+  background-color: #044e8b;
+  border-radius: 1rem;
+  margin: 0 0.5rem;
+  display: flex;
+  justify-content: center; /* Align content horizontally in the center */
+  align-items: center;
+
+  font-size: 1rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  color: white;
+  flex-direction: column;
+}
+
+.avatar-icon {
+  width: 50%;
+  height: 50%;
+  object-fit: contain;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.connect-container {
+  width: 100%;
+  height: 40vh;
+  background-color: white;
+  padding: 1rem;
+  font-size: 2rem;
+  border-radius: 0.75rem;
+}
+
+/* right column */
+.student-tbd {
+  display: flex;
+  width: 22.5%;
+  height: auto;
+
+  font-family: "Montserrat", sans-serif;
+  background-color: violet;
+
+}
+
+@media (max-width: 768px) {
+  .avatar-icon {
+    width: 30%;
+    height: 30%;
+  }
 }

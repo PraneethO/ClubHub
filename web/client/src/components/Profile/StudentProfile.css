@@ -45,7 +45,7 @@
   display: flex;
   align-items: center;
   width: 80vw;
-  height: auto;
+  height: fit-content;
   border-radius: 0.5rem;
   background-color: white;
   justify-content: space-between;
@@ -171,7 +171,7 @@
 
 .student-resume-container {
   width: 80vw;
-  height: auto;
+  height: fit-content;
   border-radius: 0.5rem;
   background-color: white;
   margin: 0 auto;
