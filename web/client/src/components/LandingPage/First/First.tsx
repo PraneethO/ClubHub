@@ -26,7 +26,7 @@ function First() {
                 type="text"
                 name="username"
                 style={{
-                  fontFamily: "Georgia Italic",
+                  fontFamily: "'Montserrat', sans-serif",
                   fontSize: "20px",
                   textTransform: "none",
                 }}
@@ -38,14 +38,17 @@ function First() {
               <input
                 type="password"
                 name="password"
-                style={{ fontFamily: "Georgia Italic", fontSize: "20px" }}
+                style={{
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontSize: "20px",
+                }}
               />
             </div>
             <br />
             <br />
             <button type="submit" className="newSignButtonContainer">
               <Link
-                to="/studentDash" // temporary, change this to a conditional that sets the appropriate dashbaord according to the login email
+                to="/studentDashboard" // temporary, change this to a conditional that sets the appropriate dashbaord according to the login email
                 style={{ textDecoration: "none", color: "white" }}
               >
                 Sign In

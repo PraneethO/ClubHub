@@ -1,15 +1,269 @@
-.profile-image {
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden; /* Add this line */
+.profile-image-student {
+  width: 10rem;
+  height: 10rem;
+  border-radius: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  position: relative;
 }
-  
-.profile-image img {
+
+.profile-image-student img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10%;
+}
+
+.image-upload-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 0.5rem;
+  border-radius: 10%;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+
+.image-upload-button input {
+  display: none;
+}
+
+.student-info-container {
+  display: flex;
+  align-items: center;
+  width: 80vw;
+  height: fit-content;
+  border-radius: 0.5rem;
+  background-color: white;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 1%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+.student-info {
+  width: 70%;
+  font-size: 1.5rem;
+  font-family: 'Montserrat', sans-serif;
+  margin-left: 1%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
+  text-align: left;
+}
+
+.givenInfo {
+  margin-top: .5%;
+  font-size: 1rem;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.pfp-container {
+  width: 30%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.experience-upload {
+  width: 70%;
+  font-size: 1.5rem;
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  flex-grow: 1;
+  text-align: left;
+  margin-top: 1%;
+  margin-left: 1%;
+}
+
+.experience-textbox {
+  font-family: 'Montserrat', sans-serif;
+  width: 100%;
+  height: 100%;
+  resize: none;
+  padding: 1%;
+  border: none;
+  outline: none;
+  background-color: #f2f2f2;
+}
+
+.experience-text {
+  font-family: 'Montserrat', sans-serif;
+  padding: 1%;
+  vertical-align: top;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+}
+
+.edit-icon {
+  cursor: pointer;
+  margin-left: 1rem;
+  color: #888;
+  transition: color 0.3s ease;
+}
+
+.edit-icon:hover {
+  color: #333;
+}
+
+.student-experience-container {
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+  height: 50vh;
+  border-radius: 0.5rem;
+  background-color: white;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 1%;
+}
+
+.experience-title {
+  width: 100%;
+  font-size: 1.5rem;
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  flex-grow: 1;
+  text-align: left;
+  margin-top: 1%;
+  margin-left: 1%;
+}
+
+.experience-textbox-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.experience-textbox {
+  font-family: 'Montserrat', sans-serif;
+  width: 100%;
+  flex-grow: 1;
+  resize: none;
+  padding: 0.5rem;
+  border: none;
+  outline: none;
+  background-color: #f2f2f2;
+}
+
+.experience-text textarea {
+  resize: none;
+}
+
+.student-resume-container {
+  width: 80vw;
+  height: fit-content;
+  border-radius: 0.5rem;
+  background-color: white;
+  margin: 0 auto;
+  padding: 1%;
+  flex-direction: row;
+  display: flex;
+  justify-content: space-between;
+}
+
+.resume-description {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-bottom: 1%;
+}
+
+.resume-title {
+  width: 50%;
+  font-size: 1.5rem;
+  font-family: 'Montserrat', sans-serif;
+  margin-top: 1%;
+  margin-left: 1%;
+}
+
+.resume-disclaimer {
+  margin-top: 0.5%;
+  font-size: 1rem;
+  font-family: 'Montserrat', sans-serif;
+  margin-left: 1%;
+}
+
+.resume-upload {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Updated */
+  margin-right: 1.5%;
+  flex-grow: 1; /* Added */
+}
+
+.resume-upload input {
+  display: none;
+}
+
+.resume-upload-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  text-align: left;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  background-color: #e1e1e1;
+  cursor: pointer;
+}
+
+.resume-upload-text:hover {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Additional CSS for responsiveness */
+@media (max-width: 600px) {
+  .student-info-container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2%;
+  }
+
+  .student-info {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
+    margin-bottom: 1rem;
+  }
+
+  .pfp-container {
+    width: 100%;
+  }
+
+  .student-experience-container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2%;
+  }
+
+  .experience-input {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2%;
+    margin-left: 1%;
+  }
+
+  .student-resume-container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2%;
+  }
 }
