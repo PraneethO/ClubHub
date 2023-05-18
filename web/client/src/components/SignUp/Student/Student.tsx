@@ -16,6 +16,8 @@ function Student() {
   const [grade, setGrade] = useState("");
   const [state, setState] = useState("");
 
+  // const { firstName, lastName, email, password, grade, state } = req.body;
+
   const handleFirstNameChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
