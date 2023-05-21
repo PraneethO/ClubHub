@@ -4,6 +4,7 @@ import defaultAvatar from "./default-avatar.png";
 import "./StudentProfile.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCamera, faEdit, faCheck } from "@fortawesome/free-solid-svg-icons";
+import StudentNav from "../SearchBars/StudentNavBar";
 
 function StudentProfile() {
   const [isHovered, setIsHovered] = useState(false);
@@ -79,13 +80,12 @@ function StudentProfile() {
 
   return (
     <div>
-      <nav>
-        <Link id="logo" to="/studentDashboard">
-          <div style={{ fontSize: "60px", fontFamily: "Bebas Neue" }}>
-            ClubHub
-          </div>
-        </Link>
-      </nav>
+      <StudentNav />
+      {/* <div className="profile-image">
+          <Link id="toProflieStudent" to="/studentProfile">
+            <img src={defaultAvatar} alt="Profile" />
+          </Link>
+        </div> */}
       <br />
       <div className="student-info-container" style={{ fontWeight: "bold" }}>
         <div className="student-info">
@@ -133,6 +133,26 @@ function StudentProfile() {
           </div>
         </div>
       </div>
+      <br />
+      <div className="student-contact-info-container">
+        <div
+          className="contact-info-title"
+          style={{ fontWeight: "bold", width: "100%" }}
+        >
+          Contact Information
+        </div>
+        <br />
+        <div className="student-contact-info">
+          <div className="student-contact-info-text">Email:</div>
+          {/* make email dynamic */}
+        </div>
+        <br />
+        <div className="student-contact-info">
+          <div className="student-contact-info-text">Phone Number:</div>
+          {/* make phone number dynamic */}
+        </div>
+      </div>
+
       <br />
       <div className="student-experience-container">
         <div className="experience-title" style={{ fontWeight: "bold" }}>
