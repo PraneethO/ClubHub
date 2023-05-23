@@ -38,7 +38,7 @@
 
 .inputBoxText {
   width: 100%;
-  background-color: #BFBFBF;
+  background-color: #bfbfbf;
   border: none;
   padding: 5px 10px;
   margin-bottom: 10px;
@@ -70,7 +70,7 @@
   margin-bottom: 10px;
 }
 
-#signButtonContainer {
+.signButtonContainer {
   width: 500px;
   height: 56px;
   display: flex;
@@ -78,32 +78,54 @@
   align-items: center;
   margin: 0 auto;
   border-radius: 500px;
-  background-color: #044E8B;
+  background-color: #044e8b;
   font-family: "Bebas Neue";
   font-size: 30px;
   color: white;
   text-align: center;
 }
 
-#signButtonContainer span {
+.signButtonContainer span {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100%;
 }
 
-#signButtonContainer:hover {
+.signButtonContainer:hover {
   background-color: #9da8b5;
 }
 
+.signButtonContainerDisabled {
+  width: 500px;
+  height: 56px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  border-radius: 500px;
+  background-color: #9da8b5;
+  font-family: "Bebas Neue";
+  font-size: 30px;
+  color: white;
+  text-align: center;
+}
+
+.signButtonContainerDisabled span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
 .studentButton {
-  background-color: #044E8B;
+  background-color: #044e8b;
 }
 
 input[type="text"],
 input[type="email"],
 input[type="password"] {
-  background-color: #BFBFBF;
+  background-color: #bfbfbf;
 }
 
 .inputBoxText {
@@ -121,7 +143,7 @@ input[type="password"] {
 .inputBox.password .inputBoxText {
   width: 100%;
   height: calc(100%-13px);
-  background-color: #BFBFBF;
+  background-color: #bfbfbf;
   border: none;
   padding: 5px 10px;
   margin-bottom: 10px;

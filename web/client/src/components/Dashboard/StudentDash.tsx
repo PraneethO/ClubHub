@@ -10,8 +10,6 @@ function StudentDash() {
   return (
     <>
       <StudentNav />
-      <br />
-      <br />
       <div className="student-dashboard-container">
         <div className="greeting-container">
           <div className="greeting-text">Greetings, User!</div>
@@ -21,7 +19,7 @@ function StudentDash() {
               Steel City Codes
             </div>
             <div className="greeting-subtext" style={{ marginBottom: "8px" }}>
-              Mathlings
+              Joe Biden
             </div>
             <div className="greeting-subtext">
               <Link
@@ -89,7 +87,7 @@ function StudentDash() {
                     alt="Avatar"
                     className="avatar-icon"
                   />
-                  Mathlings
+                  Joe Biden
                   {/* make this dynamic */}
                 </div>
                 <div className="student-posting">
@@ -122,7 +120,9 @@ function StudentDash() {
             </div>
           </div>
         </div>
-        <div className="student-tbd"></div>
+        <div className="student-tbd">
+          <div className="tbd-container"></div>
+        </div>
       </div>
     </>
   );

@@ -20,42 +20,39 @@ const StudentNav = () => {
   };
 
   return (
-    <>
-      <nav style={{ flexDirection: "row" }}>
-        <Link id="logo" to="/studentDashboard">
-          <div
-            style={{
-              fontSize: "60px",
-              fontFamily: "Bebas Neue",
-              marginLeft: "2%",
-            }}
-          >
-            ClubHub
-          </div>
+    <nav className="sticky-nav">
+      <Link id="logo" to="/studentDashboard">
+        <div
+          style={{
+            fontSize: "60px",
+            fontFamily: "Bebas Neue",
+          }}
+        >
+          ClubHub
+        </div>
+      </Link>
+      <div id="search-container">
+        <input
+          type="text"
+          placeholder="New opportunities awaiting"
+          value={searchText}
+          onChange={handleSearchInputChange}
+        />
+        <div className="search-icon" onClick={handleSearch}>
+          <FaSearch />
+        </div>
+      </div>
+      <div className="messaging-icon">
+        <Link id="toStudentMessaging" to="/studentMessaging">
+          <img src={studentMessagingIcon} alt="Messaging" />
         </Link>
-        <div id="search-container">
-          <input
-            type="text"
-            placeholder="New opportunities awaiting"
-            value={searchText}
-            onChange={handleSearchInputChange}
-          />
-          <button onClick={handleSearch}>
-            <FaSearch />
-          </button>
-        </div>
-        <div className="messaging-icon">
-          <Link id="toStudentMessaging" to="/studentMessaging">
-            <img src={studentMessagingIcon} alt="Messaging" />
-          </Link>
-        </div>
-        <div className="profile-image">
-          <Link id="toProflieStudent" to="/studentProfile">
-            <img src={defaultAvatar} alt="Profile" />
-          </Link>
-        </div>
-      </nav>
-    </>
+      </div>
+      <div className="profile-image">
+        <Link to="/studentProfile">
+          <img src={defaultAvatar} alt="Profile" />
+        </Link>
+      </div>
+    </nav>
   );
 };
 

@@ -81,13 +81,10 @@ function StudentProfile() {
   return (
     <div>
       <StudentNav />
-      {/* <div className="profile-image">
-          <Link id="toProflieStudent" to="/studentProfile">
-            <img src={defaultAvatar} alt="Profile" />
-          </Link>
-        </div> */}
-      <br />
-      <div className="student-info-container" style={{ fontWeight: "bold" }}>
+      <div
+        className="student-info-container"
+        style={{ fontWeight: "bold", marginTop: "10vh" }}
+      >
         <div className="student-info">
           Full Name
           <div className="givenInfo" style={{ fontWeight: "normal" }}>

@@ -1,11 +1,21 @@
+/* for reference to how nav is defined in NavBar */
+.sticky-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  flex-direction: row;
+}
+
 #search-container {
+  position: relative;
   width: 25vw;
   height: auto;
-  flex-direction: row;
+  display: flex;
+  align-items: center; /* Align items vertically in the center */
   margin-top: auto;
   margin-bottom: auto;
-  right: 0; /* Align the search container to the right side of the screen */
-  align-items: flex-start;
 }
 
 #search-container input[type="text"] {
@@ -13,29 +23,30 @@
   border: none;
   background-color: #f2f2f2;
   font-size: 0.9rem !important;
-  padding: 10px 10px 10px 10px; /* Adjust the padding for the text input */
-  border-radius: 5px 0 0 5px;
+  padding: 10px 10px 10px 40px; /* Adjust the padding for the text input */
+  border-radius: 5px;
   font-family: "Montserrat", sans-serif;
   text-transform: none;
 }
 
-#search-container button {
-  background-color: transparent;
-  color: #044e8b;
-  border: none;
-  cursor: pointer;
+#search-container .search-icon {
   position: absolute;
-  margin-top: auto;
-  margin-bottom: auto;
+  left: 10px; /* Adjust the position to the left */
+  cursor: pointer;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: center; /* Align items vertically in the center */
+  color: #044e8b;
 }
 
 /* icons */
 .messaging-icon {
+  display: flex;
+  align-items: center;
   width: 2.5rem;
   height: 2.5rem;
+
+  margin-right: 0px;
+  margin-left: auto;
   margin-top: auto;
   margin-bottom: auto;
 }
@@ -49,6 +60,10 @@
 .profile-image {
   width: 2.5rem;
   height: 2.5rem;
+  display: flex;
+  align-items: center;
+
+  margin-left: -4px;
   margin-right: 2%;
   margin-top: auto;
   margin-bottom: auto;
