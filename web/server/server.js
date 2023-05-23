@@ -56,6 +56,7 @@ app.route("/api/users").post((req, res) => {
   userController.createNewUser(req, res);
 });
 // TODO: Setup code to update or delete users
+// !: Probably on Profile page in front-end
 
 // Club Route (Login, Signup, Same thing as user but slightly different for organizational purposes)
 const clubController = require("./controllers/clubController");
