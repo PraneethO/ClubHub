@@ -1,8 +1,10 @@
 import "./Student.css";
-import { Link } from "react-router-dom";
 import { useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 
 function Student() {
+  const navigate = useNavigate();
+
   // setShowPassword is a function that changes the state of showPassword
   const [showPassword, setShowPassword] = useState(false);
 
@@ -12,6 +14,8 @@ function Student() {
   const [password, setPassword] = useState("");
   const [grade, setGrade] = useState("");
   const [state, setState] = useState("");
+
+  const [statusCode, setStatusCode] = useState(0);
 
   const handleFirstNameChange = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -59,7 +63,7 @@ function Student() {
     return true;
   };
 
-  const handleSubmit = (event: { preventDefault: () => void }) => {
+  const handleSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
     const formData = {
@@ -75,6 +79,8 @@ function Student() {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
+    }).then((response) => {
+      setStatusCode(response.status);
     });
   };
 
@@ -229,7 +235,7 @@ function Student() {
           </div>
         </div>
         <br />
-        <div
+        <button
           className={
             validInputs()
               ? "signButtonContainer"
@@ -237,38 +243,44 @@ function Student() {
           }
           onClick={
             validInputs()
-              ? handleSubmit
+              ? (event) => {
+                  handleSubmit(event);
+                }
               : () => {
-                  console.log("Inputs not valid");
+                  setStatusCode(400);
                 }
           }
         >
-          {validInputs() ? (
-            <Link
-              to="/dashboard"
-              id="signButtonLink"
-              style={{
-                textDecoration: "none",
-                color: "white",
-                alignContent: "center",
-                alignSelf: "center",
-              }}
-            >
-              <div style={{ textAlign: "center" }}>Sign Up!</div>
-            </Link>
-          ) : (
-            <span
-              id="signButtonSpan"
-              style={{
-                textDecoration: "none",
-                color: "white",
-                alignContent: "center",
-                alignSelf: "center",
-              }}
-            >
-              <div style={{ textAlign: "center" }}>Sign Up!</div>
-            </span>
-          )}
+          <span
+            id="signButtonSpan"
+            style={{
+              textDecoration: "none",
+              color: "white",
+              alignContent: "center",
+              alignSelf: "center",
+            }}
+          >
+            <div style={{ textAlign: "center" }}>Sign Up!</div>
+          </span>
+        </button>
+        <div
+          id="errorMessageBox"
+          style={statusCode == 0 ? { display: "none" } : {}}
+        >
+          {(() => {
+            switch (statusCode) {
+              case 400:
+                return <p>Bad Request. Please check your input.</p>;
+              case 500:
+                return <p>Internal Server Error. Please try again later.</p>;
+              case 409:
+                return (
+                  <p>You're already signed up! Please try a different email.</p>
+                );
+              case 201:
+                navigate("/studentDashboard");
+            }
+          })()}
         </div>
       </form>
     </div>
