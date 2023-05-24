@@ -1,6 +1,9 @@
 const User = require("../models/User");
+const Session = require("../models/Session");
+
 const asyncHandler = require("express-async-handler");
 const bcrypt = require("bcrypt");
+const uuidv4 = require("uuid").v4;
 
 // @desc Create new user
 // @route POST /users
@@ -20,6 +23,7 @@ const createNewUser = asyncHandler(async (req, res) => {
   }
 
   const hashedPwd = await bcrypt.hash(password, 10); // Password Hash
+  const sessionId = uuidv4();
 
   // Create and Store User
   const newUser = new User({
@@ -33,11 +37,17 @@ const createNewUser = asyncHandler(async (req, res) => {
   newUser
     .save()
     .then((result) => {
-      res.status(201).json({ message: "New user ${username} created" });
+      res.set("Set-Cookie", `session=${sessionId}; domain=localhost:5173`);
+      const newSession = new Session({ email, token: sessionId });
+
+      newSession.save();
+
+      res.status(201).json({ message: `New user ${email} created` });
     })
-    .catch((error) =>
-      res.status(500).json({ message: "Internal server error" })
-    );
+    .catch((error) => {
+      res.status(500).json({ message: `${error}` });
+      console.log(error);
+    });
 });
 
 module.exports = {

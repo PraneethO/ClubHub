@@ -155,6 +155,11 @@ function Student() {
                 <span className="checkmark"></span>
               </label>
             </div>
+            <div id="passReqBox">
+              {
+                // One capital letter. One lowercase letter, 8 Characters, Special Character, Number
+              }
+            </div>
           </div>
         </div>
 
@@ -278,6 +283,7 @@ function Student() {
                   <p>You're already signed up! Please try a different email.</p>
                 );
               case 201:
+                console.log(document.cookie);
                 navigate("/studentDashboard");
             }
           })()}
