@@ -41,6 +41,7 @@ function First() {
                 style={{
                   fontFamily: "'Montserrat', sans-serif",
                   fontSize: "20px",
+                  backgroundColor: "#d3d3d3",
                 }}
               />
             </div>

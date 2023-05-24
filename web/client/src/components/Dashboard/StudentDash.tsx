@@ -3,52 +3,13 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import defaultAvatar from "./default-avatar.png";
 import galleryIcon from "./gallery-icon.png";
-import whiteSquare from "./white-square.png";
 import { FaSearch } from "react-icons/fa"; // Import the magnifying glass icon
+import StudentNav from "../SearchBars/StudentNavBar";
 
 function StudentDash() {
-  const [searchText, setSearchText] = useState("");
-
-  const handleSearchInputChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setSearchText(event.target.value);
-  };
-
-  const handleSearch = () => {
-    // Perform search or any other action here
-    console.log("Searching for:", searchText);
-  };
-
   return (
     <>
-      <nav>
-        <Link id="logo" to="/studentDashboard">
-          <div style={{ fontSize: "60px", fontFamily: "Bebas Neue" }}>
-            ClubHub
-          </div>
-        </Link>
-
-        <div id="search-container">
-          <input
-            type="text"
-            placeholder="New opportunities awaiting"
-            value={searchText}
-            onChange={handleSearchInputChange}
-          />
-          <button onClick={handleSearch}>
-            <FaSearch />
-          </button>
-        </div>
-
-        {/* <div className="profile-image">
-          <Link id="toProflieStudent" to="/studentProfile">
-            <img src={defaultAvatar} alt="Profile" />
-          </Link>
-        </div> */}
-      </nav>
-      <br />
-      <br />
+      <StudentNav />
       <div className="student-dashboard-container">
         <div className="greeting-container">
           <div className="greeting-text">Greetings, User!</div>
@@ -58,7 +19,7 @@ function StudentDash() {
               Steel City Codes
             </div>
             <div className="greeting-subtext" style={{ marginBottom: "8px" }}>
-              Mathlings
+              Joe Biden
             </div>
             <div className="greeting-subtext">
               <Link
@@ -126,7 +87,7 @@ function StudentDash() {
                     alt="Avatar"
                     className="avatar-icon"
                   />
-                  Mathlings
+                  Joe Biden
                   {/* make this dynamic */}
                 </div>
                 <div className="student-posting">
@@ -159,7 +120,9 @@ function StudentDash() {
             </div>
           </div>
         </div>
-        <div className="student-tbd"></div>
+        <div className="student-tbd">
+          <div className="tbd-container"></div>
+        </div>
       </div>
     </>
   );
