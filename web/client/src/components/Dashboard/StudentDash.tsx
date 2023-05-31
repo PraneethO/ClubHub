@@ -7,6 +7,13 @@ import { FaSearch } from "react-icons/fa"; // Import the magnifying glass icon
 import StudentNav from "../SearchBars/StudentNavBar";
 
 function StudentDash() {
+  fetch("http://localhost:8000/api/users", {
+    method: "GET",
+    headers: { "Content-Type": "application/json", credentials: "include" },
+  }).then((response) => {
+    console.log(response);
+  });
+
   return (
     <>
       <StudentNav />

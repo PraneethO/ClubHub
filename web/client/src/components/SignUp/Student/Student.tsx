@@ -1,6 +1,7 @@
 import "./Student.css";
 import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 function Student() {
   const navigate = useNavigate();
@@ -79,6 +80,7 @@ function Student() {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
+      credentials: "include",
     }).then((response) => {
       setStatusCode(response.status);
     });
@@ -283,7 +285,6 @@ function Student() {
                   <p>You're already signed up! Please try a different email.</p>
                 );
               case 201:
-                console.log(document.cookie);
                 navigate("/studentDashboard");
             }
           })()}
