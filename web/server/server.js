@@ -32,38 +32,51 @@ app.use(logger);
 app.use(cors(corsOptions));
 app.use(express.json());
 
-var sess = {
-  secret: process.env.SECRET,
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-    sameSite: "strict",
-  },
-  store: store,
-};
-
 if (app.get("env") === "production") {
   app.set("trust proxy", 1); // trust first proxy
   sess.cookie.secure = true; // serve secure cookies
 }
 
-app.use(session(sess));
+app.use(
+  session({
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      httpOnly: true,
+      maxAge: 1000 * 60 * 60 * 24 * 365 * 2, // 2 years
+    },
+  })
+);
 
 // ! Actual Routes (Look Here)
-// User Route (Login, Signup, Etc.)
-const userController = require("./controllers/userController");
-app.route("/api/users").post((req, res) => {
-  userController.createNewUser(req, res);
-});
-// TODO: Setup code to update or delete users
-// !: Probably on Profile page in front-end
 
-// Club Route (Login, Signup, Same thing as user but slightly different for organizational purposes)
-const clubController = require("./controllers/clubController");
-app.route("/api/clubs").post((req, res) => {
-  clubController.createNewClub(req, res);
-});
-// TODO: Same thing as the todo above
+// ! User Route (Login, Signup, Etc.)
+const authController = require("./controllers/authController");
+app
+  .route("/api/auth")
+  .post((req, res) => {
+    authController.createNewUser(req, res);
+  })
+  .get((req, res) => {
+    authController.loginUser(req, res);
+  })
+  .delete((req, res) => {
+    authController.logoutUser(req, res);
+  });
+
+const userController = require("./controllers/userController");
+app
+  .route("/api/users")
+  .get((req, res) => {
+    userController.getUserInfo(req, res);
+  })
+  .patch((req, res) => {
+    userController.updateUser(req, res);
+  })
+  .delete((req, res) => {
+    userController.deleteUser(req, res);
+  });
 
 // DO NOT DELETE: This is a catchall, so add all of your routes above this and the 404 will handle the rest
 app.all("*", (req, res) => {
