@@ -1,11 +1,25 @@
 /* for reference to how nav is defined in NavBar */
 .sticky-nav {
-  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 9999;
   flex-direction: row;
+
+  margin: 0;
+  padding: 0;
+
+  top: 0;
+  left: 0;
+  z-index: 9999;
+
+  height: 10vh;
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 #search-container {
@@ -13,10 +27,12 @@
   width: 25vw;
   height: auto;
   display: flex;
-  align-items: center; /* Align items vertically in the center */
-  margin-top: auto;
+  align-items: center;
+  margin-left: 1rem;
+  margin-top: 0.925rem;
   margin-bottom: auto;
 }
+
 
 #search-container input[type="text"] {
   width: 90%;
@@ -39,38 +55,66 @@
 }
 
 /* icons */
-.messaging-icon {
+.home-icon {
   display: flex;
   align-items: center;
-  width: 2.5rem;
-  height: 2.5rem;
-
-  margin-right: 0px;
+  justify-content: center; /* Add this line to center the content horizontally */
+  width: 2rem;
+  height: 2rem;
+  margin-right: 2rem;
   margin-left: auto;
-  margin-top: auto;
-  margin-bottom: auto;
 }
 
-.messaging-icon img {
-  width: 100%;
-  height: 100%;
+.home-icon img {
+  width: 2rem;
+  height: 2rem;
   filter: brightness(100000000%);
 }
 
-.profile-image {
-  width: 2.5rem;
-  height: 2.5rem;
+
+.messaging-icon {
   display: flex;
   align-items: center;
+  justify-content: center; /* Add this line to center the content horizontally */
+  width: 2rem;
+  height: 2rem;
+  margin-right: 2rem;
+}
 
-  margin-left: -4px;
-  margin-right: 2%;
-  margin-top: auto;
-  margin-bottom: auto;
+.messaging-icon img {
+  width: 2rem;
+  height: 2rem;
+  filter: brightness(100000000%);
+  align-self: center;
+}
+
+.profile-image {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Add this line to center the content horizontally */
+  width: 2rem;
+  height: 2rem;
+  margin-left: 0; /* Adjust the left margin to create spacing */
+  margin-right: 2%; /* Adjust the right margin to create spacing */
 }
 
 .profile-image img {
-  width: 100%;
-  height: 100%;
+  width: 2rem;
+  height: 2rem;
   border-radius: 50%;
+}
+
+.icon-text {
+  font-family: "Montserrat", sans-serif;
+  text-decoration: none;
+  color: black;
+  font-size: 0.8rem;
+  text-align: center;
+  margin-bottom: 0px;
+}
+
+.home-icon:hover img,
+.messaging-icon:hover img,
+.profile-image:hover img {
+  filter: grayscale(100%);
 }

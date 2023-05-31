@@ -17,6 +17,8 @@ function StudentDash() {
   return (
     <>
       <StudentNav />
+      <br />
+
       <div className="student-dashboard-container">
         <div className="greeting-container">
           <div className="greeting-text">Greetings, User!</div>
