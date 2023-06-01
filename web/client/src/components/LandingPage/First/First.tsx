@@ -1,9 +1,24 @@
 import "./First.css";
 import { Link } from "react-router-dom";
-import { useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function First() {
+  // Check if the user is logged in
+  // If user is logged in go to dashboard
+
+  useEffect(() => {
+    fetch("http://localhost:8000/api/auth", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+    }).then((response) => {
+      if (response.status == 200) {
+        navigate("/dashboard/student");
+      }
+    });
+  }, []);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [statusCode, setStatusCode] = useState(0);
@@ -27,7 +42,7 @@ function First() {
     };
 
     fetch("http://localhost:8000/api/auth", {
-      method: "POST",
+      method: "GET",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
       credentials: "include",
