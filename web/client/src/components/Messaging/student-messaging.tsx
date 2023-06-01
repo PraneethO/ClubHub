@@ -1,7 +1,7 @@
 import "./student-messaging.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import StudentNav from "../SearchBars/StudentNavBar";
+import StudentNav from "../NavBar/StudentNavBar";
 
 function StudentMessaging() {
   return (

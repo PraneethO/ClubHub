@@ -1,10 +1,10 @@
 import React, { useState, ChangeEvent } from "react";
 import { Link } from "react-router-dom";
-import defaultAvatar from "./default-avatar.png";
+import defaultAvatar from "../../../assets/default-avatar.png";
 import "./StudentProfile.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCamera, faEdit, faCheck } from "@fortawesome/free-solid-svg-icons";
-import StudentNav from "../SearchBars/StudentNavBar";
+import StudentNav from "../../NavBar/StudentNavBar";
 
 function StudentProfile() {
   const [isHovered, setIsHovered] = useState(false);

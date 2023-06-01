@@ -34,15 +34,15 @@ const createNewUser = asyncHandler(async (req, res) => {
     state,
     grade,
   });
-  newUser
+  await newUser
     .save()
     .then((result) => {
       req.session.loggedIn = true;
-      req.session.userId = _id;
-      res.status(201).json({ message: `New user ${email} created` });
+      req.session.userId = newUser._id;
+      return res.status(201).json({ message: `New user ${email} created` });
     })
     .catch((error) => {
-      res.status(500).json({ message: `${error}` });
+      return res.status(500).json({ message: "Internal server error" });
       console.log(error);
     });
 });
@@ -55,25 +55,31 @@ const loginUser = asyncHandler(async (req, res) => {
 
   // Confirm Data
   if (!email || !password) {
-    res.status(400).json({ message: "All fields are required" });
+    return res.status(400).json({ message: "All fields are required" });
   }
 
   // Find user
-  const user = User.findOne({ email }).lean().exec();
+  const user = await User.findOne({ email }).lean().exec();
 
   if (!user) {
-    res.status(409).json({ message: "Looks like you haven't signed up." });
+    return res
+      .status(409)
+      .json({ message: "Looks like you haven't signed up." });
   }
 
   // Check password
-  const passwordMatch = await bcrypt.compare(password, user.password);
-  if (passwordMatch) {
-    req.session.loggedIn = true;
-    req.session.userId = user._id;
-    res.status(200).json({ message: "Logged in" });
-  } else {
-    res.status(409).json({ message: "Incorrect password" });
-  }
+  bcrypt.compare(password, user.password, (err, passwordMatch) => {
+    if (err) {
+      return res.status(500).json({ message: `${err}` });
+    }
+    if (passwordMatch) {
+      req.session.loggedIn = true;
+      req.session.userId = user._id;
+      return res.status(200).json({ message: "Logged in" });
+    } else {
+      return res.status(409).json({ message: "Incorrect password" });
+    }
+  });
 });
 
 // @desc Logs out user
@@ -82,7 +88,7 @@ const loginUser = asyncHandler(async (req, res) => {
 const logoutUser = asyncHandler(async (req, res) => {
   req.session.loggedIn = false;
   req.session.userId = null;
-  res.status(200).json({ message: "Logged out" });
+  return res.status(200).json({ message: "Logged out" });
 });
 
 module.exports = {

@@ -1,10 +1,10 @@
 import "./StudentDash.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import defaultAvatar from "./default-avatar.png";
-import galleryIcon from "./gallery-icon.png";
+import defaultAvatar from "../../../assets/default-avatar.png";
+import galleryIcon from "../../../assets/gallery-icon.png";
 import { FaSearch } from "react-icons/fa"; // Import the magnifying glass icon
-import StudentNav from "../SearchBars/StudentNavBar";
+import StudentNav from "../../NavBar/StudentNavBar";
 
 function StudentDash() {
   fetch("http://localhost:8000/api/users", {

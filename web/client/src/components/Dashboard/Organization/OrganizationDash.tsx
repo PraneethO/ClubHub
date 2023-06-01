@@ -1,7 +1,7 @@
 import "./OrganizationDash.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import defaultAvatar from "./default-avatar.png"; // Import the placeholder avatar image
+import defaultAvatar from "../../../assets/default-avatar.png"; // Import the placeholder avatar image
 
 function OrganizationDash() {
   const [searchText, setSearchText] = useState("");

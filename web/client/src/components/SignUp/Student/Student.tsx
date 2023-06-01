@@ -1,7 +1,6 @@
 import "./Student.css";
 import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
-import Cookies from "js-cookie";
 
 function Student() {
   const navigate = useNavigate();
@@ -76,7 +75,7 @@ function Student() {
       state,
     };
 
-    fetch("http://localhost:8000/api/users", {
+    fetch("http://localhost:8000/api/auth", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
@@ -285,7 +284,7 @@ function Student() {
                   <p>You're already signed up! Please try a different email.</p>
                 );
               case 201:
-                navigate("/studentDashboard");
+                navigate("/dashboard/student");
             }
           })()}
         </div>

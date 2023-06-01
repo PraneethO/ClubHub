@@ -51,7 +51,7 @@ app.use(
 
 // ! Actual Routes (Look Here)
 
-// ! User Route (Login, Signup, Etc.)
+// ! Authenticatoin Routes (Login, Signup, Logout)
 const authController = require("./controllers/authController");
 app
   .route("/api/auth")
@@ -65,6 +65,7 @@ app
     authController.logoutUser(req, res);
   });
 
+// ! User Routes (get info, update info, delete info)
 const userController = require("./controllers/userController");
 app
   .route("/api/users")
