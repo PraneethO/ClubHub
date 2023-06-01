@@ -56,9 +56,6 @@ const authController = require("./controllers/authController");
 app
   .route("/api/auth")
   .post((req, res) => {
-    authController.createNewUser(req, res);
-  })
-  .get((req, res) => {
     authController.loginUser(req, res);
   })
   .delete((req, res) => {
@@ -69,6 +66,9 @@ app
 const userController = require("./controllers/userController");
 app
   .route("/api/users")
+  .post((req, res) => {
+    userController.createNewUser(req, res);
+  })
   .get((req, res) => {
     userController.getUserInfo(req, res);
   })
