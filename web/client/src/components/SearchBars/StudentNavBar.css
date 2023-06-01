@@ -18,7 +18,7 @@ nav:hover {
   height: auto;
   display: flex;
   align-items: center;
-  margin-left: 0;
+  margin-left: 0 !important;
   margin-top: auto;
   margin-bottom: auto;
 }
@@ -27,9 +27,9 @@ nav:hover {
 #search-container input[type="text"] {
   width: 80%;
   border: none;
-  /* background-color: #f2f2f2; */
+  background-color: #f2f2f2;
   /* background: #bfbfbf; */
-  background-color: white;
+  /* background-color: white; */
   font-size: 0.9rem !important;
   padding: 10px 10px 10px 40px; /* Adjust the padding for the text input */
   border-radius: 5px;
@@ -61,8 +61,8 @@ nav:hover {
   justify-content: center; /* Add this line to center the content horizontally */
   width: 2rem;
   height: 2rem;
-  margin-right: 0.2rem;
-  margin-left: auto;
+  margin-right: 0.2rem !important;
+  margin-left: auto !important;
 }
 
 .home-icon img {
@@ -78,7 +78,7 @@ nav:hover {
   justify-content: center; /* Add this line to center the content horizontally */
   width: 2rem;
   height: 2rem;
-  margin-right: 0.2rem;
+  margin-right: 0.2rem !important;
 }
 
 .messaging-icon img {

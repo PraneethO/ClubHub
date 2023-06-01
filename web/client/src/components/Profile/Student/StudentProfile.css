@@ -7,6 +7,8 @@
   align-items: center;
   margin: 0 auto;
   position: relative;
+
+  box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.4);
 }
 
 .profile-image-student img {
@@ -25,7 +27,7 @@
   color: #fff;
   padding: 0.5rem;
   border-radius: 10%;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 1.25rem;
   display: flex;
   flex-direction: column;
@@ -53,12 +55,14 @@
   padding: 1%;
   padding-top: 2%;
   padding-bottom: 2%;
+
+  box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.4);
 }
 
 .student-info {
   width: 70%;
   font-size: 1.5rem;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   margin-left: 1%;
   display: flex;
   flex-direction: column;
@@ -68,10 +72,52 @@
 }
 
 .givenInfo {
-  margin-top: 0.5%;
+  margin-top: .5%;
   font-size: 1rem;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
+
+/* interested areas css */
+.interested-area-input {
+  display: flex;
+  background-color: #e8f0fe !important;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.interested-areas {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.interested-area {
+  display: flex;
+  align-items: center;
+  margin-right: 8px;
+  background-color: #e8f0fe;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.remove-icon {
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.add-interested-area {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.plus-icon {
+  margin-left: 8px;
+  cursor: pointer;
+}
+/* end of interested areas css */
 
 .pfp-container {
   width: 30%;
@@ -84,7 +130,7 @@
 .experience-upload {
   width: 70%;
   font-size: 1.5rem;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   display: flex;
   flex-grow: 1;
   text-align: left;
@@ -93,7 +139,7 @@
 }
 
 .experience-textbox {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   width: 100%;
   height: 100%;
   resize: none;
@@ -104,7 +150,7 @@
 }
 
 .experience-text {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   padding: 1%;
   vertical-align: top;
   width: 100%;
@@ -134,12 +180,14 @@
   justify-content: space-between;
   margin: 0 auto;
   padding: 1%;
+
+  box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.4);
 }
 
 .experience-title {
   width: 100%;
   font-size: 1.5rem;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   display: flex;
   flex-grow: 1;
   text-align: left;
@@ -155,7 +203,7 @@
 }
 
 .experience-textbox {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   width: 100%;
   flex-grow: 1;
   resize: none;
@@ -179,6 +227,8 @@
   flex-direction: row;
   display: flex;
   justify-content: space-between;
+
+  box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.4);
 }
 
 .resume-description {
@@ -192,7 +242,7 @@
 .resume-title {
   width: 50%;
   font-size: 1.5rem;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   margin-top: 1%;
   margin-left: 1%;
 }
@@ -200,7 +250,7 @@
 .resume-disclaimer {
   margin-top: 0.5%;
   font-size: 1rem;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   margin-left: 1%;
 }
 
@@ -217,7 +267,7 @@
 }
 
 .resume-upload-text {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 1rem;
   text-align: left;
   padding: 0.5rem;
@@ -242,12 +292,14 @@
   padding: 1rem;
   flex-direction: column;
   text-align: left;
+
+  box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.4);
 }
 
 .contact-info-title {
   width: 100%;
   font-size: 1.5rem;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   display: flex;
   text-align: left;
   margin-left: 1%;

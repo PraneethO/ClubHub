@@ -22,7 +22,7 @@ function SignUp() {
     <>
       <nav
         style={{
-          backgroundColor: "#bfbfbf",
+          backgroundColor: "#d9edff",
           fontSize: "60px",
           boxShadow: "none",
           marginBottom: "0",

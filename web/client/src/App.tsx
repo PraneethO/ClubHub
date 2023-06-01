@@ -20,8 +20,7 @@ function App() {
       <Route path="/profile/student" element={<StudentProfile />} />
       <Route path="/dashboard/organization" element={<OrganizationDash />} />
       <Route path="/profile/organization" element={<OrgProfile />} />
-
-      <Route path="/studentMessaging" element={<StudentMessaging />} />
+      <Route path="/student/messaging" element={<StudentMessaging />} />
     </Routes>
   );
 }
