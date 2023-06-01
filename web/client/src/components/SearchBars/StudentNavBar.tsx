@@ -2,9 +2,9 @@ import "./StudentNavBar.css";
 import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import studentMessagingIcon from "./messaging-icon.png";
-import defaultAvatar from "./default-avatar.png";
-import homeIcon from "./home-icon.png";
+import studentMessagingIcon from "../../assets/messaging-icon.png";
+import defaultAvatar from "../../assets/default-avatar.png";
+import homeIcon from "../../assets/home-icon.png";
 
 const StudentNav = () => {
   const [searchText, setSearchText] = useState("");
@@ -24,7 +24,7 @@ const StudentNav = () => {
     <nav>
       <Link
         id="logo"
-        to="/studentDashboard"
+        to="/dashboard/student"
         style={{ marginTop: "auto", marginBottom: "auto" }}
       >
         <div
@@ -51,7 +51,7 @@ const StudentNav = () => {
         </div>
       </div>
       <div className="home-icon">
-        <Link id="toDashboard" to="/studentDashboard" className="icon-text">
+        <Link id="toDashboard" to="/dashboard/student" className="icon-text">
           <img src={homeIcon} alt="StudentDash" />
           Home
         </Link>
@@ -67,7 +67,7 @@ const StudentNav = () => {
         </Link>
       </div>
       <div className="profile-image">
-        <Link to="/studentProfile" className="icon-text">
+        <Link to="/profile/student" className="icon-text">
           <img src={defaultAvatar} alt="Profile" />
           Profile
         </Link>

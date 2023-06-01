@@ -1,6 +1,5 @@
 /* CSS For Parent*/
 #parentContainer {
-
   height: 90vh;
   width: 100%;
 
@@ -70,7 +69,7 @@
 }
 
 .landingPageInput {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 20px;
   text-transform: none;
   width: 100%;
@@ -79,7 +78,6 @@
   border-radius: 5px;
   border: solid 2px black;
 }
-
 
 /* ! Right Side CSS */
 .mission-text {
@@ -121,7 +119,14 @@
   text-decoration: none;
 }
 
-
+.signUpDisclaimer {
+  display: flex;
+  color: black;
+  font-size: 1rem;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 10px;
+}
 
 /* SVG Path */
 #path {

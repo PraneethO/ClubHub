@@ -34,7 +34,7 @@ const loginUser = asyncHandler(async (req, res) => {
     if (passwordMatch) {
       req.session.loggedIn = true;
       req.session.userId = user._id;
-      return res.status(200).json({ message: "Logged in" });
+      return res.status(201).json({ message: "Logged in" });
     } else {
       return res.status(409).json({ message: "Incorrect password" });
     }
@@ -47,7 +47,7 @@ const loginUser = asyncHandler(async (req, res) => {
 const logoutUser = asyncHandler(async (req, res) => {
   req.session.loggedIn = false;
   req.session.userId = null;
-  return res.status(200).json({ message: "Logged out" });
+  return res.status(201).json({ message: "Logged out" });
 });
 
 module.exports = {

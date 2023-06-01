@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 
-
 function First() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -43,49 +42,49 @@ function First() {
         <div className="loginBox">
           <form className="loginForm">
             <div className="newInputBox">
-              <label style={{ fontSize: "30px" }}>USERNAME OR EMAIL</label>
-              <br />
+              <label>USERNAME OR EMAIL</label>
               <input
                 type="text"
                 name="username"
-                style={{
-                  fontFamily: "'Montserrat', sans-serif",
-                  fontSize: "20px",
-                  textTransform: "none",
-                }}
+                className="landingPageInput"
                 onChange={handleEmailChange}
+                style={{ textTransform: "none" }}
               />
             </div>
+
             <div className="newInputBox">
-              <label style={{ fontSize: "30px" }}>PASSWORD</label>
-              <br />
+              <label>PASSWORD</label>
               <input
                 type="password"
                 name="password"
-                style={{
-                  fontFamily: "'Montserrat', sans-serif",
-                  fontSize: "20px",
-                  backgroundColor: "#d3d3d3",
-                }}
+                className="landingPageInput"
+                style={{ marginBottom: "0" }}
                 onChange={handlePasswordChange}
               />
             </div>
-            <br />
-            <br />
+
             <button
               type="submit"
-              className="newSignButtonContainer"
+              className="signInButton"
               onClick={(event) => handleSubmit(event)}
             >
               Sign In
             </button>
+
+            <Link to="/signUp" className="signUpDisclaimer">
+              Don't have an account? Sign up!
+            </Link>
 
             <div
               id="errorMessageBox"
               style={
                 statusCode == 0
                   ? { display: "none" }
-                  : { padding: "0 1vw 0 1vw" }
+                  : {
+                      padding: ".3vh .5vw .3vh .5vw",
+                      backgroundColor: "#959595",
+                      color: "#BF0000",
+                    }
               }
             >
               {(() => {
@@ -104,18 +103,20 @@ function First() {
                     );
                   case 201:
                     navigate("/dashboard/student");
+                  default:
+                    return <p>{statusCode}</p>;
                 }
               })()}
             </div>
-
           </form>
         </div>
       </div>
 
       <div className="right">
-        CONNECTING HIGH <br /> SCHOOLERS TO THE ISSUES <br />
-        THAT MATTER
-
+        <div className="mission-text">
+          CONNECTING HIGH <br /> SCHOOLERS TO THE ISSUES <br />
+          THAT MATTER
+        </div>
       </div>
     </div>
   );

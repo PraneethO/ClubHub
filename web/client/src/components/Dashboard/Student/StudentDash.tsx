@@ -1,21 +1,12 @@
 import "./StudentDash.css";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import defaultAvatar from "../../../assets/default-avatar.png";
 import galleryIcon from "../../../assets/gallery-icon.png";
-import { FaSearch } from "react-icons/fa"; // Import the magnifying glass icon
-import StudentNav from "../../NavBar/StudentNavBar";
+import StudentNav from "../../SearchBars/StudentNavBar";
 
 function StudentDash() {
-  fetch("http://localhost:8000/api/users", {
-    method: "GET",
-    headers: { "Content-Type": "application/json", credentials: "include" },
-  }).then((response) => {
-    console.log(response);
-  });
-
   return (
-    <>
+    <div style={{ backgroundColor: "#d9edff" }}>
       <StudentNav />
       <br />
 
@@ -24,16 +15,16 @@ function StudentDash() {
           <div className="greeting-text">Greetings, User!</div>
           <div className="greeting-recents">
             <div className="title-text">Recent visits:</div>
-            <div className="greeting-subtext" style={{ marginBottom: "8px" }}>
+            <div className="title-subtext" style={{ marginBottom: "8px" }}>
               Steel City Codes
             </div>
-            <div className="greeting-subtext" style={{ marginBottom: "8px" }}>
+            <div className="title-subtext" style={{ marginBottom: "8px" }}>
               Joe Biden
             </div>
-            <div className="greeting-subtext">
+            <div className="title-subtext">
               <Link
                 to="/"
-                className="greeting-subtext"
+                className="title-subtext"
                 style={{ textDecoration: "none", color: "black" }}
               >
                 See more...
@@ -61,7 +52,7 @@ function StudentDash() {
                 justifyContent: "space-between",
               }}
             >
-              <div className="greeting-subtext-numbers">Peers</div>
+              <div className="greeting-subtext-numbers">Connects</div>
               <div className="following-count">3</div>
             </div>
           </div>
@@ -129,11 +120,36 @@ function StudentDash() {
             </div>
           </div>
         </div>
-        <div className="student-tbd">
-          <div className="tbd-container"></div>
+
+        <div className="student-trending">
+          <div className="trending-container">
+            <div className="greeting-text">Trending</div>
+            <div className="trending-categories-container">
+              <div className="title-text">Categories:</div>
+              {/* make these dynamic */}
+              <div className="title-subtext" style={{ marginBottom: "8px" }}>
+                Computer Science
+              </div>
+              <div className="title-subtext" style={{ marginBottom: "8px" }}>
+                Medicine
+              </div>
+              <div className="title-subtext">Mental Health</div>
+            </div>
+            <div className="trending-organizations-container">
+              <div className="title-text">Organizations:</div>
+              {/* make these dynamic */}
+              <div className="title-subtext" style={{ marginBottom: "8px" }}>
+                Donald J Trump
+              </div>
+              <div className="title-subtext" style={{ marginBottom: "8px" }}>
+                Joesph R Biden
+              </div>
+              <div className="title-subtext">Barack Obama</div>
+            </div>
+          </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
