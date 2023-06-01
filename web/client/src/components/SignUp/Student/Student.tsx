@@ -1,6 +1,6 @@
 import "./Student.css";
 import { useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Student() {
   const navigate = useNavigate();
@@ -80,7 +80,6 @@ function Student() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
       credentials: "include",
-
     }).then((response) => {
       setStatusCode(response.status);
     });
@@ -267,7 +266,6 @@ function Student() {
               alignSelf: "center",
             }}
           >
-
             <div style={{ textAlign: "center" }}>Sign Up</div>
           </span>
         </button>
@@ -287,7 +285,6 @@ function Student() {
                 );
               case 201:
                 navigate("/dashboard/student");
-
             }
           })()}
         </div>

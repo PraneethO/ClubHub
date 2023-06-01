@@ -1,5 +1,5 @@
-import React, { useState, ChangeEvent } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, ChangeEvent, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import defaultAvatar from "../../../assets/default-avatar.png";
 import "./StudentProfile.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,6 +7,20 @@ import { faCamera, faEdit, faCheck } from "@fortawesome/free-solid-svg-icons";
 import StudentNav from "../../NavBar/StudentNavBar";
 
 function StudentProfile() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    fetch("http://localhost:8000/api/auth", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+    }).then((response) => {
+      if (response.status == 201) {
+        navigate("/");
+      }
+    });
+  }, []);
+
   const [isHovered, setIsHovered] = useState(false);
   const [image, setImage] = useState<string | ArrayBuffer | null>(
     defaultAvatar

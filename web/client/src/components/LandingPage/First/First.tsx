@@ -7,6 +7,8 @@ function First() {
   // Check if the user is logged in
   // If user is logged in go to dashboard
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     fetch("http://localhost:8000/api/auth", {
       method: "POST",
@@ -22,8 +24,6 @@ function First() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [statusCode, setStatusCode] = useState(0);
-
-  const navigate = useNavigate();
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
