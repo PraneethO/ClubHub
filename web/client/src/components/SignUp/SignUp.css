@@ -43,6 +43,7 @@ nav {
   border-radius: 20px;
   box-sizing: content-box;
 
+
   display: flex;
   justify-content: flex-end;
 
@@ -74,6 +75,7 @@ nav {
   border-radius: 20px;
   font-size: 30px;
   color: white;
+
 
   box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.4);
 }

@@ -79,6 +79,8 @@ function Student() {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
+      credentials: "include",
+
     }).then((response) => {
       setStatusCode(response.status);
     });
@@ -265,6 +267,7 @@ function Student() {
               alignSelf: "center",
             }}
           >
+
             <div style={{ textAlign: "center" }}>Sign Up</div>
           </span>
         </button>
@@ -283,8 +286,8 @@ function Student() {
                   <p>You're already signed up! Please try a different email.</p>
                 );
               case 201:
-                console.log(document.cookie);
-                navigate("/studentDashboard");
+                navigate("/dashboard/student");
+
             }
           })()}
         </div>

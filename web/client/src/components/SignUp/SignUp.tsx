@@ -41,6 +41,21 @@ function SignUp() {
         </Link>
       </nav>
 
+      {/* <div className="logo">
+        <Link
+          id="logo"
+          to="/"
+          style={{
+            fontSize: "200px",
+            fontFamily: "Bebas Neue",
+            textAlign: "left",
+            marginLeft: "20px",
+          }}
+        >
+          <div>ClubHub</div>
+        </Link>
+      </div> */}
+
       <div className="bodyContainer">
         <div className="buttonContainer" style={{ justifyContent: "flex-end" }}>
           <button

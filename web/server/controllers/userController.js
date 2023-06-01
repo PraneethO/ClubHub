@@ -1,59 +1,74 @@
-const User = require('../models/User')
-const Session = require('../models/Session')
-const asyncHandler = require('express-async-handler')
-const bcrypt = require('bcrypt')
+const User = require("../models/User");
 
-function generateSessionId() {
-    const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    let sessionId = '';
-    for (let i = 0; i < 32; i++) {
-      sessionId += chars.charAt(Math.floor(Math.random() * chars.length));
-    }
-    return sessionId;
-}
+const asyncHandler = require("express-async-handler");
+
+const uuidv4 = require("uuid").v4;
+const bcrypt = require("bcrypt");
 
 // @desc Create new user
-// @route POST /users
+// @route POST /api/users
 // @access Private
 const createNewUser = asyncHandler(async (req, res) => {
-    const SESSION_EXPIRY_TIME = 30 * 24 * 60 * 60 * 1000;
+  const { firstName, lastName, email, password, grade, state } = req.body;
 
-    const {username, password, grade, zip} = req.body
-    // Confirm Data
-    if(!username || !password || !zip || !grade) {
-        return res.status(400).json({message: 'All fields are required'})
-    }
+  // Confirm Data
+  if (!firstName || !lastName || !email || !password || !state || !grade) {
+    return res.status(400).json({ message: "All fields are required" });
+  }
 
-    // Check for Duplicate
-    const duplicate = await User.findOne({username}).lean().exec()
-    if (duplicate) {
-        return res.status(409).json({message: 'Duplicate username'})
-    }
-    
-    const hashedPwd = await bcrypt.hash(password, 10) // Password Hash
+  // Check for Duplicate
+  const duplicate = await User.findOne({ email }).lean().exec();
+  if (duplicate) {
+    return res.status(409).json({ message: "Duplicate email" });
+  }
 
-    const sessionId = generateSessionId();
-    const expiryDate = new Date(Date.now() + SESSION_EXPIRY_TIME);
+  const hashedPwd = await bcrypt.hash(password, 10); // Password Hash
 
-    res.cookie('sessionId', sessionId, {
-        expires: expiryDate,
-        httpOnly: true,
-        sameSite: 'strict'
+  // Create and Store User
+  const newUser = new User({
+    _id: uuidv4(),
+    firstName,
+    lastName,
+    email,
+    password: hashedPwd,
+    state,
+    grade,
+  });
+  await newUser
+    .save()
+    .then((result) => {
+      req.session.loggedIn = true;
+      req.session.userId = newUser._id;
+      return res.status(201).json({ message: `New user ${email} created` });
+    })
+    .catch((error) => {
+      return res.status(500).json({ message: "Internal server error" });
+      console.log(error);
     });
+});
 
-    // Create and Store User
-    const newUser = new User({username, password: hashedPwd, zip: zip, grade: grade});
-    newUser.save()
-        .then((result) => {
-            const newSession = new Session({sessionId, username: username, expires: expiryDate});
-            newSession.save();
-            
-            res.status(201).json({message: "New user ${username} created"});
-        })
-        .catch(error => res.status(500).json({message: "Internal server error"}));
-})
+// @desc Get user info
+// @route GET /api/users
+// @access Private
+const getUserInfo = asyncHandler(async (req, res) => {
+  if (req.session.loggedIn && req.session.userId) {
+    res.send(req.session.userId);
+  }
+});
 
+// @desc Update user info
+// @route PATCH /api/users
+// @access Private
+const updateUser = asyncHandler(async (req, res) => {});
+
+// @desc Delete user
+// @route DELETE /api//users
+// @access Private
+const deleteUser = asyncHandler(async (req, res) => {});
 
 module.exports = {
-    createNewUser,
-}
+  createNewUser,
+  getUserInfo,
+  updateUser,
+  deleteUser,
+};

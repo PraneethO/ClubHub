@@ -4,4 +4,12 @@ An app dedicated to organizing different clubs and organizations across the coun
 
 How to Run
 
-I'll do this later
+1. Navigate to web/client
+2. Run `npm install`
+3. Run `npm run dev`
+
+For the server:
+
+1. Navigate to web/server
+2. Run `npm install`
+3. Run `npm run dev`

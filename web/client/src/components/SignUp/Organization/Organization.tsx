@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 function signUp() {
+
   return <div style={{ textAlign: "center" }}>Sign Up</div>;
 }
 

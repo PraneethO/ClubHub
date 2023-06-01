@@ -1,6 +1,7 @@
 import "./student-messaging.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+
 import StudentNav from "../SearchBars/StudentNavBar";
 
 function StudentMessaging() {
@@ -13,6 +14,7 @@ function StudentMessaging() {
           contact information in users' and organizations' profiles.
         </div>
       </div>
+
     </div>
   );
 }

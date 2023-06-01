@@ -1,6 +1,7 @@
 nav {
   margin: 0;
   padding: 0;
+
   top: 0;
   left: 0;
   z-index: 9999;
@@ -9,6 +10,7 @@ nav {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+
   /* background-color: #000000; */
 }
 
@@ -21,6 +23,7 @@ nav {
   margin-top: auto !important;
   margin-bottom: auto !important;
 }
+
 
 .logo-container {
   flex-grow: 1;
@@ -38,6 +41,7 @@ nav {
   /* Padding for White Border Around Text */
   /* padding: 0.25% 0.5% 0.25% 0.5%; */
   padding: 0.5% 0.75% 0.5% 0.75%;
+
   /* White Border Around Text */
   border-radius: 0.5rem;
   background-color: #044e8b;
@@ -58,6 +62,7 @@ nav {
 
 #ourTeamContainer {
   align-items: right;
+
   font-family: "Bebas Neue";
   white-space: nowrap;
   font-size: 40px;

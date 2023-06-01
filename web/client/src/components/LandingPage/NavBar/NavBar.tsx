@@ -16,6 +16,7 @@ function Navbar() {
       }}
     >
       <Link id="logo" to="/">
+
         <div className="logo-container">ClubHub</div>
       </Link>
       {/* <Link id="ourTeamContainer" to="/">
