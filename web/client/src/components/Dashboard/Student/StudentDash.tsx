@@ -3,8 +3,24 @@ import { Link } from "react-router-dom";
 import defaultAvatar from "../../../assets/default-avatar.png";
 import galleryIcon from "../../../assets/gallery-icon.png";
 import StudentNav from "../../SearchBars/StudentNavBar";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function StudentDash() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    fetch("http://localhost:8000/api/auth", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+    }).then((response) => {
+      if (response.status == 201) {
+        navigate("/");
+      }
+    });
+  }, []);
+
   return (
     <div style={{ backgroundColor: "#d9edff" }}>
       <StudentNav />

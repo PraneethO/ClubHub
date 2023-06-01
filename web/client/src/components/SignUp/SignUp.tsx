@@ -3,8 +3,9 @@ import "./SignUp.css";
 import Organization from "./Organization/Organization";
 import Student from "./Student/Student";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function getColor(active: string) {
   if (active === "#9da8b5") {
@@ -15,6 +16,20 @@ function getColor(active: string) {
 }
 
 function SignUp() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    fetch("http://localhost:8000/api/auth", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+    }).then((response) => {
+      if (response.status == 200) {
+        navigate("/dashboard/student");
+      }
+    });
+  }, []);
+
   // Active refers to color of the student button
   const [active, setActive] = useState("#044E8B");
 

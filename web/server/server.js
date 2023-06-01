@@ -55,11 +55,14 @@ app.use(
 const authController = require("./controllers/authController");
 app
   .route("/api/auth")
-  .post((req, res) => {
+  .get((req, res) => {
     authController.loginUser(req, res);
   })
   .delete((req, res) => {
     authController.logoutUser(req, res);
+  })
+  .post((req, res) => {
+    authController.checkUserStatus(req, res);
   });
 
 // ! User Routes (get info, update info, delete info)

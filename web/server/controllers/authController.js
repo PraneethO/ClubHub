@@ -50,7 +50,16 @@ const logoutUser = asyncHandler(async (req, res) => {
   return res.status(201).json({ message: "Logged out" });
 });
 
+const checkUserStatus = asyncHandler(async (req, res) => {
+  if (req.session.userId) {
+    return res.status(200).json({ message: "Logged in" });
+  } else {
+    return res.status(201).json({ message: "Not logged in" });
+  }
+});
+
 module.exports = {
   logoutUser,
   loginUser,
+  checkUserStatus,
 };
