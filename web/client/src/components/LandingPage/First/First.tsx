@@ -1,4 +1,5 @@
 import "./First.css";
+import { Link } from "react-router-dom";
 
 function path() {
   return (
@@ -18,23 +19,41 @@ function First() {
       <div className="left">
         <div className="loginBox">
           <form className="loginForm">
-            <div className="inputBox">
+            <div className="newInputBox">
               <label>USERNAME OR EMAIL</label>
-              <br />
-              <input type="text" name="username" />
-            </div>
-            <div className="inputBox">
-              <label>PASSWORD</label>
-              <br />
-              <input type="password" name="password" />
+              <input
+                type="text"
+                name="username"
+                className="landingPageInput"
+                style={{ textTransform: "none" }}
+              />
             </div>
 
-            <br />
-            <br />
-            <br />
-            <button type="submit" className="signButtonContainer">
-              Sign In
+            <div className="newInputBox">
+              <label>PASSWORD</label>
+              <input
+                type="password"
+                name="password"
+                className="landingPageInput"
+                style={{ marginBottom: "0" }}
+              />
+            </div>
+
+            <button type="submit" className="signInButton">
+              <Link
+                to="/studentDashboard" // temporary, change this to a conditional that sets the appropriate dashbaord according to the login email
+                style={{
+                  textDecoration: "none",
+                  color: "white",
+                }}
+              >
+                Sign In
+              </Link>
             </button>
+
+            <Link to="/signUp" className="signUpDisclaimer">
+              Don't have an account? Sign up!
+            </Link>
           </form>
         </div>
       </div>
@@ -51,11 +70,12 @@ function First() {
        >
          {path()}
        </svg> }
+*/}
 
-
-       <div className="lower">TO THE ISSUES THAT MATTER</div> */}
-        CONNECTING HIGH <br /> SCHOOLERS TO THE ISSUES <br />
-        THAT MATTER.
+        <div className="mission-text">
+          CONNECTING HIGH <br /> SCHOOLERS TO THE ISSUES <br />
+          THAT MATTER
+        </div>
       </div>
     </div>
   );

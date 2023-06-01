@@ -1,50 +1,66 @@
 nav {
   margin: 0;
   padding: 0;
-
-  position: sticky;
-
   top: 0;
-
-  height: 10vh;
+  left: 0;
+  z-index: 9999;
+  height: 8vh !important;
   width: 100%;
-
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 2rem;
+  flex-direction: row;
+  justify-content: flex-end;
+  /* background-color: #000000; */
 }
 
 #logo {
-  margin-left: 2%;
-
-  font-size: 80px;
+  margin-left: 2% !important;
+  font-size: 2rem;
   color: #044e8b;
-
   text-decoration: none;
+  font-size: 60px !important;
+  margin-top: auto !important;
+  margin-bottom: auto !important;
 }
 
-#signButtonContainer {
+.logo-container {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#signButtonContainerNav {
   margin-right: 2%;
-
+  margin-top: auto;
+  margin-bottom: auto;
   /* Padding for White Border Around Text */
-  padding: 0.25% 0.5% 0.25% 0.5%;
-
+  /* padding: 0.25% 0.5% 0.25% 0.5%; */
+  padding: 0.5% 0.75% 0.5% 0.75%;
   /* White Border Around Text */
-  border-radius: 10px;
+  border-radius: 0.5rem;
   background-color: #044e8b;
   border: none;
   text-align: center;
-
   /* Text */
+  white-space: nowrap;
+  font-size: 2rem;
+  color: #ffffff;
+  letter-spacing: 0px;
+  text-decoration: none;
+  box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.4);
+}
+
+#signButtonContainerNav:hover {
+  background-color: #9da8b5;
+}
+
+#ourTeamContainer {
+  align-items: right;
+  font-family: "Bebas Neue";
   white-space: nowrap;
   font-size: 40px;
   color: #ffffff;
   letter-spacing: 0px;
-
-  text-decoration: none;
-}
-
-#signButtonContainer:hover {
-  background-color: #9da8b5;
 }

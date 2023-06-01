@@ -1,0 +1,79 @@
+import "./StudentNavBar.css";
+import React, { useState } from "react";
+import { FaSearch } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import studentMessagingIcon from "./messaging-icon.png";
+import defaultAvatar from "./default-avatar.png";
+import homeIcon from "./home-icon.png";
+
+const StudentNav = () => {
+  const [searchText, setSearchText] = useState("");
+
+  const handleSearchInputChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setSearchText(event.target.value);
+  };
+
+  const handleSearch = () => {
+    console.log("Searching for:", searchText);
+    // Perform search or any other action here
+  };
+
+  return (
+    <nav>
+      <Link
+        id="logo"
+        to="/studentDashboard"
+        style={{ marginTop: "auto", marginBottom: "auto" }}
+      >
+        <div
+          style={{
+            fontSize: "60px",
+            fontFamily: "Bebas Neue",
+            marginTop: "auto",
+            marginBottom: "auto",
+          }}
+        >
+          ClubHub
+        </div>
+      </Link>
+      <div id="search-container">
+        <input
+          type="text"
+          placeholder="New opportunities awaiting"
+          value={searchText}
+          onChange={handleSearchInputChange}
+        />
+
+        <div className="search-icon" onClick={handleSearch}>
+          <FaSearch />
+        </div>
+      </div>
+      <div className="home-icon">
+        <Link id="toDashboard" to="/studentDashboard" className="icon-text">
+          <img src={homeIcon} alt="StudentDash" />
+          Home
+        </Link>
+      </div>
+      <div className="messaging-icon">
+        <Link
+          id="toStudentMessaging"
+          to="/studentMessaging"
+          className="icon-text"
+        >
+          <img src={studentMessagingIcon} alt="Messaging" />
+          Messages
+        </Link>
+      </div>
+      <div className="profile-image">
+        <Link to="/studentProfile" className="icon-text">
+          <img src={defaultAvatar} alt="Profile" />
+          Profile
+        </Link>
+      </div>
+    </nav>
+  );
+};
+
+export default StudentNav;

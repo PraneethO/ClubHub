@@ -2,16 +2,26 @@ import "./NavBar.css";
 import { Link } from "react-router-dom";
 
 function isLoggedIn() {
-  return "Join Now";
+  return "Join the Beta";
 }
 
 function Navbar() {
   return (
-    <nav>
+    <nav
+      style={{
+        backgroundColor: "#bfbfbf",
+        fontSize: "60px",
+        boxShadow: "none",
+        marginBottom: "0",
+      }}
+    >
       <Link id="logo" to="/">
-        <div style={{ fontSize: "60px" }}>ClubHub</div>
+        <div className="logo-container">ClubHub</div>
       </Link>
-      <Link to="/signUp" id="signButtonContainer">
+      {/* <Link id="ourTeamContainer" to="/">
+        Our Team
+      </Link> */}
+      <Link to="/signUp" id="signButtonContainerNav">
         {isLoggedIn()}
       </Link>
     </nav>

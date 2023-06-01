@@ -1,0 +1,120 @@
+/* for reference to how nav is defined in NavBar */
+nav {
+  /* background-color: #EAE4DB; */
+  background-color: #d9edff;
+  height: 8vh;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add a box shadow */
+  transition: box-shadow 0.3s ease-in-out; /* Add a transition effect */
+  margin-bottom: 1rem;
+}
+
+nav:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Increase the box shadow on hover */
+}
+
+#search-container {
+  position: relative;
+  width: 25vw;
+  height: auto;
+  display: flex;
+  align-items: center;
+  margin-left: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+
+#search-container input[type="text"] {
+  width: 80%;
+  border: none;
+  /* background-color: #f2f2f2; */
+  /* background: #bfbfbf; */
+  background-color: white;
+  font-size: 0.9rem !important;
+  padding: 10px 10px 10px 40px; /* Adjust the padding for the text input */
+  border-radius: 5px;
+  font-family: "Montserrat", sans-serif;
+  text-transform: none;
+}
+
+/* code to make the search bar expand upon clicking it */
+#search-container input[type="text"]:focus {
+  width: 200%;
+  transition: width 0.4s ease-in-out;
+}
+
+
+
+#search-container .search-icon {
+  position: absolute;
+  left: 10px; /* Adjust the position to the left */
+  cursor: pointer;
+  display: flex;
+  align-items: center; /* Align items vertically in the center */
+  color: #044e8b;
+}
+
+/* icons */
+.home-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Add this line to center the content horizontally */
+  width: 2rem;
+  height: 2rem;
+  margin-right: 0.2rem;
+  margin-left: auto;
+}
+
+.home-icon img {
+  width: 2rem;
+  height: 2rem;
+  filter: brightness(100000000%);
+}
+
+
+.messaging-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Add this line to center the content horizontally */
+  width: 2rem;
+  height: 2rem;
+  margin-right: 0.2rem;
+}
+
+.messaging-icon img {
+  width: 2rem;
+  height: 2rem;
+  filter: brightness(100000000%);
+  align-self: center;
+}
+
+.profile-image {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Add this line to center the content horizontally */
+  width: 2rem;
+  height: 2rem;
+  margin-left: 0; /* Adjust the left margin to create spacing */
+  margin-right: 2%; /* Adjust the right margin to create spacing */
+}
+
+.profile-image img {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+}
+
+.icon-text {
+  font-family: "Montserrat", sans-serif;
+  text-decoration: none;
+  color: black;
+  font-size: 0.8rem;
+  text-align: center;
+  margin-bottom: 0px;
+}
+
+.home-icon:hover img,
+.messaging-icon:hover img,
+.profile-image:hover img {
+  filter: grayscale(100%);
+}

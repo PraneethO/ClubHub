@@ -20,29 +20,42 @@ function SignUp() {
 
   return (
     <>
-      <nav>
+      <nav
+        style={{
+          backgroundColor: "#bfbfbf",
+          fontSize: "60px",
+          boxShadow: "none",
+          marginBottom: "0",
+        }}
+      >
         <Link id="logo" to="/">
-          <div style={{ fontSize: "60px", fontFamily: "Bebas Neue" }}>
+          <div
+            style={{
+              fontSize: "60px",
+              fontFamily: "Bebas Neue",
+              textAlign: "center",
+            }}
+          >
             ClubHub
           </div>
         </Link>
       </nav>
 
       <div className="bodyContainer">
-        <div className="buttonContainer">
+        <div className="buttonContainer" style={{ justifyContent: "flex-end" }}>
           <button
             className="studButton"
             onClick={() => setActive("#044E8B")}
             style={{ backgroundColor: active }}
           >
-            For Students
+            Students
           </button>
           <button
             className="orgButton"
             onClick={() => setActive("#9da8b5")}
             style={getColor(active)}
           >
-            For Organizations
+            Organizations
           </button>
         </div>
 
