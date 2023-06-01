@@ -26,7 +26,7 @@ function First() {
       password: password,
     };
 
-    fetch("http://localhost:8000/api/users", {
+    fetch("http://localhost:8000/api/auth", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
@@ -78,26 +78,35 @@ function First() {
             >
               Sign In
             </button>
-          </form>
-          <div
-            id="errorMessageBox"
-            style={statusCode == 0 ? { display: "none" } : {}}
-          >
-            {(() => {
-              switch (statusCode) {
-                case 400:
-                  return <p>Bad Request. Please check your input.</p>;
-                case 500:
-                  return <p>Internal Server Error. Please try again later.</p>;
-                case 409:
-                  return (
-                    <p>Looks like you haven't signed up yet. Please sign up!</p>
-                  );
-                case 201:
-                  navigate("/dashboard/student");
+
+            <div
+              id="errorMessageBox"
+              style={
+                statusCode == 0
+                  ? { display: "none" }
+                  : { padding: "0 1vw 0 1vw" }
               }
-            })()}
-          </div>
+            >
+              {(() => {
+                switch (statusCode) {
+                  case 400:
+                    return <p>Bad Request. Please check your input.</p>;
+                  case 500:
+                    return (
+                      <p>Internal Server Error. Please try again later.</p>
+                    );
+                  case 409:
+                    return (
+                      <p>
+                        Looks like you haven't signed up yet. Please sign up!
+                      </p>
+                    );
+                  case 201:
+                    navigate("/dashboard/student");
+                }
+              })()}
+            </div>
+          </form>
         </div>
       </div>
 
