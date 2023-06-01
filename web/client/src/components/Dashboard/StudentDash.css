@@ -1,0 +1,271 @@
+/* dashboard container */
+.student-dashboard-container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+}
+
+
+/* greeting */
+.greeting-container {
+  width: 22.5%;
+  height: fit-content;
+  background-color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  text-align: center;
+
+  box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.4);
+}
+
+.greeting-text {
+  font-family: "Bebas Neue";
+  color: black;
+  background-color: transparent;
+  font-size: 2rem;
+  letter-spacing: 0.05rem;
+  font-weight: bold;
+  padding: 10px;
+  text-align: flex-start;
+}
+
+.greeting-recents {
+  width: 90%;
+  height: auto;
+  color: black;
+  font-size: 1rem;
+  text-align: start;
+  font-weight: normal;
+  background-color: transparent;
+  letter-spacing: normal;
+  padding: 10px;
+
+  border-top: 2px solid black;
+}
+
+.greeting-recents {
+  margin-bottom: 10px; /* Add margin below the title text */
+  font-weight: bold;
+}
+
+.title-text {
+  font-family: "Montserrat", sans-serif;
+  color: black;
+  font-size: 1rem;
+  text-align: start;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.title-subtext {
+  font-family: "Montserrat", sans-serif;
+  font-weight: normal;
+  text-align: start;
+}
+
+.student-following {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  height: auto;
+
+  color: black;
+  font-size: 1rem;
+  text-align: start;
+  font-weight: normal;
+  background-color: transparent;
+  letter-spacing: normal;
+  padding: 10px;
+  border-top: 2px solid black; /* Add a top border */
+}
+
+.greeting-subtext-numbers {
+  display: inline-block;
+  font-family: "Montserrat", sans-serif;
+  font-weight: normal;
+}
+
+.following-count {
+  display: flex;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #044e8b;
+
+  align-self: flex-end;
+}
+
+
+/* center column */
+.student-feed {
+  display: flex;
+  width: 50%;
+  height: auto;
+  margin-left: 2.5%;
+  margin-right: 0;
+
+  font-family: "Montserrat", sans-serif;
+  flex-direction: column;
+}
+
+.reccomended-postings {
+  width: 100%;
+  height: fit-content;
+
+  overflow-x: auto; /* Enable horizontal scrolling */
+  white-space: nowrap; 
+
+  background-color: white;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  text-align: start;
+}
+
+.postings-gallery {
+  width: 100%;
+  height: fit-content;
+
+  background-color: #bfbfbf80;
+  border-radius: 1rem;
+  padding: 1rem;
+  font-size: 1rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: normal;
+  display: flex;
+  margin: 0;
+  overflow-x: auto;
+}
+
+
+.postings-wrapper {
+  display: flex;
+  align-items: center; /* Align the blue boxes vertically in the middle */
+}
+
+
+
+.student-posting {
+  left: 0;
+  flex: 0 0 15vw;
+  height: 15vw;
+  background-color: #044e8b;
+  border-radius: 1rem;
+  margin: 0 0.25rem; /* Adjust the horizontal margin to reduce blank space */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  color: white;
+  flex-direction: column;
+}
+
+.student-posting:last-child {
+  margin-right: 0.25rem; /* Adjust the margin value as desired */
+}
+
+
+.avatar-icon {
+  width: 50%;
+  height: 50%;
+  object-fit: contain;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.connect-container {
+  width: 100%;
+  height: 40vh;
+  background-color: white;
+  padding: 1rem;
+  font-size: 2rem;
+  border-radius: 0.75rem;
+}
+
+/* right column */
+.student-trending {
+  display: flex;
+  width: 22.5%;
+  height: fit-content;
+
+  margin-left: 2.5%;
+  font-family: "Montserrat", sans-serif;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 0.75rem;
+  box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.4);
+}
+
+.trending-container {
+  background-color: white;
+  width: 100%;
+  height: auto;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.trending-categories-container {
+  width: 90%;
+  height: auto;
+  color: black;
+  font-size: 1rem;
+  text-align: start;
+  font-weight: normal;
+  background-color: transparent;
+  letter-spacing: normal;
+  padding: 10px;
+  padding-bottom: 20px;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+}
+
+.trending-organizations-container {
+  width: 90%;
+  height: auto;
+  color: black;
+  font-size: 1rem;
+  text-align: start;
+  font-weight: normal;
+  background-color: transparent;
+  letter-spacing: normal;
+  padding: 10px;
+  padding-bottom: 20px;
+
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+}
+
+
+
+
+
+@media (max-width: 768px) {
+  .avatar-icon {
+    width: 30%;
+    height: 30%;
+  }
+}

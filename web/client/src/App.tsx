@@ -8,6 +8,7 @@ import StudentDash from "./components/Dashboard/Student/StudentDash";
 import StudentProfile from "./components/Profile/Student/StudentProfile";
 import OrgProfile from "./components/Profile/Organization/OrgProfile";
 import OrganizationDash from "./components/Dashboard/Organization/OrganizationDash";
+
 import StudentMessaging from "./components/Messaging/student-messaging";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
       <Route path="/profile/student" element={<StudentProfile />} />
       <Route path="/dashboard/organization" element={<OrganizationDash />} />
       <Route path="/profile/organization" element={<OrgProfile />} />
+
       <Route path="/studentMessaging" element={<StudentMessaging />} />
     </Routes>
   );

@@ -1,11 +1,12 @@
 import "./student-messaging.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import StudentNav from "../NavBar/StudentNavBar";
+
+import StudentNav from "../SearchBars/StudentNavBar";
 
 function StudentMessaging() {
   return (
-    <>
+    <div style={{ backgroundColor: "#d9edff" }}>
       <StudentNav />
       <div className="student-messaging-container">
         <div className="student-messaging">
@@ -13,7 +14,8 @@ function StudentMessaging() {
           contact information in users' and organizations' profiles.
         </div>
       </div>
-    </>
+
+    </div>
   );
 }
 

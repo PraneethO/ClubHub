@@ -7,11 +7,17 @@ function isLoggedIn() {
 
 function Navbar() {
   return (
-    <nav>
+    <nav
+      style={{
+        backgroundColor: "#bfbfbf",
+        fontSize: "60px",
+        boxShadow: "none",
+        marginBottom: "0",
+      }}
+    >
       <Link id="logo" to="/">
-        <div style={{ fontSize: "60px", fontFamily: "Bebas Neue" }}>
-          ClubHub
-        </div>
+
+        <div className="logo-container">ClubHub</div>
       </Link>
       {/* <Link id="ourTeamContainer" to="/">
         Our Team

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 
+
 function First() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -106,6 +107,7 @@ function First() {
                 }
               })()}
             </div>
+
           </form>
         </div>
       </div>
@@ -113,6 +115,7 @@ function First() {
       <div className="right">
         CONNECTING HIGH <br /> SCHOOLERS TO THE ISSUES <br />
         THAT MATTER
+
       </div>
     </div>
   );

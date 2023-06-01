@@ -80,6 +80,7 @@ function Student() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
       credentials: "include",
+
     }).then((response) => {
       setStatusCode(response.status);
     });
@@ -266,7 +267,8 @@ function Student() {
               alignSelf: "center",
             }}
           >
-            <div style={{ textAlign: "center" }}>Sign Up!</div>
+
+            <div style={{ textAlign: "center" }}>Sign Up</div>
           </span>
         </button>
         <div
@@ -285,6 +287,7 @@ function Student() {
                 );
               case 201:
                 navigate("/dashboard/student");
+
             }
           })()}
         </div>

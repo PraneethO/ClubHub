@@ -20,7 +20,14 @@ function SignUp() {
 
   return (
     <>
-      <nav>
+      <nav
+        style={{
+          backgroundColor: "#bfbfbf",
+          fontSize: "60px",
+          boxShadow: "none",
+          marginBottom: "0",
+        }}
+      >
         <Link id="logo" to="/">
           <div
             style={{
