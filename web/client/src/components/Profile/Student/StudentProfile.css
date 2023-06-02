@@ -378,6 +378,7 @@
   height: 7vh;
 
   cursor: pointer;
+  border: black 2px solid;
 }
 
 .logoutButton:hover {

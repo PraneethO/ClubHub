@@ -47,31 +47,6 @@ function StudentProfile() {
     options: { label: string; options?: { label: string }[] }[];
   }[] = [
     {
-      label: "Academic Clubs",
-      options: [
-        {
-          label: "Science and Technology",
-          options: [
-            { label: "Mathematics" },
-            { label: "Physics" },
-            { label: "Chemistry" },
-            { label: "Biology" },
-            { label: "Computer Science" },
-            { label: "Engineering" },
-            { label: "Robotics" },
-            { label: "Astronomy" },
-          ],
-        },
-        {
-          label: "Languages and Cultural Clubs",
-          options: [
-            { label: "Foreign Languages" },
-            { label: "Cultural Appreciation" },
-          ],
-        },
-      ],
-    },
-    {
       label: "Religious and Spiritual",
       options: [
         { label: "Christianity" },
@@ -166,20 +141,37 @@ function StudentProfile() {
         { label: "Leadership" },
       ],
     },
+    {
+      label: "Other Clubs and Organizations",
+      options: [
+        { label: "Professional Associations" },
+        { label: "Student Government" },
+        { label: "Honor Societies" },
+        { label: "Special Interest Groups" },
+      ],
+    },
   ];
 
   const renderOptions = (
-    options: {
-      options: any;
-      label: string;
-    }[]
+    options: { options?: { label: string }[]; label: string }[]
   ) => {
     return options.map((option) => {
       if (option.options) {
         return (
           <optgroup key={option.label} label={option.label}>
-            {renderOptions(option.options)}
+            {option.options.map((subOption) => (
+              <option key={subOption.label} value={subOption.label}>
+                {subOption.label}
+              </option>
+            ))}
           </optgroup>
+        );
+      } else if (option.label === "") {
+        // Handle the empty label for the first option
+        return (
+          <option key={option.label} value="">
+            Select interest areas
+          </option>
         );
       } else {
         return (
@@ -190,6 +182,7 @@ function StudentProfile() {
       }
     });
   };
+
   // end of categories dropdown
 
   const handleImageUpload = (event: ChangeEvent<HTMLInputElement>) => {
@@ -255,7 +248,11 @@ function StudentProfile() {
   };
 
   const handleAddInterestedArea = () => {
-    if (selectedArea.trim() !== "") {
+    const selectedOption = categories
+      .flatMap((category) => category.options)
+      .find((option) => option.label === selectedArea);
+
+    if (selectedOption) {
       setInterestedAreas([...interestedAreas, selectedArea]);
       setSelectedArea("");
     }
@@ -264,20 +261,6 @@ function StudentProfile() {
   const handleRemoveInterestedArea = (index: number) => {
     const updatedAreas = interestedAreas.filter((_, i) => i !== index);
     setInterestedAreas(updatedAreas);
-  };
-
-  const handleLogOut = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-
-    fetch("http://localhost:8000/api/auth", {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-      credentials: "include",
-    }).then((response) => {
-      if (response.status == 201) {
-        navigate("/dashboard/student");
-      }
-    });
   };
 
   return (
@@ -304,6 +287,7 @@ function StudentProfile() {
             Interested Areas
             <div className="givenInfo" style={{ fontWeight: "normal" }}>
               {/* interested areas boxes */}
+
               <div className="interested-areas">
                 {interestedAreas.map((area, index) => (
                   <div className="interested-area" key={index}>
@@ -316,14 +300,23 @@ function StudentProfile() {
                   </div>
                 ))}
               </div>
+
               <div className="add-interested-area">
                 <select
                   value={selectedArea}
                   onChange={(e) => setSelectedArea(e.target.value)}
                   className="interested-area-input"
+                  placeholder="Select interest areas"
                 >
-                  {renderOptions(categories)}
+                  <option value="">Select interest areas</option>
+                  {categories.map((category) => (
+                    <optgroup key={category.label} label={category.label}>
+                      {renderOptions(category.options)}{" "}
+                      {/* Call the renderOptions function */}
+                    </optgroup>
+                  ))}
                 </select>
+
                 <FontAwesomeIcon
                   className="plus-icon"
                   icon={faPlus}
@@ -457,14 +450,6 @@ function StudentProfile() {
               onChange={handleResumeUpload}
             />
           </div>
-        </div>
-        <div className="logoutContainer">
-          <button
-            className="logoutButton"
-            onClick={(event) => handleLogOut(event)}
-          >
-            Logout
-          </button>
         </div>
       </div>
       <br />
