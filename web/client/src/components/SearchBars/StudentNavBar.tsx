@@ -59,8 +59,7 @@ const StudentNav = () => {
       <div className="messaging-icon">
         <Link
           id="toStudentMessaging"
-          // to="/messaging/student"
-          to="/"
+          to="/student/messaging"
           className="icon-text"
         >
           <img src={studentMessagingIcon} alt="Messaging" />
