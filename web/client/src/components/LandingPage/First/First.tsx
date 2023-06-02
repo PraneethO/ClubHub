@@ -41,8 +41,8 @@ function First() {
       password: password,
     };
 
-    fetch("http://localhost:8000/api/auth", {
-      method: "GET",
+    fetch("http://localhost:8000/api/auth/login", {
+      method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
       credentials: "include",
@@ -116,8 +116,11 @@ function First() {
                         Looks like you haven't signed up yet. Please sign up!
                       </p>
                     );
+                  case 401:
+                    return <p>Incorrect password</p>;
                   case 201:
                     navigate("/dashboard/student");
+
                   default:
                     return <p>{statusCode}</p>;
                 }

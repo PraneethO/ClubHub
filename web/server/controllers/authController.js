@@ -5,7 +5,7 @@ const asyncHandler = require("express-async-handler");
 const bcrypt = require("bcrypt");
 
 // @desc Logs in user
-// @route POST /api/auth
+// @route POST /api/auth/login
 // @access Private
 const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
@@ -36,7 +36,7 @@ const loginUser = asyncHandler(async (req, res) => {
       req.session.userId = user._id;
       return res.status(201).json({ message: "Logged in" });
     } else {
-      return res.status(409).json({ message: "Incorrect password" });
+      return res.status(401).json({ message: "Incorrect password" });
     }
   });
 });
