@@ -24,7 +24,6 @@ function StudentDash() {
   return (
     <div style={{ backgroundColor: "#d9edff" }}>
       <StudentNav />
-      <br />
 
       <div className="student-dashboard-container">
         <div className="greeting-container">

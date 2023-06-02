@@ -41,6 +41,157 @@ function StudentProfile() {
   const [newInterestedArea, setNewInterestedArea] = useState("");
   const [selectedArea, setSelectedArea] = useState<string>("");
 
+  // interested categories dropdown
+  const categories: {
+    label: string;
+    options: { label: string; options?: { label: string }[] }[];
+  }[] = [
+    {
+      label: "Academic Clubs",
+      options: [
+        {
+          label: "Science and Technology",
+          options: [
+            { label: "Mathematics" },
+            { label: "Physics" },
+            { label: "Chemistry" },
+            { label: "Biology" },
+            { label: "Computer Science" },
+            { label: "Engineering" },
+            { label: "Robotics" },
+            { label: "Astronomy" },
+          ],
+        },
+        {
+          label: "Languages and Cultural Clubs",
+          options: [
+            { label: "Foreign Languages" },
+            { label: "Cultural Appreciation" },
+          ],
+        },
+      ],
+    },
+    {
+      label: "Religious and Spiritual",
+      options: [
+        { label: "Christianity" },
+        { label: "Islam" },
+        { label: "Judaism" },
+        { label: "Hinduism" },
+        { label: "Buddhism" },
+        { label: "Other Religions" },
+      ],
+    },
+    {
+      label: "Political and Social Issues",
+      options: [
+        { label: "Government and Politics" },
+        { label: "Current Events" },
+        { label: "Climate Change" },
+        { label: "Gun Control" },
+        { label: "Economic Inequality" },
+      ],
+    },
+    {
+      label: "Career Exploration",
+      options: [
+        { label: "STEM Careers" },
+        { label: "Healthcare Careers" },
+        { label: "Business Careers" },
+        { label: "Arts and Humanities Careers" },
+        { label: "Law and Legal Careers" },
+        { label: "Engineering Careers" },
+      ],
+    },
+    {
+      label: "Medicine Clubs",
+      options: [
+        { label: "Pre-Med" },
+        { label: "Medical Research" },
+        { label: "Pharmacy" },
+        { label: "Nursing" },
+        { label: "Dentistry" },
+        { label: "Veterinary Medicine" },
+        { label: "Health and Wellness" },
+      ],
+    },
+    {
+      label: "Volunteer Work",
+      options: [
+        { label: "Tutoring and Mentoring" },
+        { label: "Elderly Care" },
+        { label: "Children and Youth" },
+        { label: "Disability Support" },
+        { label: "International Aid" },
+      ],
+    },
+    {
+      label: "Technology Clubs",
+      options: [
+        { label: "Coding and Programming" },
+        { label: "Web Development" },
+        { label: "App Development" },
+        { label: "Game Development" },
+        { label: "Artificial Intelligence" },
+        { label: "Cybersecurity" },
+        { label: "Data Science" },
+      ],
+    },
+    {
+      label: "Design and Multimedia",
+      options: [
+        { label: "Graphic Design" },
+        { label: "Film and Video Production" },
+        { label: "Photography" },
+      ],
+    },
+    {
+      label: "Music and Performing Arts",
+      options: [
+        { label: "Band" },
+        { label: "Choir" },
+        { label: "Theater" },
+        { label: "Dance" },
+        { label: "Visual Arts" },
+      ],
+    },
+    {
+      label: "Entrepreneurship",
+      options: [
+        { label: "Business Planning" },
+        { label: "Startup Development" },
+        { label: "Marketing and Sales" },
+        { label: "Finance and Investment" },
+        { label: "Networking" },
+        { label: "Leadership" },
+      ],
+    },
+  ];
+
+  const renderOptions = (
+    options: {
+      options: any;
+      label: string;
+    }[]
+  ) => {
+    return options.map((option) => {
+      if (option.options) {
+        return (
+          <optgroup key={option.label} label={option.label}>
+            {renderOptions(option.options)}
+          </optgroup>
+        );
+      } else {
+        return (
+          <option key={option.label} value={option.label}>
+            {option.label}
+          </option>
+        );
+      }
+    });
+  };
+  // end of categories dropdown
+
   const handleImageUpload = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     const reader = new FileReader();
@@ -157,11 +308,7 @@ function StudentProfile() {
                   onChange={(e) => setSelectedArea(e.target.value)}
                   className="interested-area-input"
                 >
-                  <option value="">Select an interested area</option>
-                  <option value="Area 1">Area 1</option>
-                  <option value="Area 2">Area 2</option>
-                  <option value="Area 3">Area 3</option>
-                  {/* Add more options as needed */}
+                  {renderOptions(categories)}
                 </select>
                 <FontAwesomeIcon
                   className="plus-icon"

@@ -24,7 +24,7 @@ const StudentNav = () => {
     <nav>
       <Link
         id="logo"
-        to="/studentDashboard"
+        to="/dashboard/student"
         style={{ marginTop: "auto", marginBottom: "auto" }}
       >
         <div
@@ -59,7 +59,8 @@ const StudentNav = () => {
       <div className="messaging-icon">
         <Link
           id="toStudentMessaging"
-          to="/messaging/student"
+          // to="/messaging/student"
+          to="/"
           className="icon-text"
         >
           <img src={studentMessagingIcon} alt="Messaging" />
