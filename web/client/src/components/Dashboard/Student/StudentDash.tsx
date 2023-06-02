@@ -27,7 +27,7 @@ function StudentDash() {
 
       <div className="student-dashboard-container">
         <div className="greeting-container">
-          <div className="greeting-text">Greetings, User!</div>
+          <div className="container-text">Greetings, User!</div>
           <div className="greeting-recents">
             <div className="title-text">Recent visits:</div>
             <div className="title-subtext" style={{ marginBottom: "8px" }}>
@@ -74,9 +74,9 @@ function StudentDash() {
         </div>
         {/* change it so it's just the user (backend) */}
         <div className="student-feed">
-          <div className="reccomended-postings">
+          {/* <div className="reccomended-postings">
             <div
-              className="greeting-text"
+              className="container-text"
               style={{
                 border: "none",
                 textAlign: "start",
@@ -94,7 +94,6 @@ function StudentDash() {
                     className="avatar-icon"
                   />
                   Steel City Codes
-                  {/* make this dynamic */}
                 </div>
                 <div className="student-posting">
                   <img
@@ -103,7 +102,6 @@ function StudentDash() {
                     className="avatar-icon"
                   />
                   Joe Biden
-                  {/* make this dynamic */}
                 </div>
                 <div className="student-posting">
                   <img
@@ -124,7 +122,7 @@ function StudentDash() {
           <br />
           <div className="connect-container">
             <div
-              className="greeting-text"
+              className="container-text"
               style={{
                 border: "none",
                 textAlign: "start",
@@ -133,12 +131,20 @@ function StudentDash() {
             >
               Connect
             </div>
+          </div> */}
+          <div className="new-feed">
+            <div
+              className="container-text"
+              style={{ borderBottom: "2px black solid" }}
+            >
+              Feed
+            </div>
           </div>
         </div>
 
         <div className="student-trending">
           <div className="trending-container">
-            <div className="greeting-text">Trending</div>
+            <div className="container-text">Trending</div>
             <div className="trending-categories-container">
               <div className="title-text">Categories:</div>
               {/* make these dynamic */}

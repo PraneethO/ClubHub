@@ -252,8 +252,8 @@ function StudentProfile() {
       .flatMap((category) => category.options)
       .find((option) => option.label === selectedArea);
 
-    if (selectedOption) {
-      setInterestedAreas([...interestedAreas, selectedArea]);
+    if (selectedOption && !interestedAreas.includes(selectedArea)) {
+      setInterestedAreas((prevAreas) => [...prevAreas, selectedArea]);
       setSelectedArea("");
     }
   };
