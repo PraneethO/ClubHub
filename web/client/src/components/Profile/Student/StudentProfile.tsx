@@ -115,6 +115,20 @@ function StudentProfile() {
     setInterestedAreas(updatedAreas);
   };
 
+  const handleLogOut = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+
+    fetch("http://localhost:8000/api/auth", {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+    }).then((response) => {
+      if (response.status == 201) {
+        navigate("/dashboard/student");
+      }
+    });
+  };
+
   return (
     <>
       <div style={{ backgroundColor: "#d9edff" }}>
@@ -296,6 +310,14 @@ function StudentProfile() {
               onChange={handleResumeUpload}
             />
           </div>
+        </div>
+        <div className="logoutContainer">
+          <button
+            className="logoutButton"
+            onClick={(event) => handleLogOut(event)}
+          >
+            Logout
+          </button>
         </div>
       </div>
       <br />
