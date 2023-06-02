@@ -6,7 +6,6 @@ import StudentNav from "../../SearchBars/StudentNavBar";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faCamera,
   faEdit,
   faCheck,
   faPlus,
@@ -16,6 +15,7 @@ import {
 function StudentProfile() {
   const navigate = useNavigate();
 
+  // Check is user is logged in
   useEffect(() => {
     fetch("http://localhost:8000/api/auth", {
       method: "POST",
@@ -28,20 +28,33 @@ function StudentProfile() {
     });
   }, []);
 
+  // Image hovered or not
   const [isHovered, setIsHovered] = useState(false);
-  const [image, setImage] = useState<string | ArrayBuffer | null>(
-    defaultAvatar
-  );
-  const [isExperienceEditing, setIsExperienceEditing] = useState(false);
-  const [experience, setExperience] = useState("");
-  const [experienceChanges, setExperienceChanges] = useState("");
-  const [resume, setResume] = useState<File | null>(null);
 
-  const [interestedAreas, setInterestedAreas] = useState<string[]>([]);
+  const [isEditing, setIsEditing] = useState(false);
+
+  const [isExperienceEditing, setIsExperienceEditing] = useState(false);
   const [newInterestedArea, setNewInterestedArea] = useState("");
   const [selectedArea, setSelectedArea] = useState<string>("");
 
+  // All fields
+  const [resume, setResume] = useState<File | null>(null);
+  const [image, setImage] = useState<string | ArrayBuffer | null>(
+    defaultAvatar
+  );
+  const [interestedAreas, setInterestedAreas] = useState<string[]>([]);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [school, setSchool] = useState("");
+  const [region, setRegion] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [experienceChanges, setExperienceChanges] = useState("");
+  const [experience, setExperience] = useState("");
+
   const handleImageUpload = (event: ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault();
+
     const file = event.target.files?.[0];
     const reader = new FileReader();
 
@@ -54,11 +67,28 @@ function StudentProfile() {
     }
   };
 
+  const handleSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+
+    const formData = {
+      interestedAreas,
+      firstName,
+      lastName,
+      school,
+      region,
+      email,
+      phoneNumber,
+      experience,
+      resume,
+      image,
+    };
+  };
+
   const handleExperienceEdit = () => {
     setIsExperienceEditing(!isExperienceEditing);
   };
 
-  const handleSubmit = () => {
+  const handleDoneChanges = () => {
     setExperience(experienceChanges);
     setIsExperienceEditing(false);
     // Perform any necessary actions with the submitted experience data
@@ -115,6 +145,11 @@ function StudentProfile() {
     setInterestedAreas(updatedAreas);
   };
 
+  const handleEditChange = (event: React.MouseEvent<HTMLButtonElement>) => {
+    handleSubmit(event);
+    setIsEditing(false);
+  };
+
   const handleLogOut = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
@@ -136,19 +171,58 @@ function StudentProfile() {
         <div className="student-info-container" style={{ fontWeight: "bold" }}>
           <div className="student-info">
             Full Name
-            <div className="givenInfo" style={{ fontWeight: "normal" }}>
-              Neil Porwal {/* placeholder */}
-            </div>
+            {isEditing ? (
+              <div>
+                <input
+                  id="firstNameInput"
+                  value={firstName}
+                  placeholder="First Name"
+                  type="text"
+                  onChange={(event) => setFirstName(event.target.value)}
+                />
+                <input
+                  id="lastNameInput"
+                  value={lastName}
+                  placeholder="Last Name"
+                  onChange={(event) => setLastName(event.target.value)}
+                  type="text"
+                />
+              </div>
+            ) : (
+              <div className="givenInfo" style={{ fontWeight: "normal" }}>
+                {firstName + " " + lastName}
+              </div>
+            )}
             <br />
             School
-            <div className="givenInfo" style={{ fontWeight: "normal" }}>
-              North Allegheny Senior High School {/* placeholder */}
-            </div>
+            {isEditing ? (
+              <input
+                id="schoolInput"
+                value={school}
+                placeholder="School"
+                type="text"
+                onChange={(event) => setSchool(event.target.value)}
+              />
+            ) : (
+              <div className="givenInfo" style={{ fontWeight: "normal" }}>
+                {school}
+              </div>
+            )}
             <br />
             Region
-            <div className="givenInfo" style={{ fontWeight: "normal" }}>
-              Pittsburgh, Pennsylvania, United States {/* placeholder */}
-            </div>
+            {isEditing ? (
+              <input
+                id="regionInput"
+                value={region}
+                placeholder="Region"
+                type="text"
+                onChange={(event) => setRegion(event.target.value)}
+              />
+            ) : (
+              <div className="givenInfo" style={{ fontWeight: "normal" }}>
+                {region}
+              </div>
+            )}
             <br />
             Interested Areas
             <div className="givenInfo" style={{ fontWeight: "normal" }}>
@@ -221,12 +295,32 @@ function StudentProfile() {
           <br />
           <div className="student-contact-info">
             <div className="student-contact-info-text">Email:</div>
-            {/* make email dynamic */}
+            {isEditing ? (
+              <input
+                id="emailInput"
+                value={email}
+                placeholder="Email"
+                type="text"
+                onChange={(event) => setEmail(event.target.value)}
+              />
+            ) : (
+              email
+            )}
           </div>
           <br />
           <div className="student-contact-info">
             <div className="student-contact-info-text">Phone Number:</div>
-            {/* make phone number dynamic */}
+            {isEditing ? (
+              <input
+                id="phoneNumberInput"
+                value={phoneNumber}
+                placeholder="Phone Number Seperated by Dashes (XXX-XXX-XXXX)"
+                type="text"
+                onChange={(event) => setPhoneNumber(event.target.value)}
+              />
+            ) : (
+              phoneNumber
+            )}
           </div>
         </div>
 
@@ -238,7 +332,7 @@ function StudentProfile() {
               <FontAwesomeIcon
                 icon={faCheck}
                 className="edit-icon"
-                onClick={handleSubmit}
+                onClick={() => handleDoneChanges()}
               />
             ) : (
               <FontAwesomeIcon
@@ -311,13 +405,24 @@ function StudentProfile() {
             />
           </div>
         </div>
-        <div className="logoutContainer">
-          <button
-            className="logoutButton"
-            onClick={(event) => handleLogOut(event)}
-          >
-            Logout
-          </button>
+        <div className="buttonContainerMassive">
+          <div className="bottomButtonContainer">
+            <button
+              className="actionButton"
+              onClick={(event) =>
+                isEditing ? handleEditChange(event) : setIsEditing(true)
+              }
+            >
+              {isEditing ? "Submit" : "Edit"}
+            </button>
+
+            <button
+              className="logoutButton"
+              onClick={(event) => handleLogOut(event)}
+            >
+              Logout
+            </button>
+          </div>
         </div>
       </div>
       <br />
