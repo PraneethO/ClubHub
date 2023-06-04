@@ -1,4 +1,5 @@
 import "./SignUp.css";
+import "../LandingPage/NavBar/NavBar.css";
 
 import Organization from "./Organization/Organization";
 import Student from "./Student/Student";
@@ -35,14 +36,7 @@ function SignUp() {
 
   return (
     <>
-      <nav
-        style={{
-          backgroundColor: "#d9edff",
-          fontSize: "60px",
-          boxShadow: "none",
-          marginBottom: "0",
-        }}
-      >
+      <nav className="sign-up-nav">
         <Link id="logo" to="/">
           <div
             style={{
@@ -56,32 +50,21 @@ function SignUp() {
         </Link>
       </nav>
 
-      {/* <div className="logo">
-        <Link
-          id="logo"
-          to="/"
-          style={{
-            fontSize: "200px",
-            fontFamily: "Bebas Neue",
-            textAlign: "left",
-            marginLeft: "20px",
-          }}
-        >
-          <div>ClubHub</div>
-        </Link>
-      </div> */}
-
       <div className="bodyContainer">
         <div className="buttonContainer" style={{ justifyContent: "flex-end" }}>
           <button
-            className="studButton"
+            className={`studButton${
+              active === "#9da8b5" ? " hoverPointer" : ""
+            }`}
             onClick={() => setActive("#044E8B")}
             style={{ backgroundColor: active }}
           >
             Students
           </button>
           <button
-            className="orgButton"
+            className={`orgButton${
+              active === "#044E8B" ? " hoverPointer" : ""
+            }`}
             onClick={() => setActive("#9da8b5")}
             style={getColor(active)}
           >

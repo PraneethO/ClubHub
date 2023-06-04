@@ -1,23 +1,15 @@
-/* for reference to how nav is defined in NavBar */
-nav {
-  /* background-color: #EAE4DB; */
-  background-color: #d9edff;
-  height: 8vh;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add a box shadow */
-  transition: box-shadow 0.3s ease-in-out; /* Add a transition effect */
-  margin-bottom: 1rem;
-}
-
-nav:hover {
+nav.student-nav:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Increase the box shadow on hover */
 }
 
+/* search container */
 #search-container {
   position: relative;
   width: 25vw;
   height: auto;
   display: flex;
   align-items: center;
+  margin-right: auto;
   margin-left: 0 !important;
   margin-top: auto;
   margin-bottom: auto;
@@ -39,11 +31,9 @@ nav:hover {
 
 /* code to make the search bar expand upon clicking it */
 #search-container input[type="text"]:focus {
-  width: 200%;
+  width: 300%;
   transition: width 0.4s ease-in-out;
 }
-
-
 
 #search-container .search-icon {
   position: absolute;
@@ -55,14 +45,24 @@ nav:hover {
 }
 
 /* icons */
+
+/* icon wrapper */
+.icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  margin-left: 0.2rem;
+  margin-right: 0.2rem;
+}
+
 .home-icon {
   display: flex;
   align-items: center;
-  justify-content: center; /* Add this line to center the content horizontally */
+  justify-content: center;
   width: 2rem;
   height: 2rem;
-  margin-right: 0.2rem !important;
-  margin-left: auto !important;
 }
 
 .home-icon img {
@@ -71,14 +71,25 @@ nav:hover {
   filter: brightness(100000000%);
 }
 
+.positions-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+}
+
+.positions-icon img {
+  width: 2rem;
+  height: 2rem;
+}
 
 .messaging-icon {
   display: flex;
   align-items: center;
-  justify-content: center; /* Add this line to center the content horizontally */
+  justify-content: center;
   width: 2rem;
   height: 2rem;
-  margin-right: 0.2rem !important;
 }
 
 .messaging-icon img {
@@ -91,11 +102,9 @@ nav:hover {
 .profile-image {
   display: flex;
   align-items: center;
-  justify-content: center; /* Add this line to center the content horizontally */
+  justify-content: center;
   width: 2rem;
   height: 2rem;
-  margin-left: 0; /* Adjust the left margin to create spacing */
-  margin-right: 2%; /* Adjust the right margin to create spacing */
 }
 
 .profile-image img {
@@ -117,5 +126,5 @@ nav:hover {
 .home-icon:hover img,
 .messaging-icon:hover img,
 .profile-image:hover img {
-  filter: grayscale(100%);
+  filter: grayscale(10000%);
 }

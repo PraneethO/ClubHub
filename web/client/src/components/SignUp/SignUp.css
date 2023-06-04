@@ -1,31 +1,4 @@
-nav {
-  margin: 0;
-  padding: 0;
-
-  position: sticky;
-
-  top: 0;
-
-  height: 10vh;
-  width: 100%;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 2rem;
-}
-
-#logo {
-  margin-left: 2%;
-
-  font-size: 30px;
-  color: #044e8b;
-
-  text-decoration: none;
-}
-
-/* ! Code for Buttons */
-
+/* Code for Buttons */
 .bodyContainer {
   display: flex;
   flex-direction: column;
@@ -49,6 +22,8 @@ nav {
 
   justify-self: right;
   justify-items: right;
+  box-shadow: none;
+  background-color: transparent;
 }
 
 .studButton {
@@ -78,4 +53,21 @@ nav {
 
 
   box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.4);
+}
+/* hover */
+/* .buttonContainer button:hover {
+  cursor: pointer;
+} */
+.hoverPointer:hover {
+  cursor: pointer;
+}
+
+
+/* to eliminate shadows between the buttons */
+.buttonContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 540px;
+  height: 10%;
+  margin-top: 2rem;
 }

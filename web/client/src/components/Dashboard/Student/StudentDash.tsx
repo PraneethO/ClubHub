@@ -74,72 +74,79 @@ function StudentDash() {
         </div>
         {/* change it so it's just the user (backend) */}
         <div className="student-feed">
-          {/* <div className="reccomended-postings">
-            <div
-              className="container-text"
-              style={{
-                border: "none",
-                textAlign: "start",
-                marginBottom: "10px",
-              }}
-            >
-              Reccomended postings
-            </div>
-            <div className="postings-gallery">
-              <div className="postings-wrapper">
-                <div className="student-posting">
-                  <img
-                    src={defaultAvatar}
-                    alt="Avatar"
-                    className="avatar-icon"
-                  />
-                  Steel City Codes
-                </div>
-                <div className="student-posting">
-                  <img
-                    src={defaultAvatar}
-                    alt="Avatar"
-                    className="avatar-icon"
-                  />
-                  Joe Biden
-                </div>
-                <div className="student-posting">
-                  <img
-                    src={galleryIcon}
-                    alt="Avatar"
-                    className="avatar-icon"
-                    style={{
-                      borderRadius: "0px",
-                      filter: "brightness(10000%)",
-                    }}
-                  />
-                  Explore...
+          <div className="feed-container">
+            <div className="reccomended-postings">
+              <div
+                className="container-text"
+                style={{
+                  border: "none",
+                  textAlign: "start",
+                }}
+              >
+                Apply!
+              </div>
+              <div className="postings-gallery">
+                <div className="postings-wrapper">
+                  <div className="student-posting">
+                    <img
+                      src={defaultAvatar}
+                      alt="Avatar"
+                      className="avatar-icon"
+                    />
+                    Steel City Codes
+                  </div>
+                  <div className="student-posting">
+                    <img
+                      src={defaultAvatar}
+                      alt="Avatar"
+                      className="avatar-icon"
+                    />
+                    Joe Biden
+                  </div>
+                  <div className="student-posting">
+                    <img
+                      src={galleryIcon}
+                      alt="Avatar"
+                      className="avatar-icon"
+                      style={{
+                        borderRadius: "0px",
+                        filter: "brightness(10000%)",
+                      }}
+                    />
+                    More...
+                  </div>
                 </div>
               </div>
             </div>
           </div>
           <br />
           <br />
-          <div className="connect-container">
+          <div className="feed-container">
             <div
               className="container-text"
               style={{
                 border: "none",
                 textAlign: "start",
-                marginBottom: "10px",
               }}
             >
-              Connect
-            </div>
-          </div> */}
-          <div className="new-feed">
-            <div
-              className="container-text"
-              style={{ borderBottom: "2px black solid" }}
-            >
-              Feed
+              Explore
             </div>
           </div>
+          <br />
+          <br />
+          <div className="feed-container">
+            <div
+              className="container-text"
+              style={{
+                border: "none",
+                textAlign: "start",
+              }}
+            >
+              Reccomended
+            </div>
+          </div>
+          <br />
+          <br />
         </div>
 
         <div className="student-trending">

@@ -1,19 +1,72 @@
+/* Default Navbar */
 nav {
-  margin: 0;
-  padding: 0;
-
   top: 0;
   left: 0;
   z-index: 9999;
-  height: 8vh !important;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: #d9edff;
+
+  margin: 0;
+  padding: 0;
+
+  position: sticky;
+
+
+  height: 8vh;
   width: 100%;
+}
+
+/* Student Navbar */
+nav.student-nav {
+  margin: 0;
+  padding: 0;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  gap: 2rem;
+
+  height: 8vh;
+  width: 100%;
+  position: sticky;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
 
-  /* background-color: #000000; */
+  background-color: #d9edff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease-in-out;
+  margin-bottom: 1rem;
 }
 
+/* Sign Up Navbar */
+nav.sign-up-nav {
+  margin: 0;
+  padding: 0;
+
+  position: sticky;
+
+  top: 0;
+
+  height: 8vh;
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  
+  font-size: 60px;
+  box-shadow: none;
+  margin-bottom: 0;
+  background-color: #d9edff;
+}
+
+
+/* landing page nav & display */
 #logo {
   margin-left: 2% !important;
   font-size: 2rem;
@@ -25,21 +78,20 @@ nav {
 }
 
 
-.logo-container {
+/* .logo-container {
   flex-grow: 1;
   flex-shrink: 1;
   flex-basis: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-}
+  height: 8vh;
+} */
 
 #signButtonContainerNav {
   margin-right: 2%;
   margin-top: auto;
   margin-bottom: auto;
-  /* Padding for White Border Around Text */
-  /* padding: 0.25% 0.5% 0.25% 0.5%; */
   padding: 0.5% 0.75% 0.5% 0.75%;
 
   /* White Border Around Text */
@@ -47,6 +99,7 @@ nav {
   background-color: #044e8b;
   border: none;
   text-align: center;
+
   /* Text */
   white-space: nowrap;
   font-size: 2rem;
@@ -57,15 +110,6 @@ nav {
 }
 
 #signButtonContainerNav:hover {
-  background-color: #9da8b5;
-}
-
-#ourTeamContainer {
-  align-items: right;
-
-  font-family: "Bebas Neue";
-  white-space: nowrap;
-  font-size: 40px;
-  color: #ffffff;
-  letter-spacing: 0px;
+  /* background-color: #9da8b5; */
+  background-color: #1369af;
 }

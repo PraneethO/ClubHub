@@ -72,7 +72,21 @@
 }
 
 .givenInfo {
-  margin-top: 0.5%;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  font-family: "Montserrat", sans-serif;
+}
+
+/* css for the user to edit given information */
+.changing-student-info-text {
+  margin-top: 0.5rem;
+
+  width: 60%;
+  display: flex;
+  
+  background-color: #e8f0fe !important;
+  padding: 4px 8px;
+  border-radius: 4px;
   font-size: 1rem;
   font-family: "Montserrat", sans-serif;
 }
@@ -376,7 +390,8 @@
 }
 
 .logoutButton {
-  background-color: #803e3f;
+  /* background-color: #803e3f; */
+  background-color: #044e8b;
   color: white;
 
   font-size: 5vh;
@@ -390,7 +405,8 @@
 }
 
 .logoutButton:hover {
-  background-color: #5d2d2e;
+  /* background-color: #5d2d2e; */
+  background-color: #1369af;
 }
 
 .actionButton {

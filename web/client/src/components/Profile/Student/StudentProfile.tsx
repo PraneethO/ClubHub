@@ -12,6 +12,8 @@ import {
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 
+import Select from "react-select";
+
 function StudentProfile() {
   const navigate = useNavigate();
 
@@ -133,6 +135,150 @@ function StudentProfile() {
     }
   };
 
+  // interested categories dropdown
+  const categories: {
+    label: string;
+    options: { label: string; options?: { label: string }[] }[];
+  }[] = [
+    {
+      label: "Religious and Spiritual",
+      options: [
+        { label: "Christianity" },
+        { label: "Islam" },
+        { label: "Judaism" },
+        { label: "Hinduism" },
+        { label: "Buddhism" },
+        { label: "Other Religions" },
+      ],
+    },
+    {
+      label: "Political and Social Issues",
+      options: [
+        { label: "Government and Politics" },
+        { label: "Current Events" },
+        { label: "Climate Change" },
+        { label: "Gun Control" },
+        { label: "Economic Inequality" },
+      ],
+    },
+    {
+      label: "Career Exploration",
+      options: [
+        { label: "STEM Careers" },
+        { label: "Healthcare Careers" },
+        { label: "Business Careers" },
+        { label: "Arts and Humanities Careers" },
+        { label: "Law and Legal Careers" },
+        { label: "Engineering Careers" },
+      ],
+    },
+    {
+      label: "Medicine Clubs",
+      options: [
+        { label: "Pre-Med" },
+        { label: "Medical Research" },
+        { label: "Pharmacy" },
+        { label: "Nursing" },
+        { label: "Dentistry" },
+        { label: "Veterinary Medicine" },
+        { label: "Health and Wellness" },
+      ],
+    },
+    {
+      label: "Volunteer Work",
+      options: [
+        { label: "Tutoring and Mentoring" },
+        { label: "Elderly Care" },
+        { label: "Children and Youth" },
+        { label: "Disability Support" },
+        { label: "International Aid" },
+      ],
+    },
+    {
+      label: "Technology Clubs",
+      options: [
+        { label: "Coding and Programming" },
+        { label: "Web Development" },
+        { label: "App Development" },
+        { label: "Game Development" },
+        { label: "Artificial Intelligence" },
+        { label: "Cybersecurity" },
+        { label: "Data Science" },
+      ],
+    },
+    {
+      label: "Design and Multimedia",
+      options: [
+        { label: "Graphic Design" },
+        { label: "Film and Video Production" },
+        { label: "Photography" },
+      ],
+    },
+    {
+      label: "Music and Performing Arts",
+      options: [
+        { label: "Band" },
+        { label: "Choir" },
+        { label: "Theater" },
+        { label: "Dance" },
+        { label: "Visual Arts" },
+      ],
+    },
+    {
+      label: "Entrepreneurship",
+      options: [
+        { label: "Business Planning" },
+        { label: "Startup Development" },
+        { label: "Marketing and Sales" },
+        { label: "Finance and Investment" },
+        { label: "Networking" },
+        { label: "Leadership" },
+      ],
+    },
+    {
+      label: "Other Clubs and Organizations",
+      options: [
+        { label: "Professional Associations" },
+        { label: "Student Government" },
+        { label: "Honor Societies" },
+        { label: "Special Interest Groups" },
+      ],
+    },
+  ];
+
+  const renderOptions = (
+    options: { options?: { label: string }[]; label: string }[]
+  ) => {
+    return options.map((option) => {
+      if (option.options) {
+        return (
+          <optgroup key={option.label} label={option.label}>
+            {option.options.map((subOption) => (
+              <option key={subOption.label} value={subOption.label}>
+                {subOption.label}
+              </option>
+            ))}
+          </optgroup>
+        );
+      } else if (option.label === "") {
+        // Handle the empty label for the first option
+        return (
+          <option key={option.label} value="">
+            Select interest areas
+          </option>
+        );
+      } else {
+        return (
+          <option key={option.label} value={option.label}>
+            {option.label}
+          </option>
+        );
+      }
+    });
+  };
+
+  // end of categories dropdown
+
   const handleAddInterestedArea = () => {
     const selectedOption = categories
       .flatMap((category) => category.options)
@@ -201,9 +347,10 @@ function StudentProfile() {
             School
             {isEditing ? (
               <input
+                className="changing-student-info-text"
                 id="schoolInput"
                 value={school}
-                placeholder="School"
+                placeholder="Enter your school"
                 type="text"
                 onChange={(event) => setSchool(event.target.value)}
               />
@@ -216,6 +363,7 @@ function StudentProfile() {
             Region
             {isEditing ? (
               <input
+                className="changing-student-info-text"
                 id="regionInput"
                 value={region}
                 placeholder="Region"
