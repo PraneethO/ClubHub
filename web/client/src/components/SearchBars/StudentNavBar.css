@@ -10,7 +10,7 @@ nav.student-nav:hover {
   display: flex;
   align-items: center;
   margin-right: auto;
-  margin-left: 0 !important;
+  margin-left: -1rem !important;
   margin-top: auto;
   margin-bottom: auto;
 }

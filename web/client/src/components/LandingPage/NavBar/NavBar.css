@@ -16,7 +16,7 @@ nav {
   position: sticky;
 
 
-  height: 8vh;
+  height: 4rem;
   width: 100%;
 }
 
@@ -29,7 +29,7 @@ nav.student-nav {
   z-index: 9999;
   gap: 2rem;
 
-  height: 8vh;
+  height: 4rem;
   width: 100%;
   position: sticky;
   display: flex;
@@ -51,7 +51,7 @@ nav.sign-up-nav {
 
   top: 0;
 
-  height: 8vh;
+  height: 4rem;
   width: 100%;
 
   display: flex;
@@ -85,7 +85,7 @@ nav.sign-up-nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 8vh;
+  height: 4rem;
 } */
 
 #signButtonContainerNav {
