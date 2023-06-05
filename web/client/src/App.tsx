@@ -9,7 +9,7 @@ import StudentProfile from "./components/Profile/Student/StudentProfile";
 import OrgProfile from "./components/Profile/Organization/OrgProfile";
 import OrganizationDash from "./components/Dashboard/Organization/OrganizationDash";
 
-import StudentMessaging from "./components/Messaging/student-messaging";
+import StudentMessaging from "./components/Messaging/StudentMessaging";
 import StudentPositions from "./components/Positions/StudentPositions";
 
 function App() {

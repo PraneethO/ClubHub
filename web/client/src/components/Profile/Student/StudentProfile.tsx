@@ -333,6 +333,20 @@ function StudentProfile() {
     setPhoneNumber(formattedValue);
   };
 
+  const [isEditingPhoneNumber, setIsEditingPhoneNumber] = useState(false);
+
+  const handlePhoneNumberEdit = () => {
+    setIsEditingPhoneNumber(true);
+  };
+
+  const handleAddNowClick = () => {
+    setIsEditingPhoneNumber(true);
+  };
+
+  const handlePhoneNumberBlur = () => {
+    setIsEditingPhoneNumber(false);
+  };
+
   return (
     <>
       <div style={{ backgroundColor: "#d9edff" }}>
@@ -511,17 +525,29 @@ function StudentProfile() {
               //   onChange={(event) => setPhoneNumber(event.target.value)}
               // />
 
-              <input
-                className="editing-contact-info"
-                id="phoneNumberInput"
-                value={phoneNumber}
-                placeholder="Enter your phone number (numbers only)"
-                type="text"
-                onChange={handlePhoneNumberChange}
-                autoCapitalize="off"
-              />
+              <>
+                <input
+                  className="editing-contact-info"
+                  id="phoneNumberInput"
+                  value={phoneNumber}
+                  placeholder="Enter your phone number"
+                  type="text"
+                  onChange={handlePhoneNumberChange}
+                  onBlur={handlePhoneNumberBlur}
+                />
+                <button className="add-now-button" onClick={handleAddNowClick}>
+                  Add Now
+                </button>
+              </>
             ) : (
-              formatPhoneNumber(phoneNumber) // Format the phone number for display
+              <>
+                <div className="givenInfo">{phoneNumber}</div>
+                <FontAwesomeIcon
+                  icon={faEdit}
+                  className="edit-icon"
+                  onClick={handlePhoneNumberEdit}
+                />
+              </>
             )}
           </div>
         </div>
