@@ -314,6 +314,25 @@ function StudentProfile() {
     });
   };
 
+  // formatting the phone number function in the contact info container
+  function formatPhoneNumber(phoneNumber: string) {
+    const digitsOnly = phoneNumber.replace(/[^\d]/g, "");
+    const match = digitsOnly.match(/^(\d{3})(\d{3})(\d{4})$/);
+
+    if (match) {
+      return `(${match[1]}) ${match[2]}-${match[3]}`;
+    }
+
+    return phoneNumber;
+  }
+
+  const handlePhoneNumberChange = (event: { target: { value: any } }) => {
+    const inputValue = event.target.value;
+    const digitsOnly = inputValue.replace(/[^\d]/g, "");
+    const formattedValue = formatPhoneNumber(digitsOnly.substring(0, 10));
+    setPhoneNumber(formattedValue);
+  };
+
   return (
     <>
       <div style={{ backgroundColor: "#d9edff" }}>
@@ -322,9 +341,10 @@ function StudentProfile() {
           <div className="student-info">
             Full Name
             {isEditing ? (
-              <div>
+              <div className="name-input-row">
                 <input
                   id="firstNameInput"
+                  className="editing-name-text"
                   value={firstName}
                   placeholder="First Name"
                   type="text"
@@ -332,6 +352,7 @@ function StudentProfile() {
                 />
                 <input
                   id="lastNameInput"
+                  className="editing-name-text"
                   value={lastName}
                   placeholder="Last Name"
                   onChange={(event) => setLastName(event.target.value)}
@@ -347,7 +368,7 @@ function StudentProfile() {
             School
             {isEditing ? (
               <input
-                className="changing-student-info-text"
+                className="editing-student-info-text"
                 id="schoolInput"
                 value={school}
                 placeholder="Enter your school"
@@ -363,7 +384,7 @@ function StudentProfile() {
             Region
             {isEditing ? (
               <input
-                className="changing-student-info-text"
+                className="editing-student-info-text"
                 id="regionInput"
                 value={region}
                 placeholder="Region"
@@ -454,12 +475,22 @@ function StudentProfile() {
           <div className="student-contact-info">
             <div className="student-contact-info-text">Email:</div>
             {isEditing ? (
+              // <input
+              //   className="editing-contact-info"
+              //   id="emailInput"
+              //   value={email}
+              //   placeholder="Enter your email"
+              //   type="text"
+              //   onChange={(event) => setEmail(event.target.value)}
+              // />
               <input
-                id="emailInput"
+                type="email"
+                id="email"
+                className="editing-contact-info"
+                placeholder="Enter Your Email"
                 value={email}
-                placeholder="Email"
-                type="text"
-                onChange={(event) => setEmail(event.target.value)}
+                onChange={(e) => setEmail(e.target.value)}
+                autoCapitalize="off"
               />
             ) : (
               email
@@ -469,15 +500,28 @@ function StudentProfile() {
           <div className="student-contact-info">
             <div className="student-contact-info-text">Phone Number:</div>
             {isEditing ? (
+              // <input
+              //   className="editing-contact-info"
+              //   autoCapitalize="none"
+              //   autoCorrect="on"
+              //   id="phoneNumberInput"
+              //   value={phoneNumber}
+              //   placeholder="Phone Number Seperated by Dashes (XXX-XXX-XXXX)"
+              //   type="text"
+              //   onChange={(event) => setPhoneNumber(event.target.value)}
+              // />
+
               <input
+                className="editing-contact-info"
                 id="phoneNumberInput"
                 value={phoneNumber}
-                placeholder="Phone Number Seperated by Dashes (XXX-XXX-XXXX)"
+                placeholder="Enter your phone number (numbers only)"
                 type="text"
-                onChange={(event) => setPhoneNumber(event.target.value)}
+                onChange={handlePhoneNumberChange}
+                autoCapitalize="off"
               />
             ) : (
-              phoneNumber
+              formatPhoneNumber(phoneNumber) // Format the phone number for display
             )}
           </div>
         </div>

@@ -75,10 +75,11 @@
   margin-top: 0.5rem;
   font-size: 1rem;
   font-family: "Montserrat", sans-serif;
+  text-transform: capitalize;
 }
 
 /* css for the user to edit given information */
-.changing-student-info-text {
+.editing-student-info-text {
   margin-top: 0.5rem;
 
   width: 60%;
@@ -90,6 +91,49 @@
   font-size: 1rem;
   font-family: "Montserrat", sans-serif;
 }
+
+.editing-name-text {
+  margin-top: 0.5rem;
+  background-color: #e8f0fe !important;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: "Montserrat", sans-serif;
+}
+
+.name-input-row {
+  display: inline-block;
+  flex-direction: row;
+  width: 60%;
+}
+
+.name-input-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.editing-name-text {
+  flex: 1;
+}
+
+.editing-contact-info {
+  margin-top: 0.5rem;
+
+  width: 40%;
+  display: flex;
+  margin-left: 1rem;
+  margin-top: auto;
+  margin-bottom: auto;
+  
+  background-color: #e8f0fe !important;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: "Montserrat", sans-serif;
+  text-transform: none;
+}
+
+
 
 /* interested areas css */
 .interested-area-input {
@@ -321,9 +365,13 @@
 }
 
 .student-contact-info {
+  height: 2rem;
   display: flex;
-  justify-content: flex-start; /* Align items to the left */
-  align-items: center; /* Center vertically */
+  justify-content: flex-start;
+  align-items: center;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
 }
 
 .student-contact-info-text {
@@ -332,6 +380,7 @@
   font-size: 1rem;
   font-weight: bold;
   margin-left: 1%;
+  margin-right: 1rem;
 }
 
 /* Additional CSS for responsiveness */

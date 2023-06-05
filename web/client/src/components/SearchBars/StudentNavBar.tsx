@@ -57,7 +57,7 @@ const StudentNav = () => {
         style={{ marginLeft: "0.2rem", marginRight: "0.2rem" }}
       >
         <div className="positions-icon">
-          <Link to="/messaging/student" className="icon-text">
+          <Link to="/positions/student" className="icon-text">
             <img src={briefcaseIcon} />
             Positions
           </Link>
