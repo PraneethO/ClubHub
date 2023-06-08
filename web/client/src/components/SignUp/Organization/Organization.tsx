@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 function signUp() {
-
   return <div style={{ textAlign: "center" }}>Sign Up</div>;
 }
 
@@ -146,8 +145,12 @@ function Organization() {
             >
               <option value=""></option>
               <option value="Computer Science">Computer Science</option>
+              <option value="STEM Education">STEM Education</option>
+              <option value="Non-STEM Education">Non-STEM Education</option>
               <option value="Medicine">Medicine</option>
+              <option value="Activisim">Activisim</option>
               <option value="Service">Service</option>
+              <option value="Religion">Religion</option>
             </select>
           </div>
 
