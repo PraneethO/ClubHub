@@ -1,9 +1,11 @@
 import React, { useState, ChangeEvent, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import defaultAvatar from "../../../assets/default-avatar.png";
-import "./StudentProfile.css";
-import StudentNav from "../../SearchBars/StudentNavBar";
 
+import StudentNav from "../../SearchBars/StudentNavBar";
+import "./StudentProfile.css";
+
+import { useNavigate } from "react-router-dom";
+
+import defaultAvatar from "../../../assets/default-avatar.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEdit,
@@ -11,8 +13,6 @@ import {
   faPlus,
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
-
-import Select from "react-select";
 
 function StudentProfile() {
   const navigate = useNavigate();
@@ -23,12 +23,72 @@ function StudentProfile() {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
-    }).then((response) => {
-      if (response.status == 201) {
-        navigate("/");
-      }
-    });
+    })
+      .then((response) => {
+        if (response.status == 403) {
+          navigate("/");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        const {
+          firstName,
+          lastName,
+          school,
+          region,
+          interested,
+          email,
+          phone,
+          experience,
+        } = data;
+        if (firstName) {
+          setFirstName(firstName);
+        }
+        if (lastName) {
+          setLastName(lastName);
+        }
+        if (school) {
+          setSchool(school);
+        }
+        if (region) {
+          setRegion(region);
+        }
+        if (interested) {
+          setInterestedAreas(interested);
+        }
+        if (email) {
+          setEmail(email);
+        }
+        if (phone) {
+          setPhoneNumber(phone);
+        }
+        if (experience) {
+          setExperience(experience);
+        }
+      });
   }, []);
+
+  const handleSubmit = async (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+
+    const formData = {
+      interested: interestedAreas,
+      firstName,
+      lastName,
+      school,
+      region,
+      email,
+      phone: phoneNumber,
+      experience,
+    };
+
+    await fetch("http://localhost:8000/api/users", {
+      method: "PATCH",
+      body: JSON.stringify(formData),
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+    });
+  };
 
   // Image hovered or not
   const [isHovered, setIsHovered] = useState(false);
@@ -67,23 +127,6 @@ function StudentProfile() {
     if (file) {
       reader.readAsDataURL(file);
     }
-  };
-
-  const handleSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-
-    const formData = {
-      interestedAreas,
-      firstName,
-      lastName,
-      school,
-      region,
-      email,
-      phoneNumber,
-      experience,
-      resume,
-      image,
-    };
   };
 
   const handleExperienceEdit = () => {
