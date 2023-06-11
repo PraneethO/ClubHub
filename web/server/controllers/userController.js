@@ -59,7 +59,31 @@ const getUserInfo = asyncHandler(async (req, res) => {
 // @desc Update user info
 // @route PATCH /api/users
 // @access Private
-const updateUser = asyncHandler(async (req, res) => {});
+const updateUser = asyncHandler(async (req, res) => {
+  const updatedUserInfo = req.body;
+
+  try {
+    // Update the user in the database
+    const updatedUser = await User.findOneAndUpdate(
+      { _id: req.session.userId },
+      { $set: updatedUserInfo },
+      { new: true }
+    )
+      .lean()
+      .exec();
+
+    if (updatedUser) {
+      return res
+        .status(200)
+        .json({ message: "User updated successfully", user: updatedUser });
+    } else {
+      return res.status(404).json({ message: "User not found" });
+    }
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+});
 
 // @desc Delete user
 // @route DELETE /api//users

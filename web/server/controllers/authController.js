@@ -52,9 +52,10 @@ const logoutUser = asyncHandler(async (req, res) => {
 
 const checkUserStatus = asyncHandler(async (req, res) => {
   if (req.session.userId) {
-    return res.status(200).json({ message: "Logged in" });
+    const user = await User.findOne({ _id: req.session.userId }).lean().exec();
+    return res.status(200).json(user);
   } else {
-    return res.status(201).json({ message: "Not logged in" });
+    return res.status(403).json({ message: "Not logged in" });
   }
 });
 
