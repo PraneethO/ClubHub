@@ -17,32 +17,6 @@ function Student() {
 
   const [statusCode, setStatusCode] = useState(0);
 
-  const handleFirstNameChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setFirstName(event.target.value);
-  };
-
-  const handleLastNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setLastName(event.target.value);
-  };
-
-  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(event.target.value);
-  };
-
-  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(event.target.value);
-  };
-
-  const handleStateChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setState(event.target.value);
-  };
-
-  const handleGradeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setGrade(event.target.value);
-  };
-
   // Tests Password --> Auto Updates w/ passsword state
   const hasValidPassword =
     /^(?=.*[0-9])(?=.*[!@#$%^&*_-])[a-zA-Z0-9!@#$%^&*_-]{8,}$/.test(password);
@@ -97,7 +71,7 @@ function Student() {
               autoCapitalize="words"
               required
               value={firstName}
-              onChange={handleFirstNameChange}
+              onChange={(event) => setFirstName(event.target.value)}
             />
           </div>
 
@@ -109,7 +83,7 @@ function Student() {
               autoCapitalize="words"
               required
               value={lastName}
-              onChange={handleLastNameChange}
+              onChange={(event) => setLastName(event.target.value)}
             />
           </div>
         </div>
@@ -122,7 +96,7 @@ function Student() {
               className="inputBoxText"
               style={{ width: "500px" }}
               autoCapitalize="off"
-              onChange={handleEmailChange}
+              onChange={(event) => setEmail(event.target.value)}
             />
           </div>
         </div>
@@ -143,7 +117,7 @@ function Student() {
                   marginBottom: "10px",
                 }}
                 value={password}
-                onChange={handlePasswordChange}
+                onChange={(event) => setPassword(event.target.value)}
                 autoComplete="new-password"
               />
 
@@ -173,7 +147,7 @@ function Student() {
               className="inputBoxText"
               pattern="[1-9]|1[0-2]"
               required
-              onChange={handleGradeChange}
+              onChange={(event) => setGrade(event.target.value)}
             />
           </div>
 
@@ -183,7 +157,7 @@ function Student() {
               name="state"
               className="inputBoxText"
               autoComplete="on"
-              onChange={handleStateChange}
+              onChange={(event) => setState(event.target.value)}
             >
               <option value=""></option>
               <option value="AL">Alabama</option>

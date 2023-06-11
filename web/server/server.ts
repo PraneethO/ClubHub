@@ -49,38 +49,9 @@ if (app.get("env") === "production") {
   app.set("trust proxy", 1); // trust first proxy
 }
 
-// ! Actual Routes (Look Here)
-
-// ! Authenticatoin Routes (Login, Signup, Logout)
-const authController = require("./controllers/authController");
-app
-  .route("/api/auth")
-  .delete((req, res) => {
-    authController.logoutUser(req, res);
-  })
-  .post((req, res) => {
-    authController.checkUserStatus(req, res);
-  });
-app.route("/api/auth/login").post((req, res) => {
-  authController.loginUser(req, res);
-});
-
-// ! User Routes (get info, update info, delete info)
-const userController = require("./controllers/userController");
-app
-  .route("/api/users")
-  .post((req, res) => {
-    userController.createNewUser(req, res);
-  })
-  .get((req, res) => {
-    userController.getUserInfo(req, res);
-  })
-  .patch((req, res) => {
-    userController.updateUser(req, res);
-  })
-  .delete((req, res) => {
-    userController.deleteUser(req, res);
-  });
+// Routes defined here
+import router from "./routes/routes";
+app.use("/api", router);
 
 // DO NOT DELETE: This is a catchall, so add all of your routes above this and the 404 will handle the rest
 app.all("*", (req, res) => {

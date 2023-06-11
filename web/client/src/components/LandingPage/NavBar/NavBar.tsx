@@ -11,7 +11,7 @@ function Navbar() {
       <Link id="logo" to="/">
         <div>ClubHub</div>
       </Link>
-      <Link to="/signUp" id="signButtonContainerNav">
+      <Link to="/sign-up" id="signButtonContainerNav">
         {isLoggedIn()}
       </Link>
     </nav>

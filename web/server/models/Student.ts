@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const userSchema = new mongoose.Schema({
+const studentSchema = new mongoose.Schema({
   _id: { type: String, required: true },
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
@@ -17,6 +17,6 @@ const userSchema = new mongoose.Schema({
   recent: [{ type: String }],
 });
 
-const User = mongoose.model("User", userSchema);
+const Student = mongoose.model("Student", studentSchema);
 
-export default User;
+export default Student;

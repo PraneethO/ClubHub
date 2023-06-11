@@ -1,13 +1,13 @@
-import User from "../models/User";
+import Student from "../models/Student";
 import { Request, Response } from "express";
 
 const uuidv4 = require("uuid").v4;
 const bcrypt = require("bcrypt");
 
-// @desc Create new user
-// @route POST /api/users
+// @desc Create new student
+// @route POST /api/student
 // @access Private
-const createNewUser = async (req: Request, res: Response) => {
+const createNewStudent = async (req: Request, res: Response) => {
   const { firstName, lastName, email, password, grade, state } = req.body;
 
   // Confirm Data
@@ -16,15 +16,15 @@ const createNewUser = async (req: Request, res: Response) => {
   }
 
   // Check for Duplicate
-  const duplicate = await User.findOne({ email }).lean().exec();
+  const duplicate = await Student.findOne({ email }).lean().exec();
   if (duplicate) {
     return res.status(409).json({ message: "Duplicate email" });
   }
 
   const hashedPwd = await bcrypt.hash(password, 10); // Password Hash
 
-  // Create and Store User
-  const newUser = new User({
+  // Create and Store Student
+  const newStudent = new Student({
     _id: uuidv4(),
     firstName,
     lastName,
@@ -33,12 +33,12 @@ const createNewUser = async (req: Request, res: Response) => {
     state,
     grade,
   });
-  await newUser
+  await newStudent
     .save()
     .then((result: any) => {
       req.session.loggedIn = true;
-      req.session.userId = newUser._id;
-      return res.status(201).json({ message: `New user ${email} created` });
+      req.session.id = newStudent._id;
+      return res.status(201).json({ message: `New student ${email} created` });
     })
     .catch((error: string) => {
       return res.status(500).json({ message: "Internal server error" });
@@ -46,35 +46,35 @@ const createNewUser = async (req: Request, res: Response) => {
     });
 };
 
-// @desc Get user info
-// @route GET /api/users
+// @desc Get student info
+// @route GET /api/student
 // @access Private
-const getUserInfo = async (req: Request, res: Response) => {
-  if (req.session.loggedIn && req.session.userId) {
-    res.send(req.session.userId);
+const getStudentInfo = async (req: Request, res: Response) => {
+  if (req.session.loggedIn && req.session.id) {
+    res.send(req.session.id);
   }
 };
 
-// @desc Update user info
-// @route PATCH /api/users
+// @desc Update student info
+// @route PATCH /api/student
 // @access Private
-const updateUser = async (req: Request, res: Response) => {
-  const updatedUserInfo = req.body;
+const updateStudent = async (req: Request, res: Response) => {
+  const updatedStudentInfo = req.body;
 
   try {
     // Update the user in the database
-    const updatedUser = await User.findOneAndUpdate(
-      { _id: req.session.userId },
-      { $set: updatedUserInfo },
+    const updatedStudent = await Student.findOneAndUpdate(
+      { _id: req.session.id },
+      { $set: updatedStudentInfo },
       { new: true }
     )
       .lean()
       .exec();
 
-    if (updatedUser) {
+    if (updatedStudent) {
       return res
         .status(200)
-        .json({ message: "User updated successfully", user: updatedUser });
+        .json({ message: "User updated successfully", user: updatedStudent });
     } else {
       return res.status(404).json({ message: "User not found" });
     }
@@ -84,9 +84,9 @@ const updateUser = async (req: Request, res: Response) => {
   }
 };
 
-// @desc Delete user
-// @route DELETE /api//users
+// @desc Delete student
+// @route DELETE /api//student
 // @access Private
-const deleteUser = async (req: Request, res: Response) => {};
+const deleteStudent = async (req: Request, res: Response) => {};
 
-export { createNewUser, getUserInfo, updateUser, deleteUser };
+export { createNewStudent, getStudentInfo, updateStudent, deleteStudent };
