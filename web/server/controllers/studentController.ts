@@ -87,6 +87,20 @@ const updateStudent = async (req: Request, res: Response) => {
 // @desc Delete student
 // @route DELETE /api//student
 // @access Private
-const deleteStudent = async (req: Request, res: Response) => {};
+const deleteStudent = async (req: Request, res: Response) => {
+  try {
+    // Delete the user
+    const result = await Student.deleteOne({ _id: req.session.id }).exec();
+
+    if (result.deletedCount === 1) {
+      return res.status(200).json({ message: "Student deleted successfully" });
+    } else {
+      return res.status(404).json({ message: "Student not found" });
+    }
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+};
 
 export { createNewStudent, getStudentInfo, updateStudent, deleteStudent };
