@@ -7,7 +7,7 @@ const bcrypt = require("bcrypt");
 declare module "express-session" {
   interface SessionData {
     loggedIn?: boolean;
-    id?: string;
+    idUsed?: string;
   }
 }
 
@@ -43,7 +43,7 @@ const loginUser = async (req: Request, res: Response) => {
         }
         if (passwordMatch) {
           req.session.loggedIn = true;
-          req.session.id = student._id;
+          req.session.idUsed = student._id;
           return res.status(201).json({ message: "Logged in" });
         } else {
           return res.status(401).json({ message: "Incorrect password" });
@@ -60,7 +60,7 @@ const loginUser = async (req: Request, res: Response) => {
         }
         if (passwordMatch) {
           req.session.loggedIn = true;
-          req.session.id = organization._id;
+          req.session.idUsed = organization._id;
           return res.status(201).json({ message: "Logged in" });
         } else {
           return res.status(401).json({ message: "Incorrect password" });
@@ -75,18 +75,24 @@ const loginUser = async (req: Request, res: Response) => {
 // @access Private
 const logoutUser = async (req: Request, res: Response) => {
   req.session.loggedIn = false;
-  req.session.id = null;
+  req.session.idUsed = null;
   return res.status(201).json({ message: "Logged out" });
 };
 
 // @route POST /api/auth
 const checkUserStatus = async (req: Request, res: Response) => {
-  if (await req.session.id) {
-    var temp = await Student.findOne({ _id: req.session.id }).lean().exec();
-    if (!temp) {
-      temp = await Student.findOne({ _id: req.session.id });
+  if (req.session.idUsed) {
+    var user = await Student.findOne({ _id: req.session.idUsed }).lean().exec();
+    if (user) {
+      return res.status(200).json(user);
     }
-    return res.status(200).json(temp);
+    var org = await Organization.findOne({ _id: req.session.idUsed })
+      .lean()
+      .exec();
+    if (!org) {
+      res.clearCookie("connect.sid");
+    }
+    return res.status(200).json(org);
   } else {
     return res.status(403).json({ message: "Not logged in" });
   }

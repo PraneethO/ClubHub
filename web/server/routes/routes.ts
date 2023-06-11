@@ -30,6 +30,20 @@ router
   .delete("/users", (req, res) => {
     studentController.deleteUser(req, res);
   });
-// ! Organization Routes
 
+// ! Organization Routes
+const organizationController = require("../controllers/organizationController");
+router
+  .post("/organizations", (req, res) => {
+    organizationController.createNewOrg(req, res);
+  })
+  .get("/organizations", (req, res) => {
+    organizationController.getOrg(req, res);
+  })
+  .patch("/organizations", (req, res) => {
+    organizationController.updateOrg(req, res);
+  })
+  .delete("/organizations", (req, res) => {
+    organizationController.deleteOrg(req, res);
+  });
 export default router;

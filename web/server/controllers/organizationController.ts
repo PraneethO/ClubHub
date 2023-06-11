@@ -38,21 +38,23 @@ const createNewOrg = async (req: Request, res: Response) => {
     .save()
     .then((result: any) => {
       req.session.loggedIn = true;
-      req.session.id = newOrg._id;
+      req.session.idUsed = newOrg._id;
       return res
         .status(201)
         .json({ message: `New organization ${email} created` });
     })
     .catch((error: string) => {
-      return res.status(500).json({ message: "Internal server error" });
       console.log(error);
+      return res.status(500).json({ message: "Internal server error" });
     });
 };
 
 const deleteOrg = async (req: Request, res: Response) => {
   try {
     // Delete the user
-    const result = await Organization.deleteOne({ _id: req.session.id }).exec();
+    const result = await Organization.deleteOne({
+      _id: req.session.idUsed,
+    }).exec();
 
     if (result.deletedCount === 1) {
       return res.status(200).json({ message: "Org deleted successfully" });
@@ -71,7 +73,7 @@ const updateOrg = async (req: Request, res: Response) => {
   try {
     // Update the org in the database
     const updatedOrganization = await Organization.findOneAndUpdate(
-      { _id: req.session.id },
+      { _id: req.session.idUsed },
       { $set: updatedOrgInfo },
       { new: true }
     )
@@ -93,8 +95,8 @@ const updateOrg = async (req: Request, res: Response) => {
 };
 
 const getOrgInfo = async (req: Request, res: Response) => {
-  if (req.session.loggedIn && req.session.id) {
-    res.send(req.session.id);
+  if (req.session.loggedIn && req.session.idUsed) {
+    res.send(req.session.idUsed);
   }
 };
 

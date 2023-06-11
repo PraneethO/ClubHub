@@ -1,13 +1,12 @@
 import "./Organization.css";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-function signUp() {
-  return <div style={{ textAlign: "center" }}>Sign Up</div>;
-}
-
 function Organization() {
+  const navigate = useNavigate();
+
   const [showPassword, setShowPassword] = useState(false);
+  const [statusCode, setStatusCode] = useState(0);
 
   const [orgName, setOrgName] = useState("");
   const [orgDesignation, setOrgDesignation] = useState("");
@@ -15,32 +14,6 @@ function Organization() {
   const [password, setPassword] = useState("");
   const [field, setField] = useState("");
   const [state, setState] = useState("");
-
-  const handleOrgName = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setOrgName(event.target.value);
-  };
-
-  const handleOrgDesignation = (
-    event: React.ChangeEvent<HTMLSelectElement>
-  ) => {
-    setOrgDesignation(event.target.value);
-  };
-
-  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(event.target.value);
-  };
-
-  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(event.target.value);
-  };
-
-  const handleFieldChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setField(event.target.value);
-  };
-
-  const handleStateChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setState(event.target.value);
-  };
 
   const hasValidPassword =
     /^(?=.*[0-9])(?=.*[!@#$%^&*_\-])(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9!@#$%^&*_\-]{8,}$/.test(
@@ -59,6 +32,28 @@ function Organization() {
     );
   };
 
+  const handleSubmit = (event: any) => {
+    event.preventDefault();
+
+    const formData = {
+      name: orgName,
+      email,
+      password,
+      field,
+      state,
+      designation: orgDesignation,
+    };
+
+    fetch("http://localhost:8000/api/organizations", {
+      method: "POST",
+      body: JSON.stringify(formData),
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+    }).then((response) => {
+      setStatusCode(response.status);
+    });
+  };
+
   return (
     <div className="formContainer">
       <form className="organizationForm">
@@ -69,7 +64,7 @@ function Organization() {
               type="text"
               className="inputBoxText"
               autoCapitalize="words"
-              onChange={handleOrgName}
+              onChange={(event) => setOrgName(event.target.value)}
               style={{ height: "39.3px" }}
             />
           </div>
@@ -81,10 +76,12 @@ function Organization() {
               className="inputBoxText"
               autoComplete="on"
               style={{ height: "39.3px" }}
-              onChange={handleOrgDesignation}
+              onChange={(event) => setOrgDesignation(event.target.value)}
             >
               <option value=""></option>
               <option value="501(c)3">501(c)3</option>
+              <option value="School Club">School Club</option>
+              <option value="Other">Other</option>
             </select>
           </div>
         </div>
@@ -97,7 +94,7 @@ function Organization() {
               className="inputBoxText"
               style={{ width: "500px" }}
               autoCapitalize="off"
-              onChange={handleEmailChange}
+              onChange={(event) => setEmail(event.target.value)}
             />
           </div>
         </div>
@@ -118,7 +115,7 @@ function Organization() {
                   marginBottom: "10px",
                 }}
                 value={password}
-                onChange={handlePasswordChange}
+                onChange={(event) => setPassword(event.target.value)}
                 autoCapitalize="none"
               />
 
@@ -141,7 +138,7 @@ function Organization() {
               name="field"
               className="inputBoxText"
               autoComplete="on"
-              onChange={handleFieldChange}
+              onChange={(event) => setField(event.target.value)}
             >
               <option value=""></option>
               <option value="Computer Science">Computer Science</option>
@@ -160,7 +157,7 @@ function Organization() {
               name="state"
               className="inputBoxText"
               autoComplete="on"
-              onChange={handleStateChange}
+              onChange={(event) => setState(event.target.value)}
             >
               <option value=""></option>
               <option value="AL">Alabama</option>
@@ -218,37 +215,44 @@ function Organization() {
           </div>
         </div>
         <br />
-        <div
-          className={`signButtonContainer ${
-            isSignedIn() ? "" : "signButtonContainerDisabled"
-          }`}
+        <button
+          className={
+            isSignedIn() ? "signButtonContainer" : "signButtonContainerDisabled"
+          }
+          onClick={(event) => {
+            isSignedIn() ? handleSubmit(event) : setStatusCode(400);
+          }}
         >
-          {isSignedIn() ? (
-            <Link
-              to="/dashboard"
-              id="signButtonLink"
-              style={{
-                textDecoration: "none",
-                color: "white",
-                alignContent: "center",
-                alignSelf: "center",
-              }}
-            >
-              {signUp()}
-            </Link>
-          ) : (
-            <span
-              id="signButtonSpan"
-              style={{
-                textDecoration: "none",
-                color: "white",
-                alignContent: "center",
-                alignSelf: "center",
-              }}
-            >
-              {signUp()}
-            </span>
-          )}
+          <span
+            id="signButtonSpan"
+            style={{
+              textDecoration: "none",
+              color: "white",
+              alignContent: "center",
+              alignSelf: "center",
+            }}
+          >
+            <div style={{ textAlign: "center" }}>Sign Up</div>
+          </span>
+        </button>
+        <div
+          id="errorMessageBox"
+          style={statusCode == 0 ? { display: "none" } : {}}
+        >
+          {(() => {
+            switch (statusCode) {
+              case 400:
+                return <p>Bad Request. Please check your input.</p>;
+              case 500:
+                return <p>Internal Server Error. Please try again later.</p>;
+              case 409:
+                return (
+                  <p>You're already signed up! Please try a different email.</p>
+                );
+              case 201:
+                navigate("/dashboard/organization");
+            }
+          })()}
         </div>
       </form>
     </div>
