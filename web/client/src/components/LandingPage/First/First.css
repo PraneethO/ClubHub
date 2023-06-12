@@ -78,6 +78,10 @@
   border: solid 2px black;
 }
 
+.landingPageInput:focus {
+  outline: none;
+  box-shadow: 0 0 8px rgba(4, 78, 139, 0.4);
+}
 
 /* ! Right Side CSS */
 .mission-text {

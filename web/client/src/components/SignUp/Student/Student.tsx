@@ -101,10 +101,7 @@ function Student() {
           </div>
         </div>
 
-        <div
-          className="studentPasswordBox"
-          style={{ width: "500px", height: "75.5px", marginBottom: "10px" }}
-        >
+        <div className="userEmailBox">
           <div className="inputBox password" style={{ width: "500px" }}>
             <label>Password</label>
             <div className="passwordWrapper">
@@ -113,7 +110,6 @@ function Student() {
                 className="inputBoxText"
                 style={{
                   width: "100%",
-                  height: "39.3px",
                   marginBottom: "10px",
                 }}
                 value={password}
@@ -138,7 +134,7 @@ function Student() {
           </div>
         </div>
 
-        <div className="idGradeBox">
+        <div className="idGradeBox" style={{ height: "79px" }}>
           <div className="inputBox grade">
             <label>Grade (#1-12)</label>
             <input

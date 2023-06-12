@@ -57,7 +57,7 @@ function Organization() {
   return (
     <div className="formContainer">
       <form className="organizationForm">
-        <div className="nameDesignationBox" style={{ height: "75.5px" }}>
+        <div className="nameDesignationBox">
           <div className="inputBox">
             <label>Organization Name</label>
             <input
@@ -65,7 +65,6 @@ function Organization() {
               className="inputBoxText"
               autoCapitalize="words"
               onChange={(event) => setOrgName(event.target.value)}
-              style={{ height: "39.3px" }}
             />
           </div>
 
@@ -75,7 +74,6 @@ function Organization() {
               name="state"
               className="inputBoxText"
               autoComplete="on"
-              style={{ height: "39.3px" }}
               onChange={(event) => setOrgDesignation(event.target.value)}
             >
               <option value=""></option>
@@ -99,21 +97,13 @@ function Organization() {
           </div>
         </div>
 
-        <div
-          className="studentPasswordBox"
-          style={{ width: "500px", height: "75.5px", marginBottom: "10px" }}
-        >
+        <div>
           <div className="inputBox password" style={{ width: "500px" }}>
             <label>Password</label>
-            <div className="passwordWrapper">
+            <div className="passwordWrapper" style={{ marginBottom: "10px" }}>
               <input
                 type={showPassword ? "text" : "password"}
                 className="inputBoxText"
-                style={{
-                  width: "100%",
-                  height: "39.3px",
-                  marginBottom: "10px",
-                }}
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
                 autoCapitalize="none"
@@ -131,7 +121,7 @@ function Organization() {
           </div>
         </div>
 
-        <div className="idGradeBox">
+        <div className="idGradeBox" style={{ marginTop: "20px" }}>
           <div className="inputBox field">
             <label>Field</label>
             <select
