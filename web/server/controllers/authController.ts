@@ -4,13 +4,6 @@ import Organization from "../models/Organization";
 
 const bcrypt = require("bcrypt");
 
-declare module "express-session" {
-  interface SessionData {
-    loggedIn?: boolean;
-    idUsed?: string;
-  }
-}
-
 // @desc Logs in user
 // @route POST /api/auth/login
 // @access Private
@@ -84,6 +77,7 @@ const checkUserStatus = async (req: Request, res: Response) => {
   if (req.session.idUsed) {
     var user = await Student.findOne({ _id: req.session.idUsed }).lean().exec();
     if (user) {
+      delete user.password;
       return res.status(200).json(user);
     }
     var org = await Organization.findOne({ _id: req.session.idUsed })
