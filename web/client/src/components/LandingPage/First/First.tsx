@@ -85,7 +85,7 @@ function First() {
             Sign In
           </button>
 
-          <Link to="/signUp" className="signUpDisclaimer">
+          <Link to="/sign-up" className="signUpDisclaimer">
             Don't have an account? Sign up!
           </Link>
 
