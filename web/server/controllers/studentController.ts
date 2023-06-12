@@ -37,12 +37,12 @@ const createNewStudent = async (req: Request, res: Response) => {
     .save()
     .then((result: any) => {
       req.session.loggedIn = true;
-      req.session.id = newStudent._id;
+      req.session.idUsed = newStudent._id;
       return res.status(201).json({ message: `New student ${email} created` });
     })
     .catch((error: string) => {
-      return res.status(500).json({ message: "Internal server error" });
       console.log(error);
+      return res.status(500).json({ message: "Internal server error" });
     });
 };
 
@@ -50,8 +50,8 @@ const createNewStudent = async (req: Request, res: Response) => {
 // @route GET /api/student
 // @access Private
 const getStudentInfo = async (req: Request, res: Response) => {
-  if (req.session.loggedIn && req.session.id) {
-    res.send(req.session.id);
+  if (req.session.loggedIn && req.session.idUsed) {
+    res.send(req.session.idUsed);
   }
 };
 
@@ -64,7 +64,7 @@ const updateStudent = async (req: Request, res: Response) => {
   try {
     // Update the user in the database
     const updatedStudent = await Student.findOneAndUpdate(
-      { _id: req.session.id },
+      { _id: req.session.idUsed },
       { $set: updatedStudentInfo },
       { new: true }
     )
@@ -90,7 +90,7 @@ const updateStudent = async (req: Request, res: Response) => {
 const deleteStudent = async (req: Request, res: Response) => {
   try {
     // Delete the user
-    const result = await Student.deleteOne({ _id: req.session.id }).exec();
+    const result = await Student.deleteOne({ _id: req.session.idUsed }).exec();
 
     if (result.deletedCount === 1) {
       return res.status(200).json({ message: "Student deleted successfully" });

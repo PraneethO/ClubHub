@@ -1,5 +1,13 @@
 import { Router } from "express";
 
+declare module "express-session" {
+  interface SessionData {
+    loggedIn?: boolean;
+    idUsed?: string;
+    type?: boolean;
+  }
+}
+
 const router = Router();
 
 // ! Auth Routes
@@ -18,17 +26,17 @@ router
 // ! User Routes
 const studentController = require("../controllers/studentController");
 router
-  .post("/users", (req, res) => {
-    studentController.createNewUser(req, res);
+  .post("/students", (req, res) => {
+    studentController.createNewStudent(req, res);
   })
-  .get("/users", (req, res) => {
-    studentController.getUserInfo(req, res);
+  .get("/students", (req, res) => {
+    studentController.getStudentInfo(req, res);
   })
-  .patch("/users", (req, res) => {
-    studentController.updateUser(req, res);
+  .patch("/students", (req, res) => {
+    studentController.updateStudent(req, res);
   })
-  .delete("/users", (req, res) => {
-    studentController.deleteUser(req, res);
+  .delete("/students", (req, res) => {
+    studentController.deleteStudent(req, res);
   });
 
 // ! Organization Routes

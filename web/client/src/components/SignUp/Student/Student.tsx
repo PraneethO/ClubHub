@@ -49,7 +49,7 @@ function Student() {
       state,
     };
 
-    fetch("http://localhost:8000/api/users", {
+    fetch("http://localhost:8000/api/students", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),

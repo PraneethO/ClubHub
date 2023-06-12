@@ -82,7 +82,7 @@ function StudentProfile() {
       experience,
     };
 
-    await fetch("http://localhost:8000/api/users", {
+    await fetch("http://localhost:8000/api/students", {
       method: "PATCH",
       body: JSON.stringify(formData),
       headers: { "Content-Type": "application/json" },
