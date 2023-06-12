@@ -1,46 +1,28 @@
 import "./OrganizationDash.css";
-import { Link } from "react-router-dom";
-import { useState } from "react";
-import defaultAvatar from "../../../assets/default-avatar.png"; // Import the placeholder avatar image
+
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import OrgNavBar from "../../SearchBars/Organization/OrgNavBar";
 
 function OrganizationDash() {
-  const [searchText, setSearchText] = useState("");
+  const navigate = useNavigate();
 
-  const handleSearchInputChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setSearchText(event.target.value);
-  };
-
-  const handleSearch = () => {
-    // Perform search or any other action here
-    console.log("Searching for:", searchText);
-  };
+  useEffect(() => {
+    fetch("http://localhost:8000/api/auth", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+    }).then((response) => {
+      if (response.status == 201) {
+        navigate("/");
+      }
+    });
+  }, []);
 
   return (
-    <nav>
-      <Link id="logo" to="/organizationDash">
-        <div style={{ fontSize: "60px", fontFamily: "Bebas Neue" }}>
-          ClubHub Org
-        </div>
-      </Link>
-
-      <div id="search-container">
-        <input
-          type="text"
-          placeholder="Search"
-          value={searchText}
-          onChange={handleSearchInputChange}
-        />
-        <button onClick={handleSearch}>Search</button>
-      </div>
-
-      <div className="profile-image">
-        <Link id="toProflieStudent" to="/organizationProfile">
-          <img src={defaultAvatar} alt="Profile" />
-        </Link>
-      </div>
-    </nav>
+    <div style={{ backgroundColor: "#d9edff" }}>
+      <OrgNavBar />
+    </div>
   );
 }
 

@@ -4,10 +4,12 @@ import { Route, Routes } from "react-router-dom";
 
 import LandingPage from "./components/LandingPage/LandingPage";
 import SignUp from "./components/SignUp/SignUp";
+
 import StudentDash from "./components/Dashboard/Student/StudentDash";
+import OrganizationDash from "./components/Dashboard/Organization/OrganizationDash";
+
 import StudentProfile from "./components/Profile/Student/StudentProfile";
 import OrgProfile from "./components/Profile/Organization/OrgProfile";
-import OrganizationDash from "./components/Dashboard/Organization/OrganizationDash";
 
 import StudentMessaging from "./components/Messaging/StudentMessaging";
 import StudentPositions from "./components/Positions/StudentPositions";

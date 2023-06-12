@@ -2,7 +2,7 @@ import "./StudentDash.css";
 import { Link } from "react-router-dom";
 import defaultAvatar from "../../../assets/default-avatar.png";
 import galleryIcon from "../../../assets/gallery-icon.png";
-import StudentNav from "../../SearchBars/StudentNavBar";
+import StudentNav from "../../SearchBars/Student/StudentNavBar";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 

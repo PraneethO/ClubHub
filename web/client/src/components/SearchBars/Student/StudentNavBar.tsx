@@ -1,13 +1,13 @@
 import "./StudentNavBar.css";
-import "../LandingPage/NavBar/NavBar.css";
+import "../../LandingPage/NavBar/NavBar.css";
 import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import studentMessagingIcon from "../../assets/messaging-icon.png";
+import studentMessagingIcon from "../../../assets/messaging-icon.png";
 // import defaultAvatar from "../../assets/default-avatar.png";
-import homeIcon from "../../assets/home-icon.png";
-import newAvatar from "../../assets/new-default-avatar.png";
-import briefcaseIcon from "../../assets/briefcase-icon.png";
+import homeIcon from "../../../assets/home-icon.png";
+import newAvatar from "../../../assets/new-default-avatar.png";
+import briefcaseIcon from "../../../assets/briefcase-icon.png";
 // import { FaBriefcase } from "react-icons/fa";
 
 const StudentNav = () => {
