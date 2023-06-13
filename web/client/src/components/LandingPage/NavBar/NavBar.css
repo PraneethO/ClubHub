@@ -15,7 +15,6 @@ nav {
 
   position: sticky;
 
-
   height: 4rem;
   width: 100%;
 }
@@ -58,13 +57,12 @@ nav.sign-up-nav {
   justify-content: space-between;
   align-items: center;
   gap: 2rem;
-  
+
   font-size: 60px;
   box-shadow: none;
   margin-bottom: 0;
   background-color: #d9edff;
 }
-
 
 /* landing page nav & display */
 #logo {
@@ -76,17 +74,6 @@ nav.sign-up-nav {
   margin-top: auto !important;
   margin-bottom: auto !important;
 }
-
-
-/* .logo-container {
-  flex-grow: 1;
-  flex-shrink: 1;
-  flex-basis: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 4rem;
-} */
 
 #signButtonContainerNav {
   margin-right: 2%;

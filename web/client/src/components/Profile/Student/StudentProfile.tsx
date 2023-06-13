@@ -1,6 +1,6 @@
 import React, { useState, ChangeEvent, useEffect } from "react";
 
-import StudentNav from "../../SearchBars/StudentNavBar";
+import StudentNav from "../../SearchBars/Student/StudentNavBar";
 import "./StudentProfile.css";
 
 import { useNavigate } from "react-router-dom";

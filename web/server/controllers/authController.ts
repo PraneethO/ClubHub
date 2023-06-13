@@ -78,7 +78,7 @@ const checkUserStatus = async (req: Request, res: Response) => {
     var user = await Student.findOne({ _id: req.session.idUsed }).lean().exec();
     if (user) {
       delete user.password;
-      return res.status(200).json(user);
+      return res.status(200).json({ user, type: 1 });
     }
     var org = await Organization.findOne({ _id: req.session.idUsed })
       .lean()
@@ -86,7 +86,8 @@ const checkUserStatus = async (req: Request, res: Response) => {
     if (!org) {
       res.clearCookie("connect.sid");
     }
-    return res.status(200).json(org);
+    delete org.password;
+    return res.status(200).json({ org, type: 0 });
   } else {
     return res.status(403).json({ message: "Not logged in" });
   }
