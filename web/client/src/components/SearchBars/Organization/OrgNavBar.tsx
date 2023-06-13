@@ -57,7 +57,7 @@ function OrgNavBar() {
         style={{ marginLeft: "0.2rem", marginRight: "0.2rem" }}
       >
         <div className="messaging-icon">
-          <Link to="/messaging/student" className="icon-text">
+          <Link to="/messaging/organization" className="icon-text">
             <img src={studentMessagingIcon} alt="Messaging" />
             Messages
           </Link>
@@ -69,7 +69,7 @@ function OrgNavBar() {
         style={{ marginLeft: "0.2rem", marginRight: "2%" }}
       >
         <div className="profile-image">
-          <Link to="/profile/student" className="icon-text">
+          <Link to="/profile/organization" className="icon-text">
             <img src={newAvatar} alt="Profile" />
             Profile
           </Link>

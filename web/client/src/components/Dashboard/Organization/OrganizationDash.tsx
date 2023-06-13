@@ -12,9 +12,13 @@ function OrganizationDash() {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
-    }).then((response) => {
-      if (response.status == 201) {
+    }).then(async (response) => {
+      if (response.status == 403) {
         navigate("/");
+      }
+      const data = await response.json();
+      if (data.type) {
+        navigate("/dashboard/student");
       }
     });
   }, []);

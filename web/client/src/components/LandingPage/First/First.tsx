@@ -1,35 +1,18 @@
 import "./First.css";
 
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function First() {
   const navigate = useNavigate();
-
-  // Check is the user is logged in --> if logged in then go to the dashboard
-  useEffect(() => {
-    fetch("http://localhost:8000/api/auth", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      credentials: "include",
-    }).then(async (response) => {
-      if (response.status == 200) {
-        const data = await response.json();
-        if (data.type) {
-          navigate("/dashboard/student");
-        } else {
-          navigate("/dashboard/organization");
-        }
-      }
-    });
-  }, []);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
   const [statusCode, setStatusCode] = useState(0);
+  const [type, setType] = useState(1);
 
   const handleSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
@@ -44,7 +27,9 @@ function First() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
       credentials: "include",
-    }).then((response) => {
+    }).then(async (response) => {
+      const data = await response.json();
+      setType(data.type);
       setStatusCode(response.status);
     });
   };
@@ -126,7 +111,11 @@ function First() {
                 case 401:
                   return <p>Incorrect password</p>;
                 case 201:
-                  navigate("/dashboard/student");
+                  if (type) {
+                    navigate("/dashboard/student");
+                  } else {
+                    navigate("/dashboard/organization");
+                  }
 
                 default:
                   return <p>{statusCode}</p>;
