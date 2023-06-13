@@ -1,0 +1,83 @@
+.student-positions-container {
+    display: flex;
+    flex-direction: column;
+
+    width: 90vw;
+    height: fit-content;
+    border-radius: 0.5rem;
+    background-color: white;
+    margin: 0 auto;
+    padding: 1.5rem;
+
+    box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.4);
+}
+
+.applications-row-container {
+    width: 100%;
+    height: 50vh;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.position-application-container {
+    width: 20vw;
+    height: 50vh;
+
+    border-radius: 0.5rem;
+    background-color: #044e8b;
+    padding: 1rem;
+    color: white;
+    flex-direction: column;
+    box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.4);
+}
+
+.organization-title-container {
+    width: 100%;
+    height: fit-content;
+    border-bottom: solid white 2px;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.organization-title-text {
+    display: flex;
+    font-size: 2rem;
+    color: white;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.position-title {
+    display: flex;
+    height: fit-content;
+    margin-top: 10px;
+    margin-bottom: 2vh;
+    font-size: 1rem;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+}
+
+.position-description {
+    display: flex;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1rem;
+    color: white;
+    height: 30vh;
+}
+
+.position-apply-button {
+    width: 100%;
+    height: 5vh;
+    background-color: white;
+
+    border-radius: 5rem;
+    border: none;
+    font-size: 1.5rem;
+    font-family: "Bebas Neue";
+    margin-bottom: 0;
+    bottom: 0;
+}

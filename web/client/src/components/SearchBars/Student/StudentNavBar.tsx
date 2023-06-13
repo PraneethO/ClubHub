@@ -27,7 +27,7 @@ const StudentNav = () => {
   return (
     <nav className="student-nav">
       <Link id="logo" to="/dashboard/student">
-        <div>ClubHub</div>
+        ClubHub
       </Link>
 
       <div id="search-container">
