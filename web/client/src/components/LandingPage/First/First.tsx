@@ -27,6 +27,8 @@ function First() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+
   const [statusCode, setStatusCode] = useState(0);
 
   const handleSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -66,15 +68,25 @@ function First() {
 
           <div className="newInputBox">
             <label>PASSWORD</label>
-            <input
-              type="password"
-              name="password"
-              className="landingPageInput"
-              style={{ marginBottom: "0" }}
-              onChange={(event) => {
-                setPassword(event.target.value);
-              }}
-            />
+            <div className="passwordWrapper">
+              <input
+                type={showPassword ? "text" : "password"}
+                name="password"
+                className="landingPageInput"
+                style={{ marginBottom: "0" }}
+                onChange={(event) => {
+                  setPassword(event.target.value);
+                }}
+              />
+              <label className="showPasswordLabel">
+                <input
+                  type="checkbox"
+                  checked={showPassword}
+                  onChange={() => setShowPassword(!showPassword)}
+                />
+                <span className="checkmark"></span>
+              </label>
+            </div>
           </div>
 
           <button
