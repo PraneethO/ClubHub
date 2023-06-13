@@ -4,9 +4,9 @@ import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import studentMessagingIcon from "../../../assets/messaging-icon.png";
-// import defaultAvatar from "../../assets/default-avatar.png";
+import defaultAvatar from "../../../assets/default-avatar.png";
 import homeIcon from "../../../assets/home-icon.png";
-import newAvatar from "../../../assets/new-default-avatar.png";
+// import newAvatar from "../../../assets/new-default-avatar.png";
 import briefcaseIcon from "../../../assets/briefcase-icon.png";
 // import { FaBriefcase } from "react-icons/fa";
 
@@ -82,7 +82,7 @@ const StudentNav = () => {
       >
         <div className="profile-image">
           <Link to="/profile/student" className="icon-text">
-            <img src={newAvatar} alt="Profile" />
+            <img src={defaultAvatar} alt="Profile" />
             Profile
           </Link>
         </div>
