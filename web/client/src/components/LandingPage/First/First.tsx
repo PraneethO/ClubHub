@@ -1,29 +1,11 @@
 import "./First.css";
 
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function First() {
   const navigate = useNavigate();
-
-  // Check is the user is logged in --> if logged in then go to the dashboard
-  useEffect(() => {
-    fetch("http://localhost:8000/api/auth", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      credentials: "include",
-    }).then(async (response) => {
-      if (response.status == 200) {
-        const data = await response.json();
-        if (data.type) {
-          navigate("/dashboard/student");
-        } else {
-          navigate("/dashboard/organization");
-        }
-      }
-    });
-  }, []);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
