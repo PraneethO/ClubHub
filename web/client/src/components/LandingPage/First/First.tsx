@@ -12,6 +12,7 @@ function First() {
   const [showPassword, setShowPassword] = useState(false);
 
   const [statusCode, setStatusCode] = useState(0);
+  const [type, setType] = useState(1);
 
   const handleSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
@@ -26,7 +27,9 @@ function First() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
       credentials: "include",
-    }).then((response) => {
+    }).then(async (response) => {
+      const data = await response.json();
+      setType(data.type);
       setStatusCode(response.status);
     });
   };
@@ -108,7 +111,11 @@ function First() {
                 case 401:
                   return <p>Incorrect password</p>;
                 case 201:
-                  navigate("/dashboard/student");
+                  if (type) {
+                    navigate("/dashboard/student");
+                  } else {
+                    navigate("/dashboard/organization");
+                  }
 
                 default:
                   return <p>{statusCode}</p>;

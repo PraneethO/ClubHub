@@ -31,6 +31,9 @@ function StudentProfile() {
         return response.json();
       })
       .then((data) => {
+        if (!data.type) {
+          navigate("/profile/organization");
+        }
         const {
           firstName,
           lastName,

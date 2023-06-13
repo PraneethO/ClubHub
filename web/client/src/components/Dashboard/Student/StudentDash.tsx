@@ -14,9 +14,13 @@ function StudentDash() {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
-    }).then((response) => {
+    }).then(async (response) => {
       if (response.status == 403) {
         navigate("/");
+      }
+      const data = await response.json();
+      if (!data.type) {
+        navigate("/dashboard/organization");
       }
     });
   }, []);
