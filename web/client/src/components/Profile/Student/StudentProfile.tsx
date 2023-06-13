@@ -379,15 +379,17 @@ function StudentProfile() {
   const [isEditingPhoneNumber, setIsEditingPhoneNumber] = useState(false);
 
   const handlePhoneNumberEdit = () => {
-    setIsEditingPhoneNumber(true);
+    setIsEditing(!isEditing);
   };
 
   const handleAddNowClick = () => {
+    setIsEditing(true);
     setIsEditingPhoneNumber(true);
   };
 
   const handlePhoneNumberBlur = () => {
     setIsEditingPhoneNumber(false);
+    setIsEditing(false);
   };
 
   return (
@@ -557,17 +559,6 @@ function StudentProfile() {
           <div className="student-contact-info">
             <div className="student-contact-info-text">Phone Number:</div>
             {isEditing ? (
-              // <input
-              //   className="editing-contact-info"
-              //   autoCapitalize="none"
-              //   autoCorrect="on"
-              //   id="phoneNumberInput"
-              //   value={phoneNumber}
-              //   placeholder="Phone Number Seperated by Dashes (XXX-XXX-XXXX)"
-              //   type="text"
-              //   onChange={(event) => setPhoneNumber(event.target.value)}
-              // />
-
               <>
                 <input
                   className="editing-contact-info"
@@ -578,18 +569,13 @@ function StudentProfile() {
                   onChange={handlePhoneNumberChange}
                   onBlur={handlePhoneNumberBlur}
                 />
-                <button className="add-now-button" onClick={handleAddNowClick}>
-                  Add Now
-                </button>
               </>
             ) : (
               <>
                 <div className="givenInfo">{phoneNumber}</div>
-                <FontAwesomeIcon
-                  icon={faEdit}
-                  className="edit-icon"
-                  onClick={handlePhoneNumberEdit}
-                />
+                <button className="add-now-button" onClick={handleAddNowClick}>
+                  Add Now
+                </button>
               </>
             )}
           </div>
