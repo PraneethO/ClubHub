@@ -40,31 +40,16 @@ function StudentProfile() {
           email,
           phone,
           experience,
-        } = data;
-        if (firstName) {
-          setFirstName(firstName);
-        }
-        if (lastName) {
-          setLastName(lastName);
-        }
-        if (school) {
-          setSchool(school);
-        }
-        if (region) {
-          setRegion(region);
-        }
-        if (interested) {
-          setInterestedAreas(interested);
-        }
-        if (email) {
-          setEmail(email);
-        }
-        if (phone) {
-          setPhoneNumber(phone);
-        }
-        if (experience) {
-          setExperience(experience);
-        }
+        } = data.user;
+        setFirstName(firstName);
+        setLastName(lastName);
+        setSchool(school);
+        setRegion(region);
+        setInterestedAreas(interested);
+        setEmail(email);
+        setPhoneNumber(phone);
+        setExperience(experience);
+        setExperienceChanges(experience);
       });
   }, []);
 
