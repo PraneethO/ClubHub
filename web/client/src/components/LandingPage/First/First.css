@@ -126,7 +126,7 @@
 
 .showPasswordLabel {
   position: absolute;
-  top: 50%;
+  margin-bottom: 0;
   right: 5px;
   display: flex;
   align-items: center;
