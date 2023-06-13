@@ -17,14 +17,14 @@ function OrgProfile() {
       }
       const data = await response.json();
       if (data.type) {
-        navigate("/profile/student");
+        navigate("/profile/organization");
       }
     });
   }, []);
 
   return (
     <nav>
-      <Link id="logo" to="/studentDash">
+      <Link id="logo" to="/dashboard/organization">
         <div style={{ fontSize: "60px", fontFamily: "Bebas Neue" }}>
           ClubHub
         </div>
