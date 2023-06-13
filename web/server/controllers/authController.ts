@@ -37,7 +37,7 @@ const loginUser = async (req: Request, res: Response) => {
         if (passwordMatch) {
           req.session.loggedIn = true;
           req.session.idUsed = student._id;
-          return res.status(201).json({ message: "Logged in" });
+          return res.status(201).json({ message: "Logged in", type: 1 });
         } else {
           return res.status(401).json({ message: "Incorrect password" });
         }
@@ -54,7 +54,7 @@ const loginUser = async (req: Request, res: Response) => {
         if (passwordMatch) {
           req.session.loggedIn = true;
           req.session.idUsed = organization._id;
-          return res.status(201).json({ message: "Logged in" });
+          return res.status(201).json({ message: "Logged in", type: 0 });
         } else {
           return res.status(401).json({ message: "Incorrect password" });
         }
