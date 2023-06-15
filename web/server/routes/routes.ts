@@ -54,4 +54,10 @@ router
   .delete("/organizations", (req, res) => {
     organizationController.deleteOrg(req, res);
   });
+
+// ! Auto Correct Route
+const autoController = require("../controllers/autoController");
+router.get("/schools/autocomplete", (req, res) => {
+  autoController.schoolAutoCorrect(req, res);
+});
 export default router;

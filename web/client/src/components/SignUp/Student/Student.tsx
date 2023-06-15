@@ -1,6 +1,14 @@
 import "./Student.css";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+
+import debounce from "lodash.debounce";
+import Select from "react-select";
+
+export interface SchoolOption {
+  value: string;
+  label: string;
+}
 
 function Student() {
   const navigate = useNavigate();
@@ -13,9 +21,29 @@ function Student() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [grade, setGrade] = useState("");
-  const [state, setState] = useState("");
+  const [school, setSchool] = useState("");
 
   const [statusCode, setStatusCode] = useState(0);
+
+  const [schools, setSchools] = useState([]);
+
+  // Set the delay for the debounce function (e.g., 300 milliseconds)
+  const debounceApiCall = debounce(() => {
+    fetch(
+      `http://localhost:8000/api/schools/autocomplete?query=${encodeURIComponent(
+        school
+      )}`
+    )
+      .then((response) => response.json())
+      .then((data) => setSchools(data));
+  }, 300);
+
+  const handleSchoolChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSchool(event.target.value);
+    if (school.length >= 4) {
+      debounceApiCall();
+    }
+  };
 
   // Tests Password --> Auto Updates w/ passsword state
   const hasValidPassword =
@@ -30,7 +58,7 @@ function Student() {
       !isEmailValid ||
       !hasValidPassword ||
       !grade.trim() ||
-      !state.trim()
+      !school.trim()
     ) {
       return false;
     }
@@ -46,8 +74,10 @@ function Student() {
       email,
       password,
       grade,
-      state,
+      school,
     };
+
+    console.log(school);
 
     fetch("http://localhost:8000/api/students", {
       method: "POST",
@@ -72,6 +102,7 @@ function Student() {
               required
               value={firstName}
               onChange={(event) => setFirstName(event.target.value)}
+              placeholder="Enter first name..."
             />
           </div>
 
@@ -84,6 +115,7 @@ function Student() {
               required
               value={lastName}
               onChange={(event) => setLastName(event.target.value)}
+              placeholder="Enter last name..."
             />
           </div>
         </div>
@@ -97,6 +129,7 @@ function Student() {
               style={{ width: "500px" }}
               autoCapitalize="off"
               onChange={(event) => setEmail(event.target.value)}
+              placeholder="Enter email..."
             />
           </div>
         </div>
@@ -115,6 +148,7 @@ function Student() {
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
                 autoComplete="new-password"
+                placeholder="Enter password..."
               />
 
               <label className="showPasswordLabel">
@@ -144,74 +178,43 @@ function Student() {
               pattern="[1-9]|1[0-2]"
               required
               onChange={(event) => setGrade(event.target.value)}
+              placeholder="Enter grade..."
             />
           </div>
 
           <div className="inputBox state">
-            <label>State</label>
-            <select
-              name="state"
+            <label>School</label>
+            {/* I want to add a searchable dropdown box here. The value inside the box should be school */}
+            {/* The options should be schools, and schools should be recalculated whenever school changes */}
+            {/* I don't want the value to change when the user clicks off this element. */}
+            <input
               className="inputBoxText"
-              autoComplete="on"
-              onChange={(event) => setState(event.target.value)}
-            >
-              <option value=""></option>
-              <option value="AL">Alabama</option>
-              <option value="AK">Alaska</option>
-              <option value="AZ">Arizona</option>
-              <option value="AR">Arkansas</option>
-              <option value="CA">California</option>
-              <option value="CO">Colorado</option>
-              <option value="CT">Connecticut</option>
-              <option value="DE">Delaware</option>
-              <option value="DC">District Of Columbia</option>
-              <option value="FL">Florida</option>
-              <option value="GA">Georgia</option>
-              <option value="HI">Hawaii</option>
-              <option value="ID">Idaho</option>
-              <option value="IL">Illinois</option>
-              <option value="IN">Indiana</option>
-              <option value="IA">Iowa</option>
-              <option value="KS">Kansas</option>
-              <option value="KY">Kentucky</option>
-              <option value="LA">Louisiana</option>
-              <option value="ME">Maine</option>
-              <option value="MD">Maryland</option>
-              <option value="MA">Massachusetts</option>
-              <option value="MI">Michigan</option>
-              <option value="MN">Minnesota</option>
-              <option value="MS">Mississippi</option>
-              <option value="MO">Missouri</option>
-              <option value="MT">Montana</option>
-              <option value="NE">Nebraska</option>
-              <option value="NV">Nevada</option>
-              <option value="NH">New Hampshire</option>
-              <option value="NJ">New Jersey</option>
-              <option value="NM">New Mexico</option>
-              <option value="NY">New York</option>
-              <option value="NC">North Carolina</option>
-              <option value="ND">North Dakota</option>
-              <option value="OH">Ohio</option>
-              <option value="OK">Oklahoma</option>
-              <option value="OR">Oregon</option>
-              <option value="PA">Pennsylvania</option>
-              <option value="RI">Rhode Island</option>
-              <option value="SC">South Carolina</option>
-              <option value="SD">South Dakota</option>
-              <option value="TN">Tennessee</option>
-              <option value="TX">Texas</option>
-              <option value="UT">Utah</option>
-              <option value="VT">Vermont</option>
-              <option value="VA">Virginia</option>
-              <option value="WA">Washington</option>
-              <option value="WV">West Virginia</option>
-              <option value="WI">Wisconsin</option>
-              <option value="WY">Wyoming</option>
-            </select>
+              type="text"
+              onChange={(event) => handleSchoolChange(event)}
+              placeholder="Enter school..."
+              value={school}
+            />
+            <div>
+              {schools.slice(0, 5).map((element: SchoolOption, index) => {
+                return (
+                  <button
+                    style={{ width: "100%", backgroundColor: "#D9ECFF" }}
+                    key={index}
+                    onClick={(event) => {
+                      event.preventDefault();
+                      setSchool(element.value);
+                    }}
+                  >
+                    {element.label}
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </div>
         <br />
         <button
+          type="button"
           className={
             validInputs()
               ? "signButtonContainer"

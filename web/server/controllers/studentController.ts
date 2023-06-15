@@ -8,10 +8,10 @@ const bcrypt = require("bcrypt");
 // @route POST /api/student
 // @access Private
 const createNewStudent = async (req: Request, res: Response) => {
-  const { firstName, lastName, email, password, grade, state } = req.body;
+  const { firstName, lastName, email, password, grade, school } = req.body;
 
   // Confirm Data
-  if (!firstName || !lastName || !email || !password || !state || !grade) {
+  if (!firstName || !lastName || !email || !password || !school || !grade) {
     return res.status(400).json({ message: "All fields are required" });
   }
 
@@ -30,7 +30,7 @@ const createNewStudent = async (req: Request, res: Response) => {
     lastName,
     email,
     password: hashedPwd,
-    state,
+    school,
     grade,
   });
   await newStudent
