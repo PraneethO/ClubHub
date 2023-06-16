@@ -27,7 +27,7 @@ const createPosition = async (req: Request, res: Response) => {
   const organization = req.session.id;
 
   if (!position || !description || !message || !organization) {
-    res.status(400).send("All fields are required or error w/ sign in");
+    return res.status(400).send("All fields are required or error w/ sign in");
   }
 
   const newPosition = new Position({
