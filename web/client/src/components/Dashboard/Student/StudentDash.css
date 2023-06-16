@@ -33,6 +33,7 @@
   letter-spacing: 0.05rem;
   font-weight: bold;
   padding: 10px;
+  padding-left: 0;
   text-align: flex-start;
 }
 
@@ -250,6 +251,68 @@
   flex-direction: column;
   align-items: center;
   text-align: left;
+}
+
+/* explore */
+.filter-dropdowns-container {
+  width: 100%;
+  height: fit-content;
+  flex-direction: row;
+  justify-content: start;
+}
+
+.filter-dropdown {
+  display: flex;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+  background-color: #d9edff;
+  border-color: 1px solid black;
+}
+
+/* adding & removing filters */
+.filters-input {
+  display: flex;
+  width: fit-content;
+  background-color: #e8f0fe !important;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: "Montserrat", sans-serif;
+}
+
+.selected-filters {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.selected-filter {
+  display: flex;
+  font-size: 1rem;
+  align-items: center;
+  margin-right: 8px;
+  background-color: #e8f0fe;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.remove-icon {
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.add-filter {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.plus-icon {
+  cursor: pointer;
+  font-size: 13px !important;
+  width: 13px !important;
+  height: 13px !important;
+
 }
 
 /* new right column */

@@ -54,6 +54,150 @@ function Organization() {
     });
   };
 
+  // interested categories dropdown
+  const categories: {
+    label: string;
+    options: { label: string; options?: { label: string }[] }[];
+  }[] = [
+    {
+      label: "Religious and Spiritual",
+      options: [
+        { label: "Christianity" },
+        { label: "Islam" },
+        { label: "Judaism" },
+        { label: "Hinduism" },
+        { label: "Buddhism" },
+        { label: "Other Religions" },
+      ],
+    },
+    {
+      label: "Political and Social Issues",
+      options: [
+        { label: "Government and Politics" },
+        { label: "Current Events" },
+        { label: "Climate Change" },
+        { label: "Gun Control" },
+        { label: "Economic Inequality" },
+      ],
+    },
+    {
+      label: "Career Exploration",
+      options: [
+        { label: "STEM Careers" },
+        { label: "Healthcare Careers" },
+        { label: "Business Careers" },
+        { label: "Arts and Humanities Careers" },
+        { label: "Law and Legal Careers" },
+        { label: "Engineering Careers" },
+      ],
+    },
+    {
+      label: "Medicine Clubs",
+      options: [
+        { label: "Pre-Med" },
+        { label: "Medical Research" },
+        { label: "Pharmacy" },
+        { label: "Nursing" },
+        { label: "Dentistry" },
+        { label: "Veterinary Medicine" },
+        { label: "Health and Wellness" },
+      ],
+    },
+    {
+      label: "Volunteer Work",
+      options: [
+        { label: "Tutoring and Mentoring" },
+        { label: "Elderly Care" },
+        { label: "Children and Youth" },
+        { label: "Disability Support" },
+        { label: "International Aid" },
+      ],
+    },
+    {
+      label: "Technology Clubs",
+      options: [
+        { label: "Coding and Programming" },
+        { label: "Web Development" },
+        { label: "App Development" },
+        { label: "Game Development" },
+        { label: "Artificial Intelligence" },
+        { label: "Cybersecurity" },
+        { label: "Data Science" },
+      ],
+    },
+    {
+      label: "Design and Multimedia",
+      options: [
+        { label: "Graphic Design" },
+        { label: "Film and Video Production" },
+        { label: "Photography" },
+      ],
+    },
+    {
+      label: "Music and Performing Arts",
+      options: [
+        { label: "Band" },
+        { label: "Choir" },
+        { label: "Theater" },
+        { label: "Dance" },
+        { label: "Visual Arts" },
+      ],
+    },
+    {
+      label: "Entrepreneurship",
+      options: [
+        { label: "Business Planning" },
+        { label: "Startup Development" },
+        { label: "Marketing and Sales" },
+        { label: "Finance and Investment" },
+        { label: "Networking" },
+        { label: "Leadership" },
+      ],
+    },
+    {
+      label: "Other Clubs and Organizations",
+      options: [
+        { label: "Professional Associations" },
+        { label: "Student Government" },
+        { label: "Honor Societies" },
+        { label: "Special Interest Groups" },
+      ],
+    },
+  ];
+
+  const renderOptions = (
+    options: { options?: { label: string }[]; label: string }[]
+  ) => {
+    return options.map((option) => {
+      if (option.options) {
+        return (
+          <optgroup key={option.label} label={option.label}>
+            {option.options.map((subOption) => (
+              <option key={subOption.label} value={subOption.label}>
+                {subOption.label}
+              </option>
+            ))}
+          </optgroup>
+        );
+      } else if (option.label === "") {
+        // Handle the empty label for the first option
+        return (
+          <option key={option.label} value="">
+            Select interest areas
+          </option>
+        );
+      } else {
+        return (
+          <option key={option.label} value={option.label}>
+            {option.label}
+          </option>
+        );
+      }
+    });
+  };
+
+  // end of categories dropdown
+
   return (
     <div className="formContainer">
       <form className="organizationForm">
@@ -134,13 +278,12 @@ function Organization() {
               onChange={(event) => setField(event.target.value)}
             >
               <option value=""></option>
-              <option value="Computer Science">Computer Science</option>
-              <option value="STEM Education">STEM Education</option>
-              <option value="Non-STEM Education">Non-STEM Education</option>
-              <option value="Medicine">Medicine</option>
-              <option value="Activisim">Activisim</option>
-              <option value="Service">Service</option>
-              <option value="Religion">Religion</option>
+              {categories.map((category) => (
+                <optgroup key={category.label} label={category.label}>
+                  {renderOptions(category.options)}{" "}
+                  {/* Call the renderOptions function */}
+                </optgroup>
+              ))}
             </select>
           </div>
 
