@@ -65,6 +65,7 @@ function Organization() {
               className="inputBoxText"
               autoCapitalize="words"
               onChange={(event) => setOrgName(event.target.value)}
+              placeholder="Enter name..."
             />
           </div>
 
@@ -93,6 +94,7 @@ function Organization() {
               style={{ width: "500px" }}
               autoCapitalize="off"
               onChange={(event) => setEmail(event.target.value)}
+              placeholder="Enter email..."
             />
           </div>
         </div>
@@ -107,6 +109,7 @@ function Organization() {
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
                 autoCapitalize="none"
+                placeholder="Enter password..."
               />
 
               <label className="showPasswordLabel">
