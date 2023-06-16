@@ -4,6 +4,7 @@ const positionSchema = new mongoose.Schema({
   _id: { type: String, required: true },
   name: { type: String, required: true },
   organization: { type: String, required: true },
+  position: { type: String, required: true },
   description: { type: String, required: true },
   // The user id of the people who applied
   applied: [{ type: String }],
