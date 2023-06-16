@@ -1,6 +1,8 @@
 import { MouseEvent, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import OrgNavBar from "../SearchBars/Organization/OrgNavBar";
+
 function PositionCreate() {
   const navigate = useNavigate();
 
@@ -15,11 +17,18 @@ function PositionCreate() {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
-    }).then((response) => {
-      if (response.status == 403) {
-        navigate("/");
-      }
-    });
+    })
+      .then((response) => {
+        if (response.status == 403) {
+          navigate("/");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        if (data.type) {
+          navigate("/dashboard/student");
+        }
+      });
   }, []);
 
   const handleSubmit = async (event: MouseEvent<HTMLButtonElement>) => {
@@ -43,6 +52,7 @@ function PositionCreate() {
 
   return (
     <>
+      <OrgNavBar />
       <form>
         <input
           value={position}
@@ -63,6 +73,21 @@ function PositionCreate() {
           Create Position
         </button>
       </form>
+      <div
+        id="errorMessageBox"
+        style={statusCode == 0 ? { display: "none" } : {}}
+      >
+        {(() => {
+          switch (statusCode) {
+            case 400:
+              return <p>Bad Request. Please check your input.</p>;
+            case 500:
+              return <p>Internal Server Error. Please try again later.</p>;
+            case 201:
+              return <p>Position successfully created!</p>;
+          }
+        })()}
+      </div>
     </>
   );
 }
