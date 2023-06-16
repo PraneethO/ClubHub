@@ -214,9 +214,7 @@ function StudentDash() {
 
       <div className="student-dashboard-container">
         <div className="greeting-container">
-          <div className="container-text" style={{ paddingLeft: "10px" }}>
-            {"Greeetings" + firstName + "!"}
-          </div>
+          <div className="container-text">{"Greeetings" + firstName + "!"}</div>
           <div className="greeting-recents">
             <div className="title-text">Recent visits:</div>
             <div className="title-subtext" style={{ marginBottom: "8px" }}>
@@ -426,9 +424,7 @@ function StudentDash() {
 
         <div className="student-trending">
           <div className="trending-container">
-            <div className="container-text" style={{ paddingLeft: "10px" }}>
-              Trending
-            </div>
+            <div className="container-text">Trending</div>
             <div className="trending-categories-container">
               <div className="title-text">Categories:</div>
               {/* make these dynamic */}

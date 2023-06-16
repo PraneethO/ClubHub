@@ -554,24 +554,31 @@ function StudentProfile() {
           <div className="student-contact-info">
             <div className="student-contact-info-text">Phone Number:</div>
             {isEditing ? (
-              <input
-                className="editing-contact-info"
-                id="phoneNumberInput"
-                value={phoneNumber}
-                placeholder="Enter your phone number"
-                type="text"
-                onChange={handlePhoneNumberChange}
-              />
+              <>
+                <input
+                  className="editing-contact-info"
+                  id="phoneNumberInput"
+                  value={phoneNumber}
+                  placeholder="Enter your phone number"
+                  type="text"
+                  onChange={handlePhoneNumberChange}
+                  onBlur={handlePhoneNumberBlur}
+                />
+              </>
             ) : (
-              <div className="givenInfo" style={{ fontWeight: "normal" }}>
-                {phoneNumber}
-              </div>
-            )}
-            {/* Add Now button conditionally */}
-            {isEditingPhoneNumber && !isPhoneNumberValid && !phoneNumber && (
-              <button className="add-now-button" onClick={handleAddNowClick}>
-                Add Now
-              </button>
+              <>
+                <div className="givenInfo" style={{ marginTop: "0" }}>
+                  {phoneNumber}
+                </div>
+                {phoneNumber ? null : (
+                  <button
+                    className="add-now-button"
+                    onClick={handleAddNowClick}
+                  >
+                    Add Now
+                  </button>
+                )}
+              </>
             )}
           </div>
         </div>
