@@ -16,8 +16,8 @@ function PositionCreate() {
       headers: { "Content-Type": "application/json" },
       credentials: "include",
     }).then((response) => {
-      if (response.status == 200) {
-        navigate("/dashboard/student");
+      if (response.status == 403) {
+        navigate("/");
       }
     });
   }, []);
