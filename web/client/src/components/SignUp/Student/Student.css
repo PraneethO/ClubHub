@@ -86,7 +86,8 @@
 }
 
 .signButtonContainer:hover {
-  background-color: #9da8b5;
+  background-color: #1369af;
+  cursor: pointer;
 }
 
 .signButtonContainerDisabled {

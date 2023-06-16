@@ -357,11 +357,18 @@ function StudentProfile() {
     return phoneNumber;
   }
 
+  const [isPhoneNumberValid, setIsPhoneNumberValid] = useState(false);
+
   const handlePhoneNumberChange = (event: { target: { value: any } }) => {
     const inputValue = event.target.value;
     const digitsOnly = inputValue.replace(/[^\d]/g, "");
     const formattedValue = formatPhoneNumber(digitsOnly.substring(0, 10));
     setPhoneNumber(formattedValue);
+
+    // Check if the phone number is valid
+    const phoneNumberRegex = /^\(\d{3}\) \d{3}-\d{4}$/;
+    const isValid = phoneNumberRegex.test(formattedValue);
+    setIsPhoneNumberValid(isValid);
   };
 
   const [isEditingPhoneNumber, setIsEditingPhoneNumber] = useState(false);
@@ -547,24 +554,24 @@ function StudentProfile() {
           <div className="student-contact-info">
             <div className="student-contact-info-text">Phone Number:</div>
             {isEditing ? (
-              <>
-                <input
-                  className="editing-contact-info"
-                  id="phoneNumberInput"
-                  value={phoneNumber}
-                  placeholder="Enter your phone number"
-                  type="text"
-                  onChange={handlePhoneNumberChange}
-                  onBlur={handlePhoneNumberBlur}
-                />
-              </>
+              <input
+                className="editing-contact-info"
+                id="phoneNumberInput"
+                value={phoneNumber}
+                placeholder="Enter your phone number"
+                type="text"
+                onChange={handlePhoneNumberChange}
+              />
             ) : (
-              <>
-                <div className="givenInfo">{phoneNumber}</div>
-                <button className="add-now-button" onClick={handleAddNowClick}>
-                  Add Now
-                </button>
-              </>
+              <div className="givenInfo" style={{ fontWeight: "normal" }}>
+                {phoneNumber}
+              </div>
+            )}
+            {/* Add Now button conditionally */}
+            {isEditingPhoneNumber && !isPhoneNumberValid && !phoneNumber && (
+              <button className="add-now-button" onClick={handleAddNowClick}>
+                Add Now
+              </button>
             )}
           </div>
         </div>
