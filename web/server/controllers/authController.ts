@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import Student from "../models/Student";
 import Organization from "../models/Organization";
 
-const bcrypt = require("bcrypt");
+import bcrypt from "bcrypt";
 
 // @desc Logs in user
 // @route POST /api/auth/login
@@ -86,8 +86,12 @@ const checkUserStatus = async (req: Request, res: Response) => {
     if (!org) {
       res.clearCookie("connect.sid");
     }
-    delete org.password;
-    return res.status(200).json({ org, type: 0 });
+    if (org) {
+      delete org.password;
+      return res.status(200).json({ org, type: 0 });
+    }
+
+    return res.status(403).json({ message: "Internal servor error" });
   } else {
     return res.status(403).json({ message: "Not logged in" });
   }

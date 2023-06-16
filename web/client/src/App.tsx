@@ -12,9 +12,12 @@ import StudentProfile from "./components/Profile/Student/StudentProfile";
 import OrgProfile from "./components/Profile/Organization/OrgProfile";
 
 import StudentMessaging from "./components/Messaging/StudentMessaging";
-import StudentPositions from "./components/Positions/StudentPositions";
+import StudentPositions from "./components/StudentPositions/StudentPositions";
 
 import Position from "./components/Position/Position";
+
+import PositionCreate from "./components/PositionCreate/PositionCreate";
+import PositionSeeAll from "./components/PositionSeeAll/PositionSeeAll";
 
 function App() {
   return (
@@ -28,7 +31,9 @@ function App() {
       <Route path="/messaging/student" element={<StudentMessaging />} />
       <Route path="/positions/student" element={<StudentPositions />} />
 
-      <Route path="/position/:id" element={<Position />} />
+      <Route path="/position/get/:id" element={<Position />} />
+      <Route path="/position/create" element={<PositionCreate />} />
+      <Route path="position/see-all/:id" element={<PositionSeeAll />} />
     </Routes>
   );
 }
