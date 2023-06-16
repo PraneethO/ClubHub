@@ -31,14 +31,15 @@ function OrganizationDash() {
       <OrgNavBar />
 
       {/* Button to create a position */}
-      <button>
-        <Link to="/position/create">Create a Position</Link>
-      </button>
+      <Link to="/position/create">
+        <button>Create a Position</button>
+      </Link>
 
       {/* Button to see all current positions */}
-      <button>
-        <Link to={`/position/see-all/${orgId}`}>See All Positions</Link>
-      </button>
+
+      <Link to={`/position/see-all/${orgId}`}>
+        <button>See All Positions</button>
+      </Link>
     </div>
   );
 }

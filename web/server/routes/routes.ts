@@ -66,5 +66,14 @@ const positionController = require("../controllers/positionController");
 router.get("/positions/:id", (req, res) => {
   positionController.getPositionById(req, res);
 });
+router.post("/positions/crud", (req, res) => {
+  positionController.createPosition(req, res);
+});
+router.delete("/positions/crud", (req, res) => {
+  positionController.deletePosition(req, res);
+});
+router.patch("/positions/crud", (req, res) => {
+  positionController.updatePosition(req, res);
+});
 
 export default router;
