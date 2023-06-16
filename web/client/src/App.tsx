@@ -14,6 +14,8 @@ import OrgProfile from "./components/Profile/Organization/OrgProfile";
 import StudentMessaging from "./components/Messaging/StudentMessaging";
 import StudentPositions from "./components/Positions/StudentPositions";
 
+import Position from "./components/Position/Position";
+
 function App() {
   return (
     <Routes>
@@ -25,6 +27,8 @@ function App() {
       <Route path="/profile/organization" element={<OrgProfile />} />
       <Route path="/messaging/student" element={<StudentMessaging />} />
       <Route path="/positions/student" element={<StudentPositions />} />
+
+      <Route path="/position/:id" element={<Position />} />
     </Routes>
   );
 }
