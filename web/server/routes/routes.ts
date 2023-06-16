@@ -60,4 +60,11 @@ const autoController = require("../controllers/autoController");
 router.get("/schools/autocomplete", (req, res) => {
   autoController.schoolAutoCorrect(req, res);
 });
+
+// ! Position Routes
+const positionController = require("../controllers/positionController");
+router.get("/positions/:id", (req, res) => {
+  positionController.getPositionById(req, res);
+});
+
 export default router;
