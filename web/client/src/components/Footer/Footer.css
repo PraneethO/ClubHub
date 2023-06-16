@@ -1,6 +1,9 @@
 footer {
-  background-color: #f8f8f8;
+  background-color: hsl(0, 0%, 97%);
   padding: 20px 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 .container {
