@@ -8,7 +8,7 @@ function PositionCreate() {
 
   const [statusCode, setStatusCode] = useState(0);
 
-  const [position, setPosition] = useState("");
+  const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [message, setMessage] = useState("");
 
@@ -35,7 +35,7 @@ function PositionCreate() {
     event.preventDefault();
 
     const formData = {
-      position,
+      title,
       description,
       message,
     };
@@ -55,9 +55,9 @@ function PositionCreate() {
       <OrgNavBar />
       <form>
         <input
-          value={position}
-          placeholder="Enter position..."
-          onChange={(e) => setPosition(e.target.value)}
+          value={title}
+          placeholder="Enter title..."
+          onChange={(e) => setTitle(e.target.value)}
         />
         <input
           value={description}
