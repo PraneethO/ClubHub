@@ -13,3 +13,5 @@ For the server:
 1. Navigate to web/server
 2. Run `npm install`
 3. Run `npm run dev`
+
+Make sure your localhost ports are unblocked. I'll add pictures of the app later ;)
