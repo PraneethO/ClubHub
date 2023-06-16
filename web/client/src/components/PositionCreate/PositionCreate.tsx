@@ -1,12 +1,14 @@
 import { MouseEvent, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import OrgNavBar from "../SearchBars/Organization/OrgNavBar";
+
 function PositionCreate() {
   const navigate = useNavigate();
 
   const [statusCode, setStatusCode] = useState(0);
 
-  const [position, setPosition] = useState("");
+  const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [message, setMessage] = useState("");
 
@@ -15,18 +17,25 @@ function PositionCreate() {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
-    }).then((response) => {
-      if (response.status == 403) {
-        navigate("/");
-      }
-    });
+    })
+      .then((response) => {
+        if (response.status == 403) {
+          navigate("/");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        if (data.type) {
+          navigate("/dashboard/student");
+        }
+      });
   }, []);
 
   const handleSubmit = async (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
     const formData = {
-      position,
+      title,
       description,
       message,
     };
@@ -43,11 +52,12 @@ function PositionCreate() {
 
   return (
     <>
+      <OrgNavBar />
       <form>
         <input
-          value={position}
-          placeholder="Enter position..."
-          onChange={(e) => setPosition(e.target.value)}
+          value={title}
+          placeholder="Enter title..."
+          onChange={(e) => setTitle(e.target.value)}
         />
         <input
           value={description}
@@ -63,6 +73,21 @@ function PositionCreate() {
           Create Position
         </button>
       </form>
+      <div
+        id="errorMessageBox"
+        style={statusCode == 0 ? { display: "none" } : {}}
+      >
+        {(() => {
+          switch (statusCode) {
+            case 400:
+              return <p>Bad Request. Please check your input.</p>;
+            case 500:
+              return <p>Internal Server Error. Please try again later.</p>;
+            case 201:
+              return <p>Position successfully created!</p>;
+          }
+        })()}
+      </div>
     </>
   );
 }

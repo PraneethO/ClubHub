@@ -75,5 +75,8 @@ router.delete("/positions/crud", (req, res) => {
 router.patch("/positions/crud", (req, res) => {
   positionController.updatePosition(req, res);
 });
+router.get("/positions/crud/org", (req, res) => {
+  positionController.getPositionByOrganization(req, res);
+});
 
 export default router;

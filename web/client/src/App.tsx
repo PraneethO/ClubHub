@@ -19,22 +19,28 @@ import Position from "./components/Position/Position";
 import PositionCreate from "./components/PositionCreate/PositionCreate";
 import PositionSeeAll from "./components/PositionSeeAll/PositionSeeAll";
 
+import Footer from "./components/Footer/Footer";
+
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<LandingPage />} />
-      <Route path="/sign-up" element={<SignUp />} />
-      <Route path="/dashboard/student" element={<StudentDash />} />
-      <Route path="/profile/student" element={<StudentProfile />} />
-      <Route path="/dashboard/organization" element={<OrganizationDash />} />
-      <Route path="/profile/organization" element={<OrgProfile />} />
-      <Route path="/messaging/student" element={<StudentMessaging />} />
-      <Route path="/positions/student" element={<StudentPositions />} />
+    <>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/sign-up" element={<SignUp />} />
+        <Route path="/dashboard/student" element={<StudentDash />} />
+        <Route path="/profile/student" element={<StudentProfile />} />
+        <Route path="/dashboard/organization" element={<OrganizationDash />} />
+        <Route path="/profile/organization" element={<OrgProfile />} />
+        <Route path="/messaging/student" element={<StudentMessaging />} />
+        <Route path="/positions/student" element={<StudentPositions />} />
 
-      <Route path="/position/get/:id" element={<Position />} />
-      <Route path="/position/create" element={<PositionCreate />} />
-      <Route path="position/see-all/:id" element={<PositionSeeAll />} />
-    </Routes>
+        <Route path="/position/get/:id" element={<Position />} />
+        <Route path="/position/create" element={<PositionCreate />} />
+        <Route path="position/see-all/:id" element={<PositionSeeAll />} />
+      </Routes>
+
+      <Footer />
+    </>
   );
 }
 
