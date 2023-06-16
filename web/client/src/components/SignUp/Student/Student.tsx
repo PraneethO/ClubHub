@@ -198,7 +198,7 @@ function Student() {
               {schools.slice(0, 5).map((element: SchoolOption, index) => {
                 return (
                   <button
-                    style={{ width: "100%", backgroundColor: "#D9ECFF" }}
+                    className="school-auto-complete-dropdown"
                     key={index}
                     onClick={(event) => {
                       event.preventDefault();
