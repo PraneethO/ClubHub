@@ -1,7 +1,11 @@
 import { MouseEvent, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FaPlus } from "react-icons/fa";
 
 import OrgNavBar from "../SearchBars/Organization/OrgNavBar";
+import "./PositionCreate.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 function PositionCreate() {
   const navigate = useNavigate();
@@ -50,43 +54,63 @@ function PositionCreate() {
     });
   };
 
+  const [isEditing, setIsEditing] = useState(false);
+
   return (
     <>
       <OrgNavBar />
-      <form>
-        <input
-          value={title}
-          placeholder="Enter title..."
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <input
-          value={description}
-          placeholder="Enter description of the role..."
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        <input
-          value={message}
-          placeholder="Enter any other information you want the person applying to know..."
-          onChange={(e) => setMessage(e.target.value)}
-        />
-        <button type="submit" onClick={(event) => handleSubmit(event)}>
-          Create Position
-        </button>
-      </form>
-      <div
-        id="errorMessageBox"
-        style={statusCode == 0 ? { display: "none" } : {}}
-      >
-        {(() => {
-          switch (statusCode) {
-            case 400:
-              return <p>Bad Request. Please check your input.</p>;
-            case 500:
-              return <p>Internal Server Error. Please try again later.</p>;
-            case 201:
-              return <p>Position successfully created!</p>;
-          }
-        })()}
+      <div className="organization-positions-container">
+        {isEditing ? (
+          <>
+            <form>
+              <input
+                value={title}
+                placeholder="Enter title..."
+                onChange={(e) => setTitle(e.target.value)}
+              />
+              <input
+                value={description}
+                placeholder="Enter description of the role..."
+                onChange={(e) => setDescription(e.target.value)}
+              />
+              <input
+                value={message}
+                placeholder="Enter any other information you want the person applying to know..."
+                onChange={(e) => setMessage(e.target.value)}
+              />
+              <button type="submit" onClick={(event) => handleSubmit(event)}>
+                Create Position
+              </button>
+            </form>
+            <div
+              id="errorMessageBox"
+              style={statusCode == 0 ? { display: "none" } : {}}
+            >
+              {(() => {
+                switch (statusCode) {
+                  case 400:
+                    return <p>Bad Request. Please check your input.</p>;
+                  case 500:
+                    return (
+                      <p>Internal Server Error. Please try again later.</p>
+                    );
+                  case 201:
+                    return <p>Position successfully created!</p>;
+                }
+              })()}
+            </div>
+          </>
+        ) : (
+          <div className="applications-row-container">
+            <div className="add-posting">
+              <FontAwesomeIcon
+                className="add-icon"
+                icon={faPlus}
+                onClick={() => setIsEditing(true)}
+              />
+            </div>
+          </div>
+        )}
       </div>
     </>
   );
