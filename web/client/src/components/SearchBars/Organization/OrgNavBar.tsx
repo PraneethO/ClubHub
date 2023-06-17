@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import studentMessagingIcon from "../../../assets/messaging-icon.png";
 import homeIcon from "../../../assets/home-icon.png";
 import newAvatar from "../../../assets/new-default-avatar.png";
+import briefcaseIcon from "../../../assets/briefcase-icon.png";
 
 function OrgNavBar() {
   const [searchText, setSearchText] = useState("");
@@ -48,6 +49,18 @@ function OrgNavBar() {
           >
             <img src={homeIcon} alt="StudentDash" />
             Home
+          </Link>
+        </div>
+      </div>
+
+      <div
+        className="icon-container"
+        style={{ marginLeft: "0.2rem", marginRight: "0.2rem" }}
+      >
+        <div className="positions-icon">
+          <Link to="/position/create" className="icon-text">
+            <img src={briefcaseIcon} />
+            Positions
           </Link>
         </div>
       </div>

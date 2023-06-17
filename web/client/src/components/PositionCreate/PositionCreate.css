@@ -14,7 +14,8 @@
 
 .applications-row-container {
     width: 100%;
-    height: 50vh;
+    min-height: 50vh;
+    height: fit-content;
 
     display: flex;
     flex-direction: row;
@@ -28,14 +29,19 @@
 
     border-radius: 0.5rem;
     background-color: transparent;
-    border: 4px dashed #044e8b;
+    /* border: 4px dashed #044e8b; */
+    border: none;
+    outline: 4px dashed #044e8b;
 
     padding: 1rem;
     flex-direction: column;
-    box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.4);
-    
     justify-content: center;
     align-items: center;
+}
+
+.add-posting:hover {
+    box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.4);
+    cursor: pointer;
 }
 
 .add-icon {
@@ -47,7 +53,8 @@
 
 .position-posting-container {
     width: 20vw;
-    height: 50vh;
+    min-height: 50vh;
+    height: fit-content;
 
     border-radius: 0.5rem;
     background-color: #044e8b;
@@ -59,9 +66,66 @@
 
 .organization-title-container {
     width: 100%;
-    height: fit-content;
+    height: 2.5rem;
+    display: flex;
     border-bottom: solid white 2px;
     align-items: center;
     align-content: center;
     justify-content: center;
+    overflow: hidden;
+}
+
+.organization-title-text {
+    display: flex;
+    max-width: 100%;
+    max-height: 100%;
+
+    font-size: 2rem;
+    color: white;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: clip;
+    width: 100%;
+}
+
+.position-title-input {
+    display: flex;
+    width: 100% !important;
+    margin-top: 0.5rem;
+    background-color: transparent;
+    padding: 4px 8px !important;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    border: 1px solid white;
+    color: white;
+}
+
+.position-create-button {
+    width: 100%;
+    height: 5vh;
+    display: flex;
+    background-color: white;
+
+    border-radius: 5rem;
+    border: none;
+    font-size: 1.5rem;
+    font-family: "Bebas Neue";
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+
+    margin-bottom: 0;
+    bottom: 0;
+    margin-top: auto;
+}
+
+.position-create-button:hover {
+    box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.4);
+    cursor: pointer;
 }

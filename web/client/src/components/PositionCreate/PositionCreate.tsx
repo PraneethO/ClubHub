@@ -62,26 +62,37 @@ function PositionCreate() {
       <div className="organization-positions-container">
         {isEditing ? (
           <>
-            <form>
-              <input
-                value={title}
-                placeholder="Enter title..."
-                onChange={(e) => setTitle(e.target.value)}
-              />
-              <input
-                value={description}
-                placeholder="Enter description of the role..."
-                onChange={(e) => setDescription(e.target.value)}
-              />
-              <input
-                value={message}
-                placeholder="Enter any other information you want the person applying to know..."
-                onChange={(e) => setMessage(e.target.value)}
-              />
-              <button type="submit" onClick={(event) => handleSubmit(event)}>
-                Create Position
-              </button>
-            </form>
+            <div className="applications-row-container">
+              <div className="position-posting-container">
+                <div className="organization-title-container">
+                  <div className="organization-title-text">Organization</div>
+                </div>
+                <input
+                  className="position-title"
+                  autoCapitalize="off"
+                  value={title}
+                  placeholder="Enter Title of Position"
+                  onChange={(e) => setTitle(e.target.value)}
+                />
+                <input
+                  value={description}
+                  placeholder="Enter description of the role..."
+                  onChange={(e) => setDescription(e.target.value)}
+                />
+                <input
+                  value={message}
+                  placeholder="Enter any other information you want the person applying to know..."
+                  onChange={(e) => setMessage(e.target.value)}
+                />
+                <button
+                  className="position-create-button"
+                  type="submit"
+                  onClick={(event) => handleSubmit(event)}
+                >
+                  Create Position
+                </button>
+              </div>
+            </div>
             <div
               id="errorMessageBox"
               style={statusCode == 0 ? { display: "none" } : {}}

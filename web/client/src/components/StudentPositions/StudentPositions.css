@@ -36,6 +36,7 @@
 .organization-title-container {
     width: 100%;
     height: fit-content;
+    display: flex;
     border-bottom: solid white 2px;
     align-items: center;
     align-content: center;
@@ -72,16 +73,22 @@
 .position-apply-button {
     width: 100%;
     height: 5vh;
+    display: flex;
     background-color: white;
 
     border-radius: 5rem;
     border: none;
     font-size: 1.5rem;
     font-family: "Bebas Neue";
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+
     margin-bottom: 0;
     bottom: 0;
 }
 
 .position-apply-button:hover {
     box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.4);
+    cursor: pointer;
 }
