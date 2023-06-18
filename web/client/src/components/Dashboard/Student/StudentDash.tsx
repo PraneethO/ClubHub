@@ -312,8 +312,17 @@ function StudentDash() {
                       </div>
                     </>
                   ) : (
-                    applied.map((index) => {
-                      return <>{index}</>;
+                    applied.map((index, posId) => {
+                      return (
+                        <div
+                          className="student-posting clickable"
+                          onClick={() => {
+                            navigate(`/positions/get/${posId}`);
+                          }}
+                        >
+                          posId
+                        </div>
+                      );
                     })
                   )}
                   {/* <div className="student-posting">
