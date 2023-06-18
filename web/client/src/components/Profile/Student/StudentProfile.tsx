@@ -613,7 +613,6 @@ function StudentProfile() {
             </div>
           ) : (
             <div className="experience-text">
-              {/*  */}
               <textarea
                 value={experienceChanges}
                 onChange={handleExperienceChange}
