@@ -68,18 +68,20 @@ function PositionCreate() {
                   <div className="organization-title-text">Organization</div>
                 </div>
                 <input
-                  className="position-title"
+                  className="position-title-input"
                   autoCapitalize="off"
                   value={title}
-                  placeholder="Enter Title of Position"
+                  placeholder="Enter Title of Position (ie. Regional Director)"
                   onChange={(e) => setTitle(e.target.value)}
                 />
                 <input
+                  className="position-description-input"
                   value={description}
                   placeholder="Enter description of the role..."
                   onChange={(e) => setDescription(e.target.value)}
                 />
                 <input
+                  className="position-additional-input"
                   value={message}
                   placeholder="Enter any other information you want the person applying to know..."
                   onChange={(e) => setMessage(e.target.value)}

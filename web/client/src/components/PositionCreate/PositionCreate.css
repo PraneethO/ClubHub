@@ -90,20 +90,63 @@
     overflow: hidden;
     text-overflow: clip;
     width: 100%;
+    flex-wrap: nowrap;
 }
 
 .position-title-input {
     display: flex;
-    width: 100% !important;
+    width: 100%;
     margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
     background-color: transparent;
-    padding: 4px 8px !important;
+    padding: 4px 8px;
     border-radius: 4px;
     font-size: 1rem;
     font-family: "Montserrat", sans-serif;
-    font-weight: bold;
+    font-weight: normal;
     border: 1px solid white;
     color: white;
+    text-transform: none !important;
+    text-size-adjust: auto;
+}
+
+.position-description-input {
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    min-height: 30vh;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    background-color: transparent;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: "Montserrat", sans-serif;
+    font-weight: normal;
+    border: 1px solid white;
+    color: white;
+    text-transform: none !important;
+    text-overflow: wrap !important;
+    overflow-wrap: normal;
+}
+
+.position-additional-input {
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    min-height: 10vh;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    background-color: transparent;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: "Montserrat", sans-serif;
+    font-weight: normal;
+    border: 1px solid white;
+    color: white;
+    text-transform: none !important;
+    text-overflow: wrap !important;
 }
 
 .position-create-button {
