@@ -43,27 +43,6 @@ const StudentNav = () => {
         </div>
       </div>
 
-      <div className="icon-container" style={{ marginRight: "0.2rem" }}>
-        <div className="home-icon">
-          <Link id="toDashboard" to="/dashboard/student" className="icon-text">
-            <img src={homeIcon} alt="StudentDash" />
-            Home
-          </Link>
-        </div>
-      </div>
-
-      <div
-        className="icon-container"
-        style={{ marginLeft: "0.2rem", marginRight: "0.2rem" }}
-      >
-        <div className="positions-icon">
-          <Link to="/positions/student" className="icon-text">
-            <img src={briefcaseIcon} />
-            Positions
-          </Link>
-        </div>
-      </div>
-
       <div
         className="icon-container"
         style={{ marginLeft: "0.2rem", marginRight: "0.2rem" }}

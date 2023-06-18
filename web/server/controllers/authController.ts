@@ -97,4 +97,24 @@ const checkUserStatus = async (req: Request, res: Response) => {
   }
 };
 
+const passwordReset = async (req: Request, res: Response) => {
+  const { email } = req.body;
+
+  const student = await Student.findOne({ _id: req.session.idUsed })
+    .lean()
+    .exec();
+  if (!student) {
+    const organization = await Organization.findOne({ _id: req.session.idUsed })
+      .lean()
+      .exec();
+    if (!organization) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // TODO: Setup email for password reset
+  }
+
+  // TODO: Setup email for password reset
+};
+
 export { logoutUser, loginUser, checkUserStatus };

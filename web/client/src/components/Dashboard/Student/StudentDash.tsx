@@ -209,7 +209,7 @@ function StudentDash() {
   };
 
   return (
-    <div style={{ backgroundColor: "#d9edff" }}>
+    <div style={{ backgroundColor: "#d9edff" }} className="main-main-container">
       <StudentNav />
 
       <div className="student-dashboard-container">
@@ -308,118 +308,6 @@ function StudentDash() {
           </div>
           <br />
           <br />
-          <div className="feed-container">
-            <div
-              className="container-text"
-              style={{
-                border: "none",
-                textAlign: "start",
-              }}
-            >
-              Explore
-            </div>
-            <div className="filter-dropdowns-container">
-              {/* <select
-                className="filter-dropdown"
-                placeholder="Select School"
-              ></select>
-              <select
-                className="filter-dropdown"
-                placeholder="Select Region"
-              ></select>
-              <select
-                className="filter-dropdown"
-                placeholder="Select Area"
-              ></select> */}
-
-              <div className="selected-filters">
-                {filters.map((area, index) => (
-                  <div className="selected-filter" key={index}>
-                    {area}
-                    <FontAwesomeIcon
-                      className="remove-icon"
-                      icon={faTimes}
-                      onClick={() => handleRemoveInterestedArea(index)}
-                    />
-                  </div>
-                ))}
-              </div>
-
-              <div className="add-filter">
-                <select
-                  value={selectedFilters}
-                  onChange={(e) => setSelectedFilters(e.target.value)}
-                  className="filters-input"
-                  placeholder="Select School"
-                >
-                  <option value="">Select School</option>
-                  <option value="joel">JOel</option>
-                </select>
-
-                <FontAwesomeIcon
-                  className="plus-icon"
-                  icon={faPlus}
-                  onClick={handleAddInterestedArea}
-                />
-              </div>
-
-              <div className="add-filter">
-                <select
-                  value={selectedFilters}
-                  onChange={(e) => setSelectedFilters(e.target.value)}
-                  className="filters-input"
-                  placeholder="Select Region"
-                >
-                  <option value="">Select Region</option>
-                  <option value="joe">JOe</option>
-                </select>
-
-                <FontAwesomeIcon
-                  className="plus-icon"
-                  icon={faPlus}
-                  onClick={handleAddInterestedArea}
-                />
-              </div>
-
-              <div className="add-filter">
-                <select
-                  value={selectedFilters}
-                  onChange={(e) => setSelectedFilters(e.target.value)}
-                  className="filters-input"
-                  placeholder="Select Interested Area"
-                >
-                  <option value="">Select Interested Area</option>
-                  {categories.map((category) => (
-                    <optgroup key={category.label} label={category.label}>
-                      {renderOptions(category.options)}{" "}
-                      {/* Call the renderOptions function */}
-                    </optgroup>
-                  ))}
-                </select>
-
-                <FontAwesomeIcon
-                  className="plus-icon"
-                  icon={faPlus}
-                  onClick={handleAddInterestedArea}
-                />
-              </div>
-            </div>
-          </div>
-          <br />
-          <br />
-          <div className="feed-container">
-            <div
-              className="container-text"
-              style={{
-                border: "none",
-                textAlign: "start",
-              }}
-            >
-              Reccomended
-            </div>
-          </div>
-          <br />
-          <br />
         </div>
 
         <div className="student-trending">
@@ -449,6 +337,119 @@ function StudentDash() {
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="bottom-main-container">
+        <div className="feed-container">
+          <div
+            className="container-text"
+            style={{
+              border: "none",
+              textAlign: "start",
+            }}
+          >
+            Reccomended
+          </div>
+        </div>
+        <br />
+        <div className="feed-container">
+          <div
+            className="container-text"
+            style={{
+              border: "none",
+              textAlign: "start",
+            }}
+          >
+            Explore
+          </div>
+          <div className="filter-dropdowns-container">
+            {/* <select
+                className="filter-dropdown"
+                placeholder="Select School"
+              ></select>
+              <select
+                className="filter-dropdown"
+                placeholder="Select Region"
+              ></select>
+              <select
+                className="filter-dropdown"
+                placeholder="Select Area"
+              ></select> */}
+
+            <div className="selected-filters">
+              {filters.map((area, index) => (
+                <div className="selected-filter" key={index}>
+                  {area}
+                  <FontAwesomeIcon
+                    className="remove-icon"
+                    icon={faTimes}
+                    onClick={() => handleRemoveInterestedArea(index)}
+                  />
+                </div>
+              ))}
+            </div>
+
+            <div className="add-filter">
+              <select
+                value={selectedFilters}
+                onChange={(e) => setSelectedFilters(e.target.value)}
+                className="filters-input"
+                placeholder="Select School"
+              >
+                <option value="">Select School</option>
+                <option value="joel">JOel</option>
+              </select>
+
+              <FontAwesomeIcon
+                className="plus-icon"
+                icon={faPlus}
+                onClick={handleAddInterestedArea}
+              />
+            </div>
+
+            <div className="add-filter">
+              <select
+                value={selectedFilters}
+                onChange={(e) => setSelectedFilters(e.target.value)}
+                className="filters-input"
+                placeholder="Select Region"
+              >
+                <option value="">Select Region</option>
+                <option value="joe">JOe</option>
+              </select>
+
+              <FontAwesomeIcon
+                className="plus-icon"
+                icon={faPlus}
+                onClick={handleAddInterestedArea}
+              />
+            </div>
+
+            <div className="add-filter">
+              <select
+                value={selectedFilters}
+                onChange={(e) => setSelectedFilters(e.target.value)}
+                className="filters-input"
+                placeholder="Select Interested Area"
+              >
+                <option value="">Select Interested Area</option>
+                {categories.map((category) => (
+                  <optgroup key={category.label} label={category.label}>
+                    {renderOptions(category.options)}{" "}
+                    {/* Call the renderOptions function */}
+                  </optgroup>
+                ))}
+              </select>
+
+              <FontAwesomeIcon
+                className="plus-icon"
+                icon={faPlus}
+                onClick={handleAddInterestedArea}
+              />
+            </div>
+          </div>
+        </div>
+        <br />
       </div>
     </div>
   );
