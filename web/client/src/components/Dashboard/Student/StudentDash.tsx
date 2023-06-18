@@ -11,9 +11,16 @@ import { faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
 function StudentDash() {
   const navigate = useNavigate();
 
-  const [firstName] = useState("");
-  const [lastName] = useState("");
-  const [school] = useState("");
+  const [applied, setApplied] = useState([]);
+  const [email, setEmail] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [grade, setGrade] = useState(0);
+  const [interested, setInterested] = useState([]);
+  const [lastName, setLastName] = useState("");
+  const [recent, setRecent] = useState([]);
+  const [school, setSchool] = useState("");
+
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetch("http://localhost:8000/api/auth", {
@@ -29,19 +36,28 @@ function StudentDash() {
         navigate("/dashboard/organization");
       }
       const {
-        firstName,
-        lastName,
-        school,
-        region,
-        interested,
+        applied,
         email,
-        phone,
-        experience,
+        firstName,
+        grade,
+        interested,
+        lastName,
+        recent,
+        school,
       } = data.user;
-      firstName(firstName);
-      lastName(lastName);
-      school(school);
-      region(region);
+
+      console.log(data);
+
+      setApplied(applied);
+      setEmail(email);
+      setFirstName(firstName);
+      setGrade(grade);
+      setInterested(interested);
+      setLastName(lastName);
+      setRecent(recent);
+      setSchool(school);
+
+      setIsLoading(false);
     });
   }, []);
 
@@ -208,13 +224,17 @@ function StudentDash() {
     setFilters(updatedAreas);
   };
 
-  return (
+  return isLoading ? (
+    <h1>Loading...</h1>
+  ) : (
     <div style={{ backgroundColor: "#d9edff" }} className="main-main-container">
       <StudentNav />
 
       <div className="student-dashboard-container">
         <div className="greeting-container">
-          <div className="container-text">{"Greeetings" + firstName + "!"}</div>
+          <div className="container-text">
+            {"Greetings " + firstName + " !"}
+          </div>
           <div className="greeting-recents">
             <div className="title-text">Recent visits:</div>
             <div className="title-subtext" style={{ marginBottom: "8px" }}>
@@ -270,7 +290,7 @@ function StudentDash() {
                   textAlign: "start",
                 }}
               >
-                Apply!
+                Positions Applied To
               </div>
               <div className="postings-gallery">
                 <div className="postings-wrapper">
