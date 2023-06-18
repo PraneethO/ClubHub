@@ -344,3 +344,7 @@
 .bottom-main-container {
   width: 90vw;
 }
+
+.clickable {
+  cursor: pointer;
+}

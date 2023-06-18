@@ -279,7 +279,6 @@ function StudentDash() {
             </div>
           </div>
         </div>
-        {/* change it so it's just the user (backend) */}
         <div className="student-feed">
           <div className="feed-container">
             <div className="reccomended-postings">
@@ -294,7 +293,30 @@ function StudentDash() {
               </div>
               <div className="postings-gallery">
                 <div className="postings-wrapper">
-                  <div className="student-posting">
+                  {applied.length == 0 ? (
+                    <>
+                      <div
+                        className="student-posting clickable"
+                        onClick={(e) => navigate("/positions/student")}
+                      >
+                        <img
+                          src={galleryIcon}
+                          alt="Avatar"
+                          className="avatar-icon"
+                          style={{
+                            borderRadius: "0px",
+                            filter: "brightness(10000%)",
+                          }}
+                        />
+                        Apply here!
+                      </div>
+                    </>
+                  ) : (
+                    applied.map((index) => {
+                      return <>{index}</>;
+                    })
+                  )}
+                  {/* <div className="student-posting">
                     <img
                       src={defaultAvatar}
                       alt="Avatar"
@@ -309,8 +331,8 @@ function StudentDash() {
                       className="avatar-icon"
                     />
                     Joe Biden
-                  </div>
-                  <div className="student-posting">
+                  </div> */}
+                  {/* <div className="student-posting">
                     <img
                       src={galleryIcon}
                       alt="Avatar"
@@ -321,7 +343,7 @@ function StudentDash() {
                       }}
                     />
                     More...
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
