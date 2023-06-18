@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import "./OrgProfile.css";
+import OrgNavBar from "../../SearchBars/Organization/OrgNavBar";
 
 function OrgProfile() {
   const navigate = useNavigate();
@@ -22,14 +23,27 @@ function OrgProfile() {
     });
   }, []);
 
+  const handleLogOut = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+
+    fetch("http://localhost:8000/api/auth", {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+    }).then((response) => {
+      if (response.status == 201) {
+        navigate("/dashboard/organization");
+      }
+    });
+  };
+
   return (
-    <nav>
-      <Link id="logo" to="/dashboard/organization">
-        <div style={{ fontSize: "60px", fontFamily: "Bebas Neue" }}>
-          ClubHub
-        </div>
-      </Link>
-    </nav>
+    <>
+      <OrgNavBar />
+      <button className="logoutButton" onClick={handleLogOut}>
+        Logout
+      </button>
+    </>
   );
 }
 
