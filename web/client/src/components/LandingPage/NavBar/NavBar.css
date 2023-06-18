@@ -36,7 +36,8 @@ nav.student-nav {
   justify-content: flex-end;
 
   background-color: #d9edff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  
   transition: box-shadow 0.3s ease-in-out;
   margin-bottom: 1rem;
 }
