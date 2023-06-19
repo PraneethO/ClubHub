@@ -356,7 +356,12 @@ function Organization() {
             isSignedIn() ? "signButtonContainer" : "signButtonContainerDisabled"
           }
           onClick={(event) => {
-            isSignedIn() ? handleSubmit(event) : setStatusCode(400);
+            if (isSignedIn()) {
+              handleSubmit(event);
+            } else {
+              event.preventDefault();
+              setStatusCode(400);
+            }
           }}
         >
           <span

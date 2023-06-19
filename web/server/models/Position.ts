@@ -8,6 +8,8 @@ const positionSchema = new mongoose.Schema({
   message: { type: String, required: true },
   // The user id of the people who applied
   applied: [{ type: String }],
+  school: { type: String },
+  city: { type: String },
 });
 
 export default mongoose.model("Position", positionSchema);

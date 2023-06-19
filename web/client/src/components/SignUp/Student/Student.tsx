@@ -220,15 +220,14 @@ function Student() {
               ? "signButtonContainer"
               : "signButtonContainerDisabled"
           }
-          onClick={
-            validInputs()
-              ? (event) => {
-                  handleSubmit(event);
-                }
-              : () => {
-                  setStatusCode(400);
-                }
-          }
+          onClick={(event) => {
+            if (validInputs()) {
+              handleSubmit(event);
+            } else {
+              event.preventDefault();
+              setStatusCode(400);
+            }
+          }}
         >
           <span
             id="signButtonSpan"
