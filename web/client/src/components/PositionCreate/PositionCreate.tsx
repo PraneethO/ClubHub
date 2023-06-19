@@ -1,4 +1,4 @@
-import { MouseEvent, useEffect, useState } from "react";
+import { MouseEvent, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaPlus } from "react-icons/fa";
 
@@ -23,7 +23,7 @@ function PositionCreate() {
       credentials: "include",
     })
       .then((response) => {
-        if (response.status == 403) {
+        if (response.status === 403) {
           navigate("/");
         }
         return response.json();
@@ -51,10 +51,49 @@ function PositionCreate() {
       body: JSON.stringify(formData),
     }).then((response) => {
       setStatusCode(response.status);
+      if (response.status === 201) {
+        setDisplayedCreatedPositions((prevPositions) => [
+          ...prevPositions,
+          formData,
+        ]);
+        setTitle("");
+        setDescription("");
+        setMessage("");
+        setIsEditing(false); // Set isEditing to false after creating a position
+      }
     });
   };
 
   const [isEditing, setIsEditing] = useState(false);
+
+  const [displayedCreatedPositions, setDisplayedCreatedPositions] = useState<
+    Array<{ title: string; description: string; message: string }>
+  >([]);
+
+  const positionTitleRef = useRef<HTMLTextAreaElement | null>(null);
+  const descriptionRef = useRef<HTMLTextAreaElement | null>(null);
+  const additionalRef = useRef<HTMLTextAreaElement | null>(null);
+
+  useEffect(() => {
+    adjustTextareaHeight(descriptionRef.current);
+    adjustTextareaHeight(additionalRef.current);
+    adjustTextareaHeight(positionTitleRef.current);
+  }, [title, description, message]);
+
+  const adjustTextareaHeight = (textareaRef: HTMLTextAreaElement | null) => {
+    if (textareaRef) {
+      textareaRef.style.height = "auto";
+      textareaRef.style.height = `${textareaRef.scrollHeight}px`;
+    }
+  };
+
+  const handleEditPosition = (index: number) => {
+    const position = displayedCreatedPositions[index];
+    setTitle(position.title);
+    setDescription(position.description);
+    setMessage(position.message);
+    setIsEditing(true);
+  };
 
   return (
     <>
@@ -67,24 +106,33 @@ function PositionCreate() {
                 <div className="organization-title-container">
                   <div className="organization-title-text">Organization</div>
                 </div>
-                <input
+                <textarea
                   className="position-title-input"
+                  ref={positionTitleRef}
                   autoCapitalize="off"
                   value={title}
                   placeholder="Enter Title of Position (ie. Regional Director)"
                   onChange={(e) => setTitle(e.target.value)}
                 />
-                <input
+                <textarea
                   className="position-description-input"
+                  ref={descriptionRef}
                   value={description}
                   placeholder="Enter description of the role..."
-                  onChange={(e) => setDescription(e.target.value)}
+                  onChange={(e) => {
+                    setDescription(e.target.value);
+                    adjustTextareaHeight(descriptionRef.current);
+                  }}
                 />
-                <input
+                <textarea
                   className="position-additional-input"
+                  ref={additionalRef}
                   value={message}
-                  placeholder="Enter any other information you want the person applying to know..."
-                  onChange={(e) => setMessage(e.target.value)}
+                  placeholder="Enter preferred or required skills/experience..."
+                  onChange={(e) => {
+                    setMessage(e.target.value);
+                    adjustTextareaHeight(additionalRef.current);
+                  }}
                 />
                 <button
                   className="position-create-button"
@@ -97,7 +145,7 @@ function PositionCreate() {
             </div>
             <div
               id="errorMessageBox"
-              style={statusCode == 0 ? { display: "none" } : {}}
+              style={statusCode === 0 ? { display: "none" } : {}}
             >
               {(() => {
                 switch (statusCode) {
@@ -108,6 +156,7 @@ function PositionCreate() {
                       <p>Internal Server Error. Please try again later.</p>
                     );
                   case 201:
+                    setIsEditing(false);
                     return <p>Position successfully created!</p>;
                 }
               })()}
@@ -122,6 +171,25 @@ function PositionCreate() {
                 onClick={() => setIsEditing(true)}
               />
             </div>
+
+            {displayedCreatedPositions.map((position, index) => (
+              <div className="position-posting-container" key={index}>
+                <div className="organization-title-container">
+                  <div className="organization-title-text">Organization</div>
+                </div>
+                <div className="position-title">{position.title}</div>
+                <div className="position-description">
+                  {position.description}
+                </div>
+                <div className="position-message">{position.message}</div>
+                <button
+                  className="edit-position-button"
+                  onClick={() => handleEditPosition(index)}
+                >
+                  Edit
+                </button>
+              </div>
+            ))}
           </div>
         )}
       </div>

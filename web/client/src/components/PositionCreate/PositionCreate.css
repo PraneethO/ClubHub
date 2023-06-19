@@ -99,15 +99,15 @@
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
     background-color: transparent;
-    padding: 4px 8px;
+    /* padding: 4px 8px; */
+    padding: 4px 4px 4px 8px;
     border-radius: 4px;
     font-size: 1rem;
     font-family: "Montserrat", sans-serif;
     font-weight: normal;
     border: 1px solid white;
     color: white;
-    text-transform: none !important;
-    text-size-adjust: auto;
+    resize: none;
 }
 
 .position-description-input {
@@ -118,16 +118,14 @@
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
     background-color: transparent;
-    padding: 4px 8px;
+    padding: 4px 4px 4px 8px;
     border-radius: 4px;
     font-size: 1rem;
     font-family: "Montserrat", sans-serif;
     font-weight: normal;
     border: 1px solid white;
     color: white;
-    text-transform: none !important;
-    text-overflow: wrap !important;
-    overflow-wrap: normal;
+    resize: none;
 }
 
 .position-additional-input {
@@ -138,18 +136,17 @@
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
     background-color: transparent;
-    padding: 4px 8px;
+    padding: 4px 4px 4px 8px;
     border-radius: 4px;
     font-size: 1rem;
     font-family: "Montserrat", sans-serif;
     font-weight: normal;
     border: 1px solid white;
     color: white;
-    text-transform: none !important;
-    text-overflow: wrap !important;
+    resize: none;
 }
 
-.position-create-button {
+.position-create-button, .edit-position-button {
     width: 100%;
     height: 5vh;
     display: flex;
@@ -168,7 +165,7 @@
     margin-top: auto;
 }
 
-.position-create-button:hover {
+.position-create-button:hover, .edit-position-button:hover {
     box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.4);
     cursor: pointer;
 }
