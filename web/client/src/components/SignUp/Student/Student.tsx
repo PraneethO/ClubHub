@@ -170,16 +170,37 @@ function Student() {
 
         <div className="idGradeBox" style={{ height: "79px" }}>
           <div className="inputBox grade">
-            <label>Grade (#1-12)</label>
-            <input
+            <label>Grade for 2023-24 Year (#1-12)</label>
+            {/* <input
               type="text"
               name="grade"
               className="inputBoxText"
               pattern="[1-9]|1[0-2]"
               required
-              onChange={(event) => setGrade(event.target.value)}
+              value={grade}
+              onChange={handleGradeChange}
               placeholder="Enter grade..."
-            />
+            /> */}
+            <select
+              name="grade"
+              className="inputBoxText"
+              autoComplete="on"
+              onChange={(event) => setGrade(event.target.value)}
+            >
+              <option value=""></option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+            </select>
           </div>
 
           <div className="inputBox state">
