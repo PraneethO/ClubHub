@@ -12,6 +12,9 @@ const organizationSchema = new mongoose.Schema({
   school: { type: String },
   leaders: [{ type: String }],
 
+  // Images
+  images: [{ type: Number }],
+
   // Not Required --> Clubs setup later in profile --> Power Ranking
   numStudents: { type: Number },
   numDistricts: { type: Number },

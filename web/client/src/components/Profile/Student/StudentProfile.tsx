@@ -102,21 +102,6 @@ function StudentProfile() {
   const [experienceChanges, setExperienceChanges] = useState("");
   const [experience, setExperience] = useState("");
 
-  const handleImageUpload = (event: ChangeEvent<HTMLInputElement>) => {
-    event.preventDefault();
-
-    const file = event.target.files?.[0];
-    const reader = new FileReader();
-
-    reader.onload = (e) => {
-      setImage(e.target?.result as string | ArrayBuffer | null);
-    };
-
-    if (file) {
-      reader.readAsDataURL(file);
-    }
-  };
-
   const handleExperienceEdit = () => {
     setIsExperienceEditing(!isExperienceEditing);
   };
@@ -309,6 +294,22 @@ function StudentProfile() {
   };
 
   // end of categories dropdown
+
+  const imageSelected = async (event: any) => {
+    const file = event.target.files[0];
+    setImage(file);
+
+    const formData = new FormData();
+    formData.append("image", file);
+
+    await fetch("http://localhost:8000/api/files/image", {
+      method: "PATCH",
+      credentials: "include",
+      body: formData,
+    }).then((response) => {
+      console.log(response.status);
+    });
+  };
 
   const handleAddInterestedArea = () => {
     const selectedOption = categories
@@ -508,7 +509,7 @@ function StudentProfile() {
                     id="upload-input"
                     type="file"
                     accept="image/*"
-                    onChange={handleImageUpload}
+                    onChange={imageSelected}
                   />
                 </div>
               )}

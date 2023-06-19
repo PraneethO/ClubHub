@@ -100,4 +100,4 @@ const getOrgInfo = async (req: Request, res: Response) => {
   }
 };
 
-export { createNewOrg, deleteOrg, updateOrg, getOrgInfo };
+export default { createNewOrg, deleteOrg, updateOrg, getOrgInfo };

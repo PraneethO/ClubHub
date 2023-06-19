@@ -37,4 +37,4 @@ const schoolAutoCorrect = (req: Request, res: Response) => {
     });
 };
 
-export { schoolAutoCorrect };
+export default { schoolAutoCorrect };

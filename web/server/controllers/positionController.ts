@@ -67,7 +67,7 @@ const deletePosition = async (req: Request, res: Response) => {};
 
 const updatePosition = async (req: Request, res: Response) => {};
 
-export {
+export default {
   getPositionById,
   createPosition,
   deletePosition,

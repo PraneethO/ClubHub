@@ -22,8 +22,21 @@ const logEvents = async (message: string, logFileName: string) => {
 };
 
 const logger = (req: any, res: any, next: any) => {
-  logEvents(`${req.method}\t${req.url}\t${req.headers.origin}`, "reqLog.log");
-  console.log(`${req.method} ${req.path}`);
+  const startTime = new Date().getTime();
+  const logRequest = () => {
+    const duration = new Date().getTime() - startTime;
+    logEvents(
+      `${req.method}\t${req.url}\t${req.headers.origin}\t${duration}ms`,
+      "reqLog.log"
+    );
+    console.log(
+      `${req.method} ${req.url} ${"\x1b[32m"}${duration}ms${"\x1b[0m"}`
+    );
+  };
+
+  res.on("finish", logRequest);
+  res.on("close", logRequest);
+
   next();
 };
 

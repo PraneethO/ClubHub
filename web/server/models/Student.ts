@@ -10,8 +10,10 @@ const studentSchema = new mongoose.Schema({
   region: { type: String },
   grade: { type: Number, required: true },
   experience: { type: String },
+
   resume: { type: Number },
-  image: { type: Number },
+  images: [{ type: Number }], // 1st is profile, 2-5 are other images
+
   interested: [{ type: String }],
   applied: [{ type: String }],
   recent: [{ type: String }],

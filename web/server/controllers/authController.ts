@@ -117,4 +117,4 @@ const passwordReset = async (req: Request, res: Response) => {
   // TODO: Setup email for password reset
 };
 
-export { logoutUser, loginUser, checkUserStatus };
+export default { logoutUser, loginUser, checkUserStatus };

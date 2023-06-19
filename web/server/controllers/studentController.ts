@@ -103,4 +103,9 @@ const deleteStudent = async (req: Request, res: Response) => {
   }
 };
 
-export { createNewStudent, getStudentInfo, updateStudent, deleteStudent };
+export default {
+  createNewStudent,
+  getStudentInfo,
+  updateStudent,
+  deleteStudent,
+};

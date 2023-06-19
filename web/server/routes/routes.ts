@@ -1,5 +1,8 @@
 import { Router } from "express";
 
+import multer from "multer";
+const upload = multer({ dest: "uploads/" });
+
 declare module "express-session" {
   interface SessionData {
     loggedIn?: boolean;
@@ -11,7 +14,7 @@ declare module "express-session" {
 const router = Router();
 
 // ! Auth Routes
-const authController = require("../controllers/authController");
+import authController from "../controllers/authController";
 router
   .post("/auth/login", (req, res) => {
     authController.loginUser(req, res);
@@ -24,7 +27,7 @@ router
   });
 
 // ! User Routes
-const studentController = require("../controllers/studentController");
+import studentController from "../controllers/studentController";
 router
   .post("/students", (req, res) => {
     studentController.createNewStudent(req, res);
@@ -40,13 +43,13 @@ router
   });
 
 // ! Organization Routes
-const organizationController = require("../controllers/organizationController");
+import organizationController from "../controllers/organizationController";
 router
   .post("/organizations", (req, res) => {
     organizationController.createNewOrg(req, res);
   })
   .get("/organizations", (req, res) => {
-    organizationController.getOrg(req, res);
+    organizationController.getOrgInfo(req, res);
   })
   .patch("/organizations", (req, res) => {
     organizationController.updateOrg(req, res);
@@ -56,13 +59,13 @@ router
   });
 
 // ! Auto Correct Route
-const autoController = require("../controllers/autoController");
+import autoController from "../controllers/autoController";
 router.get("/schools/autocomplete", (req, res) => {
   autoController.schoolAutoCorrect(req, res);
 });
 
 // ! Position Routes
-const positionController = require("../controllers/positionController");
+import positionController from "../controllers/positionController";
 router.get("/positions/:id", (req, res) => {
   positionController.getPositionById(req, res);
 });
@@ -77,6 +80,15 @@ router.patch("/positions/crud", (req, res) => {
 });
 router.get("/positions/crud/org", (req, res) => {
   positionController.getPositionByOrganization(req, res);
+});
+
+// ! File Routes
+import fileController from "../controllers/fileController";
+router.patch("/files/image", upload.single("image"), (req, res) => {
+  fileController.updateImage(req, res);
+});
+router.patch("/files/resume", upload.single("resume"), (req, res) => {
+  fileController.updateResume(req, res);
 });
 
 export default router;
