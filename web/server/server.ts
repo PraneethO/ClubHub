@@ -53,6 +53,10 @@ if (app.get("env") === "production") {
 import router from "./routes/routes";
 app.use("/api", router);
 
+app.get("/testing", async (req, res) => {
+  res.send("Yup done testing");
+});
+
 // DO NOT DELETE: This is a catchall, so add all of your routes above this and the 404 will handle the rest
 app.all("*", (req, res) => {
   res.status(404);

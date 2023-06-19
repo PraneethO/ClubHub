@@ -1,4 +1,5 @@
 import Student from "../models/Student";
+import Organization from "../models/Organization";
 import { Request, Response } from "express";
 
 const uuidv4 = require("uuid").v4;
@@ -17,7 +18,8 @@ const createNewStudent = async (req: Request, res: Response) => {
 
   // Check for Duplicate
   const duplicate = await Student.findOne({ email }).lean().exec();
-  if (duplicate) {
+  const dupOrg = await Organization.findOne({ email }).lean().exec();
+  if (duplicate || dupOrg) {
     return res.status(409).json({ message: "Duplicate email" });
   }
 
