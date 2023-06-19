@@ -6,17 +6,35 @@ import { Link } from "react-router-dom";
 import studentMessagingIcon from "../../../assets/messaging-icon.png";
 import defaultAvatar from "../../../assets/default-avatar.png";
 import homeIcon from "../../../assets/home-icon.png";
-// import newAvatar from "../../../assets/new-default-avatar.png";
 import briefcaseIcon from "../../../assets/briefcase-icon.png";
-// import { FaBriefcase } from "react-icons/fa";
+
+import debounce from "lodash.debounce";
+
+export interface SearchOption {
+  name: string;
+  _id: string;
+}
 
 const StudentNav = () => {
   const [searchText, setSearchText] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+
+  // Set the delay for the debounce function (e.g., 300 milliseconds)
+  const debounceApiCall = debounce(async () => {
+    await fetch(
+      `http://localhost:8000/api/search/autocomplete?query=${encodeURIComponent(
+        searchText
+      )}`
+    )
+      .then((response) => response.json())
+      .then((data) => setSearchResults(data));
+  }, 300);
 
   const handleSearchInputChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     setSearchText(event.target.value);
+    debounceApiCall();
   };
 
   const handleSearch = () => {
@@ -40,6 +58,26 @@ const StudentNav = () => {
 
         <div className="search-icon" onClick={handleSearch}>
           <FaSearch />
+        </div>
+
+        <div>
+          {searchResults.length == 0 && searchText.length != 0 ? (
+            <p>No results found</p>
+          ) : (
+            searchResults.slice(0, 5).map((element: SearchOption, index) => {
+              return (
+                <button
+                  key={index}
+                  onClick={(event) => {
+                    event.preventDefault();
+                    setSearchText(element.name);
+                  }}
+                >
+                  {element.name}
+                </button>
+              );
+            })
+          )}
         </div>
       </div>
 

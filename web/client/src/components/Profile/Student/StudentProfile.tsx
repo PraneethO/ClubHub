@@ -63,6 +63,7 @@ function StudentProfile() {
       interested: interestedAreas,
       firstName,
       lastName,
+      name: firstName + " " + lastName,
       school,
       region,
       email,

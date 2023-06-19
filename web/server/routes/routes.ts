@@ -63,6 +63,9 @@ import autoController from "../controllers/autoController";
 router.get("/schools/autocomplete", (req, res) => {
   autoController.schoolAutoCorrect(req, res);
 });
+router.get("/search/autocomplete", (req, res) => {
+  autoController.searchAll(req, res);
+});
 
 // ! Position Routes
 import positionController from "../controllers/positionController";

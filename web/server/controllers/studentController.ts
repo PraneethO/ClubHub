@@ -30,6 +30,7 @@ const createNewStudent = async (req: Request, res: Response) => {
     _id: uuidv4(),
     firstName,
     lastName,
+    name: firstName + " " + lastName,
     email,
     password: hashedPwd,
     school,

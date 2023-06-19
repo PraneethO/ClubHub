@@ -2,11 +2,12 @@ import { Response, Request } from "express";
 import fs from "fs";
 import path from "path";
 
+import Student from "../models/Student";
+import Organization from "../models/Organization";
+
 const schoolAutoCorrect = (req: Request, res: Response) => {
-  var { query } = req.query;
-  if (!query) {
-    query = "N";
-  }
+  const { query } = req.query;
+
   const results: any[] = [];
 
   const filePath = path.join(__dirname, "schools.txt");
@@ -37,4 +38,30 @@ const schoolAutoCorrect = (req: Request, res: Response) => {
     });
 };
 
-export default { schoolAutoCorrect };
+const searchAll = async (req: Request, res: Response) => {
+  const { query } = req.query;
+
+  try {
+    // Perform the search query in the "users" and "organizations" collections
+    const userQuery = Student.find({
+      name: { $regex: `^${query}`, $options: "i" },
+    }).select("name _id");
+
+    const organizationQuery = Organization.find({
+      name: { $regex: `^${query}`, $options: "i" },
+    }).select("name _id");
+
+    const [users, organizations] = await Promise.all([
+      userQuery.lean().exec(),
+      organizationQuery.lean().exec(),
+    ]);
+
+    const suggestions = [...users, ...organizations];
+    res.status(201).json(suggestions);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "An error occurred" });
+  }
+};
+
+export default { schoolAutoCorrect, searchAll };
