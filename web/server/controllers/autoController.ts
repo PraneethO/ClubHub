@@ -43,12 +43,17 @@ const searchAll = async (req: Request, res: Response) => {
 
   try {
     // Perform the search query in the "users" and "organizations" collections
+
+    const sanitizedQuery = query
+      .toString()
+      .replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
     const userQuery = Student.find({
-      name: { $regex: `^${query}`, $options: "i" },
+      name: { $regex: `^${sanitizedQuery}`, $options: "i" },
     }).select("name _id");
 
     const organizationQuery = Organization.find({
-      name: { $regex: `^${query}`, $options: "i" },
+      name: { $regex: `^${sanitizedQuery}`, $options: "i" },
     }).select("name _id");
 
     const [users, organizations] = await Promise.all([
