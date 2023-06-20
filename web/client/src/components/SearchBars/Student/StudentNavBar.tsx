@@ -84,7 +84,7 @@ const StudentNav = () => {
                     style={{ display: "flex", justifyContent: "space-between" }}
                   >
                     <div style={{ display: "inline-block" }}>
-                      <h1 style={{ color: "blue", display: "inline-block" }}>
+                      <h1 style={{ color: "#044e8b", display: "inline-block" }}>
                         {searchText}
                       </h1>
                       <h1 style={{ display: "inline-block" }}>
