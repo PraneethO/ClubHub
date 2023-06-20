@@ -1,11 +1,36 @@
 import { MouseEvent, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FaPlus } from "react-icons/fa";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 import OrgNavBar from "../SearchBars/Organization/OrgNavBar";
 import "./PositionCreate.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+
+interface PositionContainerProps {
+  organizationTitle: string;
+  positionTitle: string;
+  positionDescription: string;
+}
+
+const PositionContainer: React.FC<PositionContainerProps> = ({
+  organizationTitle,
+  positionTitle,
+  positionDescription,
+}) => {
+  return (
+    <div className="position-application-container">
+      <div className="organization-title-container">
+        <div className="organization-title-text">{organizationTitle}</div>
+      </div>
+      <div className="position-title">{positionTitle}</div>
+      <div
+        className="position-created-description"
+        dangerouslySetInnerHTML={{ __html: positionDescription }}
+      ></div>
+      <button className="edit-position-button">Edit</button>
+    </div>
+  );
+};
 
 function PositionCreate() {
   const navigate = useNavigate();
@@ -15,6 +40,8 @@ function PositionCreate() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [message, setMessage] = useState("");
+  const [isPostingContainerVisible, setPostingContainerVisible] =
+    useState(false);
 
   useEffect(() => {
     fetch("http://localhost:8000/api/auth", {
@@ -54,17 +81,15 @@ function PositionCreate() {
       if (response.status === 201) {
         setDisplayedCreatedPositions((prevPositions) => [
           ...prevPositions,
-          formData,
+          { title, description, message },
         ]);
         setTitle("");
         setDescription("");
         setMessage("");
-        setIsEditing(false); // Set isEditing to false after creating a position
+        setPostingContainerVisible(false);
       }
     });
   };
-
-  const [isEditing, setIsEditing] = useState(false);
 
   const [displayedCreatedPositions, setDisplayedCreatedPositions] = useState<
     Array<{ title: string; description: string; message: string }>
@@ -92,106 +117,77 @@ function PositionCreate() {
     setTitle(position.title);
     setDescription(position.description);
     setMessage(position.message);
-    setIsEditing(true);
+  };
+
+  const handleAddPosting = () => {
+    setPostingContainerVisible(true);
   };
 
   return (
     <>
       <OrgNavBar />
       <div className="organization-positions-container">
-        {isEditing ? (
-          <>
-            <div className="applications-row-container">
-              <div className="position-posting-container">
-                <div className="organization-title-container">
-                  <div className="organization-title-text">Organization</div>
-                </div>
-                <textarea
-                  className="position-title-input"
-                  ref={positionTitleRef}
-                  autoCapitalize="off"
-                  value={title}
-                  placeholder="Enter Title of Position (ie. Regional Director)"
-                  onChange={(e) => setTitle(e.target.value)}
-                />
-                <textarea
-                  className="position-description-input"
-                  ref={descriptionRef}
-                  value={description}
-                  placeholder="Enter description of the role..."
-                  onChange={(e) => {
-                    setDescription(e.target.value);
-                    adjustTextareaHeight(descriptionRef.current);
-                  }}
-                />
-                <textarea
-                  className="position-additional-input"
-                  ref={additionalRef}
-                  value={message}
-                  placeholder="Enter preferred or required skills/experience..."
-                  onChange={(e) => {
-                    setMessage(e.target.value);
-                    adjustTextareaHeight(additionalRef.current);
-                  }}
-                />
-                <button
-                  className="position-create-button"
-                  type="submit"
-                  onClick={(event) => handleSubmit(event)}
-                >
-                  Create Position
-                </button>
+        <div className="applications-row-container">
+          <div className="add-posting">
+            <FontAwesomeIcon
+              className="add-icon"
+              icon={faPlus}
+              onClick={handleAddPosting}
+            />
+          </div>
+          {isPostingContainerVisible && (
+            <div className="position-posting-container">
+              <div className="organization-title-container">
+                <div className="organization-title-text">Organization</div>
               </div>
-            </div>
-            <div
-              id="errorMessageBox"
-              style={statusCode === 0 ? { display: "none" } : {}}
-            >
-              {(() => {
-                switch (statusCode) {
-                  case 400:
-                    return <p>Bad Request. Please check your input.</p>;
-                  case 500:
-                    return (
-                      <p>Internal Server Error. Please try again later.</p>
-                    );
-                  case 201:
-                    setIsEditing(false);
-                    return <p>Position successfully created!</p>;
-                }
-              })()}
-            </div>
-          </>
-        ) : (
-          <div className="applications-row-container">
-            <div className="add-posting">
-              <FontAwesomeIcon
-                className="add-icon"
-                icon={faPlus}
-                onClick={() => setIsEditing(true)}
+              <textarea
+                className="position-title-input"
+                ref={positionTitleRef}
+                autoCapitalize="off"
+                value={title}
+                placeholder="Enter Title of Position (ie. Regional Director)"
+                onChange={(e) => setTitle(e.target.value)}
               />
+              <textarea
+                className="position-description-input"
+                ref={descriptionRef}
+                value={description}
+                placeholder="Enter description of the role..."
+                onChange={(e) => {
+                  setDescription(e.target.value);
+                  adjustTextareaHeight(descriptionRef.current);
+                }}
+              />
+              {/* <textarea
+                className="position-additional-input"
+                ref={additionalRef}
+                value={message}
+                placeholder="Enter preferred or required skills/experience..."
+                onChange={(e) => {
+                  setMessage(e.target.value);
+                  adjustTextareaHeight(additionalRef.current);
+                }}
+              /> */}
+              <button
+                className="position-create-button"
+                type="submit"
+                onClick={handleSubmit}
+              >
+                Create Position
+              </button>
             </div>
-
+          )}
+          <div className="position-postings-container">
             {displayedCreatedPositions.map((position, index) => (
-              <div className="position-posting-container" key={index}>
-                <div className="organization-title-container">
-                  <div className="organization-title-text">Organization</div>
-                </div>
-                <div className="position-title">{position.title}</div>
-                <div className="position-description">
-                  {position.description}
-                </div>
-                <div className="position-message">{position.message}</div>
-                <button
-                  className="edit-position-button"
-                  onClick={() => handleEditPosition(index)}
-                >
-                  Edit
-                </button>
-              </div>
+              <PositionContainer
+                key={index}
+                organizationTitle="Organization"
+                positionTitle={position.title}
+                positionDescription={position.description}
+              />
             ))}
           </div>
-        )}
+        </div>
       </div>
     </>
   );
