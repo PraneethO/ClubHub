@@ -23,6 +23,9 @@ const StudentNav = () => {
 
   // Set the delay for the debounce function (e.g., 300 milliseconds)
   const fetchCall = async (value: string) => {
+    if (value.length == 0) {
+      return setSearchResults([]);
+    }
     await fetch(
       `http://localhost:8000/api/search/autocomplete?query=${encodeURIComponent(
         value
