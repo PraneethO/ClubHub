@@ -7,41 +7,54 @@ nav.student-nav:hover {
 #search-container {
   position: relative;
   width: 25vw;
-  height: auto;
+  min-height: 60px; /* Set a minimum height to accommodate the placeholder text */
   display: flex;
+  flex-direction: column;
   align-items: center;
   margin-right: auto;
   margin-left: -1rem !important;
-  margin-top: auto;
+  margin-top: 0.5rem;
   margin-bottom: auto;
+  justify-content: center;
 }
 
 #search-container input[type="text"] {
-  width: 80%;
+  width: 100%;
   border: none;
-  /* background-color: #f2f2f2; */
-  /* background: #bfbfbf; */
   background-color: white;
   font-size: 0.9rem !important;
-  padding: 10px 10px 10px 40px; /* Adjust the padding for the text input */
+  padding: 10px 40px 10px 10px;
   border-radius: 5px;
   font-family: "Montserrat", sans-serif;
   text-transform: none;
+  align-self: flex-start; /* Adjust the vertical alignment to the top */
 }
 
 /* code to make the search bar expand upon clicking it */
 #search-container input[type="text"]:focus {
-  width: 300%;
+  width: 100%;
   transition: width 0.4s ease-in-out;
+}
+
+#search-container .search-bar {
+  position: relative;
+  width: 100%;
 }
 
 #search-container .search-icon {
   position: absolute;
-  left: 10px; /* Adjust the position to the left */
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
   cursor: pointer;
-  display: flex;
-  align-items: center; /* Align items vertically in the center */
   color: #044e8b;
+}
+
+#search-container .search-options {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 10px;
 }
 
 /* icons */

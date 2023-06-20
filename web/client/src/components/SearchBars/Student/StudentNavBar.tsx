@@ -49,19 +49,21 @@ const StudentNav = () => {
       </Link>
 
       <div id="search-container">
-        <input
-          type="text"
-          placeholder="New opportunities awaiting"
-          value={searchText}
-          onChange={handleSearchInputChange}
-        />
+        <div className="search-bar">
+          <input
+            type="text"
+            placeholder="New opportunities awaiting"
+            value={searchText}
+            onChange={handleSearchInputChange}
+          />
 
-        <div className="search-icon" onClick={handleSearch}>
-          <FaSearch />
+          <div className="search-icon" onClick={handleSearch}>
+            <FaSearch />
+          </div>
         </div>
 
-        <div>
-          {searchResults.length == 0 && searchText.length != 0 ? (
+        <div className="search-options">
+          {searchResults.length === 0 && searchText.length !== 0 ? (
             <p>No results found</p>
           ) : (
             searchResults.slice(0, 5).map((element: SearchOption, index) => {
