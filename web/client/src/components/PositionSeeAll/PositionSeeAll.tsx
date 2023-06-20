@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import OrgNavBar from "../SearchBars/Organization/OrgNavBar";
 
@@ -10,7 +10,6 @@ interface Position {
 }
 
 function PositionSeeAll() {
-  const { id } = useParams();
   const navigate = useNavigate();
 
   const [isLoading, setIsLoading] = useState(true);

@@ -19,6 +19,9 @@ import Position from "./components/Position/Position";
 import PositionCreate from "./components/PositionCreate/PositionCreate";
 import PositionSeeAll from "./components/PositionSeeAll/PositionSeeAll";
 
+import Organization from "./components/Organization/Organization";
+import Student from "./components/Student/Student";
+
 import Footer from "./components/Footer/Footer";
 
 function App() {
@@ -36,7 +39,10 @@ function App() {
 
         <Route path="/position/get/:id" element={<Position />} />
         <Route path="/position/create" element={<PositionCreate />} />
-        <Route path="position/see-all/:id" element={<PositionSeeAll />} />
+        <Route path="position/see-all/" element={<PositionSeeAll />} />
+
+        <Route path="/organization/get/:id" element={<Organization />} />
+        <Route path="/student/get/:id" element={<Student />} />
       </Routes>
 
       <Footer />

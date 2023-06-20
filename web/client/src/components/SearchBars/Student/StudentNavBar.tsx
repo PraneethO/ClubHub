@@ -2,13 +2,10 @@ import "./StudentNavBar.css";
 import "../../LandingPage/NavBar/NavBar.css";
 import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import studentMessagingIcon from "../../../assets/messaging-icon.png";
 import defaultAvatar from "../../../assets/default-avatar.png";
-import homeIcon from "../../../assets/home-icon.png";
 import briefcaseIcon from "../../../assets/briefcase-icon.png";
-
-import debounce from "lodash.debounce";
 
 export interface SearchOption {
   name: string;
@@ -17,6 +14,8 @@ export interface SearchOption {
 }
 
 const StudentNav = () => {
+  const navigate = useNavigate();
+
   const [searchText, setSearchText] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
@@ -63,10 +62,7 @@ const StudentNav = () => {
           </div>
         </div>
 
-        <div
-          className="search-options"
-          style={focused ? {} : { display: "none" }}
-        >
+        <div className="search-options">
           {searchResults.length === 0 && searchText.length !== 0 ? (
             <p>No results found</p>
           ) : (
@@ -75,20 +71,25 @@ const StudentNav = () => {
                 <button
                   key={index}
                   onClick={(event) => {
-                    event.preventDefault();
-                    setSearchText(element.name);
+                    console.log("Made it here");
+                    if (element.type) {
+                      navigate(`/student/get/${element._id}`);
+                    } else {
+                      navigate(`/organization/get/${element._id}`);
+                    }
                   }}
+                  style={focused ? {} : { opacity: 0.2 }}
                 >
                   <div
                     style={{ display: "flex", justifyContent: "space-between" }}
                   >
                     <div style={{ display: "inline-block" }}>
-                      <div style={{ color: "blue", display: "inline-block" }}>
+                      <h1 style={{ color: "blue", display: "inline-block" }}>
                         {searchText}
-                      </div>
-                      <div style={{ display: "inline-block" }}>
+                      </h1>
+                      <h1 style={{ display: "inline-block" }}>
                         {element.name.substring(searchText.length)}
-                      </div>
+                      </h1>
                     </div>
 
                     {element.type ? "Student" : "Organization"}
