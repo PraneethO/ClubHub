@@ -5,7 +5,7 @@ function Navbar() {
   return (
     <nav>
       <Link id="logo" to="/">
-        <div>ClubHub</div>
+        <div>FlyTrap</div>
       </Link>
       <Link to="/sign-up" id="signButtonContainerNav">
         Join the Beta
