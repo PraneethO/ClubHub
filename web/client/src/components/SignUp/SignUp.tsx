@@ -45,7 +45,7 @@ function SignUp() {
               textAlign: "center",
             }}
           >
-            ClubHub
+            FlyTrap
           </div>
         </Link>
       </nav>

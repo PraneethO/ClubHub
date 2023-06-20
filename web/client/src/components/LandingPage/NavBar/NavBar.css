@@ -76,6 +76,10 @@ nav.sign-up-nav {
   margin-bottom: auto !important;
 }
 
+#logo:hover {
+  cursor: pointer;
+}
+
 #signButtonContainerNav {
   margin-right: 2%;
   margin-top: auto;

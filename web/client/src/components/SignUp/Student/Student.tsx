@@ -250,17 +250,7 @@ function Student() {
             }
           }}
         >
-          <span
-            id="signButtonSpan"
-            style={{
-              textDecoration: "none",
-              color: "white",
-              alignContent: "center",
-              alignSelf: "center",
-            }}
-          >
-            <div style={{ textAlign: "center" }}>Sign Up</div>
-          </span>
+          Sign Up
         </button>
         <div
           id="errorMessageBox"

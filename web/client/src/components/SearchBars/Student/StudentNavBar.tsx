@@ -44,7 +44,7 @@ const StudentNav = () => {
   return (
     <nav className="student-nav">
       <Link id="logo" to="/dashboard/student">
-        ClubHub
+        FlyTrap
       </Link>
 
       <div id="search-container">

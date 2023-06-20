@@ -76,6 +76,7 @@
   text-align: center;
 
   border: solid 2px black;
+  z-index: 1;
 }
 
 .signButtonContainer span {
@@ -105,6 +106,7 @@
   text-align: center;
 
   border: solid 2px black;
+  z-index: 1;
 }
 
 .signButtonContainerDisabled span {
@@ -218,16 +220,26 @@ input:not([type="email"]) {
 
 
 .school-auto-complete-dropdown {
-  margin-right: auto;
-  margin-left: auto;
   width: 100%;
+  padding: 5px;
   text-align: left;
   font-family: "Montserrat", sans-serif;
   border: 2px solid black;
   background-color: #d9edff;
   margin-top: 2px;
+  cursor: pointer;
+  z-index: 999999999 !important;
 }
 
 .school-auto-complete-dropdown:hover {
-  box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.4);
+  background-color: #c2e0ff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.school-auto-complete-dropdown:focus {
+  outline: none;
+}
+
+.school-auto-complete-dropdown:last-child {
+  margin-bottom: 0;
 }
