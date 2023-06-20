@@ -233,7 +233,7 @@ function StudentDash() {
       <div className="student-dashboard-container">
         <div className="greeting-container">
           <div className="container-text">
-            {"Greetings " + firstName + " !"}
+            {"Greetings, " + firstName + "!"}
           </div>
           <div className="greeting-recents">
             <div className="title-text">Recent visits:</div>
