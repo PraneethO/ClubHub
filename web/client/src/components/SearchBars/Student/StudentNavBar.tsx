@@ -79,14 +79,18 @@ const StudentNav = () => {
                     setSearchText(element.name);
                   }}
                 >
-                  <div style={{ display: "inline-block" }}>
-                    <div style={{ color: "blue", display: "inline-block" }}>
-                      {searchText}
-                    </div>
+                  <div
+                    style={{ display: "flex", justifyContent: "space-between" }}
+                  >
                     <div style={{ display: "inline-block" }}>
-                      {element.name.substring(searchText.length)}
+                      <div style={{ color: "blue", display: "inline-block" }}>
+                        {searchText}
+                      </div>
+                      <div style={{ display: "inline-block" }}>
+                        {element.name.substring(searchText.length)}
+                      </div>
                     </div>
-                    <br />
+
                     {element.type ? "Student" : "Organization"}
                   </div>
                 </button>
