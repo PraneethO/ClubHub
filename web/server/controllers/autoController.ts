@@ -56,7 +56,13 @@ const searchAll = async (req: Request, res: Response) => {
       organizationQuery.lean().exec(),
     ]);
 
-    const suggestions = [...users, ...organizations];
+    const userSuggestions = users.map((user) => ({ ...user, type: 1 }));
+    const organizationSuggestions = organizations.map((org) => ({
+      ...org,
+      type: 0,
+    }));
+
+    const suggestions = [...userSuggestions, ...organizationSuggestions];
     res.status(201).json(suggestions);
   } catch (error) {
     console.error(error);

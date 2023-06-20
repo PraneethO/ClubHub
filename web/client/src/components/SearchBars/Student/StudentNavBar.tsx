@@ -13,33 +13,32 @@ import debounce from "lodash.debounce";
 export interface SearchOption {
   name: string;
   _id: string;
+  type: boolean;
 }
 
 const StudentNav = () => {
   const [searchText, setSearchText] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
+  const [focused, setFocused] = useState(false);
+
   // Set the delay for the debounce function (e.g., 300 milliseconds)
-  const debounceApiCall = debounce(async () => {
+  const fetchCall = async (value: string) => {
     await fetch(
       `http://localhost:8000/api/search/autocomplete?query=${encodeURIComponent(
-        searchText
+        value
       )}`
     )
       .then((response) => response.json())
       .then((data) => setSearchResults(data));
-  }, 300);
-
-  const handleSearchInputChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setSearchText(event.target.value);
-    debounceApiCall();
   };
 
-  const handleSearch = () => {
-    console.log("Searching for:", searchText);
-    // Perform search or any other action here
+  const handleSearchInputChange = async (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const value = event.target.value;
+    await setSearchText(value);
+    fetchCall(value);
   };
 
   return (
@@ -54,15 +53,20 @@ const StudentNav = () => {
             type="text"
             placeholder="New opportunities awaiting"
             value={searchText}
-            onChange={handleSearchInputChange}
+            onInput={handleSearchInputChange}
+            onFocus={(e) => setFocused(true)}
+            onBlur={(e) => setFocused(false)}
           />
 
-          <div className="search-icon" onClick={handleSearch}>
+          <div className="search-icon">
             <FaSearch />
           </div>
         </div>
 
-        <div className="search-options">
+        <div
+          className="search-options"
+          style={focused ? {} : { display: "none" }}
+        >
           {searchResults.length === 0 && searchText.length !== 0 ? (
             <p>No results found</p>
           ) : (
@@ -75,7 +79,16 @@ const StudentNav = () => {
                     setSearchText(element.name);
                   }}
                 >
-                  {element.name}
+                  <div style={{ display: "inline-block" }}>
+                    <div style={{ color: "blue", display: "inline-block" }}>
+                      {searchText}
+                    </div>
+                    <div style={{ display: "inline-block" }}>
+                      {element.name.substring(searchText.length)}
+                    </div>
+                    <br />
+                    {element.type ? "Student" : "Organization"}
+                  </div>
                 </button>
               );
             })
