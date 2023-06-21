@@ -3,6 +3,8 @@ import "../../LandingPage/NavBar/NavBar.css";
 import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
+
+import homeIcon from "../../../assets/home-icon.png";
 import studentMessagingIcon from "../../../assets/messaging-icon.png";
 import defaultAvatar from "../../../assets/default-avatar.png";
 import briefcaseIcon from "../../../assets/briefcase-icon.png";
@@ -101,6 +103,15 @@ const StudentNav = () => {
               );
             })
           )}
+        </div>
+      </div>
+
+      <div className="icon-container">
+        <div className="home-icon">
+          <Link id="toDashboard" to="/dashboard/student" className="icon-text">
+            <img src={homeIcon} alt="StudentDash" />
+            Home
+          </Link>
         </div>
       </div>
 
