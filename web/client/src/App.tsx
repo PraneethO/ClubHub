@@ -24,6 +24,8 @@ import Student from "./components/Student/Student";
 
 import Footer from "./components/Footer/Footer";
 
+import ViewStudent from "./components/Profile/ViewStudent/ViewStudent";
+
 function App() {
   return (
     <>
@@ -43,6 +45,9 @@ function App() {
 
         <Route path="/organization/get/:id" element={<Organization />} />
         <Route path="/student/get/:id" element={<Student />} />
+
+        {/* temporary link to view student for testing */}
+        <Route path="/student/view/" element={<ViewStudent />} />
       </Routes>
 
       <Footer />
