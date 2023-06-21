@@ -8,6 +8,11 @@ import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
 
+interface RecentPosition {
+  name: string;
+  id: string;
+}
+
 function StudentDash() {
   const navigate = useNavigate();
 
@@ -237,21 +242,34 @@ function StudentDash() {
           </div>
           <div className="greeting-recents">
             <div className="title-text">Recent visits:</div>
-            <div className="title-subtext" style={{ marginBottom: "8px" }}>
-              Steel City Codes
-            </div>
-            <div className="title-subtext" style={{ marginBottom: "8px" }}>
-              Joe Biden
-            </div>
-            <div className="title-subtext">
-              <Link
-                to="/"
-                className="title-subtext"
-                style={{ textDecoration: "none", color: "black" }}
-              >
-                See more...
-              </Link>
-            </div>
+            {recent.map((element: RecentPosition, index) => {
+              return (
+                <button
+                  key={index}
+                  className="title-subtext"
+                  style={{ marginBottom: "8px", all: "unset" }}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate(`/organization/get/${element.id}`);
+                  }}
+                >
+                  {element.name}
+                </button>
+              );
+            })}
+            {recent.length == 0 ? (
+              <div className="title-subtext">
+                <Link
+                  to="/positions/student"
+                  className="title-subtext"
+                  style={{ textDecoration: "none", color: "black" }}
+                >
+                  Explore! ...
+                </Link>
+              </div>
+            ) : (
+              <div></div>
+            )}
           </div>
           <div className="student-following">
             <div className="title-text" style={{ marginBottom: "10px" }}>
@@ -363,7 +381,7 @@ function StudentDash() {
 
         <div className="student-trending">
           <div className="trending-container">
-            <div className="container-text">Trending</div>
+            <div className="container-text">Power</div>
             <div className="trending-categories-container">
               <div className="title-text">Categories:</div>
               {/* make these dynamic */}

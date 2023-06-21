@@ -10,6 +10,7 @@ const positionSchema = new mongoose.Schema({
   applied: [{ type: String }],
   school: { type: String },
   city: { type: String },
+  field: { type: String },
 });
 
 export default mongoose.model("Position", positionSchema);

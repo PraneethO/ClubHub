@@ -19,6 +19,9 @@ const organizationSchema = new mongoose.Schema({
   numStudents: { type: Number },
   numDistricts: { type: Number },
   numLeaders: { type: Number },
+  numPositions: { type: Number },
+  numApplicants: { type: Number },
+  power: { type: Number },
 
   // Not Required --> Clubs setup later in profile --> Positions they're looking for
   positions: [{ type: String }],
