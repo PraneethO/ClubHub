@@ -1,6 +1,7 @@
-// Functions wanted: get positions by id, apply to position, get position details, create + delete + change position
+// Functions wanted: get positions by id, apply to position, get position details, create + delete + change position, (temp) get all positios
 import { Request, Response } from "express";
 import Position from "../models/Position";
+import Organization from "../models/Organization";
 
 const uuidv4 = require("uuid").v4;
 
@@ -30,9 +31,17 @@ const createPosition = async (req: Request, res: Response) => {
     return res.status(400).send("All fields are required or error w/ sign in");
   }
 
+  const orgName = await Organization.findOne({ _id: organization })
+    .select("name")
+    .lean()
+    .exec();
+
+  console.log(orgName);
+
   const newPosition = new Position({
     _id: uuidv4(),
-    organization,
+    orgId: organization,
+    orgName: orgName.name,
     title,
     description,
     message,
@@ -67,10 +76,26 @@ const deletePosition = async (req: Request, res: Response) => {};
 
 const updatePosition = async (req: Request, res: Response) => {};
 
+const getAllPositions = async (req: Request, res: Response) => {
+  try {
+    const positions = await Position.find(
+      {},
+      { title: 1, description: 1, orgName: 1 }
+    )
+      .lean()
+      .exec();
+    return res.status(200).json(positions);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).send("Internal server error");
+  }
+};
+
 export default {
   getPositionById,
   createPosition,
   deletePosition,
   updatePosition,
   getPositionByOrganization,
+  getAllPositions,
 };

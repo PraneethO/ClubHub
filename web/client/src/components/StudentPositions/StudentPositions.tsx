@@ -1,26 +1,27 @@
 import "./StudentPositions.css";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import StudentNav from "../SearchBars/Student/StudentNavBar";
+import { useNavigate } from "react-router-dom";
 
 interface PositionContainerProps {
-  organizationTitle: string;
-  positionTitle: string;
-  positionDescription: string;
+  orgName: string;
+  title: string;
+  description: string;
 }
 
 const PositionContainer: React.FC<PositionContainerProps> = ({
-  organizationTitle,
-  positionTitle,
-  positionDescription,
+  orgName,
+  title,
+  description,
 }) => {
   return (
     <div className="position-application-container">
       <div className="organization-title-container">
-        <div className="organization-title-text">{organizationTitle}</div>
+        <div className="organization-title-text">{orgName}</div>
       </div>
-      <div className="position-title">{positionTitle}</div>
+      <div className="position-title">{title}</div>
       <div className="position-description">
-        {positionDescription.split("\n").map((line, index) => (
+        {description.split("\n").map((line, index) => (
           <React.Fragment key={index}>
             {line}
             <br />
@@ -33,18 +34,29 @@ const PositionContainer: React.FC<PositionContainerProps> = ({
 };
 
 const StudentPositions: React.FC = () => {
-  const positions: PositionContainerProps[] = [
-    {
-      organizationTitle: "Organization",
-      positionTitle: "Position",
-      positionDescription:
-        "This is a sample description of what an organization would say about a posting.\n\n" +
-        "  - Description of things\n\n" +
-        "  - Description of things\n\n" +
-        "  - Description of things",
-    },
-    // ADD MORE APPLICATIONS HERE
-  ];
+  const navigate = useNavigate();
+
+  const [isLoading, setIsLoading] = useState(true);
+  const [positions, setPositions] = useState<PositionContainerProps[]>([]);
+
+  useEffect(() => {
+    fetch("http://localhost:8000/api/positionstemp", {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+    })
+      .then((response) => {
+        if (response.status == 500) {
+          navigate("/dashboard/student");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        setPositions(data);
+        setIsLoading(false);
+      });
+  }, []);
 
   // Determine the number of rows
   const numRows = Math.ceil(positions.length / 4);
@@ -52,38 +64,44 @@ const StudentPositions: React.FC = () => {
   return (
     <>
       <StudentNav />
-      <div className="student-positions-container">
-        {Array.from({ length: numRows }, (_, rowIndex) => {
-          // Calculate the start and end indexes for each row
-          const startIndex = rowIndex * 4;
-          const endIndex = startIndex + 4;
+      {isLoading ? (
+        <h1>Loading...</h1>
+      ) : (
+        <>
+          <div className="student-positions-container">
+            {Array.from({ length: numRows }, (_, rowIndex) => {
+              // Calculate the start and end indexes for each row
+              const startIndex = rowIndex * 4;
+              const endIndex = startIndex + 4;
 
-          // Get the positions for the current row
-          const rowPositions = positions.slice(startIndex, endIndex);
+              // Get the positions for the current row
+              const rowPositions = positions.slice(startIndex, endIndex);
 
-          // Determine if the current row is the last row
-          const isLastRow = rowIndex === numRows - 1;
+              // Determine if the current row is the last row
+              const isLastRow = rowIndex === numRows - 1;
 
-          return (
-            <div
-              key={rowIndex}
-              className="applications-row-container"
-              style={{ marginBottom: isLastRow ? 0 : "5vh" }}
-            >
-              {rowPositions.map((position, positionIndex) => (
-                <PositionContainer
-                  key={startIndex + positionIndex}
-                  organizationTitle={position.organizationTitle}
-                  positionTitle={position.positionTitle}
-                  positionDescription={position.positionDescription}
-                />
-              ))}
-            </div>
-          );
-        })}
-      </div>
-      <br />
-      <br />
+              return (
+                <div
+                  key={rowIndex}
+                  className="applications-row-container"
+                  style={{ marginBottom: isLastRow ? 0 : "5vh" }}
+                >
+                  {rowPositions.map((position, positionIndex) => (
+                    <PositionContainer
+                      key={startIndex + positionIndex}
+                      orgName={position.orgName}
+                      title={position.title}
+                      description={position.description}
+                    />
+                  ))}
+                </div>
+              );
+            })}
+          </div>
+          <br />
+          <br />
+        </>
+      )}
     </>
   );
 };

@@ -39,7 +39,7 @@ function PositionCreate() {
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState("This is a message");
   const [isPostingContainerVisible, setPostingContainerVisible] =
     useState(false);
 
@@ -70,6 +70,8 @@ function PositionCreate() {
       description,
       message,
     };
+
+    console.log(formData);
 
     await fetch("http://localhost:8000/api/positions/crud", {
       method: "POST",

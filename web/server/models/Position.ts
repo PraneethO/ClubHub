@@ -2,7 +2,8 @@ import mongoose from "mongoose";
 
 const positionSchema = new mongoose.Schema({
   _id: { type: String, required: true },
-  organization: { type: String, required: true },
+  orgName: { type: String, required: true },
+  orgId: { type: String, rquired: true },
   title: { type: String, required: true },
   description: { type: String, required: true },
   message: { type: String, required: true },

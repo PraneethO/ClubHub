@@ -84,6 +84,9 @@ router.patch("/positions/crud", (req, res) => {
 router.get("/positions/crud/org", (req, res) => {
   positionController.getPositionByOrganization(req, res);
 });
+router.get("/positionstemp", (req, res) => {
+  positionController.getAllPositions(req, res);
+});
 
 // ! File Routes
 import fileController from "../controllers/fileController";
