@@ -24,7 +24,7 @@ import Student from "./components/Student/Student";
 
 import Footer from "./components/Footer/Footer";
 
-import ViewStudent from "./components/Profile/ViewStudent/ViewStudent";
+import ViewStudent from "./components/Profile/Views/ViewStudent/ViewStudent";
 
 function App() {
   return (

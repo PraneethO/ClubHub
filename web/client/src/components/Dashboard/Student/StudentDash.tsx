@@ -458,7 +458,7 @@ function StudentDash() {
               ))}
             </div>
 
-            <div className="add-filter">
+            <div className="add-filter" style={{ marginRight: "2px" }}>
               <select
                 value={selectedFilters}
                 onChange={(e) => setSelectedFilters(e.target.value)}

@@ -16,5 +16,13 @@
     width: 100%;
     height: 50%;
     border-radius: 0.5rem;
-    background-color: black;
+    padding: 1rem;
+    /* background-color: pink; */
+}
+
+.view-information-text {
+    font-size: 1.25rem;
+    font-family: "Montserrat", sans-serif;
+    color: black;
+    text-transform: capitalize;
 }
