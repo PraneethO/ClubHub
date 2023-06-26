@@ -222,8 +222,13 @@ function Organization() {
               onChange={(event) => setOrgDesignation(event.target.value)}
             >
               <option value=""></option>
-              <option value="501(c)3">501(c)3</option>
+              <option value="501(c)3 Non-profit">501(c)3 Non-profit</option>
               <option value="School Club">School Club</option>
+              <option value="Student Government Association">
+                Student Government Association
+              </option>
+              <option value="Student Publication">Student Publication</option>
+              <option value="Service Club">Service Club</option>
               <option value="Other">Other</option>
             </select>
           </div>
