@@ -22,7 +22,7 @@ function OrgNavBar() {
   return (
     <nav className="student-nav">
       <Link id="logo" to="/dashboard/organization">
-        <div>ClubHub</div>
+        <div>mufkin</div>
       </Link>
 
       <div id="search-container">

@@ -432,19 +432,6 @@ function StudentDash() {
             Explore
           </div>
           <div className="filter-dropdowns-container">
-            {/* <select
-                className="filter-dropdown"
-                placeholder="Select School"
-              ></select>
-              <select
-                className="filter-dropdown"
-                placeholder="Select Region"
-              ></select>
-              <select
-                className="filter-dropdown"
-                placeholder="Select Area"
-              ></select> */}
-
             <div className="selected-filters">
               {filters.map((area, index) => (
                 <div className="selected-filter" key={index}>

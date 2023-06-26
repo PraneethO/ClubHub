@@ -45,7 +45,7 @@ function SignUp() {
               textAlign: "center",
             }}
           >
-            FlyTrap
+            mufkin
           </div>
         </Link>
       </nav>
