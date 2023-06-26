@@ -31,7 +31,7 @@ nav.student-nav:hover {
 }
 
 /* code to make the search bar expand upon clicking it */
-#search-container input[type="text"]:focus {
+#search-container:focus {
   width: 100%;
   transition: width 0.4s ease-in-out;
 }

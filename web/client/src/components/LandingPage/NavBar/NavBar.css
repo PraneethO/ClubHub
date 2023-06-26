@@ -67,11 +67,13 @@ nav.sign-up-nav {
 
 /* landing page nav & display */
 #logo {
+  font-family: bebas-neue-pro, sans-serif;
+  font-weight: bold;
   margin-left: 2% !important;
   font-size: 2rem;
   color: #044e8b;
   text-decoration: none;
-  font-size: 60px !important;
+  font-size: 40px !important;
   margin-top: auto !important;
   margin-bottom: auto !important;
 }
