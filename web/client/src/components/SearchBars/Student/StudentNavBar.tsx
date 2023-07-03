@@ -48,18 +48,8 @@ const StudentNav = () => {
 
   return (
     <nav className="student-nav">
-      <img
-        src={muffinLogo}
-        style={{
-          width: "100px",
-          height: "100px",
-          marginRight: "0",
-          alignSelf: "center",
-          justifySelf: "center",
-        }}
-      />
-      <Link id="logo" to="/dashboard/student" style={{ translate: "-70px" }}>
-        muffin
+      <Link id="logo" to="/dashboard/student">
+        ClubHub
       </Link>
 
       <div id="search-container" style={{ translate: "-20px" }}>

@@ -45,7 +45,7 @@ function SignUp() {
               textAlign: "center",
             }}
           >
-            mufkin
+            ClubHub
           </div>
         </Link>
       </nav>
