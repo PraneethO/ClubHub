@@ -24,6 +24,8 @@ import Student from "./components/Student/Student";
 
 import Footer from "./components/Footer/Footer";
 
+import Bulletin from "./components/Bulletin/Bulletin";
+
 import ViewStudent from "./components/Profile/Views/ViewStudent/ViewStudent";
 
 function App() {
@@ -45,6 +47,9 @@ function App() {
 
         <Route path="/organization/get/:id" element={<Organization />} />
         <Route path="/student/get/:id" element={<Student />} />
+
+        {/* make dynamic based on specifc bulletins */}
+        <Route path="/bulletin" element={<Bulletin />} />
 
         {/* temporary link to view student for testing */}
         <Route path="/student/view/" element={<ViewStudent />} />
