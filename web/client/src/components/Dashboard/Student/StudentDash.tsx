@@ -471,7 +471,7 @@ function StudentDash() {
                 placeholder="Select Region"
               >
                 <option value="">Select Region</option>
-                <option value="joe">JOe</option>
+                <option value="Northeast U.S.">JOe</option>
               </select>
 
               <FontAwesomeIcon

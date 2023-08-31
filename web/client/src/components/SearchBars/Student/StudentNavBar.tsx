@@ -8,7 +8,7 @@ import homeIcon from "../../../assets/home-icon.png";
 import studentMessagingIcon from "../../../assets/messaging-icon.png";
 import defaultAvatar from "../../../assets/default-avatar.png";
 import briefcaseIcon from "../../../assets/briefcase-icon.png";
-import muffinLogo from "../../../assets/mufkin-logo.png";
+import bulletinIcon from "../../../assets/bulletin-board-icon.png";
 
 export interface SearchOption {
   name: string;
@@ -49,10 +49,10 @@ const StudentNav = () => {
   return (
     <nav className="student-nav">
       <Link id="logo" to="/dashboard/student">
-        ClubHub
+        <div>CLUBHUB</div>
       </Link>
 
-      <div id="search-container" style={{ translate: "-20px" }}>
+      <div id="search-container">
         <div className="search-bar">
           <input
             type="text"
@@ -112,6 +112,15 @@ const StudentNav = () => {
           <Link id="toDashboard" to="/dashboard/student" className="icon-text">
             <img src={homeIcon} alt="StudentDash" />
             Home
+          </Link>
+        </div>
+      </div>
+
+      <div className="icon-container">
+        <div className="home-icon">
+          <Link id="toBulletin" to="/bulletin" className="icon-text">
+            <img src={bulletinIcon} />
+            Bulletin
           </Link>
         </div>
       </div>
