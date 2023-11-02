@@ -1,3 +1,3 @@
-# ClubCart
+# ClubHub
 
-Head into the directory ```clubcart``` in order to run the next.js app
+Head into the directory ```clubhub``` in order to run the next.js app
