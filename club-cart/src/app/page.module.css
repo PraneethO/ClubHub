@@ -1,0 +1,236 @@
+/* ! To anyone reading this name your fucking css classes properly */
+/* ! use camel case and make it meaningful */
+/* ! also use css modules like i'm doing here so that all the css is only applied to one file and isn't a cluster fuck */
+
+.main {
+  background-color: #f1f1f1;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ! NavBar CSS */
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  
+  width: 100%;
+  height: 10vh;
+
+  text-align: left;
+  padding: 2%;
+  padding-left: 1%;
+  padding-top: 3%;
+
+  font-size: 4.5rem;
+  color: #044e8b;
+
+  position: flex;
+}
+
+.navLogo {
+  transform: translateY(-.25rem);
+}
+
+.link {
+  transform: translateY(-.75rem);
+
+  display: flex;
+  margin-top: 0;
+
+  justify-content: center;
+  justify-items: center;
+  text-align: center;
+
+  text-decoration: none; 
+}
+
+.navButton {
+  font-size: 2.5rem;
+  
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+
+  border-radius: .5rem;
+  background-color: #044e8b;
+  color: white;
+
+  border: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  top: 0;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+}
+
+.navButton:hover {
+  background-color: #043b68;
+  cursor: pointer;
+}
+
+/* ! First Container CSS */
+.firstContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+  height: 90vh;
+}
+
+/* ! Login Form CSS */
+.loginForm {
+  width: 35%;
+  height: fit-content;
+  padding: 1rem;
+
+  background-color: #ffffff;
+
+  border-radius: 1rem;
+  /* border: solid 2px black; */
+  border: 3px #044e8b solid;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+
+  margin-left: 5%;
+}
+
+/* Input Stuff */
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+
+  width: 95%;
+  height: 5%;
+
+  margin-bottom: 0.5rem;
+}
+.inputDesc {
+  font-size: 2rem;
+  margin-bottom: 0.25rem;
+}
+
+.inputField {
+  width: 100%;
+  height: 60%;
+  padding: .9rem;
+
+  border: 3px #044e8b solid;
+
+  font-size: 1rem;
+  font-family: bebas-neue-pro, sans-serif;
+}
+
+.inputField::placeholder {
+  font-family: bebas-neue-pro, sans-serif;
+}
+
+.inputButton {
+  margin-top: 0.5rem;
+
+  width: 70%;
+
+  background-color: #044e8b;
+  color: white;
+
+  font-size: 1.5rem;
+  /* letter-spacing: 2px; */
+  border-radius: 0.5rem;
+  border: none;
+  padding: 1rem;
+  font-family: bebas-neue-pro, sans-serif;
+  font-weight: bold;
+}
+
+.inputButton:hover {
+  cursor: pointer;
+  background-color: #043b68;
+}
+
+.inputExtra {
+  margin-top: 0.5rem;
+
+  color: black;
+  text-decoration: none;
+
+  font-size: 1rem;
+  text-decoration: underline;
+}
+
+.showPasswordText  {
+  margin-top: -0.1rem;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.errorContainer {
+  margin-top: 1rem;
+  color: black;
+  background-color: #bfbfbf;
+  width: 100%;
+  border-top: 4px black solid;
+  border-bottom-left-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+  padding: 1% 0 1% 0;
+  text-align: center;
+  font-family: bebas-neue-pro, sans-serif;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+/* Right Text Stuff */
+.rightText {
+  display: fixed;
+  text-align: right;
+  white-space: nowrap;
+
+  color: #044e8b;
+
+  font-size: 6vi;
+
+  margin-right: 5%;
+}
+
+/* ! Media Queries */
+@media (max-width: 600px) {
+  .firstContainer {
+    flex-direction: column;
+  }
+
+  .loginForm {
+    width: 80%;
+  }
+  .rightText {
+    text-align: center;
+
+    font-size: 10vw;
+  }
+}
+
+@media (max-height: 500px) {
+  .inputDesc {
+    display: none;
+  }
+  .inputContainer {
+    height: 50%;
+  }
+  .inputField {
+    padding: 2%;
+  }
+}
