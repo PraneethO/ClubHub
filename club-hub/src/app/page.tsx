@@ -59,7 +59,7 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <nav className={styles.nav}>
-        <div className={styles.navLogo}>CLUBCART</div>
+        <div className={styles.navLogo}>CLUBHUB</div>
 
         <Link href="/pages/sign-up" className={styles.link}>
           <button className={styles.navButton}>Sign Up</button>
