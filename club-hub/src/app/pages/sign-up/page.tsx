@@ -9,6 +9,13 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 
 import { signIn, useSession } from "next-auth/react";
+import debounce from "lodash.debounce";
+import formatPhoneNumber from "./formatPhoneNumber";
+
+export interface SchoolOption {
+  value: string;
+  label: string;
+}
 
 export default function SignUp() {
   const router = useRouter();
@@ -32,11 +39,44 @@ export default function SignUp() {
 
   const [name, setName] = useState("");
   const [school, setSchool] = useState("");
+  const [grade, setGrade] = useState("");
   const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
   const [sponsorName, setSponsorName] = useState("");
 
+  const [schools, setSchools] = useState([]);
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  // Set the delay for the debounce function (e.g., 300 milliseconds)
+  const debounceApiCall = debounce(() => {
+    fetch(
+      `http://localhost:8000/api/schools/autocomplete?query=${encodeURIComponent(
+        school
+      )}`
+    )
+      .then((response) => response.json())
+      .then((data) => setSchools(data));
+  }, 300);
+
+  const handleSchoolChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSchool(event.target.value);
+    if (school.length >= 4) {
+      debounceApiCall();
+    }
+  };
+
   const [error, setError] = useState("");
+
+  const handlePhoneNumber = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const formatted = formatPhoneNumber(e.target.value);
+    setPhoneNumber(formatted);
+  };
+
+  const hasValidPassword = /^(?=.*[0-9])(?=.*[!@#$%^&*_-])[a-zA-Z0-9!@#$%^&*_-]{8,}$/.test(password);
+
+  const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
   const handleAdminSubmit = async () => {
     if (!name || !school || !email || !password || !sponsorName) {
@@ -116,7 +156,7 @@ export default function SignUp() {
     <main className={styles.main}>
       <div className={styles.firstContainer}>
         <Link href="/" style={{ textDecoration: "none" }}>
-          <div className={styles.leftPartition}>CLUBCART</div>
+          <div className={styles.leftPartition}>ClubHub</div>
         </Link>
         <div className={styles.rightPartition}>
           <div className={styles.buttonSwitch}>
@@ -127,7 +167,7 @@ export default function SignUp() {
               }}
               style={
                 studentForm
-                  ? { backgroundColor: "rgb(4, 78, 139)"}
+                  ? { backgroundColor: "rgb(4, 78, 139)" }
                   : { background: "transparent" }
               }
             >
@@ -144,7 +184,7 @@ export default function SignUp() {
                   : { background: "transparent" }
               }
             >
-              Advisor
+              Organization
             </button>
           </div>
           {studentForm ? (
@@ -183,31 +223,183 @@ export default function SignUp() {
                 </div>
               </div>
               <div className={styles.inputContainer}>
-                <div className={styles.inputDesc}>School Email</div>
+                <div className={styles.inputDesc}>Email</div>
                 <input
                   className={styles.inputField}
                   style={{ width: "100%" }}
-                  placeholder="Enter Your School Email"
+                  placeholder="Enter Your Email"
                   value={email}
                   onChange={(e) => {
                     setEmail(e.target.value);
                   }}
+                  type="text"
                 ></input>
               </div>
+
               <div className={styles.inputContainer}>
-                <div className={styles.inputDesc}>Password</div>
+                <div className={styles.inputDesc}>Phone Number</div>
                 <input
                   className={styles.inputField}
                   style={{ width: "100%" }}
-                  placeholder="Enter Your password"
+                  placeholder="Enter Your Phone Number"
+                  value={phoneNumber}
+                  onChange={(e) => {
+                    handlePhoneNumber(e)
+                  }}
+                ></input>
+              </div>
+
+
+
+
+
+              <div className={styles.twoWayInput} style={{ marginTop: "1rem" }}>
+                <div className={styles.inputContainer}>
+                  <div className={styles.inputDesc} style={{ marginTop: "0" }}>
+                    High School
+                  </div>
+                  <input
+                    className={styles.inputField}
+                    type="text"
+                    value={school}
+                    onChange={(e) => {
+                      handleSchoolChange(e)
+                    }}
+                    placeholder="Enter Your High School"
+                  />
+                  <div>
+                    {schools.slice(0, 5).map((element: SchoolOption, index) => {
+                      return (
+                        <button
+                          className="school-auto-complete-dropdown"
+                          key={index}
+                          onChange={(e) => {
+                            e.preventDefault();
+                            setSchool(element.value);
+                          }}
+                        >
+                          {element.label}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+                <div className={styles.inputContainer} style={{ width: "20%" }}>
+                  <div
+                    className={styles.inputDesc}
+                    style={{ marginTop: "0" }}
+                  >
+                    Grade
+                  </div>
+                  <select
+                    className={styles.inputField}
+                    value={grade}
+                    onChange={(e) => {
+                      setGrade(e.target.value);
+                    }}
+                  >
+                    <option value=""></option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                  </select>
+                </div>
+              </div>
+
+
+
+              {/* <div className={styles.inputContainer}>
+                <div className={styles.inputDesc}>High School</div>
+                <input
+                  className={styles.inputField}
+                  style={{ width: "100%" }}
+                  type="text"
+                  value={school}
+                  onChange={(e) => {
+                    handleSchoolChange(e)
+                  }}
+                  placeholder="Enter Your High School"
+                />
+                <div>
+                  {schools.slice(0, 5).map((element: SchoolOption, index) => {
+                    return (
+                      <button
+                        className="school-auto-complete-dropdown"
+                        key={index}
+                        onChange={(e) => {
+                          e.preventDefault();
+                          setSchool(element.value);
+                        }}
+                      >
+                        {element.label}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+              <div className={styles.inputContainer}>
+                <div className={styles.inputDesc}>Grade</div>
+                <input
+                  className={styles.inputField}
+                  style={{ width: "100%" }}
+                  placeholder="Enter Your Grade"
+                  value={password}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
+                  type="number"
+                  min={0}
+                  max={12}
+                ></input>
+              </div> */}
+
+
+              <div className={styles.inputContainer}>
+                <div style={{display: "flex", flexDirection: "row" }}>
+                  <div className={styles.inputDesc} style={{ width: "fit-content" }}>Password</div>
+                  <input
+                    type="checkbox"
+                    checked={showPassword}
+                    onChange={() => setShowPassword(!showPassword)}
+                    style={{ marginLeft: "auto", marginTop: "auto", marginBottom: "0.65rem", width: "1rem", height: "1rem" }}
+                  />
+                  <div style={{marginTop: "auto", marginBottom: "0.5rem" }}>Show Password</div>
+                </div>
+                <input
+                  className={styles.inputField}
+                  style={{ width: "100%" }}
+                  placeholder="Enter Your Password"
+                  value={password}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
+                  type={showPassword ? "text" : "password"}
+                ></input>
+              </div>
+              {/* <div className={styles.inputContainer}>
+                <div className={styles.inputDesc}>Confirm Password</div>
+                <input
+                  className={styles.inputField}
+                  style={{ width: "100%" }}
+                  placeholder="Re-enter Your Password"
                   value={password}
                   onChange={(e) => {
                     setPassword(e.target.value);
                   }}
                   type="password"
                 ></input>
-              </div>
-              <div className={styles.inputContainer}>
+              </div> */}
+
+              {/* <div className={styles.inputContainer}>
                 <div className={styles.inputDesc} style={{marginBottom: "0"}}>
                   School Code
                   <span style={{ fontSize: "1.3rem", marginBottom: "0.25rem", marginLeft: "1rem"}}>
@@ -225,7 +417,7 @@ export default function SignUp() {
                     setSchool(e.target.value);
                   }}
                 ></input>
-              </div>
+              </div> */}
               <button
                 className={styles.buttonSubmit}
                 onClick={handleStudentSubmit}
@@ -255,7 +447,7 @@ export default function SignUp() {
                   }}
                 ></input>
               </div>
-              <div className={styles.inputContainer}>
+              {/* <div className={styles.inputContainer}>
                 <div className={styles.inputDesc} style={{ marginTop: "0" }}>
                   School Code
                   <span style={{ fontSize: "1.3rem", marginBottom: "0.25rem", marginLeft: "1rem"}}>
@@ -273,13 +465,13 @@ export default function SignUp() {
                     setSchool(e.target.value);
                   }}
                 ></input>
-              </div>
+              </div> */}
               <div className={styles.inputContainer}>
-                <div className={styles.inputDesc}>School Email</div>
+                <div className={styles.inputDesc}>Email</div>
                 <input
                   className={styles.inputField}
                   style={{ width: "100%" }}
-                  placeholder="Enter Your School Email"
+                  placeholder="Enter Your Email"
                   value={email}
                   onChange={(e) => {
                     setEmail(e.target.value);
@@ -292,6 +484,19 @@ export default function SignUp() {
                   className={styles.inputField}
                   style={{ width: "100%" }}
                   placeholder="Enter Your Password"
+                  value={password}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
+                  type="password"
+                ></input>
+              </div>
+              <div className={styles.inputContainer}>
+                <div className={styles.inputDesc}>Confirm Password</div>
+                <input
+                  className={styles.inputField}
+                  style={{ width: "100%" }}
+                  placeholder="Re-enter Your Password"
                   value={password}
                   onChange={(e) => {
                     setPassword(e.target.value);

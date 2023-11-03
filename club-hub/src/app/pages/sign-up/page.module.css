@@ -24,7 +24,7 @@
 
 .leftPartition:hover {
   background-position-y: 90%;
-  background-size: 85% .1em;
+  background-size: 75% .1em;
   cursor: pointer;
 }
 
@@ -134,10 +134,34 @@
   background-color: #043b68;
 }
 
-/* Student Login Form yes ik this is backwards but its 9:13 pm */
-/* 9:13 pm is like 11 Am on a tuesday, relax. */
 .twoWayInput {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/* school auto complete */
+.school-auto-complete-dropdown {
+  width: 100%;
+  padding: 5px;
+  text-align: left;
+  font-family: "Montserrat", sans-serif;
+  border: 2px solid black;
+  background-color: #d9edff;
+  margin-top: 2px;
+  cursor: pointer;
+  z-index: 999999999 !important;
+}
+
+.school-auto-complete-dropdown:hover {
+  background-color: #c2e0ff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.school-auto-complete-dropdown:focus {
+  outline: none;
+}
+
+.school-auto-complete-dropdown:last-child {
+  margin-bottom: 0;
 }
