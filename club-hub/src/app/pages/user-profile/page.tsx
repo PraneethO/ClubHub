@@ -229,54 +229,12 @@ export default function UserProfile() {
               </div>
               <input className={styles.infoInput} />
             </div>
-            <div className={styles.infoRow}>
-              <div className={styles.descriptionContainer}>
-                <div className={styles.description}>Student ID</div>
-              </div>
-              <input className={styles.infoInput} />
-            </div>
 
             <div className={styles.infoRow}>
               <div className={styles.descriptionContainer}>
                 <div className={styles.description}>Birth Date</div>
               </div>
               <input className={styles.infoInput} type="date" />
-            </div>
-          </div>
-        </div>
-
-        <div className={styles.fieldChangeContainer}>
-          <div className={styles.fieldChangeTitle}>Address</div>
-          <div className={styles.infoContainer}>
-            <div className={styles.infoRow}>
-              <div className={styles.descriptionContainer}>
-                <div className={styles.description}>Address Line 1</div>
-              </div>
-              <input className={styles.infoInput} />
-            </div>
-            <div className={styles.infoRow}>
-              <div className={styles.descriptionContainer}>
-                <div className={styles.description}>Address Line 2</div>
-              </div>
-              <input className={styles.infoInput} />
-            </div>
-            <div className={styles.infoRow}>
-              <div className={styles.descriptionContainer}>
-                <div className={styles.description}>City</div>
-              </div>
-              <input className={styles.infoInput} />
-            </div>
-            <div className={styles.infoRow}>
-              <div className={styles.descriptionContainer}>
-                <div className={styles.description}>State</div>
-              </div>
-              <input className={styles.infoInput} />
-            </div>
-            <div className={styles.infoRow}>
-              <div className={styles.descriptionContainer}>
-                <div className={styles.description}>Zip Code</div>
-              </div>
-              <input className={styles.infoInput} />
             </div>
           </div>
         </div>
