@@ -43,10 +43,12 @@ export default function SignUp() {
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
-  const [sponsorName, setSponsorName] = useState("");
+
+  const [state, setState] = useState("");
+  const [orgDesignation, setOrgDesignation] = useState("");
+  const [field, setField] = useState("");
 
   const [schools, setSchools] = useState([]);
-
   const [showPassword, setShowPassword] = useState(false);
 
   // Set the delay for the debounce function (e.g., 300 milliseconds)
@@ -78,8 +80,156 @@ export default function SignUp() {
   const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   const phoneRegex = /^\d{10}$/;
 
+
+
+  // interested categories dropdown
+  const categories: {
+    label: string;
+    options: { label: string; options?: { label: string }[] }[];
+  }[] = [
+      {
+        label: "Religious and Spiritual",
+        options: [
+          { label: "Christianity" },
+          { label: "Islam" },
+          { label: "Judaism" },
+          { label: "Hinduism" },
+          { label: "Buddhism" },
+          { label: "Other Religions" },
+        ],
+      },
+      {
+        label: "Political and Social Issues",
+        options: [
+          { label: "Government and Politics" },
+          { label: "Current Events" },
+          { label: "Climate Change" },
+          { label: "Gun Control" },
+          { label: "Economic Inequality" },
+        ],
+      },
+      {
+        label: "Career Exploration",
+        options: [
+          { label: "STEM Careers" },
+          { label: "Healthcare Careers" },
+          { label: "Business Careers" },
+          { label: "Arts and Humanities Careers" },
+          { label: "Law and Legal Careers" },
+          { label: "Engineering Careers" },
+        ],
+      },
+      {
+        label: "Medicine",
+        options: [
+          { label: "Pre-Med" },
+          { label: "Medical Research" },
+          { label: "Pharmacy" },
+          { label: "Nursing" },
+          { label: "Dentistry" },
+          { label: "Veterinary Medicine" },
+          { label: "Health and Wellness" },
+        ],
+      },
+      {
+        label: "Volunteer Work",
+        options: [
+          { label: "Tutoring and Mentoring" },
+          { label: "Elderly Care" },
+          { label: "Children and Youth" },
+          { label: "Disability Support" },
+          { label: "International Aid" },
+        ],
+      },
+      {
+        label: "Technology",
+        options: [
+          { label: "Coding and Programming" },
+          { label: "Web Development" },
+          { label: "App Development" },
+          { label: "Game Development" },
+          { label: "Artificial Intelligence" },
+          { label: "Cybersecurity" },
+          { label: "Data Science" },
+        ],
+      },
+      {
+        label: "Design and Multimedia",
+        options: [
+          { label: "Graphic Design" },
+          { label: "Film and Video Production" },
+          { label: "Photography" },
+        ],
+      },
+      {
+        label: "Music and Performing Arts",
+        options: [
+          { label: "Band" },
+          { label: "Choir" },
+          { label: "Theater" },
+          { label: "Dance" },
+          { label: "Visual Arts" },
+        ],
+      },
+      {
+        label: "Entrepreneurship",
+        options: [
+          { label: "Business Planning" },
+          { label: "Startup Development" },
+          { label: "Marketing and Sales" },
+          { label: "Finance and Investment" },
+          { label: "Networking" },
+          { label: "Leadership" },
+        ],
+      },
+      {
+        label: "Other Organizations",
+        options: [
+          { label: "Professional Associations" },
+          { label: "Student Government" },
+          { label: "Honor Societies" },
+          { label: "Special Interest Groups" },
+        ],
+      },
+    ];
+
+  const renderOptions = (
+    options: { options?: { label: string }[]; label: string }[]
+  ) => {
+    return options.map((option) => {
+      if (option.options) {
+        return (
+          <optgroup key={option.label} label={option.label}>
+            {option.options.map((subOption) => (
+              <option key={subOption.label} value={subOption.label}>
+                {subOption.label}
+              </option>
+            ))}
+          </optgroup>
+        );
+      } else if (option.label === "") {
+        // Handle the empty label for the first option
+        return (
+          <option key={option.label} value="">
+            Select interest areas
+          </option>
+        );
+      } else {
+        return (
+          <option key={option.label} value={option.label}>
+            {option.label}
+          </option>
+        );
+      }
+    });
+  };
+
+
+
+
+
   const handleAdminSubmit = async () => {
-    if (!name || !school || !email || !password || !sponsorName) {
+    if (!name || !school || !email || !password) {
       setError("All fields are required");
       return;
     }
@@ -89,7 +239,6 @@ export default function SignUp() {
       school,
       email,
       password,
-      sponsorName,
       type: 1,
     };
 
@@ -231,7 +380,7 @@ export default function SignUp() {
                   <input
                     className={styles.inputField}
                     style={{ width: "95%", marginLeft: "5%" }}
-                    placeholder="Enter Your First Name"
+                    placeholder="Enter Your Last Name"
                     value={lastName}
                     onChange={(e) => {
                       setLastName(e.target.value);
@@ -503,32 +652,89 @@ export default function SignUp() {
                   <div className={styles.inputDesc} style={{ marginTop: "0.5rem" }}>
                     State
                   </div>
-                  <input
+                  <select
                     className={styles.inputField}
-                    style={{ width: "95%" }}
-                    placeholder="Enter Your First Name"
-                    value={firstName}
+                    style={{ width: "95%", height: "53.3px" }}
+                    value={state}
+                    placeholder="Enter the State of Your Headquarters"
+                    autoComplete="on"
                     onChange={(e) => {
-                      setFirstName(e.target.value);
+                      setState(e.target.value);
                     }}
-                  ></input>
-                </div>
-                <div className={styles.inputContainer}>
-                  <div
-                    className={styles.inputDesc}
-                    style={{ marginLeft: "5%", marginTop: "0.5rem" }}
                   >
-                    Designation
-                  </div>
-                  <input
+                    <option value=""></option>
+                    <option value="AL">Alabama</option>
+                    <option value="AK">Alaska</option>
+                    <option value="AZ">Arizona</option>
+                    <option value="AR">Arkansas</option>
+                    <option value="CA">California</option>
+                    <option value="CO">Colorado</option>
+                    <option value="CT">Connecticut</option>
+                    <option value="DE">Delaware</option>
+                    <option value="DC">District Of Columbia</option>
+                    <option value="FL">Florida</option>
+                    <option value="GA">Georgia</option>
+                    <option value="HI">Hawaii</option>
+                    <option value="ID">Idaho</option>
+                    <option value="IL">Illinois</option>
+                    <option value="IN">Indiana</option>
+                    <option value="IA">Iowa</option>
+                    <option value="KS">Kansas</option>
+                    <option value="KY">Kentucky</option>
+                    <option value="LA">Louisiana</option>
+                    <option value="ME">Maine</option>
+                    <option value="MD">Maryland</option>
+                    <option value="MA">Massachusetts</option>
+                    <option value="MI">Michigan</option>
+                    <option value="MN">Minnesota</option>
+                    <option value="MS">Mississippi</option>
+                    <option value="MO">Missouri</option>
+                    <option value="MT">Montana</option>
+                    <option value="NE">Nebraska</option>
+                    <option value="NV">Nevada</option>
+                    <option value="NH">New Hampshire</option>
+                    <option value="NJ">New Jersey</option>
+                    <option value="NM">New Mexico</option>
+                    <option value="NY">New York</option>
+                    <option value="NC">North Carolina</option>
+                    <option value="ND">North Dakota</option>
+                    <option value="OH">Ohio</option>
+                    <option value="OK">Oklahoma</option>
+                    <option value="OR">Oregon</option>
+                    <option value="PA">Pennsylvania</option>
+                    <option value="RI">Rhode Island</option>
+                    <option value="SC">South Carolina</option>
+                    <option value="SD">South Dakota</option>
+                    <option value="TN">Tennessee</option>
+                    <option value="TX">Texas</option>
+                    <option value="UT">Utah</option>
+                    <option value="VT">Vermont</option>
+                    <option value="VA">Virginia</option>
+                    <option value="WA">Washington</option>
+                    <option value="WV">West Virginia</option>
+                    <option value="WI">Wisconsin</option>
+                    <option value="WY">Wyoming</option>
+                  </select>
+                </div>
+
+
+                <div className={styles.inputContainer}>
+                  <div className={styles.inputDesc} style={{ marginLeft: "5%", marginTop: "0.5rem" }}>Designation</div>
+                  <select
                     className={styles.inputField}
                     style={{ width: "95%", marginLeft: "5%" }}
-                    placeholder="Enter Your First Name"
-                    value={lastName}
+                    autoComplete="on"
+                    value={orgDesignation}
                     onChange={(e) => {
-                      setLastName(e.target.value);
+                      setOrgDesignation(e.target.value);
                     }}
-                  ></input>
+                  >
+                    <option value=""></option>
+                    <option value="501(c)3 Non-profit">Non-profit</option>
+                    <option value="Student Organization">Student Organization</option>
+                    <option value="School Club">School Club</option>
+                    <option value="Other">Other</option>
+                  </select>
                 </div>
               </div>
 
@@ -537,27 +743,30 @@ export default function SignUp() {
                   <div className={styles.inputDesc} style={{ marginTop: "0.5rem" }}>
                     Field
                   </div>
-                  <input
+                  <select
                     className={styles.inputField}
                     style={{ width: "95%" }}
-                    placeholder="Enter Your First Name"
-                    value={firstName}
-                    onChange={(e) => {
-                      setFirstName(e.target.value);
-                    }}
-                  ></input>
-                </div>
-                <div className={styles.inputContainer}>
-                  <div
-                    className={styles.inputDesc}
-                    style={{ marginLeft: "5%", marginTop: "0.5rem" }}
+                    value={field}
+                    autoComplete="on"
+                    onChange={(event) => setField(event.target.value)}
                   >
+                    <option value=""></option>
+                    {categories.map((category) => (
+                      <optgroup key={category.label} label={category.label}>
+                        {renderOptions(category.options)}{" "}
+                      </optgroup>
+                    ))}
+                  </select>
+                </div>
+
+                <div className={styles.inputContainer}>
+                  <div className={styles.inputDesc} style={{ marginLeft: "5%", marginTop: "0.5rem" }}>
                     Website
                   </div>
                   <input
                     className={styles.inputField}
                     style={{ width: "95%", marginLeft: "5%" }}
-                    placeholder="Enter Your First Name"
+                    placeholder="Paste Your Website's Full URL"
                     value={lastName}
                     onChange={(e) => {
                       setLastName(e.target.value);
@@ -580,7 +789,7 @@ export default function SignUp() {
                   type="password"
                 ></input>
               </div>
-              
+
               {/* <div className={styles.inputContainer}>
                 <div className={styles.inputDesc}>Confirm Password</div>
                 <input
