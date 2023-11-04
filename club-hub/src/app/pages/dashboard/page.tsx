@@ -64,15 +64,15 @@ export default function Dashboard() {
 
   return (
     <main className={styles.main}>
-      <div className={styles.nav}>
+            <div className={styles.nav}>
         <Link
-          href="/pages/shop"
+          href="/pages/dashboard"
           style={{ textDecoration: "none", color: "#044e8b" }}
         >
           <div className={styles.navLogo}>CLUBCART</div>
         </Link>
         <Link
-          href="/pages/shop"
+          href="/pages/dashboard"
           className={styles.link}
           style={{ marginLeft: "auto" }}
         >
@@ -83,17 +83,17 @@ export default function Dashboard() {
               height={35}
               style={{ marginLeft: "auto", marginRight: "0" }}
             />
-            Shop
+            Home
           </button>
         </Link>
         <Link
-          href="/pages/cart"
+          href="/pages/messaging"
           className={styles.link}
-          style={{ marginLeft: "1rem" }}
+          style={{ marginLeft: "1.5rem" }}
         >
           <button className={styles.navButton}>
             <img
-              src="/shopping-cart.png"
+              src="/messaging-icon.png"
               width={35}
               height={35}
               style={{
@@ -102,14 +102,14 @@ export default function Dashboard() {
                 transform: "translateX(-2px)",
               }}
             />
-            cart
+            messaging
           </button>
         </Link>
 
         <Link
           href="/pages/user-profile"
           className={styles.link}
-          style={{ marginLeft: "1rem", marginRight: "1rem" }}
+          style={{ marginLeft: "1.5rem", marginRight: "1.5rem" }}
         >
           <button className={styles.navButton}>
             <img

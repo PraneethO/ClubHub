@@ -78,8 +78,7 @@ export default function SignUp() {
 
   const hasValidPassword = /^(?=.*[0-9])(?=.*[!@#$%^&*_-])[a-zA-Z0-9!@#$%^&*_-]{8,}$/.test(password);
   const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  const phoneRegex = /^\d{10}$/;
-
+  const phoneRegex = /^\(\d{3}\) \d{3}-\d{4}$/;
 
 
   // interested categories dropdown
@@ -366,7 +365,8 @@ export default function SignUp() {
                     placeholder="Enter Your First Name"
                     value={firstName}
                     onChange={(e) => {
-                      setFirstName(e.target.value);
+                      const capitalizedValue = e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1);
+                      setFirstName(capitalizedValue);
                     }}
                   ></input>
                 </div>
@@ -383,7 +383,8 @@ export default function SignUp() {
                     placeholder="Enter Your Last Name"
                     value={lastName}
                     onChange={(e) => {
-                      setLastName(e.target.value);
+                      const capitalizedValue = e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1)
+                      setLastName(capitalizedValue);
                     }}
                   ></input>
                 </div>

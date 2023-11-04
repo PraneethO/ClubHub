@@ -1,5 +1,3 @@
-import React, { useState } from "react";
-
 export default function formatPhoneNumber(value: string) {
   if (!value) return value;
 
