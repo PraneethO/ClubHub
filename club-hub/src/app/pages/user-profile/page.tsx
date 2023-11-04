@@ -6,6 +6,7 @@ import Link from "next/link";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import formatPhoneNumber from "../sign-up/formatPhoneNumber";
 
 export default function UserProfile() {
   const router = useRouter();
@@ -15,18 +16,21 @@ export default function UserProfile() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [state, setState] = useState("");
   const [county, setCounty] = useState("");
   const [school, setSchool] = useState("");
   const [number, setNumber] = useState(0);
   const [grade, setGrade] = useState(0);
-  const [studentCode, setStudentCode] = useState(0);
-  const [firstAddress, setFirstAddress] = useState("");
-  const [secondAddress, setSecondAddress] = useState("");
   const [city, setCity] = useState("");
   const [zip, setZip] = useState(0);
 
   const [picture, setPicture] = useState("");
+
+  const handlePhoneNumber = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const formatted = formatPhoneNumber(e.target.value);
+    setPhoneNumber(formatted);
+  };
 
   useEffect(() => {
     if (status == "unauthenticated") {
@@ -45,10 +49,17 @@ export default function UserProfile() {
         email: session?.user?.email,
       })
       .then((response) => {
+
+        console.log(response.data.body.phoneNumber);
+        console.log(response.data.body.grade);
+
+
         setFirstName(response.data.body.firstName);
         setLastName(response.data.body.lastName);
         setEmail(response.data.body.email);
         setSchool(response.data.body.school);
+        setPhoneNumber(response.data.body.phoneNumber);
+        setGrade(response.data.body.grade);
       })
       .catch((err) => alert(err));
   }, [status]);
@@ -80,7 +91,7 @@ export default function UserProfile() {
         <Link
           href="/pages/messaging"
           className={styles.link}
-          style={{ marginLeft: "1.5rem" }}
+          style={{ marginLeft: "1.5rem"}}
         >
           <button className={styles.navButton}>
             <img
@@ -145,19 +156,20 @@ export default function UserProfile() {
             <div className={styles.nameContainer}>
               <div className={styles.bigName}>{firstName + " " + lastName}</div>
               <div className={styles.schoolName}>
-                {"North Allegheny School District"}
+                {school}
               </div>
             </div>
             <div className={styles.contactInfoContainer}>
               <div className={styles.contactInfo} style={{ fontSize: "2rem" }}>
-                Email: {email}
+                <div>Email:</div>
+                <div style={{marginLeft: "0.5rem", textDecoration: "underline" }}>{email}</div>
               </div>{" "}
             </div>
             {/* <div className={styles.roleText}>Role(s): Student</div> */}
           </div>
         </div>
 
-        {/* most of this should auto fill with info from google/the school */}
+        {/* pull this from the school api */}
         <div className={styles.fieldChangeContainer}>
           <div className={styles.fieldChangeTitle}>School Information</div>
           <div className={styles.infoContainer}>
@@ -221,13 +233,21 @@ export default function UserProfile() {
               <div className={styles.descriptionContainer}>
                 <div className={styles.description}>Phone Number</div>
               </div>
-              <input className={styles.infoInput} />
+              <input
+                className={styles.infoInput}
+                value={phoneNumber}
+                // onChange={(e) => handlePhoneNumber(e)}
+                />
             </div>
             <div className={styles.infoRow}>
               <div className={styles.descriptionContainer}>
                 <div className={styles.description}>Grade</div>
               </div>
-              <input className={styles.infoInput} />
+              <input
+                className={styles.infoInput}
+                value={grade}
+                // onChange={(e) => setGrade(parseInt(e.target.value, 10))}
+              />
             </div>
 
             <div className={styles.infoRow}>

@@ -9,7 +9,7 @@ export async function POST(req: NextRequest) {
 
   const student = await Student.findOne(
     { email },
-    { firstName: 1, lastName: 1, email: 1, school: 1 }
+    { firstName: 1, lastName: 1, email: 1, school: 1, phoneNumber: 1, grade: 1 }
   );
 
   console.log(student);
