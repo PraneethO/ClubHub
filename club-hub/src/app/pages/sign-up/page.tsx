@@ -75,8 +75,8 @@ export default function SignUp() {
   };
 
   const hasValidPassword = /^(?=.*[0-9])(?=.*[!@#$%^&*_-])[a-zA-Z0-9!@#$%^&*_-]{8,}$/.test(password);
-
   const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  const phoneRegex = /^\d{10}$/;
 
   const handleAdminSubmit = async () => {
     if (!name || !school || !email || !password || !sponsorName) {
@@ -116,8 +116,23 @@ export default function SignUp() {
   };
 
   const handleStudentSubmit = async () => {
-    if (!firstName || !lastName || !email || !password || !school) {
+    if (!firstName || !lastName || !email || !phoneNumber || !school || !grade || !password) {
       setError("All fields are required");
+      return;
+    }
+
+    if (!isEmailValid) {
+      setError("Invalid email address");
+      return;
+    }
+
+    if (!phoneRegex.test(phoneNumber)) {
+      setError("Invalid phone number. Please enter a 10-digit number.");
+      return;
+    }
+
+    if (!hasValidPassword) {
+      setError("Password must contain at least 8 characters, including at least 1 number and 1 special character (!@#$%^&*_).");
       return;
     }
 
@@ -125,8 +140,10 @@ export default function SignUp() {
       firstName,
       lastName,
       email,
-      password,
+      phoneNumber,
       school,
+      grade,
+      password,
       type: 0,
     };
 
@@ -253,9 +270,9 @@ export default function SignUp() {
 
 
 
-              <div className={styles.twoWayInput} style={{ marginTop: "1rem" }}>
+              <div className={styles.twoWayInput}>
                 <div className={styles.inputContainer}>
-                  <div className={styles.inputDesc} style={{ marginTop: "0" }}>
+                  <div className={styles.inputDesc} style={{ marginTop: "0.5rem" }}>
                     High School
                   </div>
                   <input
@@ -284,10 +301,11 @@ export default function SignUp() {
                     })}
                   </div>
                 </div>
+
                 <div className={styles.inputContainer} style={{ width: "20%" }}>
                   <div
                     className={styles.inputDesc}
-                    style={{ marginTop: "0" }}
+                    style={{ marginTop: "0.5rem" }}
                   >
                     Grade
                   </div>
@@ -297,6 +315,7 @@ export default function SignUp() {
                     onChange={(e) => {
                       setGrade(e.target.value);
                     }}
+                    style={{ height: "53.3px" }}
                   >
                     <option value=""></option>
                     <option value="1">1</option>
@@ -364,7 +383,7 @@ export default function SignUp() {
 
 
               <div className={styles.inputContainer}>
-                <div style={{display: "flex", flexDirection: "row" }}>
+                <div style={{ display: "flex", flexDirection: "row" }}>
                   <div className={styles.inputDesc} style={{ width: "fit-content" }}>Password</div>
                   <input
                     type="checkbox"
@@ -372,7 +391,7 @@ export default function SignUp() {
                     onChange={() => setShowPassword(!showPassword)}
                     style={{ marginLeft: "auto", marginTop: "auto", marginBottom: "0.65rem", width: "1rem", height: "1rem" }}
                   />
-                  <div style={{marginTop: "auto", marginBottom: "0.5rem" }}>Show Password</div>
+                  <div style={{ marginTop: "auto", marginBottom: "0.5rem" }}>Show Password</div>
                 </div>
                 <input
                   className={styles.inputField}
@@ -435,12 +454,12 @@ export default function SignUp() {
             <div className={styles.loginForm}>
               <div className={styles.inputContainer}>
                 <div className={styles.inputDesc} style={{ marginTop: "0" }}>
-                  Name of Club
+                  Name of Organization
                 </div>
                 <input
                   className={styles.inputField}
                   style={{ width: "100%" }}
-                  placeholder="Enter The Name of Your Club (Include 'Club' if Applicable)"
+                  placeholder="Enter The Name of Your Organization"
                   value={name}
                   onChange={(e) => {
                     setName(e.target.value);
@@ -467,17 +486,87 @@ export default function SignUp() {
                 ></input>
               </div> */}
               <div className={styles.inputContainer}>
-                <div className={styles.inputDesc}>Email</div>
+                <div className={styles.inputDesc}>Contact Email</div>
                 <input
                   className={styles.inputField}
                   style={{ width: "100%" }}
-                  placeholder="Enter Your Email"
+                  placeholder="Enter Your Organization's Contact Email"
                   value={email}
                   onChange={(e) => {
                     setEmail(e.target.value);
                   }}
                 ></input>
               </div>
+
+              <div className={styles.twoWayInput}>
+                <div className={styles.inputContainer}>
+                  <div className={styles.inputDesc} style={{ marginTop: "0.5rem" }}>
+                    State
+                  </div>
+                  <input
+                    className={styles.inputField}
+                    style={{ width: "95%" }}
+                    placeholder="Enter Your First Name"
+                    value={firstName}
+                    onChange={(e) => {
+                      setFirstName(e.target.value);
+                    }}
+                  ></input>
+                </div>
+                <div className={styles.inputContainer}>
+                  <div
+                    className={styles.inputDesc}
+                    style={{ marginLeft: "5%", marginTop: "0.5rem" }}
+                  >
+                    Designation
+                  </div>
+                  <input
+                    className={styles.inputField}
+                    style={{ width: "95%", marginLeft: "5%" }}
+                    placeholder="Enter Your First Name"
+                    value={lastName}
+                    onChange={(e) => {
+                      setLastName(e.target.value);
+                    }}
+                  ></input>
+                </div>
+              </div>
+
+              <div className={styles.twoWayInput}>
+                <div className={styles.inputContainer}>
+                  <div className={styles.inputDesc} style={{ marginTop: "0.5rem" }}>
+                    Field
+                  </div>
+                  <input
+                    className={styles.inputField}
+                    style={{ width: "95%" }}
+                    placeholder="Enter Your First Name"
+                    value={firstName}
+                    onChange={(e) => {
+                      setFirstName(e.target.value);
+                    }}
+                  ></input>
+                </div>
+                <div className={styles.inputContainer}>
+                  <div
+                    className={styles.inputDesc}
+                    style={{ marginLeft: "5%", marginTop: "0.5rem" }}
+                  >
+                    Website
+                  </div>
+                  <input
+                    className={styles.inputField}
+                    style={{ width: "95%", marginLeft: "5%" }}
+                    placeholder="Enter Your First Name"
+                    value={lastName}
+                    onChange={(e) => {
+                      setLastName(e.target.value);
+                    }}
+                  ></input>
+                </div>
+              </div>
+
+
               <div className={styles.inputContainer}>
                 <div className={styles.inputDesc}>Password</div>
                 <input
@@ -491,7 +580,8 @@ export default function SignUp() {
                   type="password"
                 ></input>
               </div>
-              <div className={styles.inputContainer}>
+              
+              {/* <div className={styles.inputContainer}>
                 <div className={styles.inputDesc}>Confirm Password</div>
                 <input
                   className={styles.inputField}
@@ -503,19 +593,8 @@ export default function SignUp() {
                   }}
                   type="password"
                 ></input>
-              </div>
-              <div className={styles.inputContainer}>
-                <div className={styles.inputDesc}>Sponsor Name</div>
-                <input
-                  className={styles.inputField}
-                  style={{ width: "100%" }}
-                  placeholder="Enter Your Name"
-                  value={sponsorName}
-                  onChange={(e) => {
-                    setSponsorName(e.target.value);
-                  }}
-                ></input>
-              </div>
+              </div> */}
+
               <button
                 className={styles.buttonSubmit}
                 onClick={handleAdminSubmit}
