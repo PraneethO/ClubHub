@@ -7,6 +7,7 @@ import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import formatPhoneNumber from "../sign-up/formatPhoneNumber";
+import SearchBar from "../dashboard/navbar";
 
 export default function UserProfile() {
   const router = useRouter();
@@ -71,8 +72,9 @@ export default function UserProfile() {
           href="/pages/dashboard"
           style={{ textDecoration: "none", color: "#044e8b" }}
         >
-          <div className={styles.navLogo}>CLUBCART</div>
+          <div className={styles.navLogo}>CLUBHUB</div>
         </Link>
+        <SearchBar />
         <Link
           href="/pages/dashboard"
           className={styles.link}
@@ -91,7 +93,7 @@ export default function UserProfile() {
         <Link
           href="/pages/messaging"
           className={styles.link}
-          style={{ marginLeft: "1.5rem"}}
+          style={{ marginLeft: "1.5rem" }}
         >
           <button className={styles.navButton}>
             <img
@@ -162,7 +164,7 @@ export default function UserProfile() {
             <div className={styles.contactInfoContainer}>
               <div className={styles.contactInfo} style={{ fontSize: "2rem" }}>
                 <div>Email:</div>
-                <div style={{marginLeft: "0.5rem", textDecoration: "underline" }}>{email}</div>
+                <div style={{ marginLeft: "0.5rem", textDecoration: "underline" }}>{email}</div>
               </div>{" "}
             </div>
             {/* <div className={styles.roleText}>Role(s): Student</div> */}
@@ -236,8 +238,8 @@ export default function UserProfile() {
               <input
                 className={styles.infoInput}
                 value={phoneNumber}
-                // onChange={(e) => handlePhoneNumber(e)}
-                />
+              // onChange={(e) => handlePhoneNumber(e)}
+              />
             </div>
             <div className={styles.infoRow}>
               <div className={styles.descriptionContainer}>
@@ -246,7 +248,7 @@ export default function UserProfile() {
               <input
                 className={styles.infoInput}
                 value={grade}
-                // onChange={(e) => setGrade(parseInt(e.target.value, 10))}
+              // onChange={(e) => setGrade(parseInt(e.target.value, 10))}
               />
             </div>
 
