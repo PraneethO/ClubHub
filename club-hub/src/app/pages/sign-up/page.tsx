@@ -465,7 +465,7 @@ export default function SignUp() {
                     onChange={(e) => {
                       setGrade(e.target.value);
                     }}
-                    style={{ height: "53.3px" }}
+                    style={{ height: "52.78px" }}
                   >
                     <option value=""></option>
                     <option value="1">1</option>
@@ -655,7 +655,7 @@ export default function SignUp() {
                   </div>
                   <select
                     className={styles.inputField}
-                    style={{ width: "95%", height: "53.3px" }}
+                    style={{ width: "95%", height: "52.78px" }}
                     value={state}
                     placeholder="Enter the State of Your Headquarters"
                     autoComplete="on"
@@ -723,7 +723,7 @@ export default function SignUp() {
                   <div className={styles.inputDesc} style={{ marginLeft: "5%", marginTop: "0.5rem" }}>Designation</div>
                   <select
                     className={styles.inputField}
-                    style={{ width: "95%", marginLeft: "5%" }}
+                    style={{ width: "95%", marginLeft: "5%", height: "52.78px" }}
                     autoComplete="on"
                     value={orgDesignation}
                     onChange={(e) => {
@@ -746,7 +746,7 @@ export default function SignUp() {
                   </div>
                   <select
                     className={styles.inputField}
-                    style={{ width: "95%" }}
+                    style={{ width: "95%", height: "52.78px" }}
                     value={field}
                     autoComplete="on"
                     onChange={(event) => setField(event.target.value)}

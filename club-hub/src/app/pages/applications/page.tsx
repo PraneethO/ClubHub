@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 
 import axios from "axios";
 
-export default function Messaging() {
+export default function Applications() {
     const router = useRouter();
 
     const { data: session, status } = useSession();

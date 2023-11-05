@@ -37,8 +37,7 @@
 
 .navLogo {
   transform: translateY(-0.25rem);
-  background: linear-gradient(currentColor, currentColor) bottom / 0 0.1em
-    no-repeat;
+  background: linear-gradient(currentColor, currentColor) bottom / 0 0.1em no-repeat;
   transition: 0.4s background-size;
   background-position-y: 90%;
 }
@@ -63,12 +62,12 @@
   border: none;
   font-size: 1.2rem;
 
-  background: linear-gradient(currentColor, currentColor) bottom / 0 0.1em
-    no-repeat;
+  background: linear-gradient(currentColor, currentColor) bottom / 0 0.1em no-repeat;
   transition: 0.4s background-size;
 }
 
 .navButton:hover {
+  margin-bottom: 0.2rem;
   background-size: 100% 0.1em;
   cursor: pointer;
 }
@@ -133,6 +132,8 @@
 }
 
 .miniContainer {
+  display: flex;
+  flex-direction: column;
   margin-top: 3rem;
   padding: 0.5rem;
   width: 100%;
@@ -142,3 +143,41 @@
   font-size: 1.5rem;
 }
 
+.miniContainerText {
+  display: flex;
+  font-size: 1.25rem;
+  margin-top: 0.5rem;
+  color: #044e8b;
+  text-decoration: underline;
+}
+
+.miniContainerRow {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.miniRowLeftText {
+  display: flex;
+  font-size: 1.25rem;
+  color: #000;
+  /* text-decoration: underline; */
+  width: fit-content;
+}
+
+.miniRowRightText {
+  display: flex;
+  font-size: 1.25rem;
+  color: #044e8b;
+  width: fit-content;
+}
+
+.containerLine {
+  display: flex;
+  width: 100%;
+
+  border-top: 2px #000 solid;
+  margin-bottom: 0.5rem;
+}

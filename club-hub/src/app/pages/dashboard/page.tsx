@@ -77,7 +77,7 @@ export default function Dashboard() {
         >
           <div className={styles.navLogo}>CLUBHUB</div>
         </Link>
-        <SearchBar/>
+        <SearchBar />
         <Link
           href="/pages/dashboard"
           className={styles.link}
@@ -88,9 +88,27 @@ export default function Dashboard() {
               src="/home-icon.png"
               width={35}
               height={35}
-              style={{ marginLeft: "auto", marginRight: "0" }}
+              style={{ marginLeft: "auto", marginRight: "0", transform: "translateX(-1px)" }}
             />
             Home
+          </button>
+        </Link>
+        <Link
+          href="/pages/applications"
+          className={styles.link}
+          style={{ marginLeft: "1.5rem" }}
+        >
+          <button className={styles.navButton}>
+            <img
+              src="/job-icon.png"
+              width={35}
+              height={35}
+              style={{
+                marginLeft: "auto",
+                marginRight: "auto",
+              }}
+            />
+            Apply
           </button>
         </Link>
         <Link
@@ -150,16 +168,47 @@ export default function Dashboard() {
       <div className={styles.dashContainer}>
         <div className={styles.leftContainer}>
           <div className={styles.label}>Welcome, FIRSTNAME!</div>
-          <div className={styles.miniContainer}>Action Items</div>
-          <div className={styles.miniContainer}>Action Items</div>
+          <div className={styles.miniContainer}>
+            <div>Action Items</div>
+            <div className={styles.containerLine}></div>
+            <Link href="" className={styles.miniContainerText}>Select Prefernces</Link>
+            <Link href="" className={styles.miniContainerText}>Update Profile</Link>
+            <Link href="" className={styles.miniContainerText}>Upload Resume</Link>
+          </div>
+          <div className={styles.miniContainer}>
+            <div>Analytics</div>
+            <div className={styles.containerLine}></div>
+            <div className={styles.miniContainerRow} style={{ marginTop: "0.5rem" }}>
+              <div className={styles.miniRowLeftText}>Connections:</div>
+              <div className={styles.miniRowRightText}>78</div>
+            </div>
+            <div className={styles.miniContainerRow}>
+              <div className={styles.miniRowLeftText}>Profile Views:</div>
+              <div className={styles.miniRowRightText}>30</div>
+            </div>
+          </div>
         </div>
         <div className={styles.middleContainer}>
           {/* <div className={styles.label}>Feed</div> */}
+          make a feed praneeth. that all you.
         </div>
         <div className={styles.rightContainer}>
-          <div className={styles.label}>Trending</div>
-          <div className={styles.miniContainer}>Action Items</div>
-
+          <div className={styles.label}>For You</div>
+          <div className={styles.miniContainer}>
+            <div>Trending Topics</div>
+            <div className={styles.containerLine}></div>
+            <Link href="" className={styles.miniContainerText}>Artifical Intelligence</Link>
+            <Link href="" className={styles.miniContainerText}>Biomedical Engineering Education</Link>
+            <Link href="" className={styles.miniContainerText}>Fundrasing</Link>
+            <Link href="" className={styles.miniContainerText}>Growth</Link>
+          </div>
+          <div className={styles.miniContainer}>
+            <div>Apply Now!</div>
+            <div className={styles.containerLine}></div>
+            <Link href="" className={styles.miniContainerText}>Steel City Codes Regional Director</Link>
+            <Link href="" className={styles.miniContainerText}>Mathlings Teacher</Link>
+            <Link href="" className={styles.miniContainerText}>ClubHub Developer</Link>
+          </div>
         </div>
       </div>
     </main>

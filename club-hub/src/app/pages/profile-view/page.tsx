@@ -217,70 +217,7 @@ export default function UserProfile() {
         </div>
 
         <div className={styles.fieldChangeContainer}>
-          <div className={styles.fieldChangeTitle}>User Information</div>
-          <div className={styles.infoContainer}>
-            <div className={styles.infoRow}>
-              <div className={styles.descriptionContainer}>
-                <div className={styles.description}>First Name</div>
-              </div>
-              <input
-                className={styles.infoInput}
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-              />
-            </div>
-            <div className={styles.infoRow}>
-              <div className={styles.descriptionContainer}>
-                <div className={styles.description}>Last Name</div>
-              </div>
-              <input
-                className={styles.infoInput}
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-              />
-            </div>
-            <div className={styles.infoRow}>
-              <div className={styles.descriptionContainer}>
-                <div className={styles.description}>Email</div>
-              </div>
-              <input
-                className={styles.infoInput}
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-            <div className={styles.infoRow}>
-              <div className={styles.descriptionContainer}>
-                <div className={styles.description}>Phone Number</div>
-              </div>
-              <input
-                className={styles.infoInput}
-                value={phoneNumber}
-              // onChange={(e) => handlePhoneNumber(e)}
-              />
-            </div>
-            <div className={styles.infoRow}>
-              <div className={styles.descriptionContainer}>
-                <div className={styles.description}>Grade</div>
-              </div>
-              <input
-                className={styles.infoInput}
-                value={grade}
-              // onChange={(e) => setGrade(parseInt(e.target.value, 10))}
-              />
-            </div>
-
-            <div className={styles.infoRow}>
-              <div className={styles.descriptionContainer}>
-                <div className={styles.description}>Birth Date</div>
-              </div>
-              <input className={styles.infoInput} type="date" />
-            </div>
-          </div>
-        </div>
-
-        <div className={styles.fieldChangeContainer}>
-          <div className={styles.fieldChangeTitle}>Experience</div>
+          <div className={styles.fieldChangeTitle}>Student Information</div>
           <div className={styles.infoContainer}>
             <div className={styles.infoRow}>
               <div className={styles.descriptionContainer}>

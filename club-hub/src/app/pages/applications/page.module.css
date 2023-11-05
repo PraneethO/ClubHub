@@ -1,4 +1,4 @@
-/* css for messages */
+/* css for applications */
 
 .nav {
     display: flex;
@@ -70,26 +70,4 @@
     margin-bottom: 0.2rem;
     background-size: 100% 0.1em;
     cursor: pointer;
-}
-
-.dashContainer {
-    display: flex;
-    width: 100%;
-    margin-top: 3rem;
-    margin-bottom: 10rem;
-    flex-direction: row;
-}
-
-.label {
-    display: flex;
-    background-color: white;
-    padding: 0.5rem;
-    width: 100%;
-
-    text-align: left;
-    font-size: 1.5rem;
-
-
-    border-top: #044e8b solid 6px;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
 }
