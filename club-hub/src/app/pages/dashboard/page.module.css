@@ -75,7 +75,7 @@
 .dashContainer {
   display: flex;
   width: 100%;
-  margin-top: 3rem;
+  margin-top: 1.5rem;
   margin-bottom: 10rem;
   flex-direction: row;
 }
@@ -134,7 +134,7 @@
 .miniContainer {
   display: flex;
   flex-direction: column;
-  margin-top: 3rem;
+  margin-top: 1.5rem;
   padding: 0.5rem;
   width: 100%;
   height: fit-content;

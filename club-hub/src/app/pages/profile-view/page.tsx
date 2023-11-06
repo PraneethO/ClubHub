@@ -9,6 +9,9 @@ import axios from "axios";
 import formatPhoneNumber from "../sign-up/formatPhoneNumber";
 import SearchBar from "../dashboard/navbar";
 
+import { FaExpandArrowsAlt } from 'react-icons/fa';
+import { FaRegArrowAltCircleRight } from 'react-icons/fa';
+
 export default function UserProfile() {
   const router = useRouter();
 
@@ -27,10 +30,20 @@ export default function UserProfile() {
   const [zip, setZip] = useState(0);
 
   const [picture, setPicture] = useState("");
+  const [resume, setResume] = useState("");
+  const [statement, setStatement] = useState("");
 
   const handlePhoneNumber = (e: React.ChangeEvent<HTMLInputElement>) => {
     const formatted = formatPhoneNumber(e.target.value);
     setPhoneNumber(formatted);
+  };
+
+  const handleStatementChange = (e: { target: { value: any; }; }) => {
+    const input = e.target.value;
+    const cleanedInput = input.replace(/\s+/g, " ").trim();
+    if (cleanedInput.length <= 500) {
+      setStatement(cleanedInput);
+    }
   };
 
   useEffect(() => {
@@ -218,7 +231,7 @@ export default function UserProfile() {
         </div>
 
         <div className={styles.fieldChangeContainer}>
-          <div className={styles.fieldChangeTitle}>Student Information</div>
+          <div className={styles.fieldChangeTitle}>User Information</div>
           <div className={styles.infoContainer}>
             <div className={styles.infoRow}>
               <div className={styles.descriptionContainer}>
@@ -279,8 +292,97 @@ export default function UserProfile() {
             </div>
           </div>
         </div>
-        <button className={styles.updateButton}>Update Changes</button>
+
+        <div className={styles.fieldChangeContainer}>
+          <div className={styles.fieldChangeTitle}>Experience</div>
+          <div className={styles.infoContainer}>
+            <div className={styles.infoRow}>
+              <div className={styles.descriptionContainer}>
+                <div className={styles.description}>Upload Resume
+                  <div style={{ fontSize: "1rem", marginLeft: "1rem" }}>**only visible by organizations</div>
+                </div>
+              </div>
+              <input
+                className={styles.infoInput}
+                value={resume}
+                onChange={(e) => setResume(e.target.value)}
+                type="file"
+              />
+            </div>
+            <div className={styles.infoRow}>
+              <div className={styles.descriptionContainer}>
+                <div className={styles.description}>Personal Statement
+                  <div style={{ fontSize: "1rem", marginLeft: "1rem", marginTop: "auto", marginBottom: "auto" }}>(500 character max)</div>
+                </div>
+              </div>
+              <textarea
+                className={styles.infoInput}
+                value={statement}
+                onChange={(e) => handleStatementChange(e)}
+                rows={6}
+                style={{ maxWidth: "100%", maxHeight: "30%", minWidth: "100%", minHeight: "10em" }}
+                placeholder="Start typing..."
+              />
+            </div>
+          </div>
+        </div>
+
+
+        <div className={styles.fieldChangeContainer}>
+          <div className={styles.fieldChangeTitle}>Employment History</div>
+          <div className={styles.infoContainer}>
+            <div className={styles.infoRow}>
+              <div className={styles.descriptionContainer}>
+                <div className={styles.description}>Organization</div>
+              </div>
+              <input
+                className={styles.infoInput}
+                value={school}
+                onChange={(e) => setSchool(e.target.value)}
+              />
+            </div>
+            <div className={styles.infoRow}>
+              <div className={styles.descriptionContainer}>
+                <div className={styles.description}>Position</div>
+              </div>
+              <input
+                className={styles.infoInput}
+                value={school}
+                onChange={(e) => setSchool(e.target.value)}
+              />
+            </div>
+            <div className={styles.infoRow}>
+              <div className={styles.descriptionContainer}>
+                <div className={styles.firstHalfDescription}>Start Date</div>
+                <div className={styles.lastHalfDescription}>
+                  End Date
+                  <input type="checkbox" style={{ marginLeft: "1rem" }}></input>
+                  <div style={{ fontSize: "1rem", marginTop: "auto", marginBottom: "auto", textDecoration: "underline" }}>Currently Working</div>
+                </div>
+              </div>
+              <div className={styles.splitInputContainer}>
+                <input className={styles.splitInput} type="date" />
+                <input className={styles.splitInput} type="date" />
+              </div>
+            </div>
+          </div>
+          <div className={styles.infoContainer}>
+            <button className={styles.updateButton} style={{ marginTop: "0", marginBottom: "0", width: "100%" }}>Add Position</button>
+          </div>
+        </div>
+
+
+        <button className={styles.updateButton} style={{ borderRadius: "2rem", width: "fit-content", marginLeft: "auto", marginRight: "10%" }}>
+          <div style={{ marginTop: "auto", marginBottom: "auto", fontFamily: "bebas-neue-pro, sans-serif" }}>Update All Changes</div>
+          <FaRegArrowAltCircleRight style={{ marginLeft: "0.5rem", marginTop: "auto", marginBottom: "auto", fontSize: "1.5rem" }} />
+        </button>
       </div>
+
+      {/* <button className={styles.updateButton} style={{ borderRadius: "2rem", width: "fit-content", marginLeft: "auto", marginRight: "10%", backgroundColor: "white" }}>
+        <div style={{ marginTop: "auto", marginBottom: "auto", fontFamily: "bebas-neue-pro, sans-serif", color: "#044e8b" }}>Update All Changes</div>
+        <FaRegArrowAltCircleRight style={{ marginLeft: "0.5rem", marginTop: "auto", marginBottom: "auto", fontSize: "1.5rem", color: "#044e8b" }} />
+      </button> */}
+      
     </main>
   );
 }
