@@ -83,26 +83,27 @@ export default function UserProfile() {
           <button className={styles.navButton}>
             <img
               src="/home-icon.png"
-              width={35}
-              height={35}
-              style={{ marginLeft: "auto", marginRight: "0", transform: "translateX(-1px)" }}
+              width={30}
+              height={30}
+              style={{ marginLeft: "auto", marginRight: "auto", transform: "translateX(-1.75px)" }}
             />
             Home
           </button>
         </Link>
         <Link
-          href="/pages/messaging"
+          href="/pages/applications"
           className={styles.link}
-          style={{ marginLeft: "1.5rem" }}
+          style={{ marginLeft: "1.35rem" }}
         >
           <button className={styles.navButton}>
             <img
               src="/job-icon.png"
-              width={35}
-              height={35}
+              width={30}
+              height={30}
               style={{
                 marginLeft: "auto",
                 marginRight: "auto",
+                transform: "translateX(-1.25px)",
               }}
             />
             Apply
@@ -111,13 +112,13 @@ export default function UserProfile() {
         <Link
           href="/pages/messaging"
           className={styles.link}
-          style={{ marginLeft: "1.5rem" }}
+          style={{ marginLeft: "1.35rem" }}
         >
           <button className={styles.navButton}>
             <img
               src="/messaging-icon.png"
-              width={35}
-              height={35}
+              width={30}
+              height={30}
               style={{
                 marginLeft: "auto",
                 marginRight: "auto",
@@ -131,13 +132,13 @@ export default function UserProfile() {
         <Link
           href="/pages/user-profile"
           className={styles.link}
-          style={{ marginLeft: "1.5rem", marginRight: "1.5rem" }}
+          style={{ marginLeft: "1.35rem", marginRight: "1.35rem" }}
         >
           <button className={styles.navButton}>
             <img
               src="/default-avatar.png"
-              width={35}
-              height={35}
+              width={30}
+              height={30}
               style={{ marginLeft: "auto", marginRight: "auto" }}
             />
             profile
@@ -153,8 +154,8 @@ export default function UserProfile() {
           >
             <img
               src="/logout-icon.png"
-              width={35}
-              height={35}
+              width={30}
+              height={30}
               style={{ transform: "translateX(-4px)" }}
             />
             LogOut

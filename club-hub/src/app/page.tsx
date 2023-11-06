@@ -20,7 +20,7 @@ export default function Home() {
   useEffect(() => {
     if (status === "authenticated") {
       if (session.user?.name === "student") {
-        router.push("/pages/shop");
+        router.push("/pages/dashboard");
       } else if (session.user?.name === "club") {
         router.push("/pages/admin-dashboard");
       }
@@ -50,7 +50,7 @@ export default function Home() {
         return;
       }
 
-      router.replace("pages/shop");
+      router.replace("pages/dashboard");
     } catch (error) {
       console.log(error);
     }
