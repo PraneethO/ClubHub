@@ -285,46 +285,33 @@ export default function Applications() {
 
                     <div className={styles.dashContent} style={{ minHeight: "35rem" }}>
                         <div className={styles.rowContainer}>
-                            {clubList.map((club: any, key) => {
-                                return (
-                                    <Link
-                                        href={`/pages/application-view/?id=${club._id}`}
-                                        className={styles.clubContainer}
-                                        key={key}
-                                    >
-                                        <div className={styles.clubImagesContainer}>
-                                            <img
-                                                src={
-                                                    club.picture ? club.picture : "/default-avatar.png"
-                                                }
-                                            />
-                                        </div>
-                                        <div className={styles.clubName}>{club.name}</div>
-                                        <div></div>
-                                        <div className={styles.cost}>
-                                            Cost:{" "}
-                                            <span style={{ fontSize: "1rem" }}>
-                                                {club.fees ? "$" + club.fees + ".00" : "Free"}
-                                            </span>
-                                        </div>
-                                        {/* <div className={styles.cost}>
-                      Sponsor:{" "}
-                      <span style={{ fontSize: "1rem" }}>
-                        {club.sponsorName}
-                      </span>
-                    </div> */}
-                                        <div className={styles.cost}>
-                                            Meeting Day:{" "}
-                                            <span style={{ fontSize: "1rem" }}>
-                                                {club.meetingDay}
-                                            </span>
-                                        </div>
-                                        <button className={styles.clubExtra}>
-                                            <div className={styles.addToCartText}>Add to Cart</div>
-                                        </button>
-                                    </Link>
-                                );
-                            })}
+                            <Link
+                                href={"/pages/application-view"}
+                                className={styles.clubContainer}
+                            >
+                                <div className={styles.clubImagesContainer}>
+                                    <img
+                                        src={"/default-avatar.png"}
+                                    />
+                                </div>
+                                <div className={styles.orgName}>Steel City Codes</div>
+                                <div className={styles.info}>
+                                    Pittsburgh Regional Director
+                                    {/* <span style={{ fontSize: "1rem" }}>
+                                        Pittsburgh Regional Director
+                                    </span> */}
+                                </div>
+                                <div className={styles.info}>
+                                    3-4 hours/week
+                                    {/* <span style={{ fontSize: "1rem" }}>
+                                        3-4 hours/week
+                                    </span> */}
+                                </div>
+                                <button className={styles.clubExtra}>
+                                    <div className={styles.addToCartText}>See More</div>
+                                </button>
+                            </Link>
+
                         </div>
                     </div>
                 </div>

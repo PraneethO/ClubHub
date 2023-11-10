@@ -193,6 +193,15 @@ export default function Dashboard() {
                             className={styles.orgDescriptionTitle}
                             style={{ border: "none", fontSize: "1rem", width: "fit-content", marginBottom: "0.25rem" }}
                         >
+                            Position:
+                            <div style={{ textDecoration: "underline", color: "#044e8b", fontFamily: "bebas-neue-pro, sans-serif", marginLeft: "0.25rem" }}>
+                                {" Pittsburgh Regional Director"}
+                            </div>
+                        </div>
+                        <div
+                            className={styles.orgDescriptionTitle}
+                            style={{ border: "none", fontSize: "1rem", width: "fit-content", marginBottom: "0.25rem" }}
+                        >
                             Contact:{" contact@steelcitycodes.org"}
                         </div>
                         <div
