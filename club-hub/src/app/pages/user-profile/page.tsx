@@ -390,8 +390,8 @@ export default function UserProfile() {
         </div>
 
 
-        <div className={styles.fieldChangeContainer} style={{ marginBottom: "10rem" }}>
-          <div className={styles.fieldChangeTitle}>Employment History</div>
+        <div className={styles.fieldChangeContainer}>
+          <div className={styles.fieldChangeTitle}>Public Employment History</div>
           <div className={styles.infoContainer}>
             <div className={styles.innerContainer}>
               {/* make it so the inner left is the same height as the inner right */}

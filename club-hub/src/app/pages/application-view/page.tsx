@@ -195,20 +195,35 @@ export default function Dashboard() {
                         >
                             Position:
                             <div style={{ textDecoration: "underline", color: "#044e8b", fontFamily: "bebas-neue-pro, sans-serif", marginLeft: "0.25rem" }}>
-                                {" Pittsburgh Regional Director"}
+                                {"Pittsburgh Regional Director"}
                             </div>
                         </div>
                         <div
                             className={styles.orgDescriptionTitle}
                             style={{ border: "none", fontSize: "1rem", width: "fit-content", marginBottom: "0.25rem" }}
                         >
-                            Contact:{" contact@steelcitycodes.org"}
+                            Time:
+                            <div style={{ textDecoration: "underline", color: "#044e8b", fontFamily: "bebas-neue-pro, sans-serif", marginLeft: "0.25rem" }}>
+                                {"3-4 hours/week"}
+                            </div>
+                        </div>
+                        <div
+                            className={styles.orgDescriptionTitle}
+                            style={{ border: "none", fontSize: "1rem", width: "fit-content", marginBottom: "0.25rem" }}
+                        >
+                            Contact:
+                            <div style={{ textDecoration: "underline", color: "#044e8b", fontFamily: "bebas-neue-pro, sans-serif", marginLeft: "0.25rem" }}>
+                                {"contact@steelcitycodes.org"}
+                            </div>
                         </div>
                         <div
                             className={styles.orgDescriptionTitle}
                             style={{ border: "none", fontSize: "1rem", width: "fit-content" }}
                         >
-                            Website: https://steelcitycodes.org
+                            Website:
+                            <div style={{ textDecoration: "underline", color: "#044e8b", fontFamily: "bebas-neue-pro, sans-serif", marginLeft: "0.25rem" }}>
+                                {"https://steelcitycodes.org"}
+                            </div>
                         </div>
                         <div
                             className={styles.orgDescription}
@@ -224,7 +239,6 @@ export default function Dashboard() {
                     </div>
                     <div className={styles.orgDescriptionTitle}>Description</div>
                     <div className={styles.orgDescription} style={{ flexDirection: "row" }}>{description}</div>
-                    <div className={styles.orgDescription}></div>
                     <button className={styles.clubExtra}>
                         {clubsSignedUp.includes(id!) ? (
                             <div className={styles.addToCartText}>
