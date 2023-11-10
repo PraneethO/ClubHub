@@ -92,12 +92,11 @@ export default function Home() {
               }}
               type={showPassword ? "text" : "password"}
             />
-            <label className={styles.showPasswordText}>
+            <label className={styles.showPasswordText} style={{display: "flex", marginTop: "0.5rem"}}>
               <input
                 type="checkbox"
                 checked={showPassword}
                 onChange={() => setShowPassword(!showPassword)}
-                style={{ marginTop: "0.5rem" }}
               />
               <span className="checkmark"></span>
               Show Password

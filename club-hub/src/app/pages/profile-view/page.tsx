@@ -32,6 +32,8 @@ export default function UserProfile() {
   const [picture, setPicture] = useState("");
   const [resume, setResume] = useState("");
   const [statement, setStatement] = useState("");
+  const [organization, setOrganization] = useState("");
+  const [position, setPosition] = useState("");
 
   const handlePhoneNumber = (e: React.ChangeEvent<HTMLInputElement>) => {
     const formatted = formatPhoneNumber(e.target.value);
@@ -190,6 +192,17 @@ export default function UserProfile() {
             <div className={styles.nameContainer}>
               <div className={styles.bigName}>{firstName + " " + lastName}</div>
               <div className={styles.schoolName}>
+                {grade >= 1 && grade <= 8
+                  ? `${grade}${grade === 1 ? "st" : grade === 2 ? "nd" : grade === 3 ? "rd" : "th"} grader at `
+                  : grade === 9
+                    ? "Freshman at "
+                    : grade === 10
+                      ? "Sophomore at "
+                      : grade === 11
+                        ? "Junior at "
+                        : grade === 12
+                          ? "Senior at "
+                          : ""}
                 {school}
               </div>
             </div>
@@ -203,186 +216,42 @@ export default function UserProfile() {
           </div>
         </div>
 
-        {/* pull this from the school api */}
-        <div className={styles.fieldChangeContainer}>
-          <div className={styles.fieldChangeTitle}>School Information</div>
-          <div className={styles.infoContainer}>
-            <div className={styles.infoRow}>
-              <div className={styles.descriptionContainer}>
-                <div className={styles.firstHalfDescription}>State</div>
-                <div className={styles.lastHalfDescription}>County</div>
-              </div>
-              <div className={styles.splitInputContainer}>
-                <input className={styles.splitInput} />
-                <input className={styles.splitInput} />
-              </div>
-            </div>
-            <div className={styles.infoRow}>
-              <div className={styles.descriptionContainer}>
-                <div className={styles.description}>School</div>
-              </div>
-              <input
-                className={styles.infoInput}
-                value={school}
-                onChange={(e) => setSchool(e.target.value)}
-              />
-            </div>
-          </div>
-        </div>
 
-        <div className={styles.fieldChangeContainer}>
-          <div className={styles.fieldChangeTitle}>User Information</div>
-          <div className={styles.infoContainer}>
-            <div className={styles.infoRow}>
-              <div className={styles.descriptionContainer}>
-                <div className={styles.description}>First Name</div>
-              </div>
-              <input
-                className={styles.infoInput}
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-              />
-            </div>
-            <div className={styles.infoRow}>
-              <div className={styles.descriptionContainer}>
-                <div className={styles.description}>Last Name</div>
-              </div>
-              <input
-                className={styles.infoInput}
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-              />
-            </div>
-            <div className={styles.infoRow}>
-              <div className={styles.descriptionContainer}>
-                <div className={styles.description}>Email</div>
-              </div>
-              <input
-                className={styles.infoInput}
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-            <div className={styles.infoRow}>
-              <div className={styles.descriptionContainer}>
-                <div className={styles.description}>Phone Number</div>
-              </div>
-              <input
-                className={styles.infoInput}
-                value={phoneNumber}
-              // onChange={(e) => handlePhoneNumber(e)}
-              />
-            </div>
-            <div className={styles.infoRow}>
-              <div className={styles.descriptionContainer}>
-                <div className={styles.description}>Grade</div>
-              </div>
-              <input
-                className={styles.infoInput}
-                value={grade}
-              // onChange={(e) => setGrade(parseInt(e.target.value, 10))}
-              />
-            </div>
-
-            <div className={styles.infoRow}>
-              <div className={styles.descriptionContainer}>
-                <div className={styles.description}>Birth Date</div>
-              </div>
-              <input className={styles.infoInput} type="date" />
-            </div>
-          </div>
-        </div>
-
-        <div className={styles.fieldChangeContainer}>
-          <div className={styles.fieldChangeTitle}>Experience</div>
-          <div className={styles.infoContainer}>
-            <div className={styles.infoRow}>
-              <div className={styles.descriptionContainer}>
-                <div className={styles.description}>Upload Resume
-                  <div style={{ fontSize: "1rem", marginLeft: "1rem" }}>**only visible by organizations</div>
-                </div>
-              </div>
-              <input
-                className={styles.infoInput}
-                value={resume}
-                onChange={(e) => setResume(e.target.value)}
-                type="file"
-              />
-            </div>
-            <div className={styles.infoRow}>
-              <div className={styles.descriptionContainer}>
-                <div className={styles.description}>Personal Statement
-                  <div style={{ fontSize: "1rem", marginLeft: "1rem", marginTop: "auto", marginBottom: "auto" }}>(500 character max)</div>
-                </div>
-              </div>
-              <textarea
-                className={styles.infoInput}
-                value={statement}
-                onChange={(e) => handleStatementChange(e)}
-                rows={6}
-                style={{ maxWidth: "100%", maxHeight: "30%", minWidth: "100%", minHeight: "10em" }}
-                placeholder="Start typing..."
-              />
-            </div>
-          </div>
-        </div>
-
-
-        <div className={styles.fieldChangeContainer}>
+        <div className={styles.fieldChangeContainer} style={{ marginBottom: "10rem" }}>
           <div className={styles.fieldChangeTitle}>Employment History</div>
           <div className={styles.infoContainer}>
-            <div className={styles.infoRow}>
-              <div className={styles.descriptionContainer}>
-                <div className={styles.description}>Organization</div>
+            <div className={styles.innerContainer}>
+              <div className={styles.innerLeft}>
+                {/* add alt={} and change the icon*/}
+                  <img src="/home-icon.png" style={{ maxHeight: "100%", maxWidth: "100%", margin: "auto", justifyContent: "center", textAlign: "center" }} />
               </div>
-              <input
-                className={styles.infoInput}
-                value={school}
-                onChange={(e) => setSchool(e.target.value)}
-              />
-            </div>
-            <div className={styles.infoRow}>
-              <div className={styles.descriptionContainer}>
-                <div className={styles.description}>Position</div>
-              </div>
-              <input
-                className={styles.infoInput}
-                value={school}
-                onChange={(e) => setSchool(e.target.value)}
-              />
-            </div>
-            <div className={styles.infoRow}>
-              <div className={styles.descriptionContainer}>
-                <div className={styles.firstHalfDescription}>Start Date</div>
-                <div className={styles.lastHalfDescription}>
-                  End Date
-                  <input type="checkbox" style={{ marginLeft: "1rem" }}></input>
-                  <div style={{ fontSize: "1rem", marginTop: "auto", marginBottom: "auto", textDecoration: "underline" }}>Currently Working</div>
+              <div className={styles.innerRight}>
+                <div className={styles.infoRow}>
+                  <div className={styles.descriptionContainer}>
+                    <div className={styles.description}>Organization: Steel City Codes{organization}</div>
+                  </div>
                 </div>
-              </div>
-              <div className={styles.splitInputContainer}>
-                <input className={styles.splitInput} type="date" />
-                <input className={styles.splitInput} type="date" />
+                <div className={styles.infoRow}>
+                  <div className={styles.descriptionContainer}>
+                    <div className={styles.description}>Position: Pittsburgh Regional Director{position}</div>
+                  </div>
+                </div>
+                <div className={styles.infoRow}>
+                  <div className={styles.descriptionContainer}>
+                    <div className={styles.description}>June 2018 - PRESENT</div>
+                  </div>
+                </div>
+                <div className={styles.infoRow}>
+                  <div className={styles.descriptionContainer}>
+                    <div className={styles.description}>Description:</div>
+                  </div>
+                </div>
+
               </div>
             </div>
-          </div>
-          <div className={styles.infoContainer}>
-            <button className={styles.updateButton} style={{ marginTop: "0", marginBottom: "0", width: "100%" }}>Add Position</button>
           </div>
         </div>
-
-
-        <button className={styles.updateButton} style={{ borderRadius: "2rem", width: "fit-content", marginLeft: "auto", marginRight: "10%" }}>
-          <div style={{ marginTop: "auto", marginBottom: "auto", fontFamily: "bebas-neue-pro, sans-serif" }}>Update All Changes</div>
-          <FaRegArrowAltCircleRight style={{ marginLeft: "0.5rem", marginTop: "auto", marginBottom: "auto", fontSize: "1.5rem" }} />
-        </button>
       </div>
-
-      {/* <button className={styles.updateButton} style={{ borderRadius: "2rem", width: "fit-content", marginLeft: "auto", marginRight: "10%", backgroundColor: "white" }}>
-        <div style={{ marginTop: "auto", marginBottom: "auto", fontFamily: "bebas-neue-pro, sans-serif", color: "#044e8b" }}>Update All Changes</div>
-        <FaRegArrowAltCircleRight style={{ marginLeft: "0.5rem", marginTop: "auto", marginBottom: "auto", fontSize: "1.5rem", color: "#044e8b" }} />
-      </button> */}
-      
     </main>
   );
 }

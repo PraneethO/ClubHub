@@ -323,3 +323,21 @@
     -webkit-transform: scale(0.95);
     transform: scale(0.95);
 }
+
+.innerContainer {
+    display: flex;
+    flex-direction: row;
+    height: fit-content;
+}
+
+.innerLeft {
+    display: flex;
+    width: 30%;
+    padding: 1rem;
+}
+
+.innerRight {
+    display: flex;
+    width: 70%;
+    flex-direction: column;
+}

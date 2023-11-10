@@ -25,6 +25,8 @@ export default function Applications() {
     const [twentyCheckbox, setTwentyCheckbox] = useState(false);
     const [fiftyCheckbox, setFiftyCheckbox] = useState(false);
 
+    const [filterCollapsed, setFilterCollapsed] = useState(false);
+
     useEffect(() => {
         if (status == "unauthenticated") {
             return router.push("/");
@@ -239,72 +241,7 @@ export default function Applications() {
                             <div className={styles.filterDescription}>Other</div>
                         </div>
 
-                        <div
-                            className={styles.filterCategoryLabel}
-                            style={{ marginTop: "1rem" }}
-                        >
-                            Amount of Dues
-                        </div>
-                        <div className={styles.filterInputandDescriptionContainer}>
-                            <input
-                                className={styles.filterInput}
-                                type="checkbox"
-                                value={freeCheckbox.toString()}
-                                onClick={() => {
-                                    setFreeCheckbox(!freeCheckbox);
-                                    if (freeCheckbox == true) {
-                                        changeFilter(0, 10000);
-                                    }
-                                    changeFilter(0, 1);
-                                }}
-                            ></input>
-                            <div className={styles.filterDescription}>Free</div>
-                        </div>
-                        <div className={styles.filterInputandDescriptionContainer}>
-                            <input
-                                className={styles.filterInput}
-                                type="checkbox"
-                                value={oneCheckbox.toString()}
-                                onClick={() => {
-                                    setOneCheckbox(!oneCheckbox);
-                                    if (oneCheckbox == true) {
-                                        changeFilter(0, 10000);
-                                    }
-                                    changeFilter(1, 25);
-                                }}
-                            ></input>
-                            <div className={styles.filterDescription}>$1 - $25</div>
-                        </div>
-                        <div className={styles.filterInputandDescriptionContainer}>
-                            <input
-                                className={styles.filterInput}
-                                type="checkbox"
-                                value={twentyCheckbox.toString()}
-                                onClick={() => {
-                                    setTwentyCheckbox(!twentyCheckbox);
-                                    if (twentyCheckbox == true) {
-                                        changeFilter(0, 10000);
-                                    }
-                                    changeFilter(25, 50);
-                                }}
-                            ></input>
-                            <div className={styles.filterDescription}>$25 - $50</div>
-                        </div>
-                        <div className={styles.filterInputandDescriptionContainer}>
-                            <input
-                                className={styles.filterInput}
-                                type="checkbox"
-                                value={fiftyCheckbox.toString()}
-                                onClick={() => {
-                                    setFiftyCheckbox(!fiftyCheckbox);
-                                    if (fiftyCheckbox == true) {
-                                        changeFilter(0, 10000);
-                                    }
-                                    changeFilter(50, 500);
-                                }}
-                            ></input>
-                            <div className={styles.filterDescription}>$50 - $500</div>
-                        </div>
+
                         <div
                             className={styles.filterCategoryLabel}
                             style={{ marginTop: "1rem" }}

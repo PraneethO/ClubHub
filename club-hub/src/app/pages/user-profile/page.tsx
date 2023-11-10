@@ -32,6 +32,8 @@ export default function UserProfile() {
   const [picture, setPicture] = useState("");
   const [resume, setResume] = useState("");
   const [statement, setStatement] = useState("");
+  const [organization, setOrganization] = useState("");
+  const [position, setPosition] = useState("");
 
   const handlePhoneNumber = (e: React.ChangeEvent<HTMLInputElement>) => {
     const formatted = formatPhoneNumber(e.target.value);
@@ -338,7 +340,7 @@ export default function UserProfile() {
               <input
                 className={styles.infoInput}
                 value={school}
-                onChange={(e) => setSchool(e.target.value)}
+                onChange={(e) => setOrganization(e.target.value)}
               />
             </div>
             <div className={styles.infoRow}>
@@ -348,8 +350,24 @@ export default function UserProfile() {
               <input
                 className={styles.infoInput}
                 value={school}
-                onChange={(e) => setSchool(e.target.value)}
+                onChange={(e) => setPosition(e.target.value)}
               />
+              <div className={styles.infoRow}>
+                <div className={styles.descriptionContainer}>
+                  <div className={styles.description}>
+                    Description
+                    <div style={{ fontSize: "1rem", marginLeft: "1rem", marginTop: "auto", marginBottom: "auto" }}>(250 character max)</div>
+                  </div>
+                </div>
+                <textarea
+                  className={styles.infoInput}
+                  value={statement}
+                  onChange={(e) => handleStatementChange(e)}
+                  rows={4}
+                  style={{ maxWidth: "100%", maxHeight: "30%", minWidth: "100%", minHeight: "8em" }}
+                  placeholder="Start typing..."
+                />
+              </div>
             </div>
             <div className={styles.infoRow}>
               <div className={styles.descriptionContainer}>
@@ -372,6 +390,44 @@ export default function UserProfile() {
         </div>
 
 
+        <div className={styles.fieldChangeContainer} style={{ marginBottom: "10rem" }}>
+          <div className={styles.fieldChangeTitle}>Employment History</div>
+          <div className={styles.infoContainer}>
+            <div className={styles.innerContainer}>
+              {/* make it so the inner left is the same height as the inner right */}
+              <div className={styles.innerLeft}>
+                {/* add alt={} and change the icon*/}
+                <img src="/home-icon.png" style={{ maxHeight: "100%", maxWidth: "100%", margin: "auto", justifyContent: "center", textAlign: "center" }} />
+              </div>
+              <div className={styles.innerRight}>
+                <div className={styles.infoRow}>
+                  <div className={styles.descriptionContainer}>
+                    <div className={styles.description}>Organization: Steel City Codes{organization}</div>
+                  </div>
+                </div>
+                <div className={styles.infoRow}>
+                  <div className={styles.descriptionContainer}>
+                    <div className={styles.description}>Position: Pittsburgh Regional Director{position}</div>
+                  </div>
+                </div>
+                <div className={styles.infoRow}>
+                  <div className={styles.descriptionContainer}>
+                    <div className={styles.description}>June 2018 - PRESENT</div>
+                  </div>
+                </div>
+                <div className={styles.infoRow}>
+                  <div className={styles.descriptionContainer}>
+                    {/* if it's not empty, display the description. make the description optional though */}
+                    <div className={styles.description}>Description:</div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
         <button className={styles.updateButton} style={{ borderRadius: "2rem", width: "fit-content", marginLeft: "auto", marginRight: "10%" }}>
           <div style={{ marginTop: "auto", marginBottom: "auto", fontFamily: "bebas-neue-pro, sans-serif" }}>Update All Changes</div>
           <FaRegArrowAltCircleRight style={{ marginLeft: "0.5rem", marginTop: "auto", marginBottom: "auto", fontSize: "1.5rem" }} />
@@ -382,7 +438,7 @@ export default function UserProfile() {
         <div style={{ marginTop: "auto", marginBottom: "auto", fontFamily: "bebas-neue-pro, sans-serif", color: "#044e8b" }}>Update All Changes</div>
         <FaRegArrowAltCircleRight style={{ marginLeft: "0.5rem", marginTop: "auto", marginBottom: "auto", fontSize: "1.5rem", color: "#044e8b" }} />
       </button> */}
-      
+
     </main>
   );
 }
