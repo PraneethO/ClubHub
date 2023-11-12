@@ -184,63 +184,6 @@ export default function Applications() {
                             <div className={styles.filterDescription}>Art</div>
                         </div>
 
-                        <div className={styles.filterInputandDescriptionContainer}>
-                            <input className={styles.filterInput} type="checkbox"></input>
-                            <div className={styles.filterDescription}>Business</div>
-                        </div>
-
-                        <div className={styles.filterInputandDescriptionContainer}>
-                            <input className={styles.filterInput} type="checkbox"></input>
-                            <div className={styles.filterDescription}>Computer Science</div>
-                        </div>
-
-                        <div className={styles.filterInputandDescriptionContainer}>
-                            <input className={styles.filterInput} type="checkbox"></input>
-                            <div className={styles.filterDescription}>Cultural</div>
-                        </div>
-
-                        <div className={styles.filterInputandDescriptionContainer}>
-                            <input className={styles.filterInput} type="checkbox"></input>
-                            <div className={styles.filterDescription}>Environmental</div>
-                        </div>
-
-                        <div className={styles.filterInputandDescriptionContainer}>
-                            <input className={styles.filterInput} type="checkbox"></input>
-                            <div className={styles.filterDescription}>Forigen Language</div>
-                        </div>
-
-                        <div className={styles.filterInputandDescriptionContainer}>
-                            <input className={styles.filterInput} type="checkbox"></input>
-                            <div className={styles.filterDescription}>Honor Society</div>
-                        </div>
-
-                        <div className={styles.filterInputandDescriptionContainer}>
-                            <input className={styles.filterInput} type="checkbox"></input>
-                            <div className={styles.filterDescription}>Math and Science</div>
-                        </div>
-
-                        <div className={styles.filterInputandDescriptionContainer}>
-                            <input className={styles.filterInput} type="checkbox"></input>
-                            <div className={styles.filterDescription}>Medicine</div>
-                        </div>
-
-                        <div className={styles.filterInputandDescriptionContainer}>
-                            <input className={styles.filterInput} type="checkbox"></input>
-                            <div className={styles.filterDescription}>
-                                Public Speaking/Competative Events
-                            </div>
-                        </div>
-
-                        <div className={styles.filterInputandDescriptionContainer}>
-                            <input className={styles.filterInput} type="checkbox"></input>
-                            <div className={styles.filterDescription}>Service</div>
-                        </div>
-
-                        <div className={styles.filterInputandDescriptionContainer}>
-                            <input className={styles.filterInput} type="checkbox"></input>
-                            <div className={styles.filterDescription}>Other</div>
-                        </div>
-
 
                         <div
                             className={styles.filterCategoryLabel}
@@ -280,6 +223,20 @@ export default function Applications() {
                             ></input>
                             <div className={styles.filterDescription}>International</div>
                         </div>
+
+                        {/* <div className={styles.filterCategoryLabel}>Room for Growth</div>
+
+                        <div className={styles.filterInputandDescriptionContainer}>
+                            <input className={styles.filterInput} style={{ width: "100%" }} type="range" list="tickmarks" min={1} max={5} step={1}></input>
+                            <datalist id="tickmarks">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </datalist>
+                            <div className={styles.filterDescription}>Art</div>
+                        </div> */}
                     </div>
 
 
